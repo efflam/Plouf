@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 #import "nanosvg.h"
 #import "tesselator.h"
+#import "globals.h"
 
 struct MemPool
 {
@@ -36,7 +37,6 @@ struct MemPool
 	int nvp;
 	struct MemPool pool;
 	unsigned char mem[1024*512];
-    int texSize;
     
     struct CGPoint* verticesFixed;    
     int counterFixed;

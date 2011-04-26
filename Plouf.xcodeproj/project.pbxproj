@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		75359DF4135D940700334521 /* LevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75359DF3135D940700334521 /* LevelView.m */; };
+		75603FE71366EAB90003FB04 /* globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 75603FE61366EAB90003FB04 /* globals.m */; };
 		7571526C135C6FB300FD105F /* level1-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7571526B135C6FB300FD105F /* level1-background.png */; };
 		75715270135C70A900FD105F /* LandscapeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7571526F135C70A900FD105F /* LandscapeView.m */; };
 		75715274135C744900FD105F /* BackrockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75715273135C744900FD105F /* BackrockView.m */; };
@@ -185,6 +186,8 @@
 /* Begin PBXFileReference section */
 		75359DF2135D940700334521 /* LevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelView.h; sourceTree = "<group>"; };
 		75359DF3135D940700334521 /* LevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelView.m; sourceTree = "<group>"; };
+		75603FE51366EAB90003FB04 /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
+		75603FE61366EAB90003FB04 /* globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = globals.m; sourceTree = "<group>"; };
 		7571526B135C6FB300FD105F /* level1-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level1-background.png"; sourceTree = "<group>"; };
 		7571526E135C70A900FD105F /* LandscapeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeView.h; sourceTree = "<group>"; };
 		7571526F135C70A900FD105F /* LandscapeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeView.m; sourceTree = "<group>"; };
@@ -642,6 +645,8 @@
 				75D3CDC813394AFB00B338BD /* HelloWorldLayer.mm */,
 				75D3CDCA13394AFB00B338BD /* GLES-Render.h */,
 				75D3CDCB13394AFB00B338BD /* GLES-Render.mm */,
+				75603FE51366EAB90003FB04 /* globals.h */,
+				75603FE61366EAB90003FB04 /* globals.m */,
 				75D3CDCD13394AFB00B338BD /* GameConfig.h */,
 				75D3CC0A13394AF800B338BD /* Resources */,
 				75D3CC1E13394AF800B338BD /* cocos2d */,
@@ -1032,7 +1037,7 @@
 			attributes = {
 				ORGANIZATIONNAME = Gobelins;
 			};
-			buildConfigurationList = 75D3CBEF13394AF700B338BD /* Build configuration list for PBXProject "ProtoSV-GL" */;
+			buildConfigurationList = 75D3CBEF13394AF700B338BD /* Build configuration list for PBXProject "Plouf" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1229,6 +1234,7 @@
 				75715270135C70A900FD105F /* LandscapeView.m in Sources */,
 				75715274135C744900FD105F /* BackrockView.m in Sources */,
 				75359DF4135D940700334521 /* LevelView.m in Sources */,
+				75603FE71366EAB90003FB04 /* globals.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1312,7 +1318,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		75D3CBEF13394AF700B338BD /* Build configuration list for PBXProject "ProtoSV-GL" */ = {
+		75D3CBEF13394AF700B338BD /* Build configuration list for PBXProject "Plouf" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				75D3CDD013394AFB00B338BD /* Debug */,

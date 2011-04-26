@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "globals.h"
 
 @interface ScrollLevelView : CCParallaxNode <CCStandardTouchDelegate>
 {

@@ -43,9 +43,7 @@ void poolFree( void* userData, void* ptr )
 		t = 0.0f;
 		tess = 0;
 		nvp = 3;
-		
-        texSize = 2048;
-		
+				
 		// Load assets
         
         NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@-rocks",levelName] ofType:@"svg"];
@@ -118,7 +116,7 @@ void poolFree( void* userData, void* ptr )
 -(void)draw
 {		
 	glPushMatrix();
-	glTranslatef(-2048, 1280, 0);
+	glTranslatef(-MAP_WIDTH/2, (MAP_HEIGHT/2)-768, 0);
     
     glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);

@@ -27,9 +27,9 @@
         LandscapeView *landscape = [LandscapeView landscapeWithName:levelName];
         
 		[self addChild:rocks        z:0     parallaxRatio:ccp(.7,.7)  positionOffset:ccp(0,0)];
-		[self addChild:landscape    z:0     parallaxRatio:ccp(1,1)  positionOffset:ccp(-2048,-2048)];
+		[self addChild:landscape    z:0     parallaxRatio:ccp(1,1)  positionOffset:ccp(-MAP_WIDTH/2,-MAP_HEIGHT/2)];
 		
-		mapSize    = CGSizeMake(4096, 4096);
+		mapSize    = CGSizeMake(MAP_WIDTH, MAP_HEIGHT);
 		winSize    = [[CCDirector sharedDirector] winSize];
 		scaleMin   = fmaxf(winSize.width/mapSize.width,winSize.height/mapSize.height);
 	}
