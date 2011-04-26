@@ -16,7 +16,7 @@
     self = [super init];
     
     if(self)
-    {       
+    {   
         [self setAnchorPoint:ccp(0,0)];
         
         CCSprite *level1 = [CCSprite spriteWithFile:[NSString stringWithFormat:@"%@-1.png",levelName]];
