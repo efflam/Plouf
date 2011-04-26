@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DC99FBF1367006B0040B364 /* level1-mesh.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2DC99FBE1367006A0040B364 /* level1-mesh.svg */; };
 		75359DF4135D940700334521 /* LevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75359DF3135D940700334521 /* LevelView.m */; };
 		75603FE71366EAB90003FB04 /* globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 75603FE61366EAB90003FB04 /* globals.m */; };
 		7571526C135C6FB300FD105F /* level1-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7571526B135C6FB300FD105F /* level1-background.png */; };
@@ -180,10 +181,10 @@
 		75D3CDEC13394C0D00B338BD /* priorityq.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D3CDEA13394C0D00B338BD /* priorityq.c */; };
 		75D3CDF213394C2300B338BD /* sweep.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D3CDF013394C2300B338BD /* sweep.c */; };
 		75D3CDF613394C2B00B338BD /* tess.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D3CDF313394C2B00B338BD /* tess.c */; };
-		75D3CE0013394CE100B338BD /* map.svg in Resources */ = {isa = PBXBuildFile; fileRef = 75D3CDFF13394CE100B338BD /* map.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2DC99FBE1367006A0040B364 /* level1-mesh.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "level1-mesh.svg"; sourceTree = "<group>"; };
 		75359DF2135D940700334521 /* LevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelView.h; sourceTree = "<group>"; };
 		75359DF3135D940700334521 /* LevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelView.m; sourceTree = "<group>"; };
 		75603FE51366EAB90003FB04 /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
@@ -526,7 +527,6 @@
 		75D3CDF313394C2B00B338BD /* tess.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tess.c; sourceTree = "<group>"; };
 		75D3CDF413394C2B00B338BD /* tess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tess.h; sourceTree = "<group>"; };
 		75D3CDF513394C2B00B338BD /* tesselator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tesselator.h; sourceTree = "<group>"; };
-		75D3CDFF13394CE100B338BD /* map.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = map.svg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -565,6 +565,7 @@
 			isa = PBXGroup;
 			children = (
 				75715277135C7CC600FD105F /* level1-1.png */,
+				2DC99FBE1367006A0040B364 /* level1-mesh.svg */,
 				75715278135C7CC700FD105F /* level1-4.png */,
 				75715279135C7CC700FD105F /* level1-3.png */,
 				7571527A135C7CC700FD105F /* level1-2.png */,
@@ -664,7 +665,6 @@
 			isa = PBXGroup;
 			children = (
 				7571526D135C6FB900FD105F /* level1 */,
-				75D3CDFF13394CE100B338BD /* map.svg */,
 				75D3CC0B13394AF800B338BD /* Default.png */,
 				75D3CC0D13394AF800B338BD /* fps_images.png */,
 				75D3CC0F13394AF800B338BD /* Icon-72.png */,
@@ -1069,13 +1069,13 @@
 				75D3CC1A13394AF800B338BD /* Icon@2x.png in Resources */,
 				75D3CC1D13394AF800B338BD /* iTunesArtwork in Resources */,
 				75D3CDCF13394AFB00B338BD /* blocks.png in Resources */,
-				75D3CE0013394CE100B338BD /* map.svg in Resources */,
 				7571526C135C6FB300FD105F /* level1-background.png in Resources */,
 				75715276135C76D200FD105F /* level1-rocks.svg in Resources */,
 				7571527B135C7CC700FD105F /* level1-1.png in Resources */,
 				7571527C135C7CC700FD105F /* level1-4.png in Resources */,
 				7571527D135C7CC700FD105F /* level1-3.png in Resources */,
 				7571527E135C7CC700FD105F /* level1-2.png in Resources */,
+				2DC99FBF1367006B0040B364 /* level1-mesh.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
