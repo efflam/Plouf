@@ -10,6 +10,7 @@
 //#import "SVGNode.h"
 #import "BackrockView.h"
 #import "LandscapeView.h"
+#import "CorridorView.h"
 
 @implementation ScrollLevelView
 
@@ -25,9 +26,11 @@
         
         BackrockView *rocks = [BackrockView backrockWithName:levelName];
         LandscapeView *landscape = [LandscapeView landscapeWithName:levelName];
+        CorridorView *corridor = [CorridorView corridorWithName:levelName];
         
-		[self addChild:rocks        z:0     parallaxRatio:ccp(.7,.7)  positionOffset:ccp(0,0)];
-		[self addChild:landscape    z:0     parallaxRatio:ccp(1,1)  positionOffset:ccp(-MAP_WIDTH/2,-MAP_HEIGHT/2)];
+		[self addChild:rocks        z:-2    parallaxRatio:ccp(.7,.7)    positionOffset:ccp(0,0)];
+        [self addChild:corridor     z:-1    parallaxRatio:ccp(1,1)      positionOffset:ccp(-MAP_WIDTH/2,-MAP_HEIGHT/2)];
+		[self addChild:landscape    z:0     parallaxRatio:ccp(1,1)      positionOffset:ccp(-MAP_WIDTH/2,-MAP_HEIGHT/2)];
 		
 		mapSize    = CGSizeMake(MAP_WIDTH, MAP_HEIGHT);
 		winSize    = [[CCDirector sharedDirector] winSize];
