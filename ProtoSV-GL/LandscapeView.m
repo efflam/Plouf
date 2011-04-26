@@ -29,9 +29,9 @@
         [level3 setAnchorPoint:ccp(0,0)];
         [level4 setAnchorPoint:ccp(0,0)];
         
-        [level1 setPosition:ccp(0,MAP_WIDTH/2)];
+        [level1 setPosition:ccp(0,MAP_HEIGHT/2 - 1)];
         [level2 setPosition:ccp(MAP_WIDTH/2,MAP_HEIGHT/2)];
-        [level3 setPosition:ccp(MAP_WIDTH/2,0)];
+        [level3 setPosition:ccp(MAP_WIDTH/2 - 1,0)];
         [level4 setPosition:ccp(0,0)];
         
         [self addChild:level1];
