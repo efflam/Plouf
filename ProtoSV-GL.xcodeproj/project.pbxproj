@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DF5D5B41367045200BA67F8 /* CorridorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5D5B31367045200BA67F8 /* CorridorView.m */; };
 		75359DF4135D940700334521 /* LevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75359DF3135D940700334521 /* LevelView.m */; };
 		7571526C135C6FB300FD105F /* level1-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7571526B135C6FB300FD105F /* level1-background.png */; };
 		75715270135C70A900FD105F /* LandscapeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7571526F135C70A900FD105F /* LandscapeView.m */; };
@@ -184,6 +185,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2DF5D5B21367045200BA67F8 /* CorridorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorridorView.h; sourceTree = "<group>"; };
+		2DF5D5B31367045200BA67F8 /* CorridorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorridorView.m; sourceTree = "<group>"; };
 		75359DF2135D940700334521 /* LevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelView.h; sourceTree = "<group>"; };
 		75359DF3135D940700334521 /* LevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelView.m; sourceTree = "<group>"; };
 		7571526B135C6FB300FD105F /* level1-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level1-background.png"; sourceTree = "<group>"; };
@@ -557,6 +560,8 @@
 				75715273135C744900FD105F /* BackrockView.m */,
 				7571526E135C70A900FD105F /* LandscapeView.h */,
 				7571526F135C70A900FD105F /* LandscapeView.m */,
+				2DF5D5B21367045200BA67F8 /* CorridorView.h */,
+				2DF5D5B31367045200BA67F8 /* CorridorView.m */,
 			);
 			name = levelView;
 			sourceTree = "<group>";
@@ -1235,6 +1240,7 @@
 				75715274135C744900FD105F /* BackrockView.m in Sources */,
 				75359DF4135D940700334521 /* LevelView.m in Sources */,
 				75F7C4901366F6D0006515B9 /* globals.m in Sources */,
+				2DF5D5B41367045200BA67F8 /* CorridorView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
