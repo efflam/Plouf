@@ -1,0 +1,3 @@
+/Users/efflam/Documents/Xcode/Plouf/ProtoMesh2/Classes/navmesh.c:260: warning: 'isectSegSeg' defined but not used
+/Users/efflam/Documents/Xcode/Plouf/ProtoMesh2/Classes/navmesh.c:589: warning: 'getBestEdge' defined but not used
+/Users/efflam/Documents/Xcode/Plouf/ProtoMesh2/Classes/navmesh.c:671: warning: 'dbgcross' defined but not used
