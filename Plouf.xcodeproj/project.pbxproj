@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D5C064313683AAB000873D2 /* navmesh.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2D5C064213683AAB000873D2 /* navmesh.svg */; };
 		2D78D13913681CE6009A3F8F /* mathutil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D78D13813681CE5009A3F8F /* mathutil.mm */; };
 		2D78D13F13681D0E009A3F8F /* navmesh.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D78D13C13681D0D009A3F8F /* navmesh.mm */; };
 		2D78D14013681D0E009A3F8F /* Navscene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D78D13E13681D0D009A3F8F /* Navscene.mm */; };
@@ -188,7 +187,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D5C064213683AAB000873D2 /* navmesh.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = navmesh.svg; sourceTree = "<group>"; };
 		2D78D13713681CE5009A3F8F /* mathutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mathutil.h; sourceTree = "<group>"; };
 		2D78D13813681CE5009A3F8F /* mathutil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = mathutil.mm; sourceTree = "<group>"; };
 		2D78D13B13681D0D009A3F8F /* navmesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = navmesh.h; sourceTree = "<group>"; };
@@ -985,7 +983,6 @@
 			isa = PBXGroup;
 			children = (
 				2DD007A913670CE000903096 /* level1-1.png */,
-				2D5C064213683AAB000873D2 /* navmesh.svg */,
 				2DD007AA13670CE000903096 /* level1-2.png */,
 				2DD007AB13670CE000903096 /* level1-3.png */,
 				2DD007AC13670CE000903096 /* level1-4.png */,
@@ -1110,7 +1107,6 @@
 				2DD007B513670CE000903096 /* level1-mesh.svg in Resources */,
 				2DD007B613670CE000903096 /* level1-rocks.svg in Resources */,
 				2D78D14213682032009A3F8F /* fish.png in Resources */,
-				2D5C064313683AAB000873D2 /* navmesh.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

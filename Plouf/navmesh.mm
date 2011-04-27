@@ -6,6 +6,7 @@
 #import <string.h>
 #import <cocos2d.h>
 #import <tesselator.h>
+//#import "nanosvg.h"
 
 #ifdef WIN32
 // HACK!!
@@ -79,11 +80,16 @@ void* poolAlloc( void* userData, unsigned int size )
 	return 0;
 }
 
+void poolFree( void* userData, void* ptr )
+{
+	// empty
+}
 
-static int triangulate(int n, const float* verts, unsigned short* indices, unsigned short* tris)
+
+static int triangulate(int n, const float* verts, int* indices, int* tris)
 {
     int ntris = 0;
-	unsigned short* dst;
+	int* dst;
 	int i, i1, i2, k;
 	float dmin = -1, d;
 	int imin = -1;
@@ -165,21 +171,21 @@ static int triangulate(int n, const float* verts, unsigned short* indices, unsig
 
 struct Edge
 {
-	unsigned short vert[2];
-	unsigned short polyEdge[2];
-	unsigned short poly[2];
+	int vert[2];
+	int polyEdge[2];
+	int poly[2];
 };
 
-static int buildadj(unsigned short* tris, const int ntris, const int nverts)
+static int buildadj(int* tris, const int ntris, const int nverts)
 {
 	int maxEdgeCount = ntris*3;
-	unsigned short* firstEdge = 0;
-	unsigned short* nextEdge = 0;
+	int* firstEdge = 0;
+	int* nextEdge = 0;
 	struct Edge* edges = 0;
 	int edgeCount = 0;
 	int i,j;
 	
-	firstEdge = (unsigned short*)malloc(sizeof(unsigned short)*(nverts + maxEdgeCount));
+	firstEdge = (int*)malloc(sizeof(int)*(nverts + maxEdgeCount));
 	if (!firstEdge)
 		goto cleanup;
 	nextEdge = firstEdge + nverts;
@@ -193,23 +199,23 @@ static int buildadj(unsigned short* tris, const int ntris, const int nverts)
 	
 	for (i = 0; i < ntris; ++i)
 	{
-		unsigned short* t = &tris[i*6];
+		int* t = &tris[i*6];
 		for (j = 0; j < 3; ++j)
 		{
-			unsigned short v0 = t[j];
-			unsigned short v1 = t[(j+1) % 3];
+			int v0 = t[j];
+			int v1 = t[(j+1) % 3];
 			if (v0 < v1)
 			{
 				struct Edge* edge = &edges[edgeCount];
 				edge->vert[0] = v0;
 				edge->vert[1] = v1;
-				edge->poly[0] = (unsigned short)i;
-				edge->polyEdge[0] = (unsigned short)j;
-				edge->poly[1] = (unsigned short)i;
+				edge->poly[0] = (int)i;
+				edge->polyEdge[0] = (int)j;
+				edge->poly[1] = (int)i;
 				edge->polyEdge[1] = 0;
 				// Insert edge
 				nextEdge[edgeCount] = firstEdge[v0];
-				firstEdge[v0] = (unsigned short)edgeCount;
+				firstEdge[v0] = (int)edgeCount;
 				edgeCount++;
 			}
 		}
@@ -217,21 +223,21 @@ static int buildadj(unsigned short* tris, const int ntris, const int nverts)
 	
 	for (i = 0; i < ntris; ++i)
 	{
-		unsigned short* t = &tris[i*6];
+		int* t = &tris[i*6];
 		for (j = 0; j < 3; ++j)
 		{
-			unsigned short v0 = t[j];
-			unsigned short v1 = t[(j+1) % 3];
+			int v0 = t[j];
+			int v1 = t[(j+1) % 3];
 			if (v0 > v1)
 			{
-				unsigned short e;
+				int e;
 				for (e = firstEdge[v1]; e != 0xffff; e = nextEdge[e])
 				{
 					struct Edge* edge = &edges[e];
 					if (edge->vert[1] == v0 && edge->poly[0] == edge->poly[1])
 					{
-						edge->poly[1] = (unsigned short)i;
-						edge->polyEdge[1] = (unsigned short)j;
+						edge->poly[1] = (int)i;
+						edge->polyEdge[1] = (int)j;
 						break;
 					}
 				}
@@ -243,7 +249,7 @@ static int buildadj(unsigned short* tris, const int ntris, const int nverts)
 
 	for (i = 0; i < ntris; ++i)
 	{
-		unsigned short* t = &tris[i*6];
+		int* t = &tris[i*6];
 		t[3] = 0xffff;
 		t[4] = 0xffff;
 		t[5] = 0xffff;
@@ -254,8 +260,8 @@ static int buildadj(unsigned short* tris, const int ntris, const int nverts)
 		struct Edge* e = &edges[i];
 		if (e->poly[0] != e->poly[1])
 		{
-			unsigned short* t0 = &tris[e->poly[0]*6];
-			unsigned short* t1 = &tris[e->poly[1]*6];
+			int* t0 = &tris[e->poly[0]*6];
+			int* t1 = &tris[e->poly[1]*6];
 			t0[3+e->polyEdge[0]] = e->poly[1];
 			t1[3+e->polyEdge[1]] = e->poly[0];
 		}
@@ -303,18 +309,60 @@ static float closestPtPtSeg(const float* pt, const float* sp, const float* sq)
 }
 
 // Creates navmesh from a polygon.
-struct Navmesh* navmeshCreate(const float* pts, const int npts)
+struct Navmesh* navmeshCreate(float *pts, int npts)
 {
 	int i;
 	struct Navmesh* nav = 0;
-	unsigned short* indices = 0;
+	int* indices = 0;
+    
+    TESSalloc ma;
+	TESStesselator* tess;
+    struct MemPool pool;
+    unsigned char mem[1024*512];
+
+    tess = 0;
+    
+    pool.size = 0;
+    pool.cap = sizeof(mem);
+    pool.buf = mem;
+    memset(&ma, 0, sizeof(ma));
+    ma.memalloc = poolAlloc;
+    ma.memfree = poolFree;
+    ma.userData = (void*)&pool;
+    ma.extraVertices = 256; // realloc not provided, allow 256 extra vertices.	
+    
+    pool.size = 0; // reset pool
+    tess = tessNewTess(&ma);
+    
+//    SVGPath *it;
+    
+    //for(int i = 0 ; i < npts ; i+=2)
+    //{
+        tessAddContour(tess, 2, pts, sizeof(float)*2, npts);
+    //}
+    
+//    for (it = fg; it != NULL; it = it->next)
+//        tessAddContour(tess, 2, it->pts, sizeof(float)*2, it->npts);
+    
+    tessTesselate(tess, TESS_WINDING_ODD, TESS_POLYGONS, 3, 2, 0);
 	
 	nav = (struct Navmesh*)malloc(sizeof(struct Navmesh));
+    
+    const float* verts = tessGetVertices(tess);
+//    const int* elems = ;
+    const int nelems = tessGetElementCount(tess);
+    
+    nav->verts = verts;
+    nav->tris = tessGetElements(tess);
+    nav->ntris = nelems;
+    nav->nverts = npts;
+    
+    /*
 	if (!nav)
 		goto cleanup;
 	memset(nav, 0, sizeof(struct Navmesh));
 
-	indices = (unsigned short*)malloc(sizeof(unsigned short)*npts);
+	indices = (int*)malloc(sizeof(int)*npts);
 	if (!indices)
 		goto cleanup;
 
@@ -324,12 +372,12 @@ struct Navmesh* navmeshCreate(const float* pts, const int npts)
 	memcpy(nav->verts, pts, sizeof(float)*2*npts);
 	nav->nverts = npts;
 
-	nav->tris = (unsigned short*)malloc(sizeof(unsigned short)*(npts-2)*6);
+	nav->tris = (int*)malloc(sizeof(int)*(npts-2)*6);
 	if (!nav->tris)
 		goto cleanup;
 	
 	for (i = 0; i < npts; ++i)
-		indices[i] = (unsigned short)i;
+		indices[i] = (int)i;
 
 	nav->ntris = triangulate(nav->nverts, nav->verts, indices, nav->tris);
 	if (nav->ntris < 0) nav->ntris = -nav->ntris;
@@ -341,23 +389,9 @@ struct Navmesh* navmeshCreate(const float* pts, const int npts)
 
 	if (!buildadj(nav->tris, nav->ntris, nav->nverts))
 		goto cleanup;
+    */
 
 	return nav;
-	
-cleanup:
-	if (nav)
-	{
-		if (nav->verts)
-			free(nav->verts);
-		if (nav->tris)
-			free(nav->tris);
-		free(nav);
-        
-	}
-	if (indices)
-		free(indices);
-
-	return 0;
 }
 
 // Find nearest triangle
@@ -371,7 +405,7 @@ int navmeshFindNearestTri(struct Navmesh* nav, const float* pos, float* nearest)
 
 	for (i = 0; i < nav->ntris; ++i)
 	{
-		const unsigned short* tri = &nav->tris[i*6];
+		const int* tri = &nav->tris[i*6];
 		const float* va = &nav->verts[tri[0]*2];
 		const float* vb = &nav->verts[tri[1]*2];
 		const float* vc = &nav->verts[tri[2]*2];
@@ -381,7 +415,7 @@ int navmeshFindNearestTri(struct Navmesh* nav, const float* pos, float* nearest)
 
 	for (i = 0; i < nav->ntris; ++i)
 	{
-		const unsigned short* tri = &nav->tris[i*6];
+		const int* tri = &nav->tris[i*6];
 		for (j = 0; j < 3; ++j)
 		{
 			const float* va = &nav->verts[tri[j]*2];
@@ -404,12 +438,12 @@ int navmeshFindNearestTri(struct Navmesh* nav, const float* pos, float* nearest)
 	return besti;
 }
 
-int navmeshFindPath(struct Navmesh* nav, const float* start, const float* end, unsigned short* path, const int maxpath)
+int navmeshFindPath(struct Navmesh* nav, const float* start, const float* end, int* path, const int maxpath)
 {
 #define MAX_STACK 128
 #define MAX_PARENT 128
 	int i, starti, endi, stack[MAX_STACK], nstack;
-	unsigned short parent[MAX_PARENT];
+	int parent[MAX_PARENT];
 	
 	starti = navmeshFindNearestTri(nav, start, NULL);
 	endi = navmeshFindNearestTri(nav, end, NULL);
@@ -418,11 +452,11 @@ int navmeshFindPath(struct Navmesh* nav, const float* start, const float* end, u
 		
 	if (starti == endi)
 	{
-		path[0] = (unsigned short)starti;
+		path[0] = (int)starti;
 		return 1;
 	}
 
-	memset(parent, 0xff, sizeof(unsigned short)*MAX_PARENT);
+	memset(parent, 0xff, sizeof(int)*MAX_PARENT);
 		
 	nstack = 0;
 	stack[nstack++] = endi;
@@ -430,8 +464,8 @@ int navmeshFindPath(struct Navmesh* nav, const float* start, const float* end, u
 	
 	while (nstack)
 	{
-		unsigned short* tri;
-		unsigned short cur;
+		const int* tri;
+		int cur;
 		
 		// Pop front.
 		cur = stack[0];
@@ -456,7 +490,7 @@ int navmeshFindPath(struct Navmesh* nav, const float* start, const float* end, u
 		tri = &nav->tris[cur*6];
 		for (i = 0; i < 3; ++i)
 		{
-			const unsigned short nei = tri[3+i];
+			const int nei = tri[3+i];
 			if (nei == 0xffff) continue;
 			if (parent[nei] != 0xffff) continue;
 			parent[nei] = cur;
@@ -561,10 +595,10 @@ static int stringPull(const float* portals, int nportals, float* pts, const int 
 	return npts;
 }
 
-static void getPortalPoints(struct Navmesh* nav, const unsigned short a, const unsigned short b,
+static void getPortalPoints(struct Navmesh* nav, const int a, const int b,
 							float* left, float* right)
 {
-	const unsigned short* ta = &nav->tris[a*6];
+	const int* ta = &nav->tris[a*6];
 	int i;
 	for (i = 0; i < 3; ++i)
 	{
@@ -579,7 +613,7 @@ static void getPortalPoints(struct Navmesh* nav, const unsigned short a, const u
 }
 
 int navmeshStringPull(struct Navmesh* nav, const float* start, const float* end,
-					  const unsigned short* path, const int npath,
+					  const int* path, const int npath,
 					  float* pts, const int maxpts)
 {
 #define MAX_PORTALS 128
@@ -662,9 +696,9 @@ static int pointInsidePoly(const float* pt, const float* poly, const int npoly,
 	return res;
 }
 
-static void getTriVerts(struct Navmesh* nav, unsigned short idx, float* verts)
+static void getTriVerts(struct Navmesh* nav, int idx, float* verts)
 {
-	const unsigned short* tri = &nav->tris[idx*6];
+	const int* tri = &nav->tris[idx*6];
 	vcpy(verts+0, &nav->verts[tri[0]*2]);
 	vcpy(verts+2, &nav->verts[tri[1]*2]);
 	vcpy(verts+4, &nav->verts[tri[2]*2]);
@@ -712,14 +746,14 @@ const float* getDebugLine(int i)
 }
 
 
-int navmeshMoveAlong(struct Navmesh* nav, float* start, const unsigned short idx, const float* target,
-					 unsigned short* visited, const int maxvisited)
+int navmeshMoveAlong(struct Navmesh* nav, float* start, const int idx, const float* target,
+					 int* visited, const int maxvisited)
 {
 	static const float EPS = 0.001f;
 	float poly[3*2];
 	float pos[2];
-	unsigned short cur = idx;
-	unsigned short prev = 0xffff;
+	int cur = idx;
+	int prev = 0xffff;
 	int nvisited = 0;
 
 
@@ -730,8 +764,8 @@ int navmeshMoveAlong(struct Navmesh* nav, float* start, const unsigned short idx
 
 	for (;;)
 	{
-		unsigned short next, nei;
-		const unsigned short* tri = &nav->tris[cur*6];
+		int next, nei;
+		const int* tri = &nav->tris[cur*6];
 		int edge;
 		float t, p[2];
 
@@ -802,13 +836,13 @@ int navmeshMoveAlong(struct Navmesh* nav, float* start, const unsigned short idx
 // Deletes navmesh.
 void navmeshDelete(struct Navmesh* nav)
 {
-	if (!nav)
-		return;
-	if (nav->verts)
-		free(nav->verts);
-	if (nav->tris)
-		free(nav->tris);
-	free(nav);
+//	if (!nav)
+//		return;
+//	if (nav->verts)
+//		free(nav->verts);
+//	if (nav->tris)
+//		free(nav->tris);
+//	free(nav);
 }
 
 
@@ -904,9 +938,9 @@ static int findNextSmoothCorner(const float* pos, const float* dir,
 	return last;
 }
 
-static int fixupCorridor(unsigned short* path, int npath, const unsigned short* visited, const int nvisited)
+static int fixupCorridor(int* path, int npath, const int* visited, const int nvisited)
 {
-	unsigned short tmp[AGENT_MAX_PATH];
+	int tmp[AGENT_MAX_PATH];
 	int furthestPath = -1;
 	int furthestVisited = -1;
 	int i, j, n;
@@ -934,7 +968,7 @@ static int fixupCorridor(unsigned short* path, int npath, const unsigned short* 
 	}
 	
 	// Concatenate paths.	
-	memcpy(tmp, path, sizeof(unsigned short)*npath);
+	memcpy(tmp, path, sizeof(int)*npath);
 	
 	n = 0;
 	for (i = nvisited-1; i >= furthestVisited; --i) 

@@ -54,8 +54,8 @@
 
 -(void)initNavMeshWithName:(NSString*)levelName
 {
-    //NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@-mesh",levelName] ofType:@"svg"];
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"navmesh" ofType:@"svg"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@-mesh",levelName] ofType:@"svg"];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"navmesh" ofType:@"svg"];
     navsceneLoad(&navScene, [path UTF8String]);
 }
 

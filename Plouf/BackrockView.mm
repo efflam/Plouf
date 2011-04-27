@@ -23,7 +23,7 @@ void* rockPoolAlloc( void* userData, unsigned int size )
 	return 0;
 }
 
-void poolFree( void* userData, void* ptr )
+void rockPoolFree( void* userData, void* ptr )
 {
 	// empty
 }
@@ -55,7 +55,7 @@ void poolFree( void* userData, void* ptr )
 		pool.buf = mem;
 		memset(&ma, 0, sizeof(ma));
 		ma.memalloc = rockPoolAlloc;
-		ma.memfree = poolFree;
+		ma.memfree = rockPoolFree;
 		ma.userData = (void*)&pool;
 		ma.extraVertices = 256; // realloc not provided, allow 256 extra vertices.	
 		

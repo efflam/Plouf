@@ -192,12 +192,10 @@ void agentDraw(NavmeshAgent* agent, Navmesh* nav, int flags, const float zoom)
 }
 
 
-CGPoint convertVertToCGPoint(float *v)
+CGPoint convertVertToCGPoint(const float *v)
 {
-	
-	//CCLOG(@"x:%f y:%f", v[0], v[1]);
+//	CCLOG(@"x:%f y:%f", v[0], v[1]);
 	return ccp(v[0], v[1]);
-	
 }
 
 
@@ -213,9 +211,11 @@ void navmeshDraw(Navmesh* nav, const float zoom)
 	//setcolor(ctrans(clerp(COL_SEC,COL_BACK,32),96));
 	//glBegin(GL_TRIANGLES);
 	CGPoint vertices[3];
+    
 	for (int i = 0; i < nav->ntris; ++i)
+//        for (int i = 0; i < 200; ++i)
 	{
-		const unsigned short* t = &nav->tris[i*6];
+		const int* t = &nav->tris[i*3];
 		//CCLOG(@"%f", v1[0]);
 		vertices[0] = ccpMult(convertVertToCGPoint(&nav->verts[t[0]*2]), 1);
 		vertices[1] = ccpMult(convertVertToCGPoint(&nav->verts[t[1]*2]), 1);
@@ -241,10 +241,10 @@ void navmeshDraw(Navmesh* nav, const float zoom)
 	glBegin(GL_LINES);
 	for (int i = 0; i < nav->ntris; ++i)
 	{
-		const unsigned short* t = &nav->tris[i*6];
+		const int* t = &nav->tris[i*6];
 		for (int j = 0; j < 3; ++j)
 		{
-			if (t[3+j] < (unsigned short)i)
+			if (t[3+j] < (int)i)
 			{
 				glVertex2fv(&nav->verts[t[j]*2]);
 				glVertex2fv(&nav->verts[t[(j+1)%3]*2]);
@@ -270,7 +270,7 @@ void navmeshDraw(Navmesh* nav, const float zoom)
 	/*
 	for (int i = 0; i < nav->ntris; ++i)
 	{
-		const unsigned short* t = &nav->tris[i*6];
+		const int* t = &nav->tris[i*6];
 		for (int j = 0; j < 3; ++j)
 		{
 			if (t[3+j] == 0xffff)

@@ -4,32 +4,34 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+    
+//#import "nanosvg.h"
 
 struct Navmesh
 {
-	float* verts;
+	const float* verts;
 	int nverts;
-	unsigned short* tris;
+	const int* tris;
 	int ntris;
 };
 
 // Creates navmesh from a polygon.
-struct Navmesh* navmeshCreate(const float* pts, const int npts);
+struct Navmesh* navmeshCreate(float *pts, int npts);
 
 // Find nearest triangle
 int navmeshFindNearestTri(struct Navmesh* nav, const float* pos, float* nearest);
 
 // Find path
-int navmeshFindPath(struct Navmesh* nav, const float* start, const float* end, unsigned short* path, const int maxpath);
+int navmeshFindPath(struct Navmesh* nav, const float* start, const float* end, int* path, const int maxpath);
 
 // Find tight rope path
 int navmeshStringPull(struct Navmesh* nav, const float* start, const float* end,
-					  const unsigned short* path, const int npath,
+					  const int* path, const int npath,
 					  float* pts, const int maxpts);
 
 // Move along navmesh
-int navmeshMoveAlong(struct Navmesh* nav, float* start, const unsigned short idx, const float* target,
-					 unsigned short* visited, const int maxvisited);
+int navmeshMoveAlong(struct Navmesh* nav, float* start, const int idx, const float* target,
+					 int* visited, const int maxvisited);
 
 // Deletes navmesh.
 void navmeshDelete(struct Navmesh* nav);
@@ -64,9 +66,9 @@ struct NavmeshAgent
 	float opos[2], otarget[2];
 	
 	float t;
-	unsigned short visited[AGENT_MAX_PATH];
+	int visited[AGENT_MAX_PATH];
 	int nvisited;
-	unsigned short path[AGENT_MAX_PATH];
+	int path[AGENT_MAX_PATH];
 	int npath;
 	
 	float trail[AGENT_MAX_TRAIL*2];
