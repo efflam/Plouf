@@ -214,6 +214,27 @@ enum {
 	
 }
 
+-(void) touchAtPosition:(CGPoint)point
+{
+    fingerPos = point;
+	
+    const float lx = point.x;
+    const float ly = point.y;
+    
+    moveToFinger = true;
+    
+    float pos[2] = {lx,ly};
+    float nearest[2] = {lx,ly};
+    if (navScene.nav)
+        navmeshFindNearestTri(navScene.nav, pos, nearest);
+	
+    vcpy(navScene.agents[0].target, nearest);
+    vcpy(navScene.agents[0].oldpos, navScene.agents[0].pos);
+    agentFindPath(&navScene.agents[0], navScene.nav);
+    vset(navScene.agents[0].corner, FLT_MAX,FLT_MAX);
+}
+
+/*
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	UITouch *tch = [[touches allObjects] objectAtIndex:0];
@@ -221,6 +242,9 @@ enum {
 	tchLoc = [[CCDirector sharedDirector] convertToGL:tchLoc];
     tchLoc.x += 2000;
     tchLoc.y += 2000;
+    
+    NSLog(@"position touch : %f",tch.view.frame.origin.x);
+    
     fingerPos =tchLoc;
 	
     const float lx = tchLoc.x;
@@ -240,6 +264,7 @@ enum {
     vset(navScene.agents[0].corner, FLT_MAX,FLT_MAX);
 	
 }
+ */
 
 -(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {

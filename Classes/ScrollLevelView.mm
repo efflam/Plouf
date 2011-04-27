@@ -23,16 +23,18 @@
 		[[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
 		
         [self setAnchorPoint:ccp(0,0)];
-        
+                
         //BackrockView *rocks = [BackrockView backrockWithName:levelName];
-       // LandscapeView *landscape = [LandscapeView landscapeWithName:levelName];
+        LandscapeView *landscape = [LandscapeView landscapeWithName:levelName];
 //        CorridorView *corridor = [CorridorView corridorWithName:levelName];
         NSString *svgPath = [[NSBundle mainBundle] pathForResource:@"level1-mesh" ofType:@"svg"];
         Level *corridor = [Level levelWithFile:svgPath];
         
+        [corridor setTag:123];
+        
 		//[self addChild:rocks        z:-2    parallaxRatio:ccp(.7,.7)    positionOffset:ccp(0,0)];
         [self addChild:corridor     z:1    parallaxRatio:ccp(1,1)      positionOffset:ccp(-MAP_WIDTH/2,-MAP_HEIGHT/2)];
-	//	[self addChild:landscape    z:0     parallaxRatio:ccp(1,1)      positionOffset:ccp(-MAP_WIDTH/2,-MAP_HEIGHT/2)];
+		[self addChild:landscape    z:0     parallaxRatio:ccp(1,1)      positionOffset:ccp(-MAP_WIDTH/2,-MAP_HEIGHT/2)];
 		
 		mapSize    = CGSizeMake(MAP_WIDTH, MAP_HEIGHT);
 		winSize    = [[CCDirector sharedDirector] winSize];
@@ -46,6 +48,16 @@
     return [[[ScrollLevelView alloc] initWithLevelName:levelName] autorelease];
 }
 
+/*
+ 
+ -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+ {
+ UITouch *tch = [[touches allObjects] objectAtIndex:0];
+ CGPoint tchLoc = [tch locationInView:tch.view];
+ tchLoc = [[CCDirector sharedDirector] convertToGL:tchLoc];
+ 
+*/
+
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	[self unschedule:@selector(applyIntertia)];
@@ -57,6 +69,14 @@
 	
 	CGPoint touchLocation = [touch locationInView: [touch view]];
 	touchOffset = [[CCDirector sharedDirector] convertToGL:touchLocation];
+    
+    CGPoint tchLoc = touchOffset;
+    tchLoc.x += 2000 - self.position.x ;
+    tchLoc.y += 2000 - self.position.y ;
+    
+    Level *corridor = (Level*)[self getChildByTag:123];
+    
+    [corridor touchAtPosition:tchLoc];
 }
 
 -(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event 

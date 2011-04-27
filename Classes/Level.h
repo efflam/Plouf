@@ -28,5 +28,6 @@
 -(void) addNewSpriteWithCoords:(CGPoint)p;
 -(void) createEdge:(float)x1 y1:(float)y1 x2:(float)x2 y2:(float)y2;
 -(void) counterGravity:(b2Body*)body antiGravity:(b2Vec2)antiGravity;
+-(void) touchAtPosition:(CGPoint)point;
 
 @end
