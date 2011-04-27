@@ -11,9 +11,9 @@
 
 @implementation BackrockView
 
-void* poolAlloc( void* userData, unsigned int size )
+void* rockPoolAlloc( void* userData, unsigned int size )
 {
-	struct MemPool* pool = (struct MemPool*)userData;
+	struct RockMemPool* pool = (struct RockMemPool*)userData;
 	if (pool->size + size < pool->cap)
 	{
 		unsigned char* ptr = pool->buf + pool->size;
@@ -54,7 +54,7 @@ void poolFree( void* userData, void* ptr )
 		pool.cap = sizeof(mem);
 		pool.buf = mem;
 		memset(&ma, 0, sizeof(ma));
-		ma.memalloc = poolAlloc;
+		ma.memalloc = rockPoolAlloc;
 		ma.memfree = poolFree;
 		ma.userData = (void*)&pool;
 		ma.extraVertices = 256; // realloc not provided, allow 256 extra vertices.	

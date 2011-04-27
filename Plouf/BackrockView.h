@@ -12,7 +12,7 @@
 #import "tesselator.h"
 #import "globals.h"
 
-struct MemPool
+struct RockMemPool
 {
 	unsigned char* buf;
 	unsigned int cap;
@@ -35,7 +35,7 @@ struct MemPool
 	TESSalloc ma;
 	TESStesselator* tess;
 	int nvp;
-	struct MemPool pool;
+	struct RockMemPool pool;
 	unsigned char mem[1024*512];
     
     struct CGPoint* verticesFixed;    

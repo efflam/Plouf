@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D5C064313683AAB000873D2 /* navmesh.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2D5C064213683AAB000873D2 /* navmesh.svg */; };
+		2D78D13913681CE6009A3F8F /* mathutil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D78D13813681CE5009A3F8F /* mathutil.mm */; };
+		2D78D13F13681D0E009A3F8F /* navmesh.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D78D13C13681D0D009A3F8F /* navmesh.mm */; };
+		2D78D14013681D0E009A3F8F /* Navscene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D78D13E13681D0D009A3F8F /* Navscene.mm */; };
+		2D78D14213682032009A3F8F /* fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78D14113682032009A3F8F /* fish.png */; };
 		2DD005CC13670C1700903096 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD005CB13670C1700903096 /* QuartzCore.framework */; };
 		2DD005CE13670C1700903096 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD005CD13670C1700903096 /* OpenGLES.framework */; };
 		2DD005D013670C1700903096 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD005CF13670C1700903096 /* OpenAL.framework */; };
@@ -183,6 +188,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D5C064213683AAB000873D2 /* navmesh.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = navmesh.svg; sourceTree = "<group>"; };
+		2D78D13713681CE5009A3F8F /* mathutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mathutil.h; sourceTree = "<group>"; };
+		2D78D13813681CE5009A3F8F /* mathutil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = mathutil.mm; sourceTree = "<group>"; };
+		2D78D13B13681D0D009A3F8F /* navmesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = navmesh.h; sourceTree = "<group>"; };
+		2D78D13C13681D0D009A3F8F /* navmesh.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = navmesh.mm; sourceTree = "<group>"; };
+		2D78D13D13681D0D009A3F8F /* Navscene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Navscene.h; sourceTree = "<group>"; };
+		2D78D13E13681D0D009A3F8F /* Navscene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Navscene.mm; sourceTree = "<group>"; };
+		2D78D14113682032009A3F8F /* fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish.png; sourceTree = "<group>"; };
 		2DD005C713670C1700903096 /* Plouf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plouf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DD005CB13670C1700903096 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2DD005CD13670C1700903096 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -596,6 +609,12 @@
 				2DD0072113670C1A00903096 /* LICENSE_FontLabel.txt */,
 				2DD0078E13670C1B00903096 /* LICENSE_Box2D.txt */,
 				2DD0079313670C1B00903096 /* AppDelegate.h */,
+				2D78D13713681CE5009A3F8F /* mathutil.h */,
+				2D78D13B13681D0D009A3F8F /* navmesh.h */,
+				2D78D13C13681D0D009A3F8F /* navmesh.mm */,
+				2D78D13D13681D0D009A3F8F /* Navscene.h */,
+				2D78D13E13681D0D009A3F8F /* Navscene.mm */,
+				2D78D13813681CE5009A3F8F /* mathutil.mm */,
 				2DD0079413670C1B00903096 /* AppDelegate.mm */,
 				2DD0079613670C1B00903096 /* RootViewController.h */,
 				2DD0079713670C1B00903096 /* RootViewController.m */,
@@ -619,6 +638,7 @@
 		2DD005DC13670C1700903096 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2D78D14113682032009A3F8F /* fish.png */,
 				2DD007A813670CB700903096 /* levels */,
 				2DD005DD13670C1700903096 /* Default.png */,
 				2DD005DF13670C1700903096 /* fps_images.png */,
@@ -965,6 +985,7 @@
 			isa = PBXGroup;
 			children = (
 				2DD007A913670CE000903096 /* level1-1.png */,
+				2D5C064213683AAB000873D2 /* navmesh.svg */,
 				2DD007AA13670CE000903096 /* level1-2.png */,
 				2DD007AB13670CE000903096 /* level1-3.png */,
 				2DD007AC13670CE000903096 /* level1-4.png */,
@@ -1088,6 +1109,8 @@
 				2DD007B413670CE000903096 /* level1-background.png in Resources */,
 				2DD007B513670CE000903096 /* level1-mesh.svg in Resources */,
 				2DD007B613670CE000903096 /* level1-rocks.svg in Resources */,
+				2D78D14213682032009A3F8F /* fish.png in Resources */,
+				2D5C064313683AAB000873D2 /* navmesh.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1246,6 +1269,9 @@
 				2DD007E113670DA900903096 /* priorityq.c in Sources */,
 				2DD007E213670DA900903096 /* sweep.c in Sources */,
 				2DD007E313670DA900903096 /* tess.c in Sources */,
+				2D78D13913681CE6009A3F8F /* mathutil.mm in Sources */,
+				2D78D13F13681D0E009A3F8F /* navmesh.mm in Sources */,
+				2D78D14013681D0E009A3F8F /* Navscene.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
