@@ -84,7 +84,7 @@
     switch([[event allTouches] count]) 
 	{
 		case 1 : [self handleScroll:touches]; break;
-		case 2 : [self handlePinch:touches withEvent:event]; break;
+		//case 2 : [self handlePinch:touches withEvent:event]; break;
     }
 }
 
