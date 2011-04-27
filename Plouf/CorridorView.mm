@@ -29,6 +29,9 @@
 @synthesize fish;
 @synthesize navScene;
 
+
+CCSprite* fishImage;
+
 -(id)initWithLevelName:(NSString*)levelName
 {
     self = [super init];
@@ -38,7 +41,10 @@
         [self initNavMeshWithName:levelName];
         [self initPhysics];
         [self initCorridor:navScene.walkable count:navScene.nwalkable];
-        [self initFishWithFile:@"fish.png" x:100 y:100];
+        
+        NavmeshAgent* agent = &navScene.agents[0];
+        [self initFishWithFile:@"fish.png" x:agent->pos[0] y:agent->pos[1]];
+        
         [self scheduleUpdate];
         
         [[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
@@ -122,7 +128,7 @@
     bodyDef.angularDamping = 10.0f;
     bodyDef.linearDamping = 1.0f;
     bodyDef.position.Set(x/PTM_RATIO, y/PTM_RATIO);
-    bodyDef.userData = fishSprite;
+    //bodyDef.userData = fishSprite;
     fish = world->CreateBody(&bodyDef);
     
     b2CircleShape circle;
@@ -133,6 +139,8 @@
     fixtureDef.friction = 0.1f;
     fixtureDef.restitution = 0.1f;
     fish->CreateFixture(&fixtureDef);
+    
+    fishImage = fishSprite;
 }
 
 -(void)counterGravity:(b2Body*)body antiGravity:(b2Vec2)antiGravity
@@ -147,6 +155,36 @@
 {
     
 }
+
+
+-(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	UITouch *tch = [[touches allObjects] objectAtIndex:0];
+	CGPoint tchLoc = [tch locationInView:tch.view];
+	tchLoc = [[CCDirector sharedDirector] convertToGL:tchLoc];
+    fingerPos =tchLoc;
+	
+    const float lx = tchLoc.x;
+    const float ly = tchLoc.y;
+    
+    moveToFinger = true;
+	
+	
+     float pos[2] = {lx,ly};
+     float nearest[2] = {lx,ly};
+    
+    CCLOG(@"%f, %f",lx, ly);
+    
+     if (navScene.nav)
+         navmeshFindNearestTri(navScene.nav, pos, nearest);
+     
+     vcpy(navScene.agents[0].target, nearest);
+     vcpy(navScene.agents[0].oldpos, navScene.agents[0].pos);
+     agentFindPath(&navScene.agents[0], navScene.nav);
+     vset(navScene.agents[0].corner, FLT_MAX,FLT_MAX);
+     
+}
+
 
 -(void)update:(ccTime) dt
 {
@@ -188,9 +226,10 @@
 	}
     
     
-    if(1 > 2)
+    if(1 < 2)
         
 	{
+        CCLOG(@"yo");
         const float maxSpeed = 200.0f;
         NavmeshAgent* agent = &navScene.agents[0];
         
@@ -248,10 +287,10 @@
         float npos[2];
         vadd(npos, agent->pos, agent->delta);
         agentMoveAndAdjustCorridor(&navScene.agents[0], npos, navScene.nav);
-        /*	
+        
          float angleInRad = atan2(agent->vel[0], agent->vel[1]);
          float angleInDeg = angleInRad * 180.0f / M_PI - 90.0f;
-         float s = abs(fish.scale);
+         float s = abs(fishImage.scale);
          BOOL flip = NO;
          if(sinf(angleInRad) < 0)
          {
@@ -260,12 +299,12 @@
          flip = YES;
          }
          
-         */
+        
         //
-        //if(fish.scaleX != s) fish.scaleX = s;
-        //	[fish setFlipX:flip];
-        //	[fish setRotation:angleInDeg];
-        //	[fish setPosition:ccp(agent->pos[0], agent->pos[1])];
+        if(fishImage.scaleX != s) fishImage.scaleX = s;
+        [fishImage setFlipX:flip];
+        [fishImage setRotation:angleInDeg];
+        [fishImage setPosition:ccp(agent->pos[0], agent->pos[1])];
     }
 }
 
