@@ -21,139 +21,36 @@
 @implementation CorridorView
 @synthesize moveToFinger;
 @synthesize fingerPos;
+@synthesize navScene;
 
 #define MAX_NAV_AGENTS 3
 
 NavScene navScene;
 b2Body *fish;
 CCSprite* fishImage;
-//Pixel to metres ratio. Box2D uses metres as the unit for measurement.
-//This ratio defines how many pixels correspond to 1 Box2D "metre"
-//Box2D is optimized for objects of 1x1 metre therefore it makes sense
-//to define the ratio so that your most common object type is 1x1 metre.
+
+
 #define PTM_RATIO 32
 
-// enums that will be used as tags
-enum {
-	kTagTileMap = 1,
-	kTagBatchNode = 1,
-	kTagAnimation1 = 1,
-};
+
++(id)corridorWithName:(NSString *)levelName
+{
+	return [[[self alloc] initWithLevelName:levelName] autorelease];
+}
+
 
 -(id)initWithLevelName:(NSString *)levelName 
 {
 	if((self = [super init]))
 	{
-		//self.isTouchEnabled = true;
-		
-         // enable touches
-        // self.isTouchEnabled = YES;
          
-         // enable accelerometer
-         //self.isAccelerometerEnabled = YES;
-         
-         CGSize screenSize = [CCDirector sharedDirector].winSize;
-         CCLOG(@"Screen width %0.2f screen height %0.2f",screenSize.width,screenSize.height);
-         
-         // Define the gravity vector.
-         b2Vec2 gravity;
-         gravity.Set(0.0f, -5.0f);
-         
-         // Do we want to let bodies sleep?
-         // This will speed up the physics simulation
-         bool doSleep = true;
-         
-         // Construct a world object, which will hold and simulate the rigid bodies.
-         world = new b2World(gravity, doSleep);
-         
-         world->SetContinuousPhysics(true);
-         
-         // Debug Draw functions
-         m_debugDraw = new GLESDebugDraw( PTM_RATIO );
-         world->SetDebugDraw(m_debugDraw);
-         
-         uint32 flags = 0;
-         flags += b2DebugDraw::e_shapeBit;
-         //		flags += b2DebugDraw::e_jointBit;
-         //		flags += b2DebugDraw::e_aabbBit;
-         //		flags += b2DebugDraw::e_pairBit;
-         //		flags += b2DebugDraw::e_centerOfMassBit;
-         m_debugDraw->SetFlags(flags);		
-         
-        //b2_maxPolygonVertices -> 100;
-        b2Vec2 vertices[7];
-        
-        //row 1, col 1
-        int num = 7;
-        vertices[0].Set(-158.0f / PTM_RATIO, 113.0f / PTM_RATIO);
-        vertices[1].Set(-183.0f / PTM_RATIO, 118.0f / PTM_RATIO);
-        vertices[2].Set(-219.0f / PTM_RATIO, 95.0f / PTM_RATIO);
-        vertices[3].Set(-238.0f / PTM_RATIO, 43.0f / PTM_RATIO);
-        vertices[4].Set(-198.0f / PTM_RATIO, -100.0f / PTM_RATIO);
-        vertices[5].Set(-102.0f / PTM_RATIO, -102.0f / PTM_RATIO);
-        vertices[6].Set(-68.0f / PTM_RATIO, 27.0f / PTM_RATIO);
-        
-        
-        
-        /*
-        b2BodyDef bodyDef;
-        b2PolygonShape shape; 
-        shape.Set(vertices, count);
-        b2FixtureDef fixtureDef; 
-        fixtureDef.shape = &shape; 
-        fixtureDef.density = 1.0f; 
-        fixtureDef.friction = 0.2f;
-        fixtureDef.restitution = 0.1f;
-        b2Body* body = world->CreateBody(&bodyDef);
-        body->CreateFixture(&fixtureDef);
-        */
-        
-        
-        
-        /*
-        
-        b2BodyDef bd;
-        b2Body* body = world->CreateBody(&bd);
-        
-        b2EdgeChainDef chain;
-        chain.isALoop = true; // connects the first and last vertices
-        chain.vertexCount = 4;
-        chain.vertices = vertices;
-        body->CreateShape(&chain);
-*/
-        
-        
-         
-         //Set up sprite
-         
-         CCSpriteBatchNode *batch = [CCSpriteBatchNode batchNodeWithFile:@"blocks.png" capacity:150];
-         [self addChild:batch z:0 tag:kTagBatchNode];
-         
-         [self addNewSpriteWithCoords:ccp(screenSize.width/2, screenSize.height/2)];
          
 		[[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
+        
+        [self initNavMesh:levelName];
+        [self initPhysics];
+        [self initCorridor:navScene.walkable count:navScene.nwalkable];
 		
-        NSString *svgPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@-mesh",levelName] ofType:@"svg"]; 
-        
-		const char *path = [svgPath UTF8String];
-		navsceneLoad(&navScene, path);
-		        
-        
-        CCLOG(@"nwalkable = %i", navScene.nwalkable);
-
-        ///*
-        int i;
-        for(i = 0; i < navScene.nwalkable * 2 - 2; i+=2)
-        {
-            CCLOG(@"%f", navScene.walkable[i]);
-            
-            [self createEdge:navScene.walkable[i] y1:navScene.walkable[i+1] x2:navScene.walkable[i+2] y2:navScene.walkable[i+3]];
-        }
-        
-         [self createEdge:navScene.walkable[0] y1:navScene.walkable[1] x2:navScene.walkable[navScene.nwalkable * 2 - 2] y2:navScene.walkable[navScene.nwalkable * 2 - 1]];
-		//*/
-        
-        
         
 		CCSprite *fishSprite = [CCSprite spriteWithFile:@"fish.png"];
 		[self addChild:fishSprite];
@@ -169,8 +66,6 @@ enum {
         bodyDef.position.Set(agent->pos[0]/PTM_RATIO,  agent->pos[1]/PTM_RATIO);
         //bodyDef.userData = fishSprite;
         fish = world->CreateBody(&bodyDef);
-        
-
         b2CircleShape circle;
        // circle.m_p.Set(1.0f, 2.0f, 3.0f);
         circle.m_radius = 1.0f;
@@ -180,28 +75,50 @@ enum {
         fixtureDef.friction = 0.1f;
         fixtureDef.restitution = 0.1f;
         fish->CreateFixture(&fixtureDef);
-
-        
-       // [self createEdge:0 y1:300 x2:400 y2:200];
-        
-       // [self createEdge:400 y1:200 x2:700 y2:500];
-        //[self createEdge:500 y1:700 x2:700 y2:500];
-
         [self scheduleUpdate];
 	}
 	return self;
 }
 
--(void) createEdge:(float)x1 y1:(float)y1 x2:(float)x2 y2:(float)y2
+
+-(void)initNavMesh:(NSString*)levelName
 {
-    CCLOG(@"createEdge : (%f, %f), (%f, %f)", x1, y1, x2, y2);
+    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@-mesh",levelName] ofType:@"svg"];
+    navsceneLoad(&navScene, [path UTF8String]);
+}
+
+
+-(void)initPhysics
+{
+    b2Vec2 gravity = b2Vec2(0.0f, -5.0f);
+    bool doSleep = true;
+    world = new b2World(gravity, doSleep);    
+    world->SetContinuousPhysics(true);
+    debugDraw = new GLESDebugDraw( PTM_RATIO );
+    world->SetDebugDraw(debugDraw);
+    uint32 flags = 0;
+    flags += b2DebugDraw::e_shapeBit;
+    debugDraw->SetFlags(flags);		
+
+}
+
+-(void)initCorridor:(float *)vertices count:(int)count
+{
+    int num = count * 2 - 2;
+    for(int i = 0; i < num; i+=2)
+    {
+        [self createEdge:vertices[i] y1:vertices[i+1] x2:vertices[i+2] y2:vertices[i+3]];
+    }
+    [self createEdge:vertices[0] y1:vertices[1] x2:vertices[count] y2:vertices[count + 1]];
+}
+
+-(void)createEdge:(float)x1 y1:(float)y1 x2:(float)x2 y2:(float)y2
+{
     b2BodyDef bodyDef;
     bodyDef.type = b2_staticBody;
     bodyDef.position.Set(0/PTM_RATIO, 0/PTM_RATIO);
     b2Body *body = world->CreateBody(&bodyDef);
-    
     b2PolygonShape dynamicBox;
-    //dynamicBox.Set(vertices, num);
     dynamicBox.SetAsEdge(b2Vec2(x1/PTM_RATIO, y1/PTM_RATIO), b2Vec2(x2/PTM_RATIO, y2/PTM_RATIO));
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &dynamicBox;	
@@ -210,11 +127,6 @@ enum {
     body->CreateFixture(&fixtureDef);
 }
 
-+(id)corridorWithName:(NSString *)levelName
-{
-	return [[[self alloc] initWithLevelName:levelName] autorelease];
-	
-}
 
 -(void) touchAtPosition:(CGPoint)point
 {
@@ -290,20 +202,10 @@ enum {
 
 -(void)update:(ccTime) dt
 {
-    //CCLOG(@"%f, %f", fishImage.position.x, fishImage.position.y);
-
-    
-    //It is recommended that a fixed time step is used with Box2D for stability
-	//of the simulation, however, we are using a variable time step here.
-	//You need to make an informed choice, the following URL is useful
-	//http://gafferongames.com/game-physics/fix-your-timestep/
 	
 	int32 velocityIterations = 8;
 	int32 positionIterations = 1;
 	
-	// Instruct the world to perform a single step of simulation. It is
-	// generally best to keep the time step and iterations fixed.
-    
     
     if(moveToFinger)
     {
@@ -435,20 +337,12 @@ enum {
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     moveToFinger = false;
-	//Add a new body/atlas sprite at the touched location
-	for( UITouch *touch in touches ) {
-		CGPoint location = [touch locationInView: [touch view]];
-		
-		location = [[CCDirector sharedDirector] convertToGL: location];
-        location.x += 2000;
-        location.y += 2000;
-        //[self addNewSpriteWithCoords: location];
-	}
 }
 
 
 -(void) addNewSpriteWithCoords:(CGPoint)p
 {
+    /*
 	CCLOG(@"Add sprite %0.2f x %02.f",p.x,p.y);
 	CCSpriteBatchNode *batch = (CCSpriteBatchNode*) [self getChildByTag:kTagBatchNode];
 	
@@ -480,18 +374,15 @@ enum {
 	fixtureDef.density = 1.0f;
 	fixtureDef.friction = 0.3f;
 	body->CreateFixture(&fixtureDef);
+     */
 }
 
 
 - (void) dealloc
 {
-	// in case you have something to dealloc, do it in this method
 	delete world;
-	world = NULL;
-	
-	delete m_debugDraw;
-    
-	// don't forget to call "super dealloc"
+	world = NULL;	
+	delete debugDraw;
 	[super dealloc];
 }
 
@@ -502,9 +393,7 @@ enum {
     glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	
 	world->DrawDebugData();
-    
     glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);

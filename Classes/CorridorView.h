@@ -10,29 +10,31 @@
 #import "cocos2d.h"
 #import "Box2D.h"
 #import "GLES-Render.h"
+#import "Navscene.h"
 
 
 @interface CorridorView : CCNode<CCStandardTouchDelegate>
 {
     b2World* world;
-	GLESDebugDraw *m_debugDraw;
+	GLESDebugDraw *debugDraw;
     BOOL moveToFinger;
     CGPoint fingerPos;
+    NavScene navScene;
 }
 
 
 @property(nonatomic, assign) BOOL moveToFinger;
 @property(nonatomic, assign) CGPoint fingerPos;
+@property(nonatomic, assign) NavScene navScene;
 
 +(id)corridorWithName:(NSString *)levelName;
 -(id)initWithLevelName:(NSString *)levelName;
-
-// adds a new sprite at a given coordinate
+-(void)initNavMesh:(NSString*)levelName;
+-(void)initPhysics;
+-(void)initCorridor:(float *)vertices count:(int)count;
 -(void) addNewSpriteWithCoords:(CGPoint)p;
 -(void) createEdge:(float)x1 y1:(float)y1 x2:(float)x2 y2:(float)y2;
 -(void) counterGravity:(b2Body*)body antiGravity:(b2Vec2)antiGravity;
-
-// touch handling
 -(void) touchAtPosition:(CGPoint)point;
 -(void) moveAtPosition:(CGPoint)point;
 
