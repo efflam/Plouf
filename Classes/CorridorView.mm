@@ -323,6 +323,19 @@ static void storePath(float* dst, const float* src, const int npts,
 	
 	int32 velocityIterations = 8;
 	int32 positionIterations = 1;
+    
+    // TEST POSITION
+    
+    CGPoint fishpoint = fishImage.position;
+    fishpoint.x -= 2000;
+    fishpoint.y -= 2000;
+    
+    fishpoint.x = -fishpoint.x + 1024/2;
+    fishpoint.y = -fishpoint.y + 768/2 ;
+    
+    [delegate setPosition:fishpoint];
+    
+    // END TEST
 	
     
     if(self.moveToFinger)

@@ -64,5 +64,6 @@ struct NavScene
 @protocol CorridorViewDelegate <NSObject>
 
 -(CGPoint)position;
+-(void)setPosition:(CGPoint)newPosition;
 
 @end
