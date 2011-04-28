@@ -887,9 +887,9 @@
 			isa = PBXGroup;
 			children = (
 				75AC3AD713696DDA004AE5E9 /* BackrockView.h */,
+				75AC3AD813696DDA004AE5E9 /* BackrockView.mm */,
 				2DBE5D11136992A700AE4149 /* CorridorView.h */,
 				2DBE5D12136992A700AE4149 /* CorridorView.mm */,
-				75AC3AD813696DDA004AE5E9 /* BackrockView.mm */,
 				2DE8E90F131D6AAD00F6F60E /* Navscene.mm */,
 				2DE8E910131D6AAD00F6F60E /* Navscene.h */,
 				2DE8E90A131D6A6000F6F60E /* mathutil.mm */,
