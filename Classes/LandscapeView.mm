@@ -23,7 +23,7 @@
         CCSprite *level2 = [CCSprite spriteWithFile:[NSString stringWithFormat:@"%@-2.png",levelName]];
         CCSprite *level3 = [CCSprite spriteWithFile:[NSString stringWithFormat:@"%@-3.png",levelName]];
         CCSprite *level4 = [CCSprite spriteWithFile:[NSString stringWithFormat:@"%@-4.png",levelName]];
-        
+                
         [level1 setAnchorPoint:ccp(0,0)];
         [level2 setAnchorPoint:ccp(0,0)];
         [level3 setAnchorPoint:ccp(0,0)];
