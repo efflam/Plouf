@@ -36,7 +36,6 @@
 
 -(void)handlePinch:(NSSet *)touches withEvent:(UIEvent *)event;
 -(void)handlePinch:(NSSet *)touches withEvent:(UIEvent *)event;
--(void)handleScroll:(NSSet *)touches;
 -(CGPoint)checkBoundsForPoint:(CGPoint)point withScale:(float)newScale;
 -(id)initWithLevelName:(NSString*)levelName;
 +(id)levelWithName:(NSString*)levelName;
