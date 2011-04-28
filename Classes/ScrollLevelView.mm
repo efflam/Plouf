@@ -76,13 +76,39 @@
     [corridor touchAtPosition:tchLoc];
 }
 
+/*
+ 
+ -(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+ {
+ CCLOG(@"dfqsf");
+ UITouch *tch = [[touches allObjects] objectAtIndex:0];
+ CGPoint tchLoc = [tch locationInView:tch.view];
+ //tchLoc = [[CCDirector sharedDirector] convertToGL:tchLoc];
+ fingerPos = [[CCDirector sharedDirector] convertToGL:tchLoc];
+ //tchLoc = ccpMult(tchLoc, 1 / PTM_RATIO);
+ }
+ 
+*/
+
 -(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event 
 {
-    switch([[event allTouches] count]) 
-	{
-		case 1 : [self handleScroll:touches]; break;
-		//case 2 : [self handlePinch:touches withEvent:event]; break;
-    }
+//    switch([[event allTouches] count]) 
+//	{
+//		case 1 : [self handleScroll:touches]; break;
+//		//case 2 : [self handlePinch:touches withEvent:event]; break;
+//    }
+    
+    [self handleScroll:touches];
+    
+    UITouch *touch = [touches anyObject];
+		
+	CGPoint touchLocation = [touch locationInView: [touch view]];
+	touchLocation = [[CCDirector sharedDirector] convertToGL:touchLocation];
+    touchLocation.x += 2000 - self.position.x ;
+    touchLocation.y += 2000 - self.position.y ;
+    
+    CorridorView *corridor = (CorridorView*)[self getChildByTag:123];
+    [corridor moveAtPosition:touchLocation];
 }
 
 -(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 
