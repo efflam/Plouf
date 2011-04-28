@@ -100,6 +100,8 @@
     
     [self handleScroll:touches];
     
+    /*
+    
     UITouch *touch = [touches anyObject];
 		
 	CGPoint touchLocation = [touch locationInView: [touch view]];
@@ -109,6 +111,7 @@
     
     CorridorView *corridor = (CorridorView*)[self getChildByTag:123];
     [corridor moveAtPosition:touchLocation];
+     */
 }
 
 -(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 
