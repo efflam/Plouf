@@ -21,6 +21,8 @@ struct NavScene
 	float* boundary;
 	int nboundary;
 	float* walkable;
+    float* edge;
+    int nedge;
 	int nwalkable;
 	NavmeshAgent agents[MAX_NAV_AGENTS];
 	int nagents;

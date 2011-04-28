@@ -77,7 +77,7 @@ static void storePath(float* dst, const float* src, const int npts,
         
         [self initMesh:levelName];
         [self initPhysics];
-        [self initCorridor:navScene.walkable count:navScene.nwalkable];
+        [self initCorridor:navScene.edge count:navScene.nedge];
 		
         
 		CCSprite *fishSprite = [CCSprite spriteWithFile:@"fish.png"];
@@ -141,6 +141,7 @@ static void storePath(float* dst, const float* src, const int npts,
     
 	
 	SVGPath* walkablePath = 0;
+    SVGPath* edgePath = 0;
 	SVGPath* boundaryPath = 0;
 	SVGPath* agentPaths[MAX_NAV_AGENTS];
 	int nagentPaths = 0;
@@ -150,6 +151,8 @@ static void storePath(float* dst, const float* src, const int npts,
 			boundaryPath = it;
 		else if (it->strokeColor == 0xff0000ff)
 			walkablePath = it;
+        else if (it->strokeColor == 0xff00ff00)
+			edgePath = it;
 		else if (it->strokeColor == 0xffff0000 && !it->closed)
 		{
 			if (it->npts > 1 && nagentPaths < MAX_NAV_AGENTS)
@@ -173,10 +176,24 @@ static void storePath(float* dst, const float* src, const int npts,
 		printf("navsceneLoad: No agents!\n");
 		//return false;
 	}
+    if (!edgePath)
+	{
+		printf("navsceneLoad: No edge!\n");
+		//return false;
+	}
 	
 	// Scale and flip
 	//const float s = AGENT_RAD / 16.0f;
 	const float s = 1;
+    
+    navScene.nedge = edgePath->npts;
+	navScene.edge = new float [navScene.nedge*2];
+	if (!navScene.edge)
+	{
+		printf("navsceneLoad: Out of mem 'edge' (%d).\n", navScene.nedge);
+		//return false;
+	}
+
 	
 	navScene.nwalkable = walkablePath->npts;
 	navScene.walkable = new float [navScene.nwalkable*2];
@@ -194,6 +211,7 @@ static void storePath(float* dst, const float* src, const int npts,
 		//return false;
 	}
 	
+    storePath(navScene.edge, edgePath->pts, navScene.nedge, s, bmin, bmax);
 	storePath(navScene.walkable, walkablePath->pts, navScene.nwalkable, s, bmin, bmax);
 	storePath(navScene.boundary, boundaryPath->pts, navScene.nboundary, s, bmin, bmax);
 	
@@ -533,7 +551,7 @@ static void storePath(float* dst, const float* src, const int npts,
 -(void)drawNavMesh
 {
     Navmesh* nav = navScene.nav;
-	glColor4f(0.8, 1.0, 0.76, 1.0);  
+	glColor4f(1.0, 1.0, 1.0, 0.0);  
 	glLineWidth(1.0f);
 	CGPoint vertices[3];
 	for (int i = 0; i < nav->ntris; ++i)
