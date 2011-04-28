@@ -17,6 +17,7 @@
 #import "navmesh.h"
 #import "Navscene.h"
 #import "math.h"
+#import "nanosvg.h"
 
 @implementation CorridorView
 @synthesize moveToFinger;
@@ -45,7 +46,11 @@ CCSprite* fishImage;
          
 		[[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
         
-        [self initNavMesh:levelName];
+        
+        SVGPath* plist = [self loadMesh:levelName];
+        if (!plist) CCLOG(@"loadMesh: Could not load Mesh");        
+        
+        [self initNavMesh:plist];
         [self initPhysics];
         [self initCorridor:navScene.walkable count:navScene.nwalkable];
 		
@@ -79,10 +84,15 @@ CCSprite* fishImage;
 }
 
 
--(void)initNavMesh:(NSString*)levelName
+-(SVGPath*)loadMesh:(NSString*)levelName
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@-mesh",levelName] ofType:@"svg"];
-    navsceneLoad(&navScene, [path UTF8String]);
+    return svgParseFromFile([path UTF8String]);
+}
+
+-(void)initNavMesh:(SVGPath*)plist
+{
+    navsceneInit(&navScene, plist);
 }
 
 

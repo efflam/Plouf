@@ -49,8 +49,9 @@ static void storePath(float* dst, const float* src, const int npts,
 }
 
 
-bool navsceneLoad(NavScene* scene, const char* path)
+bool navsceneInit(NavScene* scene, SVGPath* plist)
 {
+    /*
 	SVGPath* plist = 0;
 	plist = svgParseFromFile(path);
 	if (!plist)
@@ -58,6 +59,7 @@ bool navsceneLoad(NavScene* scene, const char* path)
 		printf("navsceneLoad: Could not load '%s'\n", path);
 		return false;
 	}
+     */
 	
 	// Calc bounds.
 	float bmin[2] = {FLT_MAX,FLT_MAX}, bmax[2] = {-FLT_MAX,-FLT_MAX};

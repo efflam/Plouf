@@ -11,6 +11,7 @@
 #import "Box2D.h"
 #import "GLES-Render.h"
 #import "Navscene.h"
+#import "nanosvg.h"
 
 @protocol CorridorViewDelegate;
 @interface CorridorView : CCNode<CCStandardTouchDelegate>
@@ -31,7 +32,8 @@
 
 +(id)corridorWithName:(NSString *)levelName;
 -(id)initWithLevelName:(NSString *)levelName;
--(void)initNavMesh:(NSString*)levelName;
+-(SVGPath*)loadMesh:(NSString*)levelName;
+-(void)initNavMesh:(SVGPath*)plist;
 -(void)initPhysics;
 -(void)initCorridor:(float *)vertices count:(int)count;
 -(void) addNewSpriteWithCoords:(CGPoint)p;
