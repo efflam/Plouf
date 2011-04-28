@@ -32,6 +32,7 @@
 		2DB0609B1344BA67003993D1 /* priorityq.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB060911344BA66003993D1 /* priorityq.c */; };
 		2DB0609C1344BA67003993D1 /* sweep.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB060931344BA66003993D1 /* sweep.c */; };
 		2DB0609D1344BA67003993D1 /* tess.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB060951344BA67003993D1 /* tess.c */; };
+		2DBE5D13136992A700AE4149 /* CorridorView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE5D12136992A700AE4149 /* CorridorView.mm */; };
 		2DE8E833131D4C8400F6F60E /* nanosvg.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8E831131D4C8400F6F60E /* nanosvg.mm */; };
 		2DE8E83F131D4CD400F6F60E /* def_navmesh.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2DE8E83E131D4CD400F6F60E /* def_navmesh.svg */; };
 		2DE8E8D5131D607500F6F60E /* navmesh.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8E8D3131D607500F6F60E /* navmesh.mm */; };
@@ -169,7 +170,6 @@
 		50F4144B10692EE7002A0D5E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144610692EE7002A0D5E /* Icon.png */; };
 		75AC3AD513696DB2004AE5E9 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3AD413696DB2004AE5E9 /* BackgroundView.m */; };
 		75AC3AD913696DDA004AE5E9 /* BackrockView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3AD813696DDA004AE5E9 /* BackrockView.mm */; };
-		75AC3ADC13696E21004AE5E9 /* CorridorView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3ADB13696E21004AE5E9 /* CorridorView.mm */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -404,6 +404,8 @@
 		2DB060951344BA67003993D1 /* tess.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tess.c; sourceTree = "<group>"; };
 		2DB060961344BA67003993D1 /* tess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tess.h; sourceTree = "<group>"; };
 		2DB0609E1344BA74003993D1 /* tesselator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tesselator.h; sourceTree = "<group>"; };
+		2DBE5D11136992A700AE4149 /* CorridorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorridorView.h; sourceTree = "<group>"; };
+		2DBE5D12136992A700AE4149 /* CorridorView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CorridorView.mm; sourceTree = "<group>"; };
 		2DE8E831131D4C8400F6F60E /* nanosvg.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = nanosvg.mm; sourceTree = "<group>"; };
 		2DE8E832131D4C8400F6F60E /* nanosvg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nanosvg.h; sourceTree = "<group>"; };
 		2DE8E83E131D4CD400F6F60E /* def_navmesh.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = def_navmesh.svg; sourceTree = "<group>"; };
@@ -549,8 +551,6 @@
 		75AC3AD413696DB2004AE5E9 /* BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundView.m; sourceTree = "<group>"; };
 		75AC3AD713696DDA004AE5E9 /* BackrockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackrockView.h; sourceTree = "<group>"; };
 		75AC3AD813696DDA004AE5E9 /* BackrockView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BackrockView.mm; sourceTree = "<group>"; };
-		75AC3ADA13696E21004AE5E9 /* CorridorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CorridorView.h; path = "../../Plouf - copie/Plouf/CorridorView.h"; sourceTree = "<group>"; };
-		75AC3ADB13696E21004AE5E9 /* CorridorView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CorridorView.mm; path = "../../Plouf - copie/Plouf/CorridorView.mm"; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -886,9 +886,9 @@
 		2DF9548A131E76E100E6649A /* level */ = {
 			isa = PBXGroup;
 			children = (
-				75AC3ADA13696E21004AE5E9 /* CorridorView.h */,
-				75AC3ADB13696E21004AE5E9 /* CorridorView.mm */,
 				75AC3AD713696DDA004AE5E9 /* BackrockView.h */,
+				2DBE5D11136992A700AE4149 /* CorridorView.h */,
+				2DBE5D12136992A700AE4149 /* CorridorView.mm */,
 				75AC3AD813696DDA004AE5E9 /* BackrockView.mm */,
 				2DE8E90F131D6AAD00F6F60E /* Navscene.mm */,
 				2DE8E910131D6AAD00F6F60E /* Navscene.h */,
@@ -1655,7 +1655,7 @@
 				2D1CBFB1136884B7005040AA /* globals.mm in Sources */,
 				75AC3AD513696DB2004AE5E9 /* BackgroundView.m in Sources */,
 				75AC3AD913696DDA004AE5E9 /* BackrockView.mm in Sources */,
-				75AC3ADC13696E21004AE5E9 /* CorridorView.mm in Sources */,
+				2DBE5D13136992A700AE4149 /* CorridorView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
