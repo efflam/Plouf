@@ -26,6 +26,7 @@
         BackrockView *rocks = [BackrockView backrockWithName:levelName];
         LandscapeView *landscape = [LandscapeView landscapeWithName:levelName];
         CorridorView *corridor = [CorridorView corridorWithName:levelName];
+        [corridor setDelegate:self];
         
         [corridor setTag:123];
         
@@ -64,16 +65,16 @@
 	
 //	[mapSVG setShowTess:![mapSVG showTess]];
 	
-	CGPoint touchLocation = [touch locationInView: [touch view]];
-	touchOffset = [[CCDirector sharedDirector] convertToGL:touchLocation];
-    
-    CGPoint tchLoc = touchOffset;
-    tchLoc.x += 2000 - self.position.x ;
-    tchLoc.y += 2000 - self.position.y ;
-    
-    CorridorView *corridor = (CorridorView*)[self getChildByTag:123];
-    
-    [corridor touchAtPosition:tchLoc];
+//	CGPoint touchLocation = [touch locationInView: [touch view]];
+//	touchOffset = [[CCDirector sharedDirector] convertToGL:touchLocation];
+//    
+//    CGPoint tchLoc = touchOffset;
+//    tchLoc.x += 2000 - self.position.x ;
+//    tchLoc.y += 2000 - self.position.y ;
+//    
+//    CorridorView *corridor = (CorridorView*)[self getChildByTag:123];
+//    
+//    //[corridor touchAtPosition:tchLoc];
 }
 
 /*

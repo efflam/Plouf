@@ -22,6 +22,7 @@
 @synthesize moveToFinger;
 @synthesize fingerPos;
 @synthesize navScene;
+@synthesize delegate;
 
 
 b2Body *fish;
@@ -101,12 +102,12 @@ CCSprite* fishImage;
 
 -(void)initCorridor:(float *)vertices count:(int)count
 {
-    int num = count * 2 - 2;
-    for(int i = 0; i < num; i+=2)
+    for(int i = 0; i < count * 2 - 2; i+=2)
     {
         [self createEdge:vertices[i] y1:vertices[i+1] x2:vertices[i+2] y2:vertices[i+3]];
     }
-    [self createEdge:vertices[0] y1:vertices[1] x2:vertices[count] y2:vertices[count + 1]];
+    
+    [self createEdge:vertices[0] y1:vertices[1] x2:vertices[count * 2 - 2] y2:vertices[count * 2 - 1]];
 }
 
 -(void)createEdge:(float)x1 y1:(float)y1 x2:(float)x2 y2:(float)y2
@@ -145,14 +146,13 @@ CCSprite* fishImage;
     vset(navScene.agents[0].corner, FLT_MAX,FLT_MAX);
 }
 
-/*
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	UITouch *tch = [[touches allObjects] objectAtIndex:0];
 	CGPoint tchLoc = [tch locationInView:tch.view];
 	tchLoc = [[CCDirector sharedDirector] convertToGL:tchLoc];
-    tchLoc.x += 2000;
-    tchLoc.y += 2000;
+    tchLoc.x += 2000 - delegate.position.x;
+    tchLoc.y += 2000 - delegate.position.y;
     
     NSLog(@"position touch : %f",tch.view.frame.origin.x);
     
@@ -175,27 +175,23 @@ CCSprite* fishImage;
     vset(navScene.agents[0].corner, FLT_MAX,FLT_MAX);
 	
 }
- */
 
 // Move at position
--(void) moveAtPosition:(CGPoint)point
-{
-    self.fingerPos = point;
-}
+//-(void) moveAtPosition:(CGPoint)point
+//{
+//    self.fingerPos = point;
+//}
 
-/*
 -(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    CCLOG(@"dfqsf");
     UITouch *tch = [[touches allObjects] objectAtIndex:0];
 	CGPoint tchLoc = [tch locationInView:tch.view];
-	//tchLoc = [[CCDirector sharedDirector] convertToGL:tchLoc];
-    fingerPos = [[CCDirector sharedDirector] convertToGL:tchLoc];
-    //tchLoc = ccpMult(tchLoc, 1 / PTM_RATIO);
-        
+    tchLoc = [[CCDirector sharedDirector] convertToGL:tchLoc];
+    tchLoc.x += 2000 - delegate.position.x;
+    tchLoc.y += 2000 - delegate.position.y;
     
+    fingerPos = tchLoc;
 }
-*/
 
 -(void)update:(ccTime) dt
 {

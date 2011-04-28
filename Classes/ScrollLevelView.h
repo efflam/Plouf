@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "globals.h"
+#import "CorridorView.h"
 
-@interface ScrollLevelView : CCParallaxNode <CCStandardTouchDelegate>
+@interface ScrollLevelView : CCParallaxNode <CCStandardTouchDelegate,CorridorViewDelegate>
 {
 //	SVGNode *mapSVG;
 	

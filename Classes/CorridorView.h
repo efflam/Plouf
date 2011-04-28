@@ -12,9 +12,11 @@
 #import "GLES-Render.h"
 #import "Navscene.h"
 
-
+@protocol CorridorViewDelegate;
 @interface CorridorView : CCNode<CCStandardTouchDelegate>
 {
+    id <CorridorViewDelegate> delegate;
+    
     b2World* world;
 	GLESDebugDraw *debugDraw;
     BOOL moveToFinger;
@@ -22,7 +24,7 @@
     NavScene navScene;
 }
 
-
+@property(nonatomic, retain) id <CorridorViewDelegate> delegate;
 @property(nonatomic, assign) BOOL moveToFinger;
 @property(nonatomic, assign) CGPoint fingerPos;
 @property(nonatomic, assign) NavScene navScene;
@@ -37,5 +39,11 @@
 -(void) counterGravity:(b2Body*)body antiGravity:(b2Vec2)antiGravity;
 -(void) touchAtPosition:(CGPoint)point;
 -(void) moveAtPosition:(CGPoint)point;
+
+@end
+
+@protocol CorridorViewDelegate <NSObject>
+
+-(CGPoint)position;
 
 @end
