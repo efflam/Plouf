@@ -519,7 +519,7 @@ static void storePath(float* dst, const float* src, const int npts,
 
 -(void)draw
 {
-	//navmeshDraw(navScene.nav, 1);
+    [self drawNavMesh];
     glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -529,6 +529,28 @@ static void storePath(float* dst, const float* src, const int npts,
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	[super draw];
 }
+
+-(void)drawNavMesh
+{
+    Navmesh* nav = navScene.nav;
+	glColor4f(0.8, 1.0, 0.76, 1.0);  
+	glLineWidth(1.0f);
+	CGPoint vertices[3];
+	for (int i = 0; i < nav->ntris; ++i)
+	{
+		const unsigned short* t = &nav->tris[i*6];
+		vertices[0] = ccpMult([self convertVertToCGPoint:&nav->verts[t[0]*2]], 1);
+		vertices[1] = ccpMult([self convertVertToCGPoint:&nav->verts[t[1]*2]], 1);
+		vertices[2] = ccpMult([self convertVertToCGPoint:&nav->verts[t[2]*2]], 1);
+        ccDrawPoly(vertices, 3, YES);
+	}
+}
+
+-(CGPoint)convertVertToCGPoint:(float*)v;
+{
+	return ccp(v[0], v[1]);
+}
+
 
 
 
