@@ -42,7 +42,6 @@ CCSprite* fishImage;
 	if((self = [super init]))
 	{
          
-         
 		[[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
         
         [self initNavMesh:levelName];
@@ -128,12 +127,12 @@ CCSprite* fishImage;
 
 -(void) touchAtPosition:(CGPoint)point
 {
-    fingerPos = point;
+    self.fingerPos = point;
 	
     const float lx = point.x;
     const float ly = point.y;
     
-    moveToFinger = true;
+    self.moveToFinger = true;
     
     float pos[2] = {lx,ly};
     float nearest[2] = {lx,ly};
@@ -181,7 +180,7 @@ CCSprite* fishImage;
 // Move at position
 -(void) moveAtPosition:(CGPoint)point
 {
-    fingerPos = point;
+    self.fingerPos = point;
 }
 
 /*
@@ -205,7 +204,7 @@ CCSprite* fishImage;
 	int32 positionIterations = 1;
 	
     
-    if(moveToFinger)
+    if(self.moveToFinger)
     {
         CCLOG(@"moveToFinger");
         b2Vec2 tchPos = b2Vec2(fingerPos.x / PTM_RATIO, fingerPos.y / PTM_RATIO);
