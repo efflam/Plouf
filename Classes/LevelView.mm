@@ -8,6 +8,7 @@
 
 #import "LevelView.h"
 #import "ScrollLevelView.h"
+#import "BackgroundView.h"
 
 @implementation LevelView
 
@@ -17,8 +18,7 @@
     
     if(self)
     {
-        CCSprite *background = [CCSprite spriteWithFile:[NSString stringWithFormat:@"%@-background.png",levelName]];
-        [background setAnchorPoint:ccp(0,0)];
+        BackgroundView *background = [BackgroundView backgroundWithName:levelName];
         [self addChild:background];
         [self addChild:[ScrollLevelView levelWithName:levelName]];
     }

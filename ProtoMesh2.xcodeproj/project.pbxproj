@@ -34,7 +34,6 @@
 		2DB0609D1344BA67003993D1 /* tess.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB060951344BA67003993D1 /* tess.c */; };
 		2DE8E833131D4C8400F6F60E /* nanosvg.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8E831131D4C8400F6F60E /* nanosvg.mm */; };
 		2DE8E83F131D4CD400F6F60E /* def_navmesh.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2DE8E83E131D4CD400F6F60E /* def_navmesh.svg */; };
-		2DE8E867131D4F4200F6F60E /* Level.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8E866131D4F4200F6F60E /* Level.mm */; };
 		2DE8E8D5131D607500F6F60E /* navmesh.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8E8D3131D607500F6F60E /* navmesh.mm */; };
 		2DE8E90C131D6A6000F6F60E /* mathutil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8E90A131D6A6000F6F60E /* mathutil.mm */; };
 		2DE8E911131D6AAD00F6F60E /* Navscene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8E90F131D6AAD00F6F60E /* Navscene.mm */; };
@@ -168,6 +167,9 @@
 		50F4144910692EE7002A0D5E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144410692EE7002A0D5E /* Default.png */; };
 		50F4144A10692EE7002A0D5E /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144510692EE7002A0D5E /* fps_images.png */; };
 		50F4144B10692EE7002A0D5E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144610692EE7002A0D5E /* Icon.png */; };
+		75AC3AD513696DB2004AE5E9 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3AD413696DB2004AE5E9 /* BackgroundView.m */; };
+		75AC3AD913696DDA004AE5E9 /* BackrockView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3AD813696DDA004AE5E9 /* BackrockView.mm */; };
+		75AC3ADC13696E21004AE5E9 /* CorridorView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3ADB13696E21004AE5E9 /* CorridorView.mm */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -405,8 +407,6 @@
 		2DE8E831131D4C8400F6F60E /* nanosvg.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = nanosvg.mm; sourceTree = "<group>"; };
 		2DE8E832131D4C8400F6F60E /* nanosvg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nanosvg.h; sourceTree = "<group>"; };
 		2DE8E83E131D4CD400F6F60E /* def_navmesh.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = def_navmesh.svg; sourceTree = "<group>"; };
-		2DE8E865131D4F4200F6F60E /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
-		2DE8E866131D4F4200F6F60E /* Level.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Level.mm; sourceTree = "<group>"; };
 		2DE8E8CA131D5D1800F6F60E /* Navscene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Navscene.h; sourceTree = "<group>"; };
 		2DE8E8D0131D5EE400F6F60E /* Slide_Navmesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Slide_Navmesh.cpp; sourceTree = "<group>"; };
 		2DE8E8D3131D607500F6F60E /* navmesh.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = navmesh.mm; sourceTree = "<group>"; };
@@ -545,6 +545,12 @@
 		50F4144510692EE7002A0D5E /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fps_images.png; sourceTree = "<group>"; };
 		50F4144610692EE7002A0D5E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		50F4144710692EE7002A0D5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75AC3AD313696DB2004AE5E9 /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundView.h; sourceTree = "<group>"; };
+		75AC3AD413696DB2004AE5E9 /* BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundView.m; sourceTree = "<group>"; };
+		75AC3AD713696DDA004AE5E9 /* BackrockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackrockView.h; sourceTree = "<group>"; };
+		75AC3AD813696DDA004AE5E9 /* BackrockView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BackrockView.mm; sourceTree = "<group>"; };
+		75AC3ADA13696E21004AE5E9 /* CorridorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CorridorView.h; path = "../../Plouf - copie/Plouf/CorridorView.h"; sourceTree = "<group>"; };
+		75AC3ADB13696E21004AE5E9 /* CorridorView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CorridorView.mm; path = "../../Plouf - copie/Plouf/CorridorView.mm"; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -829,6 +835,8 @@
 				50F4143810692D7D002A0D5E /* GLES-Render.mm */,
 				2D526CDD1368838E009ED81B /* ScrollLevelView.h */,
 				2D526CDE1368838E009ED81B /* ScrollLevelView.mm */,
+				75AC3AD313696DB2004AE5E9 /* BackgroundView.h */,
+				75AC3AD413696DB2004AE5E9 /* BackgroundView.m */,
 				2D1CBFAF136884B7005040AA /* globals.h */,
 				2D1CBFB0136884B7005040AA /* globals.mm */,
 				506EDC2F102F528A00A389B3 /* HelloWorldScene.h */,
@@ -878,12 +886,14 @@
 		2DF9548A131E76E100E6649A /* level */ = {
 			isa = PBXGroup;
 			children = (
+				75AC3ADA13696E21004AE5E9 /* CorridorView.h */,
+				75AC3ADB13696E21004AE5E9 /* CorridorView.mm */,
+				75AC3AD713696DDA004AE5E9 /* BackrockView.h */,
+				75AC3AD813696DDA004AE5E9 /* BackrockView.mm */,
 				2DE8E90F131D6AAD00F6F60E /* Navscene.mm */,
 				2DE8E910131D6AAD00F6F60E /* Navscene.h */,
 				2DE8E90A131D6A6000F6F60E /* mathutil.mm */,
 				2DE8E90B131D6A6000F6F60E /* mathutil.h */,
-				2DE8E865131D4F4200F6F60E /* Level.h */,
-				2DE8E866131D4F4200F6F60E /* Level.mm */,
 				2DF95489131E763500E6649A /* navmesh */,
 			);
 			name = level;
@@ -1629,7 +1639,6 @@
 				50F4143910692D7D002A0D5E /* GLES-Render.mm in Sources */,
 				E0F81064120A17DF005866B8 /* RootViewController.m in Sources */,
 				2DE8E833131D4C8400F6F60E /* nanosvg.mm in Sources */,
-				2DE8E867131D4F4200F6F60E /* Level.mm in Sources */,
 				2DE8E8D5131D607500F6F60E /* navmesh.mm in Sources */,
 				2DE8E90C131D6A6000F6F60E /* mathutil.mm in Sources */,
 				2DE8E911131D6AAD00F6F60E /* Navscene.mm in Sources */,
@@ -1644,6 +1653,9 @@
 				2D526CDC1368835A009ED81B /* LevelView.mm in Sources */,
 				2D526CDF1368838E009ED81B /* ScrollLevelView.mm in Sources */,
 				2D1CBFB1136884B7005040AA /* globals.mm in Sources */,
+				75AC3AD513696DB2004AE5E9 /* BackgroundView.m in Sources */,
+				75AC3AD913696DDA004AE5E9 /* BackrockView.mm in Sources */,
+				75AC3ADC13696E21004AE5E9 /* CorridorView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,11 +7,10 @@
 //
 
 #import "ScrollLevelView.h"
-//#import "SVGNode.h"
-//#import "BackrockView.h"
 #import "LandscapeView.h"
-//#import "CorridorView.h"
-#import "Level.h"
+#import "CorridorView.h"
+#import "BackrockView.h"
+
 @implementation ScrollLevelView
 
 @synthesize mapSize, winSize, scaleMin, isScrolling, isScaling;
@@ -24,16 +23,14 @@
 		
         [self setAnchorPoint:ccp(0,0)];
                 
-        //BackrockView *rocks = [BackrockView backrockWithName:levelName];
+        BackrockView *rocks = [BackrockView backrockWithName:levelName];
         LandscapeView *landscape = [LandscapeView landscapeWithName:levelName];
-//        CorridorView *corridor = [CorridorView corridorWithName:levelName];
-        NSString *svgPath = [[NSBundle mainBundle] pathForResource:@"level1-mesh" ofType:@"svg"];
-        Level *corridor = [Level levelWithFile:svgPath];
+        CorridorView *corridor = [CorridorView corridorWithName:levelName];
         
         [corridor setTag:123];
         
-		//[self addChild:rocks        z:-2    parallaxRatio:ccp(.7,.7)    positionOffset:ccp(0,0)];
-        [self addChild:corridor     z:1    parallaxRatio:ccp(1,1)      positionOffset:ccp(-MAP_WIDTH/2,-MAP_HEIGHT/2)];
+		[self addChild:rocks        z:-2    parallaxRatio:ccp(.7,.7)    positionOffset:ccp(0,0)];
+        [self addChild:corridor     z:-1    parallaxRatio:ccp(1,1)      positionOffset:ccp(-MAP_WIDTH/2,-MAP_HEIGHT/2)];
 		[self addChild:landscape    z:0     parallaxRatio:ccp(1,1)      positionOffset:ccp(-MAP_WIDTH/2,-MAP_HEIGHT/2)];
 		
 		mapSize    = CGSizeMake(MAP_WIDTH, MAP_HEIGHT);
@@ -74,7 +71,7 @@
     tchLoc.x += 2000 - self.position.x ;
     tchLoc.y += 2000 - self.position.y ;
     
-    Level *corridor = (Level*)[self getChildByTag:123];
+    CorridorView *corridor = (CorridorView*)[self getChildByTag:123];
     
     [corridor touchAtPosition:tchLoc];
 }
