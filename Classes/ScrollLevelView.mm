@@ -65,7 +65,18 @@
 //		//case 2 : [self handlePinch:touches withEvent:event]; break;
 //    }
     
-    [self handleScroll:touches];
+    UITouch *touch = [touches anyObject];
+	
+	CGPoint touchLocation = [touch locationInView: [touch view]];	
+	CGPoint prevLocation = [touch previousLocationInView: [touch view]];
+	touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
+	prevLocation = [[CCDirector sharedDirector] convertToGL: prevLocation];
+	
+	inertiaVector = ccpSub(touchLocation,prevLocation);
+    
+    CGPoint newpos = ccpAdd(self.position,inertiaVector);
+    
+    [self setPosition:newpos];
 }
 
 -(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 
@@ -158,25 +169,14 @@
 	[self setPosition:point];
 }
 
-
--(void)handleScroll:(NSSet *)touches 
+-(void)setPosition:(CGPoint)position 
 {
-	[self setIsScaling:NO];
+	position = [self checkBoundsForPoint:position withScale:self.scale];
+
+    [self setIsScaling:NO];
 	[self setIsScrolling:YES];
-	
-	UITouch *touch = [touches anyObject];
-	
-	CGPoint touchLocation = [touch locationInView: [touch view]];	
-	CGPoint prevLocation = [touch previousLocationInView: [touch view]];
-	touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
-	prevLocation = [[CCDirector sharedDirector] convertToGL: prevLocation];
-	
-	inertiaVector = ccpSub(touchLocation,prevLocation);
-		
-	CGPoint newpos = ccpAdd(self.position,inertiaVector);
-	
-	newpos = [self checkBoundsForPoint:newpos withScale:self.scale];
-	[self setPosition:newpos];
+    
+    [super setPosition:position];
 }
 
 -(CGPoint)checkBoundsForPoint:(CGPoint)point withScale:(float)newScale
