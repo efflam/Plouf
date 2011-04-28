@@ -268,6 +268,13 @@ enum {
 }
  */
 
+// Move at position
+-(void) moveAtPosition:(CGPoint)point
+{
+    fingerPos = point;
+}
+
+/*
 -(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     CCLOG(@"dfqsf");
@@ -279,6 +286,7 @@ enum {
         
     
 }
+*/
 
 -(void)update:(ccTime) dt
 {
