@@ -302,7 +302,7 @@ void navmeshDraw(Navmesh* nav, const float zoom)
 	*/
 }
 
-
+/*
 
 struct BoundaryData
 {
@@ -351,7 +351,7 @@ struct BoundaryData
 };
 
 BoundaryData g_bdata;
-
+*/
 
 void drawBoundary(const float* verts, const int nverts, const float zoom)
 {
