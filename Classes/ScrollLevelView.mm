@@ -46,50 +46,16 @@
     return [[[ScrollLevelView alloc] initWithLevelName:levelName] autorelease];
 }
 
-/*
- 
- -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
- {
- UITouch *tch = [[touches allObjects] objectAtIndex:0];
- CGPoint tchLoc = [tch locationInView:tch.view];
- tchLoc = [[CCDirector sharedDirector] convertToGL:tchLoc];
- 
-*/
-
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	[self unschedule:@selector(applyIntertia)];
 	[self unschedule:@selector(applyScaleInertia)];
 	
 	UITouch *touch = [touches anyObject];
-	
-//	[mapSVG setShowTess:![mapSVG showTess]];
-	
-//	CGPoint touchLocation = [touch locationInView: [touch view]];
-//	touchOffset = [[CCDirector sharedDirector] convertToGL:touchLocation];
-//    
-//    CGPoint tchLoc = touchOffset;
-//    tchLoc.x += 2000 - self.position.x ;
-//    tchLoc.y += 2000 - self.position.y ;
-//    
-//    CorridorView *corridor = (CorridorView*)[self getChildByTag:123];
-//    
-//    //[corridor touchAtPosition:tchLoc];
+		
+	CGPoint touchLocation = [touch locationInView: [touch view]];
+	touchOffset = [[CCDirector sharedDirector] convertToGL:touchLocation];
 }
-
-/*
- 
- -(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
- {
- CCLOG(@"dfqsf");
- UITouch *tch = [[touches allObjects] objectAtIndex:0];
- CGPoint tchLoc = [tch locationInView:tch.view];
- //tchLoc = [[CCDirector sharedDirector] convertToGL:tchLoc];
- fingerPos = [[CCDirector sharedDirector] convertToGL:tchLoc];
- //tchLoc = ccpMult(tchLoc, 1 / PTM_RATIO);
- }
- 
-*/
 
 -(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event 
 {
@@ -100,19 +66,6 @@
 //    }
     
     [self handleScroll:touches];
-    
-    /*
-    
-    UITouch *touch = [touches anyObject];
-		
-	CGPoint touchLocation = [touch locationInView: [touch view]];
-	touchLocation = [[CCDirector sharedDirector] convertToGL:touchLocation];
-    touchLocation.x += 2000 - self.position.x ;
-    touchLocation.y += 2000 - self.position.y ;
-    
-    CorridorView *corridor = (CorridorView*)[self getChildByTag:123];
-    [corridor moveAtPosition:touchLocation];
-     */
 }
 
 -(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 

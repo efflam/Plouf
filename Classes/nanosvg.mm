@@ -333,10 +333,8 @@ static void svgEndShape(struct SVGParser* p)
 		for (j = 0; j < npts; ++j)
 		{
 			pt = &pts[j*2];
-			CCLOG(@"A x:%f y:%f",pt[0], pt[0]);
 			path->pts[j*2+0] = pt[0]*t[0] + pt[1]*t[2] + t[4];
 			path->pts[j*2+1] = pt[0]*t[1] + pt[1]*t[3] + t[5];
-			CCLOG(@"B x:%f y:%f",pt[0]*t[0] + pt[1]*t[2] + t[4], pt[0]*t[1] + pt[1]*t[3] + t[5]);
 		}
 		
 		path->hasFill = attr->hasFill;

@@ -125,27 +125,6 @@ CCSprite* fishImage;
     body->CreateFixture(&fixtureDef);
 }
 
-
--(void) touchAtPosition:(CGPoint)point
-{
-    self.fingerPos = point;
-	
-    const float lx = point.x;
-    const float ly = point.y;
-    
-    self.moveToFinger = true;
-    
-    float pos[2] = {lx,ly};
-    float nearest[2] = {lx,ly};
-    if (navScene.nav)
-        navmeshFindNearestTri(navScene.nav, pos, nearest);
-	
-    vcpy(navScene.agents[0].target, nearest);
-    vcpy(navScene.agents[0].oldpos, navScene.agents[0].pos);
-    agentFindPath(&navScene.agents[0], navScene.nav);
-    vset(navScene.agents[0].corner, FLT_MAX,FLT_MAX);
-}
-
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	UITouch *tch = [[touches allObjects] objectAtIndex:0];
@@ -176,12 +155,6 @@ CCSprite* fishImage;
 	
 }
 
-// Move at position
-//-(void) moveAtPosition:(CGPoint)point
-//{
-//    self.fingerPos = point;
-//}
-
 -(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *tch = [[touches allObjects] objectAtIndex:0];
@@ -202,7 +175,6 @@ CCSprite* fishImage;
     
     if(self.moveToFinger)
     {
-        CCLOG(@"moveToFinger");
         b2Vec2 tchPos = b2Vec2(fingerPos.x / PTM_RATIO, fingerPos.y / PTM_RATIO);
         b2Vec2 fishPos = fish->GetPosition();
         b2Vec2 fishToTch = tchPos - fishPos;
