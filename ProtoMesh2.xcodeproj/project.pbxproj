@@ -37,7 +37,6 @@
 		2DE8E83F131D4CD400F6F60E /* def_navmesh.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2DE8E83E131D4CD400F6F60E /* def_navmesh.svg */; };
 		2DE8E8D5131D607500F6F60E /* navmesh.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8E8D3131D607500F6F60E /* navmesh.mm */; };
 		2DE8E90C131D6A6000F6F60E /* mathutil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8E90A131D6A6000F6F60E /* mathutil.mm */; };
-		2DE8E911131D6AAD00F6F60E /* Navscene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8E90F131D6AAD00F6F60E /* Navscene.mm */; };
 		504DFC0610AF1414006D82FE /* CLScoreServerPost.h in Headers */ = {isa = PBXBuildFile; fileRef = 504DFC0010AF1414006D82FE /* CLScoreServerPost.h */; };
 		504DFC0710AF1414006D82FE /* CLScoreServerPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 504DFC0110AF1414006D82FE /* CLScoreServerPost.m */; };
 		504DFC0810AF1414006D82FE /* CLScoreServerRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 504DFC0210AF1414006D82FE /* CLScoreServerRequest.h */; };
@@ -417,8 +416,6 @@
 		2DE8E909131D666C00F6F60E /* mathutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mathutil.h; sourceTree = "<group>"; };
 		2DE8E90A131D6A6000F6F60E /* mathutil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = mathutil.mm; sourceTree = "<group>"; };
 		2DE8E90B131D6A6000F6F60E /* mathutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mathutil.h; sourceTree = "<group>"; };
-		2DE8E90F131D6AAD00F6F60E /* Navscene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Navscene.mm; sourceTree = "<group>"; };
-		2DE8E910131D6AAD00F6F60E /* Navscene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Navscene.h; sourceTree = "<group>"; };
 		504DFC0010AF1414006D82FE /* CLScoreServerPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLScoreServerPost.h; sourceTree = "<group>"; };
 		504DFC0110AF1414006D82FE /* CLScoreServerPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLScoreServerPost.m; sourceTree = "<group>"; };
 		504DFC0210AF1414006D82FE /* CLScoreServerRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLScoreServerRequest.h; sourceTree = "<group>"; };
@@ -890,8 +887,6 @@
 				75AC3AD813696DDA004AE5E9 /* BackrockView.mm */,
 				2DBE5D11136992A700AE4149 /* CorridorView.h */,
 				2DBE5D12136992A700AE4149 /* CorridorView.mm */,
-				2DE8E90F131D6AAD00F6F60E /* Navscene.mm */,
-				2DE8E910131D6AAD00F6F60E /* Navscene.h */,
 				2DE8E90A131D6A6000F6F60E /* mathutil.mm */,
 				2DE8E90B131D6A6000F6F60E /* mathutil.h */,
 				2DF95489131E763500E6649A /* navmesh */,
@@ -1641,7 +1636,6 @@
 				2DE8E833131D4C8400F6F60E /* nanosvg.mm in Sources */,
 				2DE8E8D5131D607500F6F60E /* navmesh.mm in Sources */,
 				2DE8E90C131D6A6000F6F60E /* mathutil.mm in Sources */,
-				2DE8E911131D6AAD00F6F60E /* Navscene.mm in Sources */,
 				2DB060971344BA67003993D1 /* bucketalloc.c in Sources */,
 				2DB060981344BA67003993D1 /* dict.c in Sources */,
 				2DB060991344BA67003993D1 /* geom.c in Sources */,

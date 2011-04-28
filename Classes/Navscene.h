@@ -1,8 +1,10 @@
 #ifndef NAVSCENE_H
 #define NAVSCENE_H
 
-#include "navmesh.h"
+#import "navmesh.h"
+#import "nanosvg.h"
 
+/*
 static const float AGENT_RAD = 20.0f;
 static const int MAX_NAV_AGENTS = 16;
 
@@ -17,8 +19,10 @@ struct NavScene
 	Navmesh* nav;
 	float dim[2];
 };
+ 
+*/
 
-bool navsceneLoad(NavScene* scene, const char* path);
+bool navsceneInit(NavScene* scene, SVGPath *plist);
 void navsceneDelete(NavScene* scene);
 
 enum AgentDrawFlags
