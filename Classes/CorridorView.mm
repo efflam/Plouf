@@ -23,13 +23,11 @@
 @synthesize fingerPos;
 @synthesize navScene;
 
-#define MAX_NAV_AGENTS 3
 
-NavScene navScene;
 b2Body *fish;
 CCSprite* fishImage;
 
-
+#define MAX_NAV_AGENTS 8
 #define PTM_RATIO 32
 
 
