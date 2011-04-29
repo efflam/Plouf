@@ -90,7 +90,7 @@ static void storePath(float* dst, const float* src, const int npts,
         b2BodyDef bodyDef;
         bodyDef.type = b2_dynamicBody;
         bodyDef.angularDamping = 10.0f;
-        bodyDef.linearDamping = 1.0f;
+        bodyDef.linearDamping = 20.0f;
         bodyDef.position.Set(agent->pos[0]/PTM_RATIO,  agent->pos[1]/PTM_RATIO);
         //bodyDef.userData = fishSprite;
         fish = world->CreateBody(&bodyDef);
