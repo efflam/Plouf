@@ -671,7 +671,7 @@
 		endColorVar.b = 0.5f;
 		endColorVar.a = 0.0f;
 		
-		self.texture = [[CCTextureCache sharedTextureCache] addImage: @"fire.png"];
+		self.texture = [[CCTextureCache sharedTextureCache] addImage: @"Icon.png"];
 
 		// additive
 		self.blendAdditive = NO;
@@ -687,7 +687,7 @@
 @implementation CCParticleSmoke
 -(id) init
 {
-	return [self initWithTotalParticles:200];
+	return [self initWithTotalParticles:10];
 }
 
 -(id) initWithTotalParticles:(int) p
@@ -750,10 +750,10 @@
 		endColorVar.b = 0.0f;
 		endColorVar.a = 0.0f;
 		
-		self.texture = [[CCTextureCache sharedTextureCache] addImage: @"fire.png"];
+		self.texture = [[CCTextureCache sharedTextureCache] addImage: @"Icon.png"];
 		
 		// additive
-		self.blendAdditive = NO;
+		self.blendAdditive = YES;
 	}
 	
 	return self;
@@ -763,7 +763,7 @@
 @implementation CCParticleSnow
 -(id) init
 {
-	return [self initWithTotalParticles:700];
+	return [self initWithTotalParticles:200];
 }
 
 -(id) initWithTotalParticles:(int)p
