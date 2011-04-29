@@ -28,6 +28,9 @@
 	
 	// add layer as a child to scene
 	[scene addChild: [LevelView levelWithName:@"level1"]];
+    
+    CCWaves *waves = [CCWaves actionWithWaves:5 amplitude:5 horizontal:YES vertical:YES grid:ccg(10, 10) duration:10.0];
+    [scene runAction:waves];
 	
 	// return the scene
 	return scene;
