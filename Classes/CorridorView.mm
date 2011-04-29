@@ -89,10 +89,10 @@ static void storePath(float* dst, const float* src, const int npts,
         
         b2BodyDef bodyDef;
         bodyDef.type = b2_dynamicBody;
-        bodyDef.angularDamping = 10.0f;
-        bodyDef.linearDamping = 1.0f;
+        bodyDef.angularDamping = 40.0f;
+        bodyDef.linearDamping = 5.0f;
         bodyDef.position.Set(agent->pos[0]/PTM_RATIO,  agent->pos[1]/PTM_RATIO);
-        //bodyDef.userData = fishSprite;
+        bodyDef.userData = fishSprite;
         fish = world->CreateBody(&bodyDef);
         b2CircleShape circle;
        // circle.m_p.Set(1.0f, 2.0f, 3.0f);
@@ -362,7 +362,7 @@ static void storePath(float* dst, const float* src, const int npts,
         b2Vec2 fishPos = fish->GetPosition();
         b2Vec2 fishToTch = tchPos - fishPos;
         float dist = fishToTch.Normalize();
-        float maxSpeed = 100;
+        float maxSpeed = 700;
         b2Vec2 desiredVelocity = b2Vec2(fishToTch.x, fishToTch.y);
         //desiredVelocity *=  fminf(dist * dist, maxSpeed);
         desiredVelocity *=  maxSpeed;
@@ -389,7 +389,27 @@ static void storePath(float* dst, const float* src, const int npts,
 			//Synchronize the AtlasSprites position and rotation with the corresponding body
 			CCSprite *myActor = (CCSprite*)b->GetUserData();
 			myActor.position = CGPointMake( b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO);
-			myActor.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
+			
+            if(myActor == fishImage)
+            {
+                float angleInRad = b->GetAngle();
+                float angleInDeg = -1 * CC_RADIANS_TO_DEGREES(angleInRad);
+                BOOL flip = NO;
+                if(cosf(angleInRad) < 0)
+                {
+                    angleInDeg -= 180;
+                    flip = YES;
+                }
+                
+                
+                [fishImage setFlipX:flip];
+                [fishImage setRotation:angleInDeg];
+                // [fishImage setPosition:ccp(agent->pos[0], agent->pos[1])]
+            }
+            else
+            {
+                myActor.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
+            }
 		}	
 	}
     
@@ -455,22 +475,22 @@ static void storePath(float* dst, const float* src, const int npts,
 	vadd(npos, agent->pos, agent->delta);
 	agentMoveAndAdjustCorridor(&navScene.agents[0], npos, navScene.nav);
 	
-	float angleInRad = atan2(agent->vel[0], agent->vel[1]);
-	float angleInDeg = angleInRad * 180.0f / M_PI - 90.0f;
-	float s = abs(fishImage.scale);
-	BOOL flip = NO;
-	if(sinf(angleInRad) < 0)
-	{
-		angleInDeg -= 180;
-		s = -s;
-		flip = YES;
-	}
-	
-
-        [fishImage setFlipX:flip];
-        [fishImage setRotation:angleInDeg];
-        [fishImage setPosition:ccp(agent->pos[0], agent->pos[1])];
-    }
+//	float angleInRad = atan2(agent->vel[0], agent->vel[1]);
+//	float angleInDeg = angleInRad * 180.0f / M_PI - 90.0f;
+//	float s = abs(fishImage.scale);
+//	BOOL flip = NO;
+//	if(sinf(angleInRad) < 0)
+//	{
+//		angleInDeg -= 180;
+//		s = -s;
+//		flip = YES;
+//	}
+//	
+//
+//        [fishImage setFlipX:flip];
+//        [fishImage setRotation:angleInDeg];
+//       // [fishImage setPosition:ccp(agent->pos[0], agent->pos[1])];
+  }
     
 }
 
@@ -537,11 +557,11 @@ static void storePath(float* dst, const float* src, const int npts,
 
 -(void)draw
 {
-    [self drawNavMesh];
+    //[self drawNavMesh];
     glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	world->DrawDebugData();
+	//world->DrawDebugData();
     glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);

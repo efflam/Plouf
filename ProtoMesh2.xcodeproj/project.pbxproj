@@ -821,10 +821,7 @@
 		2D500B1D0D5A766B00DBA0E3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2D526CD71368835A009ED81B /* LandscapeView.h */,
-				2D526CD81368835A009ED81B /* LandscapeView.mm */,
-				2D526CD91368835A009ED81B /* LevelView.h */,
-				2D526CDA1368835A009ED81B /* LevelView.mm */,
+				2DF95489131E763500E6649A /* navmesh */,
 				2DF9548A131E76E100E6649A /* level */,
 				2DF95488131E762C00E6649A /* nanosvg */,
 				E0F81061120A17DF005866B8 /* GameConfig.h */,
@@ -832,8 +829,6 @@
 				50F4143810692D7D002A0D5E /* GLES-Render.mm */,
 				2D526CDD1368838E009ED81B /* ScrollLevelView.h */,
 				2D526CDE1368838E009ED81B /* ScrollLevelView.mm */,
-				75AC3AD313696DB2004AE5E9 /* BackgroundView.h */,
-				75AC3AD413696DB2004AE5E9 /* BackgroundView.m */,
 				2D1CBFAF136884B7005040AA /* globals.h */,
 				2D1CBFB0136884B7005040AA /* globals.mm */,
 				506EDC2F102F528A00A389B3 /* HelloWorldScene.h */,
@@ -874,6 +869,8 @@
 		2DF95489131E763500E6649A /* navmesh */ = {
 			isa = PBXGroup;
 			children = (
+				2DE8E90A131D6A6000F6F60E /* mathutil.mm */,
+				2DE8E90B131D6A6000F6F60E /* mathutil.h */,
 				2DE8E8D3131D607500F6F60E /* navmesh.mm */,
 				2DE8E8D4131D607500F6F60E /* navmesh.h */,
 			);
@@ -887,9 +884,12 @@
 				75AC3AD813696DDA004AE5E9 /* BackrockView.mm */,
 				2DBE5D11136992A700AE4149 /* CorridorView.h */,
 				2DBE5D12136992A700AE4149 /* CorridorView.mm */,
-				2DE8E90A131D6A6000F6F60E /* mathutil.mm */,
-				2DE8E90B131D6A6000F6F60E /* mathutil.h */,
-				2DF95489131E763500E6649A /* navmesh */,
+				75AC3AD313696DB2004AE5E9 /* BackgroundView.h */,
+				75AC3AD413696DB2004AE5E9 /* BackgroundView.m */,
+				2D526CD71368835A009ED81B /* LandscapeView.h */,
+				2D526CD81368835A009ED81B /* LandscapeView.mm */,
+				2D526CD91368835A009ED81B /* LevelView.h */,
+				2D526CDA1368835A009ED81B /* LevelView.mm */,
 			);
 			name = level;
 			sourceTree = "<group>";
