@@ -17,6 +17,7 @@
 #import "navmesh.h"
 #import "math.h"
 #import "nanosvg.h"
+#import "FishView.h"
 
 @implementation CorridorView
 @synthesize moveToFinger;
@@ -24,12 +25,13 @@
 @synthesize navScene;
 @synthesize delegate;
 
-
+/*
 b2Body *fish;
 CCSprite* fishImage;
-
+*/
+ 
 #define MAX_NAV_AGENTS 8
-#define PTM_RATIO 32
+
 
 static void reversePoly(float* poly, const int npoly)
 {
@@ -79,30 +81,45 @@ static void storePath(float* dst, const float* src, const int npts,
         [self initPhysics];
         [self initCorridor:navScene.edge count:navScene.nedge];
 		
+        /*
+		fishImage = [CCSprite spriteWithFile:@"fish.png"];
+		[self addChild:fishImage];
+		*/
         
-		CCSprite *fishSprite = [CCSprite spriteWithFile:@"fish.png"];
-		[self addChild:fishSprite];
-        fishImage = fishSprite;
-		
 		NavmeshAgent* agent = &navScene.agents[0];
-		[fishSprite setPosition:ccp(agent->pos[0], agent->pos[1])];
         
+        /*
         b2BodyDef bodyDef;
         bodyDef.type = b2_dynamicBody;
         bodyDef.angularDamping = 40.0f;
         bodyDef.linearDamping = 5.0f;
         bodyDef.position.Set(agent->pos[0]/PTM_RATIO,  agent->pos[1]/PTM_RATIO);
-        bodyDef.userData = fishSprite;
+        bodyDef.userData = fishImage;
         fish = world->CreateBody(&bodyDef);
         b2CircleShape circle;
        // circle.m_p.Set(1.0f, 2.0f, 3.0f);
         circle.m_radius = 1.0f;
         b2FixtureDef fixtureDef;
-        fixtureDef.shape = &circle;	
+        fixtureDef.shape = &circle;
         fixtureDef.density = 1.0f;
         fixtureDef.friction = 0.1f;
         fixtureDef.restitution = 0.1f;
         fish->CreateFixture(&fixtureDef);
+        */
+        
+        FishView *fishView = [FishView fishWithName:@"Clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
+        FishView *fishView2 = [FishView fishWithName:@"Clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
+        currentFish = fishView;
+        
+        fishes = [NSMutableArray arrayWithObjects:fishView, fishView2, nil];
+        
+        for(uint i = 0 ; i < [fishes count];i++)
+        {
+            FishView *fish = (FishView*)[fishes objectAtIndex:i];
+            [self addChild:fish];
+            [fish setDelegate:self];
+        }
+        
         [self scheduleUpdate];
 	}
 	return self;
@@ -336,6 +353,11 @@ static void storePath(float* dst, const float* src, const int npts,
     fingerPos = tchLoc;
 }
 
+-(void)setSelectedFish:(FishView *)fish
+{
+    currentFish = fish;
+}
+
 -(void)update:(ccTime) dt
 {
 	
@@ -344,7 +366,7 @@ static void storePath(float* dst, const float* src, const int npts,
     
     // TEST POSITION
     
-    CGPoint fishpoint = fishImage.position;
+    CGPoint fishpoint = currentFish.fishSprite.position;
     fishpoint.x -= 2000;
     fishpoint.y -= 2000;
     
@@ -358,6 +380,9 @@ static void storePath(float* dst, const float* src, const int npts,
     
     if(self.moveToFinger)
     {
+        [currentFish setPosition:fingerPos];
+        
+        /*
         b2Vec2 tchPos = b2Vec2(fingerPos.x / PTM_RATIO, fingerPos.y / PTM_RATIO);
         b2Vec2 fishPos = fish->GetPosition();
         b2Vec2 fishToTch = tchPos - fishPos;
@@ -371,21 +396,24 @@ static void storePath(float* dst, const float* src, const int npts,
         
         b2Vec2 appPtOffset = b2Vec2(15, 0);
         fish->ApplyForce(steeringForce, fish->GetWorldPoint(appPtOffset));
-
+        */
     }
     
+    /*
     b2Vec2 gravity = world->GetGravity();
     b2Vec2 antiGravity = b2Vec2(-gravity.x, -gravity.y);
     //antiGravity *= -1;
     [self counterGravity:fish antiGravity:antiGravity];
-    
+    */
+     
 	world->Step(dt, velocityIterations, positionIterations);
     
-	
+	/*
 	//Iterate over the bodies in the physics world
 	for (b2Body* b = world->GetBodyList(); b; b = b->GetNext())
 	{
-		if (b->GetUserData() != NULL) {
+		if (b->GetUserData() != NULL) 
+        {
 			//Synchronize the AtlasSprites position and rotation with the corresponding body
 			CCSprite *myActor = (CCSprite*)b->GetUserData();
 			myActor.position = CGPointMake( b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO);
@@ -412,10 +440,10 @@ static void storePath(float* dst, const float* src, const int npts,
             }
 		}	
 	}
+    */
     
     
     if(1 < 2)
-    
 	{
 	const float maxSpeed = 200.0f;
 	NavmeshAgent* agent = &navScene.agents[0];
@@ -561,7 +589,7 @@ static void storePath(float* dst, const float* src, const int npts,
     glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	//world->DrawDebugData();
+	world->DrawDebugData();
     glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -588,9 +616,5 @@ static void storePath(float* dst, const float* src, const int npts,
 {
 	return ccp(v[0], v[1]);
 }
-
-
-
-
 
 @end

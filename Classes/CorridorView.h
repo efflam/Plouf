@@ -12,6 +12,8 @@
 #import "GLES-Render.h"
 #import "nanosvg.h"
 #import "navmesh.h"
+#import "globals.h"
+#import "FishView.h"
 
 static const float AGENT_RAD = 20.0f;
 static const int MAX_NAV_AGENTS = 16;
@@ -31,7 +33,7 @@ struct NavScene
 };
 
 @protocol CorridorViewDelegate;
-@interface CorridorView : CCNode<CCStandardTouchDelegate>
+@interface CorridorView : CCNode<CCStandardTouchDelegate,FishViewDelegate>
 {
     id <CorridorViewDelegate> delegate;
     
@@ -40,6 +42,8 @@ struct NavScene
     BOOL moveToFinger;
     CGPoint fingerPos;
     NavScene navScene;
+    NSMutableArray *fishes;
+    FishView *currentFish;
 }
 
 
@@ -60,6 +64,7 @@ struct NavScene
 -(void) counterGravity:(b2Body*)body antiGravity:(b2Vec2)antiGravity;
 -(void)drawNavMesh;
 -(CGPoint)convertVertToCGPoint:(float*)v;
+-(void)setSelectedFish:(FishView *)fish;
 
 @end
 
