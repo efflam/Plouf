@@ -9,16 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "globals.h"
-#import "CorridorView.h"
+#import "Camera.h"
 
-@interface ScrollLevelView : CCParallaxNode <CCStandardTouchDelegate,CorridorViewDelegate>
+@interface ScrollLevelView : CCParallaxNode <CCStandardTouchDelegate, CameraDelegate>
 {
 //	SVGNode *mapSVG;
 	
 	CGSize mapSize;
 	CGSize winSize;
 	float scaleMin;
-	
+    	
 	BOOL isScrolling;
 	BOOL isScaling;
 	
@@ -34,11 +34,8 @@
 @property(readwrite, assign) BOOL isScrolling;
 @property(readwrite, assign) BOOL isScaling;
 
--(void)handlePinch:(NSSet *)touches withEvent:(UIEvent *)event;
--(void)handlePinch:(NSSet *)touches withEvent:(UIEvent *)event;
--(CGPoint)checkBoundsForPoint:(CGPoint)point withScale:(float)newScale;
+//-(void)handlePinch:(NSSet *)touches withEvent:(UIEvent *)event;
 -(id)initWithLevelName:(NSString*)levelName;
 +(id)levelWithName:(NSString*)levelName;
-
 
 @end

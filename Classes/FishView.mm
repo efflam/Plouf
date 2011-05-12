@@ -21,7 +21,7 @@
 		[[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
         
         self.world = aWorld;
-        self.fishSprite = [CCSprite spriteWithFile:@"fish.png"];
+        self.fishSprite = [FishAnimated fishWithName:@"clown"];
         //
         b2BodyDef bodyDef;
         bodyDef.type = b2_dynamicBody;
@@ -56,18 +56,15 @@
 {
     UITouch *touch = [touches anyObject];
     
-    //NSLog(NSStringFromCGRect(fishSprite.textureRect));
-    //NSLog(NSStringFromCGPoint(fishSprite.position));
-    
     if([self containsTouchLocation:touch]) [self.delegate setSelectedFish:self];
 }
 
 - (BOOL)containsTouchLocation:(UITouch *)touch
 {
 	if (![self visible]) return NO;
-    
+        
     CGPoint fishOrigin = self.fishSprite.position;
-    CGRect rect = CGRectMake(fishOrigin.x, fishOrigin.y, fishSprite.textureRect.size.width, fishSprite.textureRect.size.height);
+    CGRect rect = CGRectMake(fishOrigin.x - 60, fishOrigin.y - 60, 120, 120);
 	Boolean isTouch = CGRectContainsPoint(rect, [self convertTouchToNodeSpaceAR:touch]);
 	return isTouch;
 }
@@ -77,7 +74,7 @@
     b2Vec2 tchPos = b2Vec2(position.x / PTM_RATIO, position.y / PTM_RATIO);
     b2Vec2 fishPos = fishBody->GetPosition();
     b2Vec2 fishToTch = tchPos - fishPos;
-    float dist = fishToTch.Normalize();
+    fishToTch.Normalize();
     float maxSpeed = 700;
     
     b2Vec2 desiredVelocity = b2Vec2(fishToTch.x, fishToTch.y);
@@ -90,11 +87,11 @@
         
     float angleInRad = fishBody->GetAngle();
     float angleInDeg = -1 * CC_RADIANS_TO_DEGREES(angleInRad);
-    BOOL flip = NO;
+    BOOL flip = YES;
     if(cosf(angleInRad) < 0)
     {
         angleInDeg -= 180;
-        flip = YES;
+        flip = NO;
     }
     
     [fishSprite setFlipX:flip];
@@ -102,7 +99,7 @@
 }
 
 -(void)update:(ccTime) dt
-{
+{        
     // ANTI GRAVITY
     b2Vec2 gravity = world->GetGravity();
     b2Vec2 antiGravity = b2Vec2(-gravity.x, -gravity.y);

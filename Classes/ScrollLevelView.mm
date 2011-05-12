@@ -24,6 +24,8 @@
 {
 	if((self=[super init])) 
 	{
+        [[Camera standardCamera] setDelegate:self];
+         
 		[[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
 		
         [self setAnchorPoint:ccp(0,0)];
@@ -31,10 +33,9 @@
         BackrockView *rocks = [BackrockView backrockWithName:levelName];
         LandscapeView *landscape = [LandscapeView landscapeWithName:levelName];
         CorridorView *corridor = [CorridorView corridorWithName:levelName];
-        [corridor setDelegate:self];
         
         [corridor setTag:123];
-        
+                
 		[self addChild:rocks        z:-2    parallaxRatio:ccp(.7,.7)    positionOffset:ccp(0,0)];
         [self addChild:corridor     z:-1    parallaxRatio:ccp(1,1)      positionOffset:ccp(-MAP_WIDTH/2,-MAP_HEIGHT/2)];
 		[self addChild:landscape    z:0     parallaxRatio:ccp(1,1)      positionOffset:ccp(-MAP_WIDTH/2,-MAP_HEIGHT/2)];
@@ -42,32 +43,18 @@
 		mapSize    = CGSizeMake(MAP_WIDTH, MAP_HEIGHT);
 		winSize    = [[CCDirector sharedDirector] winSize];
 		scaleMin   = fmaxf(winSize.width/mapSize.width,winSize.height/mapSize.height);
+        
+        [[Camera standardCamera] setPosition:self.position];
 	}
 	return self;
 }
 
 -(void)setPosition:(CGPoint)position 
-{
-	position = [self checkBoundsForPoint:position withScale:self.scale];
-
+{    
     [self setIsScaling:NO];
 	[self setIsScrolling:YES];
     
     [super setPosition:position];
-}
-
--(CGPoint)checkBoundsForPoint:(CGPoint)point withScale:(float)newScale
-{	
-	float w = mapSize.width  * 0.5 * newScale;
-	float h = mapSize.height * 0.5 * newScale;
-	
-	CGPoint bl = ccp(w, h);
-	CGPoint tr = ccp(winSize.width - w, winSize.height - h);
-	
-	point.x = fmaxf(fminf(point.x, bl.x), tr.x);
-	point.y = fmaxf(fminf(point.y, bl.y), tr.y);
-	
-	return point;
 }
 
 // OLD FUNCTIONS

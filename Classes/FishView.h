@@ -9,17 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "globals.h"
+#import "FishAnimated.h"
 
 @protocol FishViewDelegate;
 @interface FishView : CCNode <CCStandardTouchDelegate> {
     id <FishViewDelegate> delegate ;
-    CCSprite *fishSprite;
+    FishAnimated *fishSprite;
     struct b2Body *fishBody;
     struct b2World *world;
 }
 
 @property(nonatomic,retain) id <FishViewDelegate> delegate;
-@property(nonatomic,retain) CCSprite *fishSprite;
+@property(nonatomic,retain) FishAnimated *fishSprite;
 @property(readwrite,assign) struct b2Body *fishBody;
 @property(readwrite,assign) struct b2World *world;
 

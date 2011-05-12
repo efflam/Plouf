@@ -168,8 +168,19 @@
 		50F4144A10692EE7002A0D5E /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144510692EE7002A0D5E /* fps_images.png */; };
 		50F4144B10692EE7002A0D5E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144610692EE7002A0D5E /* Icon.png */; };
 		75108E3B137810FB0066266E /* FishView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75108E3A137810FB0066266E /* FishView.mm */; };
+		751901AF13795B920093AAC3 /* clown_nage_.plist in Resources */ = {isa = PBXBuildFile; fileRef = 751901AD13795B920093AAC3 /* clown_nage_.plist */; };
+		751901B013795B920093AAC3 /* clown_nage_.png in Resources */ = {isa = PBXBuildFile; fileRef = 751901AE13795B920093AAC3 /* clown_nage_.png */; };
+		753062B413796D9700AB6005 /* FishAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 753062B313796D9700AB6005 /* FishAnimation.m */; };
+		753062BF137977AC00AB6005 /* clown.png in Resources */ = {isa = PBXBuildFile; fileRef = 753062BD137977AC00AB6005 /* clown.png */; };
+		753062C0137977AC00AB6005 /* clown.plist in Resources */ = {isa = PBXBuildFile; fileRef = 753062BE137977AC00AB6005 /* clown.plist */; };
+		756BAD1E137AC4F3009BD968 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 756BAD1D137AC4F3009BD968 /* splash.png */; };
+		756BAD20137AC503009BD968 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 756BAD1F137AC503009BD968 /* Default-Landscape~ipad.png */; };
+		756BAD24137AC55C009BD968 /* splash-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 756BAD23137AC55C009BD968 /* splash-right.png */; };
+		756BAD25137AC55F009BD968 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 756BAD21137AC50F009BD968 /* Default-Portrait~ipad.png */; };
+		756BAD28137AC986009BD968 /* Camera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 756BAD27137AC986009BD968 /* Camera.mm */; };
 		75AC3AD513696DB2004AE5E9 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3AD413696DB2004AE5E9 /* BackgroundView.m */; };
 		75AC3AD913696DDA004AE5E9 /* BackrockView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3AD813696DDA004AE5E9 /* BackrockView.mm */; };
+		75D7C79013798ED900A80587 /* FishAnimated.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D7C78F13798ED900A80587 /* FishAnimated.m */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -547,10 +558,24 @@
 		50F4144710692EE7002A0D5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75108E39137810FB0066266E /* FishView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FishView.h; sourceTree = "<group>"; };
 		75108E3A137810FB0066266E /* FishView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FishView.mm; sourceTree = "<group>"; };
+		751901AD13795B920093AAC3 /* clown_nage_.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = clown_nage_.plist; sourceTree = "<group>"; };
+		751901AE13795B920093AAC3 /* clown_nage_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clown_nage_.png; sourceTree = "<group>"; };
+		753062B213796D9700AB6005 /* FishAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FishAnimation.h; path = ../../Plouf/Classes/FishAnimation.h; sourceTree = "<group>"; };
+		753062B313796D9700AB6005 /* FishAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FishAnimation.m; path = ../../Plouf/Classes/FishAnimation.m; sourceTree = "<group>"; };
+		753062BD137977AC00AB6005 /* clown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clown.png; sourceTree = "<group>"; };
+		753062BE137977AC00AB6005 /* clown.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = clown.plist; sourceTree = "<group>"; };
+		756BAD1D137AC4F3009BD968 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
+		756BAD1F137AC503009BD968 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		756BAD21137AC50F009BD968 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		756BAD23137AC55C009BD968 /* splash-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-right.png"; sourceTree = "<group>"; };
+		756BAD26137AC985009BD968 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Camera.h; path = ../../Plouf/Classes/Camera.h; sourceTree = "<group>"; };
+		756BAD27137AC986009BD968 /* Camera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Camera.mm; path = ../../Plouf/Classes/Camera.mm; sourceTree = "<group>"; };
 		75AC3AD313696DB2004AE5E9 /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundView.h; sourceTree = "<group>"; };
 		75AC3AD413696DB2004AE5E9 /* BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundView.m; sourceTree = "<group>"; };
 		75AC3AD713696DDA004AE5E9 /* BackrockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackrockView.h; sourceTree = "<group>"; };
 		75AC3AD813696DDA004AE5E9 /* BackrockView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BackrockView.mm; sourceTree = "<group>"; };
+		75D7C78E13798ED900A80587 /* FishAnimated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FishAnimated.h; path = ../../Plouf/Classes/FishAnimated.h; sourceTree = "<group>"; };
+		75D7C78F13798ED900A80587 /* FishAnimated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FishAnimated.m; path = ../../Plouf/Classes/FishAnimated.m; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -783,6 +808,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				756BAD21137AC50F009BD968 /* Default-Portrait~ipad.png */,
+				756BAD1F137AC503009BD968 /* Default-Landscape~ipad.png */,
 				504DFC7310AF1758006D82FE /* LICENSE.cocos2d */,
 				504DFC7410AF1758006D82FE /* LICENSE.cocosdenshion */,
 				E0C5506C11FA3ABC00B9E4CB /* LICENSE.box2d */,
@@ -827,11 +854,11 @@
 				2DF95489131E763500E6649A /* navmesh */,
 				2DF9548A131E76E100E6649A /* level */,
 				2DF95488131E762C00E6649A /* nanosvg */,
+				2D526CDD1368838E009ED81B /* ScrollLevelView.h */,
+				2D526CDE1368838E009ED81B /* ScrollLevelView.mm */,
 				E0F81061120A17DF005866B8 /* GameConfig.h */,
 				50F4143710692D7D002A0D5E /* GLES-Render.h */,
 				50F4143810692D7D002A0D5E /* GLES-Render.mm */,
-				2D526CDD1368838E009ED81B /* ScrollLevelView.h */,
-				2D526CDE1368838E009ED81B /* ScrollLevelView.mm */,
 				2D1CBFAF136884B7005040AA /* globals.h */,
 				2D1CBFB0136884B7005040AA /* globals.mm */,
 				506EDC2F102F528A00A389B3 /* HelloWorldScene.h */,
@@ -883,8 +910,7 @@
 		2DF9548A131E76E100E6649A /* level */ = {
 			isa = PBXGroup;
 			children = (
-				75108E39137810FB0066266E /* FishView.h */,
-				75108E3A137810FB0066266E /* FishView.mm */,
+				753062B013796D7300AB6005 /* fishes */,
 				75AC3AD713696DDA004AE5E9 /* BackrockView.h */,
 				75AC3AD813696DDA004AE5E9 /* BackrockView.mm */,
 				2DBE5D11136992A700AE4149 /* CorridorView.h */,
@@ -895,6 +921,8 @@
 				2D526CD81368835A009ED81B /* LandscapeView.mm */,
 				2D526CD91368835A009ED81B /* LevelView.h */,
 				2D526CDA1368835A009ED81B /* LevelView.mm */,
+				756BAD26137AC985009BD968 /* Camera.h */,
+				756BAD27137AC986009BD968 /* Camera.mm */,
 			);
 			name = level;
 			sourceTree = "<group>";
@@ -1133,6 +1161,9 @@
 		50F4144210692EE7002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				756BAD1D137AC4F3009BD968 /* splash.png */,
+				756BAD23137AC55C009BD968 /* splash-right.png */,
+				751901AC13795B6E0093AAC3 /* fishes */,
 				2D5B1659131F015D00F8A20A /* minifish.png */,
 				2DE8E83E131D4CD400F6F60E /* def_navmesh.svg */,
 				E02BBA10126CC29D006E46A2 /* iTunesArtwork */,
@@ -1163,6 +1194,30 @@
 				50F4144710692EE7002A0D5E /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		751901AC13795B6E0093AAC3 /* fishes */ = {
+			isa = PBXGroup;
+			children = (
+				753062BD137977AC00AB6005 /* clown.png */,
+				753062BE137977AC00AB6005 /* clown.plist */,
+				751901AD13795B920093AAC3 /* clown_nage_.plist */,
+				751901AE13795B920093AAC3 /* clown_nage_.png */,
+			);
+			name = fishes;
+			sourceTree = "<group>";
+		};
+		753062B013796D7300AB6005 /* fishes */ = {
+			isa = PBXGroup;
+			children = (
+				75108E39137810FB0066266E /* FishView.h */,
+				75108E3A137810FB0066266E /* FishView.mm */,
+				753062B213796D9700AB6005 /* FishAnimation.h */,
+				753062B313796D9700AB6005 /* FishAnimation.m */,
+				75D7C78E13798ED900A80587 /* FishAnimated.h */,
+				75D7C78F13798ED900A80587 /* FishAnimated.m */,
+			);
+			name = fishes;
 			sourceTree = "<group>";
 		};
 		E02BB8BF126CC28A006E46A2 /* cocos2d */ = {
@@ -1623,6 +1678,14 @@
 				2D1CBFC1136885DF005040AA /* level1-mesh.ai in Resources */,
 				2D1CBFC2136885DF005040AA /* level1-mesh.svg in Resources */,
 				2D1CBFC3136885DF005040AA /* level1-rocks.svg in Resources */,
+				751901AF13795B920093AAC3 /* clown_nage_.plist in Resources */,
+				751901B013795B920093AAC3 /* clown_nage_.png in Resources */,
+				753062BF137977AC00AB6005 /* clown.png in Resources */,
+				753062C0137977AC00AB6005 /* clown.plist in Resources */,
+				756BAD1E137AC4F3009BD968 /* splash.png in Resources */,
+				756BAD20137AC503009BD968 /* Default-Landscape~ipad.png in Resources */,
+				756BAD24137AC55C009BD968 /* splash-right.png in Resources */,
+				756BAD25137AC55F009BD968 /* Default-Portrait~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1656,6 +1719,9 @@
 				75AC3AD913696DDA004AE5E9 /* BackrockView.mm in Sources */,
 				2DBE5D13136992A700AE4149 /* CorridorView.mm in Sources */,
 				75108E3B137810FB0066266E /* FishView.mm in Sources */,
+				753062B413796D9700AB6005 /* FishAnimation.m in Sources */,
+				75D7C79013798ED900A80587 /* FishAnimated.m in Sources */,
+				756BAD28137AC986009BD968 /* Camera.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,7 @@
 #import "navmesh.h"
 #import "globals.h"
 #import "FishView.h"
+#import "Camera.h"
 
 static const float AGENT_RAD = 20.0f;
 static const int MAX_NAV_AGENTS = 16;
@@ -32,11 +33,8 @@ struct NavScene
 	float dim[2];
 };
 
-@protocol CorridorViewDelegate;
 @interface CorridorView : CCNode<CCStandardTouchDelegate,FishViewDelegate>
-{
-    id <CorridorViewDelegate> delegate;
-    
+{    
     b2World* world;
 	GLESDebugDraw *debugDraw;
     BOOL moveToFinger;
@@ -44,11 +42,12 @@ struct NavScene
     NavScene navScene;
     NSMutableArray *fishes;
     FishView *currentFish;
+    
+    BOOL travelling;
 }
 
 
 
-@property(nonatomic, retain) id <CorridorViewDelegate> delegate;
 @property(nonatomic, assign) BOOL moveToFinger;
 @property(nonatomic, assign) CGPoint fingerPos;
 @property(nonatomic, assign) NavScene navScene;
@@ -59,18 +58,11 @@ struct NavScene
 -(void)initMesh:(NSString*)levelName;
 -(void)initPhysics;
 -(void)initCorridor:(float *)vertices count:(int)count;
--(void) addNewSpriteWithCoords:(CGPoint)p;
+//-(void) addNewSpriteWithCoords:(CGPoint)p;
 -(void) createEdge:(float)x1 y1:(float)y1 x2:(float)x2 y2:(float)y2;
 -(void) counterGravity:(b2Body*)body antiGravity:(b2Vec2)antiGravity;
--(void)drawNavMesh;
+//-(void)drawNavMesh;
 -(CGPoint)convertVertToCGPoint:(float*)v;
 -(void)setSelectedFish:(FishView *)fish;
-
-@end
-
-@protocol CorridorViewDelegate <NSObject>
-
--(CGPoint)position;
--(void)setPosition:(CGPoint)newPosition;
 
 @end

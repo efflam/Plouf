@@ -116,13 +116,13 @@ void rockPoolFree( void* userData, void* ptr )
 -(void)draw
 {		
 	glPushMatrix();
-	glTranslatef(-MAP_WIDTH/2, (MAP_HEIGHT/2)-768, 0);
+	glTranslatef(-MAP_WIDTH/2, MAP_HEIGHT/2, 0);
     
     glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 	glDisableClientState(GL_COLOR_ARRAY);
     
-    glColor4f(0.4f, 0.0f, 0.69f, 0.23f);
+    glColor4f(47/255, 21/255, 76/255, 0.23f);
 	
     for(int initi = 0 ; initi < counterFixed ; initi += 3)
     {
