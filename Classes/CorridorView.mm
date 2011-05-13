@@ -26,6 +26,8 @@
  
 #define MAX_NAV_AGENTS 8
 
+float camSpring = 0.02;
+
 static void reversePoly(float* poly, const int npoly)
 {
 	int i = 0;
@@ -79,8 +81,8 @@ static void storePath(float* dst, const float* src, const int npts,
         
 		NavmeshAgent* agent = &navScene.agents[0];
         
-        FishView *fishView = [FishView fishWithName:@"Clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
-        FishView *fishView2 = [FishView fishWithName:@"Clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
+        FishView *fishView = [FishView fishWithName:@"clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
+        FishView *fishView2 = [FishView fishWithName:@"clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
         currentFish = fishView;
         
         fishes = [NSMutableArray arrayWithObjects:fishView, fishView2, nil];
@@ -93,8 +95,16 @@ static void storePath(float* dst, const float* src, const int npts,
         }
         
         [self scheduleUpdate];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bubbleTouch:) name:@"bubbleTouch" object:nil];
 	}
 	return self;
+}
+
+-(void)bubbleTouch:(NSNotification*)notification
+{
+    BubbleSprite* bubbleSprite = [notification object];
+    [self setSelectedFish:(FishView*)[bubbleSprite target]];
 }
 
 
@@ -309,17 +319,21 @@ static void storePath(float* dst, const float* src, const int npts,
 
 -(void)setSelectedFish:(FishView *)fish
 {
-    if(fish == currentFish) return;
+    if(fish == currentFish) 
+    {
+        NSLog(@"currentFish bitch !");
+        return; 
+    }
     
     NavmeshAgent* agent = &navScene.agents[navScene.nagents-1];
     
-    if(!travelling) vset(navScene.agents[navScene.nagents-1].pos, currentFish.fishSprite.position.x,currentFish.fishSprite.position.y);
+    if(!travelling) vset(agent->pos, currentFish.fishSprite.position.x,currentFish.fishSprite.position.y);
     
     float pos[2] = {fish.fishSprite.position.x,fish.fishSprite.position.y};
     float nearest[2] = {fish.fishSprite.position.x,fish.fishSprite.position.y};
     
-    NSLog(@"Départ agent : %f : %f",agent->pos[0],agent->pos[1]);
-    NSLog(@"Départ poisson : %f : %f",currentFish.fishSprite.position.x,currentFish.fishSprite.position.y);
+    NSLog(@"Départ agent    : %f : %f",agent->pos[0],agent->pos[1]);
+    NSLog(@"Départ poisson  : %f : %f",currentFish.fishSprite.position.x,currentFish.fishSprite.position.y);
     NSLog(@"Arrivée poisson : %f : %f",fish.fishSprite.position.x,fish.fishSprite.position.y);
     
     if (navScene.nav)
@@ -333,6 +347,8 @@ static void storePath(float* dst, const float* src, const int npts,
     travelling = YES;
     
     currentFish = fish;
+    
+    camSpring = 0.02;
 }
 
 -(void)update:(ccTime) dt
@@ -340,28 +356,23 @@ static void storePath(float* dst, const float* src, const int npts,
 	int32 velocityIterations = 8;
 	int32 positionIterations = 1;
     
-    if(!travelling)
-    {        
-        CGPoint fishpoint = currentFish.fishSprite.position;
-        fishpoint.x -= 2000;
-        fishpoint.y -= 2000;
-        
-        fishpoint.x = -fishpoint.x + 1024/2;
-        fishpoint.y = -fishpoint.y + 768/2;
-        
-        [[Camera standardCamera] setPosition:fishpoint];
-    }
-    
     if(self.moveToFinger && !travelling)
     {
         [currentFish setPosition:fingerPos];
     }
-     
+        
+    if(!travelling)
+    {        
+        CGPoint fishpoint = [self convertToScreenCenter:currentFish.fishSprite.position];
+    
+        [[Camera standardCamera] setPosition:fishpoint];
+    }
+    
 	world->Step(dt, velocityIterations, positionIterations);
     
-    if(1 < 2)
-	{
-	const float maxSpeed = 700.0f;
+    if(!travelling) return;
+    
+	const float maxSpeed = 1500.0f;
 	NavmeshAgent* agent = &navScene.agents[navScene.nagents-1];
 	
 	// Find next corner to steer to.
@@ -375,15 +386,29 @@ static void storePath(float* dst, const float* src, const int npts,
 	vnorm(dir);
 	vcpy(corner, agent->pos);
 	last = agentFindNextCornerSmooth(agent, dir, navScene.nav, corner);
-	
+        
+    float distFromCam = ccpDistance([[Camera standardCamera] position], [[Camera standardCamera] checkBoundsForPoint:[self convertToScreenCenter:currentFish.fishSprite.position] withScale:1]);
+    
+    NSLog(@"distFromCam : %f",distFromCam);
         
 	if (last && vdist(agent->pos, corner) < 2.0f)
 	{
+        NSLog(@"stop travalling pute.");
 		// Reached goal
 		vcpy(agent->oldpos, agent->pos);
 		vset(agent->dvel, 0,0);
 		vcpy(agent->vel, agent->dvel);
-        travelling = NO;
+        //travelling = NO;
+        if(distFromCam > 1.0f)
+        {
+            camSpring *= 1.05;
+            [[Camera standardCamera] springTo: [self convertToScreenCenter:currentFish.fishSprite.position] withSpring:camSpring]; 
+        } 
+        else
+        {
+            travelling = NO;
+            [[Camera standardCamera] setPosition:[self convertToScreenCenter:currentFish.fishSprite.position]];
+        }
         return;
 	}
 	
@@ -403,16 +428,10 @@ static void storePath(float* dst, const float* src, const int npts,
 	vadd(npos, agent->pos, agent->delta);
 	agentMoveAndAdjustCorridor(&navScene.agents[navScene.nagents-1], npos, navScene.nav);
         
-        if(travelling)
-        {
-            CGPoint camPoint = ccp(agent->pos[0],agent->pos[1]);
-            camPoint.x -= 2000;
-            camPoint.y -= 2000;
-            
-            camPoint.x = -camPoint.x + 1024/2;
-            camPoint.y = -camPoint.y + 768/2;
-            [[Camera standardCamera] setPosition:camPoint];
-        }
+    if(travelling)
+    {
+        CGPoint camPoint = [self convertToScreenCenter:ccp(agent->pos[0],agent->pos[1])];
+        [[Camera standardCamera] springTo: camPoint withSpring:0.02];            
     }
 }
 
@@ -453,6 +472,11 @@ static void storePath(float* dst, const float* src, const int npts,
 -(CGPoint)convertVertToCGPoint:(float*)v;
 {
 	return ccp(v[0], v[1]);
+}
+
+-(CGPoint)convertToScreenCenter:(CGPoint)point
+{
+    return ccpAdd(ccpMult(ccpSub(point, ccp(2000, 2000)), -1), ccp(512, 384));
 }
 
 @end

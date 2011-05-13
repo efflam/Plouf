@@ -64,5 +64,6 @@ struct NavScene
 //-(void)drawNavMesh;
 -(CGPoint)convertVertToCGPoint:(float*)v;
 -(void)setSelectedFish:(FishView *)fish;
+-(CGPoint)convertToScreenCenter:(CGPoint)point;
 
 @end

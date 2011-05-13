@@ -21,6 +21,7 @@
         BackgroundView *background = [BackgroundView backgroundWithName:levelName];
         [self addChild:background];
         [self addChild:[ScrollLevelView levelWithName:levelName]];
+        [self addChild:[BubbleView node]];
     }
     
     return self;

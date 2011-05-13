@@ -173,11 +173,15 @@
 		753062B413796D9700AB6005 /* FishAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 753062B313796D9700AB6005 /* FishAnimation.m */; };
 		753062BF137977AC00AB6005 /* clown.png in Resources */ = {isa = PBXBuildFile; fileRef = 753062BD137977AC00AB6005 /* clown.png */; };
 		753062C0137977AC00AB6005 /* clown.plist in Resources */ = {isa = PBXBuildFile; fileRef = 753062BE137977AC00AB6005 /* clown.plist */; };
+		75328DCA137C13C100C84466 /* clownBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 75328DC9137C13C100C84466 /* clownBubble.png */; };
+		75328DCE137C188700C84466 /* BubbleSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75328DCD137C188700C84466 /* BubbleSprite.mm */; };
+		753A8AD4137C0C6300429A6E /* BubbleView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 753A8AD3137C0C6200429A6E /* BubbleView.mm */; };
 		756BAD1E137AC4F3009BD968 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 756BAD1D137AC4F3009BD968 /* splash.png */; };
 		756BAD20137AC503009BD968 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 756BAD1F137AC503009BD968 /* Default-Landscape~ipad.png */; };
 		756BAD24137AC55C009BD968 /* splash-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 756BAD23137AC55C009BD968 /* splash-right.png */; };
 		756BAD25137AC55F009BD968 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 756BAD21137AC50F009BD968 /* Default-Portrait~ipad.png */; };
 		756BAD28137AC986009BD968 /* Camera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 756BAD27137AC986009BD968 /* Camera.mm */; };
+		757CEA6F137D5508000E8DE4 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 757CEA6E137D5508000E8DE4 /* Icon.png */; };
 		75AC3AD513696DB2004AE5E9 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3AD413696DB2004AE5E9 /* BackgroundView.m */; };
 		75AC3AD913696DDA004AE5E9 /* BackrockView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3AD813696DDA004AE5E9 /* BackrockView.mm */; };
 		75D7C79013798ED900A80587 /* FishAnimated.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D7C78F13798ED900A80587 /* FishAnimated.m */; };
@@ -374,7 +378,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1D6058910D05DD3D006BFB54 /* ProtoMesh2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProtoMesh2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* Plouf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plouf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F3B9A2B0EF2145700286867 /* ProtoMesh2AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ProtoMesh2AppDelegate.mm; sourceTree = "<group>"; };
 		1F3B9A2C0EF2145700286867 /* ProtoMesh2AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProtoMesh2AppDelegate.h; path = Classes/ProtoMesh2AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		1F3B9A820EF2151B00286867 /* ProtoMesh2_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtoMesh2_Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -564,12 +568,18 @@
 		753062B313796D9700AB6005 /* FishAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FishAnimation.m; path = ../../Plouf/Classes/FishAnimation.m; sourceTree = "<group>"; };
 		753062BD137977AC00AB6005 /* clown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clown.png; sourceTree = "<group>"; };
 		753062BE137977AC00AB6005 /* clown.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = clown.plist; sourceTree = "<group>"; };
+		75328DC9137C13C100C84466 /* clownBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clownBubble.png; sourceTree = "<group>"; };
+		75328DCC137C188700C84466 /* BubbleSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BubbleSprite.h; path = ../../Plouf/Classes/BubbleSprite.h; sourceTree = "<group>"; };
+		75328DCD137C188700C84466 /* BubbleSprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BubbleSprite.mm; path = ../../Plouf/Classes/BubbleSprite.mm; sourceTree = "<group>"; };
+		753A8AD2137C0C6200429A6E /* BubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BubbleView.h; path = ../../Plouf/Classes/BubbleView.h; sourceTree = "<group>"; };
+		753A8AD3137C0C6200429A6E /* BubbleView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BubbleView.mm; path = ../../Plouf/Classes/BubbleView.mm; sourceTree = "<group>"; };
 		756BAD1D137AC4F3009BD968 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		756BAD1F137AC503009BD968 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		756BAD21137AC50F009BD968 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		756BAD23137AC55C009BD968 /* splash-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-right.png"; sourceTree = "<group>"; };
 		756BAD26137AC985009BD968 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Camera.h; path = ../../Plouf/Classes/Camera.h; sourceTree = "<group>"; };
 		756BAD27137AC986009BD968 /* Camera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Camera.mm; path = ../../Plouf/Classes/Camera.mm; sourceTree = "<group>"; };
+		757CEA6E137D5508000E8DE4 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		75AC3AD313696DB2004AE5E9 /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundView.h; sourceTree = "<group>"; };
 		75AC3AD413696DB2004AE5E9 /* BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundView.m; sourceTree = "<group>"; };
 		75AC3AD713696DDA004AE5E9 /* BackrockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackrockView.h; sourceTree = "<group>"; };
@@ -799,7 +809,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* ProtoMesh2.app */,
+				1D6058910D05DD3D006BFB54 /* Plouf.app */,
 				506EE05E10304ED200A389B3 /* libcocos2d libraries.a */,
 			);
 			name = Products;
@@ -808,6 +818,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				757CEA6E137D5508000E8DE4 /* Icon.png */,
 				756BAD21137AC50F009BD968 /* Default-Portrait~ipad.png */,
 				756BAD1F137AC503009BD968 /* Default-Landscape~ipad.png */,
 				504DFC7310AF1758006D82FE /* LICENSE.cocos2d */,
@@ -854,8 +865,6 @@
 				2DF95489131E763500E6649A /* navmesh */,
 				2DF9548A131E76E100E6649A /* level */,
 				2DF95488131E762C00E6649A /* nanosvg */,
-				2D526CDD1368838E009ED81B /* ScrollLevelView.h */,
-				2D526CDE1368838E009ED81B /* ScrollLevelView.mm */,
 				E0F81061120A17DF005866B8 /* GameConfig.h */,
 				50F4143710692D7D002A0D5E /* GLES-Render.h */,
 				50F4143810692D7D002A0D5E /* GLES-Render.mm */,
@@ -919,10 +928,14 @@
 				75AC3AD413696DB2004AE5E9 /* BackgroundView.m */,
 				2D526CD71368835A009ED81B /* LandscapeView.h */,
 				2D526CD81368835A009ED81B /* LandscapeView.mm */,
+				2D526CDD1368838E009ED81B /* ScrollLevelView.h */,
+				2D526CDE1368838E009ED81B /* ScrollLevelView.mm */,
 				2D526CD91368835A009ED81B /* LevelView.h */,
 				2D526CDA1368835A009ED81B /* LevelView.mm */,
 				756BAD26137AC985009BD968 /* Camera.h */,
 				756BAD27137AC986009BD968 /* Camera.mm */,
+				753A8AD2137C0C6200429A6E /* BubbleView.h */,
+				753A8AD3137C0C6200429A6E /* BubbleView.mm */,
 			);
 			name = level;
 			sourceTree = "<group>";
@@ -1199,6 +1212,7 @@
 		751901AC13795B6E0093AAC3 /* fishes */ = {
 			isa = PBXGroup;
 			children = (
+				75328DC9137C13C100C84466 /* clownBubble.png */,
 				753062BD137977AC00AB6005 /* clown.png */,
 				753062BE137977AC00AB6005 /* clown.plist */,
 				751901AD13795B920093AAC3 /* clown_nage_.plist */,
@@ -1216,6 +1230,8 @@
 				753062B313796D9700AB6005 /* FishAnimation.m */,
 				75D7C78E13798ED900A80587 /* FishAnimated.h */,
 				75D7C78F13798ED900A80587 /* FishAnimated.m */,
+				75328DCC137C188700C84466 /* BubbleSprite.h */,
+				75328DCD137C188700C84466 /* BubbleSprite.mm */,
 			);
 			name = fishes;
 			sourceTree = "<group>";
@@ -1602,7 +1618,7 @@
 			);
 			name = ProtoMesh2;
 			productName = ProtoMesh2;
-			productReference = 1D6058910D05DD3D006BFB54 /* ProtoMesh2.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* Plouf.app */;
 			productType = "com.apple.product-type.application";
 		};
 		506EE05D10304ED200A389B3 /* cocos2d libraries */ = {
@@ -1686,6 +1702,8 @@
 				756BAD20137AC503009BD968 /* Default-Landscape~ipad.png in Resources */,
 				756BAD24137AC55C009BD968 /* splash-right.png in Resources */,
 				756BAD25137AC55F009BD968 /* Default-Portrait~ipad.png in Resources */,
+				75328DCA137C13C100C84466 /* clownBubble.png in Resources */,
+				757CEA6F137D5508000E8DE4 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1722,6 +1740,8 @@
 				753062B413796D9700AB6005 /* FishAnimation.m in Sources */,
 				75D7C79013798ED900A80587 /* FishAnimated.m in Sources */,
 				756BAD28137AC986009BD968 /* Camera.mm in Sources */,
+				753A8AD4137C0C6300429A6E /* BubbleView.mm in Sources */,
+				75328DCE137C188700C84466 /* BubbleSprite.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1894,7 +1914,7 @@
 					"-ObjC",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = ProtoMesh2;
+				PRODUCT_NAME = Plouf;
 				TARGETED_DEVICE_FAMILY = 2;
 				WARNING_CFLAGS = "-Wall";
 			};
@@ -1917,7 +1937,7 @@
 					"-ObjC",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = ProtoMesh2;
+				PRODUCT_NAME = Plouf;
 				TARGETED_DEVICE_FAMILY = 2;
 				WARNING_CFLAGS = "-Wall";
 			};

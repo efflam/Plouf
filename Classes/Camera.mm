@@ -10,7 +10,7 @@
 
 @implementation Camera
 
-@synthesize delegate, currentPosition;
+@synthesize delegate, currentPosition, rawPosition;
 
 static Camera* _standardCamera = nil;
 
@@ -23,6 +23,7 @@ static Camera* _standardCamera = nil;
         mapSize    = CGSizeMake(MAP_WIDTH, MAP_HEIGHT);
 		winSize    = [[CCDirector sharedDirector] winSize];
         self.scale = 1;
+        self.position = ccp(0,0);
     }
     
     return self;
@@ -37,10 +38,20 @@ static Camera* _standardCamera = nil;
 }
 
 -(void)setPosition:(CGPoint)position
-{           
+{          
+    self.rawPosition = position;
     position = [self checkBoundsForPoint:position withScale:self.scale];
     [self.delegate setPosition:position];
     self.currentPosition = position;
+}
+
+
+-(void)springTo:(CGPoint)position withSpring:(float)spring
+{
+    CGPoint newPos = ccpAdd([self position], ccpMult(ccpSub(position, [self position]), spring));
+    newPos = [self checkBoundsForPoint:newPos withScale:self.scale];
+    [self.delegate setPosition:newPos];
+    self.currentPosition = newPos;
 }
 
 -(void)update:(ccTime) dt

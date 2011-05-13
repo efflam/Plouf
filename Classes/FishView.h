@@ -10,15 +10,23 @@
 #import "cocos2d.h"
 #import "globals.h"
 #import "FishAnimated.h"
+#import "Camera.h"
+#import "BubbleView.h"
+#import "BubbleSprite.h"
 
 @protocol FishViewDelegate;
-@interface FishView : CCNode <CCStandardTouchDelegate> {
+@interface FishView : CCNode <CCStandardTouchDelegate,BubbleTrackable> {
     id <FishViewDelegate> delegate ;
     FishAnimated *fishSprite;
     struct b2Body *fishBody;
     struct b2World *world;
+    
+    CGPoint bubblePoint;
+    BubbleSprite *bubbleSprite;
 }
 
+@property(nonatomic,retain) BubbleSprite *bubbleSprite;
+@property(readwrite,assign) CGPoint bubblePoint;
 @property(nonatomic,retain) id <FishViewDelegate> delegate;
 @property(nonatomic,retain) FishAnimated *fishSprite;
 @property(readwrite,assign) struct b2Body *fishBody;

@@ -16,14 +16,17 @@
     CGPoint currentPosition;
     CGSize mapSize;
     CGSize winSize;
+    CGPoint rawPosition;
 }
 
+@property(readwrite,assign) CGPoint rawPosition;
 @property(nonatomic,retain) id <CameraDelegate> delegate;
 @property(readwrite,assign) CGPoint currentPosition;
 
 +(Camera *)standardCamera;
 -(CGPoint)position;
 -(CGPoint)checkBoundsForPoint:(CGPoint)point withScale:(float)newScale;
+-(void)springTo:(CGPoint)position withSpring:(float)spring;
 
 @end
 
