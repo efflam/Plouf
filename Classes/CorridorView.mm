@@ -23,15 +23,10 @@
 @synthesize moveToFinger;
 @synthesize fingerPos;
 @synthesize navScene;
-@synthesize delegate;
-
-/*
-b2Body *fish;
-CCSprite* fishImage;
-*/
  
 #define MAX_NAV_AGENTS 8
 
+float camSpring = 0.02;
 
 static void reversePoly(float* poly, const int npoly)
 {
@@ -76,39 +71,18 @@ static void storePath(float* dst, const float* src, const int npts,
          
 		[[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
         
+        /*
+        bodyDef.position.Set(agent->pos[0]/PTM_RATIO,  agent->pos[1]/PTM_RATIO);
+        */
         
         [self initMesh:levelName];
         [self initPhysics];
         [self initCorridor:navScene.edge count:navScene.nedge];
-		
-        /*
-		fishImage = [CCSprite spriteWithFile:@"fish.png"];
-		[self addChild:fishImage];
-		*/
         
 		NavmeshAgent* agent = &navScene.agents[0];
         
-        /*
-        b2BodyDef bodyDef;
-        bodyDef.type = b2_dynamicBody;
-        bodyDef.angularDamping = 40.0f;
-        bodyDef.linearDamping = 5.0f;
-        bodyDef.position.Set(agent->pos[0]/PTM_RATIO,  agent->pos[1]/PTM_RATIO);
-        bodyDef.userData = fishImage;
-        fish = world->CreateBody(&bodyDef);
-        b2CircleShape circle;
-       // circle.m_p.Set(1.0f, 2.0f, 3.0f);
-        circle.m_radius = 1.0f;
-        b2FixtureDef fixtureDef;
-        fixtureDef.shape = &circle;
-        fixtureDef.density = 1.0f;
-        fixtureDef.friction = 0.1f;
-        fixtureDef.restitution = 0.1f;
-        fish->CreateFixture(&fixtureDef);
-        */
-        
-        FishView *fishView = [FishView fishWithName:@"Clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
-        FishView *fishView2 = [FishView fishWithName:@"Clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
+        FishView *fishView = [FishView fishWithName:@"clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
+        FishView *fishView2 = [FishView fishWithName:@"clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
         currentFish = fishView;
         
         fishes = [NSMutableArray arrayWithObjects:fishView, fishView2, nil];
@@ -121,8 +95,16 @@ static void storePath(float* dst, const float* src, const int npts,
         }
         
         [self scheduleUpdate];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bubbleTouch:) name:@"bubbleTouch" object:nil];
 	}
 	return self;
+}
+
+-(void)bubbleTouch:(NSNotification*)notification
+{
+    BubbleSprite* bubbleSprite = [notification object];
+    [self setSelectedFish:(FishView*)[bubbleSprite target]];
 }
 
 
@@ -134,7 +116,6 @@ static void storePath(float* dst, const float* src, const int npts,
 
 -(void)initMesh:(NSString*)levelName
 {
-    
     SVGPath* plist = [self loadMesh:levelName];
     if (!plist) CCLOG(@"loadMesh: Could not load Mesh");   
     
@@ -150,12 +131,6 @@ static void storePath(float* dst, const float* src, const int npts,
 			bmax[1] = max(bmax[1], p[1]);
 		}
 	}
-	
-	
-	
-	CCLOG(@"topLeft x=%f y=%f", bmin[0], bmin[1]);
-	CCLOG(@"bottomRight x=%f y=%f", bmax[0], bmax[1]);
-    
 	
 	SVGPath* walkablePath = 0;
     SVGPath* edgePath = 0;
@@ -177,56 +152,24 @@ static void storePath(float* dst, const float* src, const int npts,
 		}
 	}
 	
-	
-	if (!boundaryPath)
-	{
-		printf("navsceneLoad: No boundary!\n");
-		//return false;
-	}
-	if (!walkablePath)
-	{
-		printf("navsceneLoad: No walkable!\n");
-		//return false;
-	}
-	if (!nagentPaths)
-	{
-		printf("navsceneLoad: No agents!\n");
-		//return false;
-	}
-    if (!edgePath)
-	{
-		printf("navsceneLoad: No edge!\n");
-		//return false;
-	}
-	
-	// Scale and flip
-	//const float s = AGENT_RAD / 16.0f;
+	if (!boundaryPath) printf("navsceneLoad: No boundary!\n");
+	if (!walkablePath) printf("navsceneLoad: No walkable!\n");
+	if (!nagentPaths) printf("navsceneLoad: No agents!\n");
+    if (!edgePath)printf("navsceneLoad: No edge!\n");
+
 	const float s = 1;
     
     navScene.nedge = edgePath->npts;
 	navScene.edge = new float [navScene.nedge*2];
-	if (!navScene.edge)
-	{
-		printf("navsceneLoad: Out of mem 'edge' (%d).\n", navScene.nedge);
-		//return false;
-	}
-
+	if (!navScene.edge) printf("navsceneLoad: Out of mem 'edge' (%d).\n", navScene.nedge);
 	
 	navScene.nwalkable = walkablePath->npts;
 	navScene.walkable = new float [navScene.nwalkable*2];
-	if (!navScene.walkable)
-	{
-		printf("navsceneLoad: Out of mem 'walkable' (%d).\n", navScene.nwalkable);
-		//return false;
-	}
+	if (!navScene.walkable) printf("navsceneLoad: Out of mem 'walkable' (%d).\n", navScene.nwalkable);
 	
 	navScene.nboundary = boundaryPath->npts;
 	navScene.boundary = new float [navScene.nboundary*2];
-	if (!navScene.boundary)
-	{
-		printf("navsceneLoad: Out of mem 'boundary' (%d).\n", navScene.nboundary);
-		//return false;
-	}
+	if (!navScene.boundary) printf("navsceneLoad: Out of mem 'boundary' (%d).\n", navScene.nboundary);
 	
     storePath(navScene.edge, edgePath->pts, navScene.nedge, s, bmin, bmax);
 	storePath(navScene.walkable, walkablePath->pts, navScene.nwalkable, s, bmin, bmax);
@@ -240,6 +183,8 @@ static void storePath(float* dst, const float* src, const int npts,
 		
 		const float* pa = &agentPaths[i]->pts[0];
 		const float* pb = &agentPaths[i]->pts[(agentPaths[i]->npts-1)*2];
+        
+        NSLog(@"HEYYYYY : %f : %f",agentPaths[i]->pts[0],agentPaths[i]->pts[(agentPaths[i]->npts-1)*2]);
 		
 		convertPoint(ag->pos, pa, s, bmin, bmax);
 		vcpy(ag->oldpos, ag->pos);
@@ -248,6 +193,34 @@ static void storePath(float* dst, const float* src, const int npts,
 		vcpy(ag->opos, ag->pos);
 		vcpy(ag->otarget, ag->target);
 	}
+    
+    // ADD AGENT FOR CAMERA
+    
+    navScene.nagents++;
+    
+    NavmeshAgent* cam = &navScene.agents[navScene.nagents-1];
+    agentInit(cam, AGENT_RAD);
+    
+    NavmeshAgent* ag = &navScene.agents[0];
+    
+    CGPoint camPoint = ccp(ag->pos[0],ag->pos[1]);
+    
+    float pa[2];
+    pa[0] = camPoint.x;
+    pa[1] = camPoint.y;
+    
+    float pb[2];
+    pb[0] = ag->pos[0];
+    pb[1] = ag->pos[1];
+    
+    convertPoint(cam->pos, pa, s, bmin, bmax);
+    vcpy(cam->oldpos, cam->pos);
+    convertPoint(cam->target, pb, s, bmin, bmax);
+    
+    vcpy(cam->opos, cam->pos);
+    vcpy(cam->otarget, cam->target);
+    
+    //
 	
 	if (plist)
 		svgDelete(plist);
@@ -259,16 +232,10 @@ static void storePath(float* dst, const float* src, const int npts,
 	//	m_dim[1] = (bmax[1]-bmin[1])*s + PADDING_SIZE*2;
 	
 	navScene.nav = navmeshCreate(navScene.walkable, navScene.nwalkable);
-	if (!navScene.nav)
-	{
-		printf("navsceneLoad: failed to create navmesh\n");
-		//return false;
-	}
-    
+	if (!navScene.nav) printf("navsceneLoad: failed to create navmesh\n");
 	
 	//return true;
 
-    
     //navsceneInit(&navScene, plist);
 }
 
@@ -317,18 +284,15 @@ static void storePath(float* dst, const float* src, const int npts,
 	UITouch *tch = [[touches allObjects] objectAtIndex:0];
 	CGPoint tchLoc = [tch locationInView:tch.view];
 	tchLoc = [[CCDirector sharedDirector] convertToGL:tchLoc];
-    tchLoc.x += 2000 - delegate.position.x;
-    tchLoc.y += 2000 - delegate.position.y;
-    
-    NSLog(@"position touch : %f",tch.view.frame.origin.x);
-    
-    fingerPos =tchLoc;
+    tchLoc.x += 2000 - [Camera standardCamera].position.x;
+    tchLoc.y += 2000 - [Camera standardCamera].position.y;
+        
+    fingerPos = tchLoc;
 	
     const float lx = tchLoc.x;
     const float ly = tchLoc.y;
     
     moveToFinger = true;
-	
 			
     float pos[2] = {lx,ly};
     float nearest[2] = {lx,ly};
@@ -347,151 +311,112 @@ static void storePath(float* dst, const float* src, const int npts,
     UITouch *tch = [[touches allObjects] objectAtIndex:0];
 	CGPoint tchLoc = [tch locationInView:tch.view];
     tchLoc = [[CCDirector sharedDirector] convertToGL:tchLoc];
-    tchLoc.x += 2000 - delegate.position.x;
-    tchLoc.y += 2000 - delegate.position.y;
+    tchLoc.x += 2000 - [Camera standardCamera].position.x;
+    tchLoc.y += 2000 - [Camera standardCamera].position.y;
     
     fingerPos = tchLoc;
 }
 
 -(void)setSelectedFish:(FishView *)fish
 {
+    if(fish == currentFish) 
+    {
+        NSLog(@"currentFish bitch !");
+        return; 
+    }
+    
+    NavmeshAgent* agent = &navScene.agents[navScene.nagents-1];
+    
+    if(!travelling) vset(agent->pos, currentFish.fishSprite.position.x,currentFish.fishSprite.position.y);
+    
+    float pos[2] = {fish.fishSprite.position.x,fish.fishSprite.position.y};
+    float nearest[2] = {fish.fishSprite.position.x,fish.fishSprite.position.y};
+    
+    NSLog(@"Départ agent    : %f : %f",agent->pos[0],agent->pos[1]);
+    NSLog(@"Départ poisson  : %f : %f",currentFish.fishSprite.position.x,currentFish.fishSprite.position.y);
+    NSLog(@"Arrivée poisson : %f : %f",fish.fishSprite.position.x,fish.fishSprite.position.y);
+    
+    if (navScene.nav)
+        navmeshFindNearestTri(navScene.nav, pos, nearest);
+	
+    vcpy(navScene.agents[navScene.nagents-1].target, nearest);
+    vcpy(navScene.agents[navScene.nagents-1].oldpos, navScene.agents[navScene.nagents-1].pos);
+    agentFindPath(&navScene.agents[navScene.nagents-1], navScene.nav);
+    vset(navScene.agents[navScene.nagents-1].corner, FLT_MAX,FLT_MAX);
+    
+    travelling = YES;
+    
     currentFish = fish;
+    
+    camSpring = 0.02;
 }
 
 -(void)update:(ccTime) dt
 {
-	
 	int32 velocityIterations = 8;
 	int32 positionIterations = 1;
     
-    // TEST POSITION
-    
-    CGPoint fishpoint = currentFish.fishSprite.position;
-    fishpoint.x -= 2000;
-    fishpoint.y -= 2000;
-    
-    fishpoint.x = -fishpoint.x + 1024/2;
-    fishpoint.y = -fishpoint.y + 768/2 ;
-    
-    [delegate setPosition:fishpoint];
-    
-    // END TEST
-	
-    
-    if(self.moveToFinger)
+    if(self.moveToFinger && !travelling)
     {
         [currentFish setPosition:fingerPos];
+    }
         
-        /*
-        b2Vec2 tchPos = b2Vec2(fingerPos.x / PTM_RATIO, fingerPos.y / PTM_RATIO);
-        b2Vec2 fishPos = fish->GetPosition();
-        b2Vec2 fishToTch = tchPos - fishPos;
-        float dist = fishToTch.Normalize();
-        float maxSpeed = 700;
-        b2Vec2 desiredVelocity = b2Vec2(fishToTch.x, fishToTch.y);
-        //desiredVelocity *=  fminf(dist * dist, maxSpeed);
-        desiredVelocity *=  maxSpeed;
-        b2Vec2 steeringForce = desiredVelocity - fish->GetLinearVelocity();
-        steeringForce *= 1/fish->GetMass();
-        
-        b2Vec2 appPtOffset = b2Vec2(15, 0);
-        fish->ApplyForce(steeringForce, fish->GetWorldPoint(appPtOffset));
-        */
+    if(!travelling)
+    {        
+        CGPoint fishpoint = [self convertToScreenCenter:currentFish.fishSprite.position];
+    
+        [[Camera standardCamera] setPosition:fishpoint];
     }
     
-    /*
-    b2Vec2 gravity = world->GetGravity();
-    b2Vec2 antiGravity = b2Vec2(-gravity.x, -gravity.y);
-    //antiGravity *= -1;
-    [self counterGravity:fish antiGravity:antiGravity];
-    */
-     
 	world->Step(dt, velocityIterations, positionIterations);
     
-	/*
-	//Iterate over the bodies in the physics world
-	for (b2Body* b = world->GetBodyList(); b; b = b->GetNext())
-	{
-		if (b->GetUserData() != NULL) 
-        {
-			//Synchronize the AtlasSprites position and rotation with the corresponding body
-			CCSprite *myActor = (CCSprite*)b->GetUserData();
-			myActor.position = CGPointMake( b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO);
-			
-            if(myActor == fishImage)
-            {
-                float angleInRad = b->GetAngle();
-                float angleInDeg = -1 * CC_RADIANS_TO_DEGREES(angleInRad);
-                BOOL flip = NO;
-                if(cosf(angleInRad) < 0)
-                {
-                    angleInDeg -= 180;
-                    flip = YES;
-                }
-                
-                
-                [fishImage setFlipX:flip];
-                [fishImage setRotation:angleInDeg];
-                // [fishImage setPosition:ccp(agent->pos[0], agent->pos[1])]
-            }
-            else
-            {
-                myActor.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
-            }
-		}	
-	}
-    */
+    if(!travelling) return;
     
-    
-    if(1 < 2)
-	{
-	const float maxSpeed = 200.0f;
-	NavmeshAgent* agent = &navScene.agents[0];
+	const float maxSpeed = 1500.0f;
+	NavmeshAgent* agent = &navScene.agents[navScene.nagents-1];
 	
 	// Find next corner to steer to.
 	// Smooth corner finding does a little bit of magic to calculate spline
 	// like curve (or first tangent) based on current position and movement direction
 	// next couple of corners.
+        
 	float corner[2],dir[2];
 	int last = 1;
 	vsub(dir, agent->pos, agent->oldpos); // This delta handles wall-hugging better than using current velocity.
 	vnorm(dir);
 	vcpy(corner, agent->pos);
-	//if (m_moveMode == AGENTMOVE_SMOOTH || m_moveMode == AGENTMOVE_DRUNK)
 	last = agentFindNextCornerSmooth(agent, dir, navScene.nav, corner);
-	//else
-	//	last = agentFindNextCorner(agent, navScene.nav, corner);
-	
-	//CCLOG(@"corner x=%f y=%f", corner[0], corner[1]);
-	
-	
+        
+    float distFromCam = ccpDistance([[Camera standardCamera] position], [[Camera standardCamera] checkBoundsForPoint:[self convertToScreenCenter:currentFish.fishSprite.position] withScale:1]);
+    
+    NSLog(@"distFromCam : %f",distFromCam);
+        
 	if (last && vdist(agent->pos, corner) < 2.0f)
 	{
+        NSLog(@"stop travalling pute.");
 		// Reached goal
 		vcpy(agent->oldpos, agent->pos);
 		vset(agent->dvel, 0,0);
 		vcpy(agent->vel, agent->dvel);
-		return;
+        //travelling = NO;
+        if(distFromCam > 1.0f)
+        {
+            camSpring *= 1.05;
+            [[Camera standardCamera] springTo: [self convertToScreenCenter:currentFish.fishSprite.position] withSpring:camSpring]; 
+        } 
+        else
+        {
+            travelling = NO;
+            [[Camera standardCamera] setPosition:[self convertToScreenCenter:currentFish.fishSprite.position]];
+        }
+        return;
 	}
 	
 	vsub(agent->dvel, corner, agent->pos);
 	
-	// Apply style
-	/*
-	if (m_moveMode == AGENTMOVE_DRUNK)
-	{
-		agent->t += dt*4;
-		float amp = cosf(agent->t)*0.25f;
-		float nx = -agent->dvel[1];
-		float ny = agent->dvel[0];
-		agent->dvel[0] += nx * amp;
-		agent->dvel[1] += ny * amp;
-	}
-	*/
 	// Limit desired velocity to max speed.
 	
 	const float distToTarget = vdist(agent->pos,agent->target);
-	//CCLOG(@"distToTarget = %f", distToTarget);
 	const float clampedSpeed = maxSpeed * min(1.0f, distToTarget/agent->rad);
 	vsetlen(agent->dvel, clampedSpeed);
 	
@@ -501,25 +426,13 @@ static void storePath(float* dst, const float* src, const int npts,
 	vscale(agent->delta, agent->vel, dt);
 	float npos[2];
 	vadd(npos, agent->pos, agent->delta);
-	agentMoveAndAdjustCorridor(&navScene.agents[0], npos, navScene.nav);
-	
-//	float angleInRad = atan2(agent->vel[0], agent->vel[1]);
-//	float angleInDeg = angleInRad * 180.0f / M_PI - 90.0f;
-//	float s = abs(fishImage.scale);
-//	BOOL flip = NO;
-//	if(sinf(angleInRad) < 0)
-//	{
-//		angleInDeg -= 180;
-//		s = -s;
-//		flip = YES;
-//	}
-//	
-//
-//        [fishImage setFlipX:flip];
-//        [fishImage setRotation:angleInDeg];
-//       // [fishImage setPosition:ccp(agent->pos[0], agent->pos[1])];
-  }
-    
+	agentMoveAndAdjustCorridor(&navScene.agents[navScene.nagents-1], npos, navScene.nav);
+        
+    if(travelling)
+    {
+        CGPoint camPoint = [self convertToScreenCenter:ccp(agent->pos[0],agent->pos[1])];
+        [[Camera standardCamera] springTo: camPoint withSpring:0.02];            
+    }
 }
 
 -(void) counterGravity:(b2Body*)body antiGravity:(b2Vec2)antiGravity
@@ -535,45 +448,6 @@ static void storePath(float* dst, const float* src, const int npts,
     moveToFinger = false;
 }
 
-
--(void) addNewSpriteWithCoords:(CGPoint)p
-{
-    /*
-	CCLOG(@"Add sprite %0.2f x %02.f",p.x,p.y);
-	CCSpriteBatchNode *batch = (CCSpriteBatchNode*) [self getChildByTag:kTagBatchNode];
-	
-	//We have a 64x64 sprite sheet with 4 different 32x32 images.  The following code is
-	//just randomly picking one of the images
-	int idx = (CCRANDOM_0_1() > .5 ? 0:1);
-	int idy = (CCRANDOM_0_1() > .5 ? 0:1);
-	CCSprite *sprite = [CCSprite spriteWithBatchNode:batch rect:CGRectMake(32 * idx,32 * idy,32,32)];
-    [batch addChild:sprite];
-	
-	sprite.position = ccp( p.x, p.y);
-	
-	// Define the dynamic body.
-	//Set up a 1m squared box in the physics world
-	b2BodyDef bodyDef;
-	bodyDef.type = b2_dynamicBody;
-    
-	bodyDef.position.Set(p.x/PTM_RATIO, p.y/PTM_RATIO);
-	bodyDef.userData = sprite;
-	b2Body *body = world->CreateBody(&bodyDef);
-	
-	// Define another box shape for our dynamic body.
-	b2PolygonShape dynamicBox;
-	dynamicBox.SetAsBox(.5f, .5f);//These are mid points for our 1m box
-	
-	// Define the dynamic body fixture.
-	b2FixtureDef fixtureDef;
-	fixtureDef.shape = &dynamicBox;	
-	fixtureDef.density = 1.0f;
-	fixtureDef.friction = 0.3f;
-	body->CreateFixture(&fixtureDef);
-     */
-}
-
-
 - (void) dealloc
 {
 	delete world;
@@ -582,39 +456,27 @@ static void storePath(float* dst, const float* src, const int npts,
 	[super dealloc];
 }
 
-
 -(void)draw
 {
     //[self drawNavMesh];
     glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	world->DrawDebugData();
+//	world->DrawDebugData();
     glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	[super draw];
 }
 
--(void)drawNavMesh
-{
-    Navmesh* nav = navScene.nav;
-	glColor4f(1.0, 1.0, 1.0, 0.0);  
-	glLineWidth(1.0f);
-	CGPoint vertices[3];
-	for (int i = 0; i < nav->ntris; ++i)
-	{
-		const unsigned short* t = &nav->tris[i*6];
-		vertices[0] = ccpMult([self convertVertToCGPoint:&nav->verts[t[0]*2]], 1);
-		vertices[1] = ccpMult([self convertVertToCGPoint:&nav->verts[t[1]*2]], 1);
-		vertices[2] = ccpMult([self convertVertToCGPoint:&nav->verts[t[2]*2]], 1);
-        ccDrawPoly(vertices, 3, YES);
-	}
-}
-
 -(CGPoint)convertVertToCGPoint:(float*)v;
 {
 	return ccp(v[0], v[1]);
+}
+
+-(CGPoint)convertToScreenCenter:(CGPoint)point
+{
+    return ccpAdd(ccpMult(ccpSub(point, ccp(2000, 2000)), -1), ccp(512, 384));
 }
 
 @end

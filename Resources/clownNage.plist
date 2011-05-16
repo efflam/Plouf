@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		<key>clown_nage_0.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{5, 2}, {120, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{120, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{124, 124}, {120, 82}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>clown_nage_1.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{6, 2}, {118, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{118, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{246, 116}, {82, 118}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown_nage_2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{6, 3}, {112, 80}}</string>
+			<key>spriteOffset</key>
+			<string>{-3, -0}</string>
+			<key>spriteSize</key>
+			<string>{112, 80}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{86, 208}, {80, 112}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown_nage_3.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{5, 2}, {120, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{120, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{124, 2}, {82, 120}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown_nage_4.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{6, 2}, {120, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{1, -0}</string>
+			<key>spriteSize</key>
+			<string>{120, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2, 88}, {120, 82}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>clown_nage_5.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{6, 2}, {118, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{118, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2, 172}, {82, 118}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown_nage_6.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{6, 2}, {112, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{-3, -0}</string>
+			<key>spriteSize</key>
+			<string>{112, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{328, 2}, {112, 82}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>clown_nage_7.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{6, 2}, {118, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{118, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{208, 2}, {118, 82}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>clown_nage_8.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{6, 1}, {120, 84}}</string>
+			<key>spriteOffset</key>
+			<string>{1, -0}</string>
+			<key>spriteSize</key>
+			<string>{120, 84}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2, 2}, {120, 84}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>clown_nage_yx-cycle0_0.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 26}, {32, 26}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, 4}</string>
+			<key>spriteSize</key>
+			<string>{32, 26}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{168, 242}, {26, 32}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown_nage_yx-cycle0_1.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 25}, {32, 26}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, 5}</string>
+			<key>spriteSize</key>
+			<string>{32, 26}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{226, 236}, {32, 26}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>clown_nage_yx-cycle0_2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 25}, {34, 28}}</string>
+			<key>spriteOffset</key>
+			<string>{-24, 4}</string>
+			<key>spriteSize</key>
+			<string>{34, 28}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2, 292}, {28, 34}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown_nage_yx-cycle0_3.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{23, 26}, {34, 28}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, 3}</string>
+			<key>spriteSize</key>
+			<string>{34, 28}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{316, 86}, {34, 28}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>clown_nage_yx-cycle0_4.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{23, 28}, {34, 28}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, 1}</string>
+			<key>spriteSize</key>
+			<string>{34, 28}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{280, 86}, {34, 28}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>clown_nage_yx-cycle0_5.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{23, 29}, {34, 28}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, -0}</string>
+			<key>spriteSize</key>
+			<string>{34, 28}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{86, 172}, {28, 34}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown_nage_yx-cycle0_6.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 30}, {32, 28}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, -1}</string>
+			<key>spriteSize</key>
+			<string>{32, 28}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{168, 208}, {28, 32}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown_nage_yx-cycle0_7.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 29}, {32, 28}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, -0}</string>
+			<key>spriteSize</key>
+			<string>{32, 28}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{32, 292}, {28, 32}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown_nage_yx-cycle0_8.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 26}, {34, 28}}</string>
+			<key>spriteOffset</key>
+			<string>{-24, 3}</string>
+			<key>spriteSize</key>
+			<string>{34, 28}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{244, 86}, {34, 28}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>clown_nage_yx-cycle1_0.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 26}, {32, 26}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, 4}</string>
+			<key>spriteSize</key>
+			<string>{32, 26}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{198, 208}, {26, 32}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown_nage_yx-cycle1_1.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{23, 26}, {32, 16}}</string>
+			<key>spriteOffset</key>
+			<string>{-26, 9}</string>
+			<key>spriteSize</key>
+			<string>{32, 16}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{216, 264}, {16, 32}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown_nage_yx-cycle1_2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 28}, {32, 12}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, 9}</string>
+			<key>spriteSize</key>
+			<string>{32, 12}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{198, 276}, {12, 32}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown_nage_yx-cycle1_3.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 29}, {32, 14}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, 7}</string>
+			<key>spriteSize</key>
+			<string>{32, 14}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{168, 276}, {14, 32}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown_nage_yx-cycle1_4.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 32}, {32, 12}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, 5}</string>
+			<key>spriteSize</key>
+			<string>{32, 12}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{184, 276}, {12, 32}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown_nage_yx-cycle1_5.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 32}, {32, 16}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, 3}</string>
+			<key>spriteSize</key>
+			<string>{32, 16}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{260, 236}, {16, 32}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown_nage_yx-cycle1_6.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 32}, {32, 18}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, 2}</string>
+			<key>spriteSize</key>
+			<string>{32, 18}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{196, 242}, {18, 32}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown_nage_yx-cycle1_7.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 31}, {32, 22}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, 1}</string>
+			<key>spriteSize</key>
+			<string>{32, 22}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{62, 292}, {22, 32}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown_nage_yx-cycle1_8.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 26}, {34, 28}}</string>
+			<key>spriteOffset</key>
+			<string>{-24, 3}</string>
+			<key>spriteSize</key>
+			<string>{34, 28}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{208, 86}, {34, 28}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>size</key>
+		<string>{512, 512}</string>
+	</dict>
+</dict>
+</plist>

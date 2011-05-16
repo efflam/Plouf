@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		<key>clown.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{5, 2}, {120, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{120, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2, 124}, {82, 120}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown0.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{5, 2}, {120, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{120, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{86, 124}, {82, 120}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown1.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{6, 2}, {118, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{118, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{254, 122}, {82, 118}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {118, 86}}</string>
+			<key>spriteOffset</key>
+			<string>{-6, -0}</string>
+			<key>spriteSize</key>
+			<string>{118, 86}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{172, 2}, {86, 118}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown3.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{5, 2}, {120, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{120, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{88, 2}, {82, 120}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown4.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{6, 2}, {120, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{1, -0}</string>
+			<key>spriteSize</key>
+			<string>{120, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{170, 124}, {82, 120}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown5.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{6, 2}, {118, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{118, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{260, 2}, {82, 118}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown6.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{6, 2}, {112, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{-3, -0}</string>
+			<key>spriteSize</key>
+			<string>{112, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{344, 2}, {82, 112}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown7.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{6, 2}, {118, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{118, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{338, 122}, {82, 118}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clown8.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{6, 1}, {120, 84}}</string>
+			<key>spriteOffset</key>
+			<string>{1, -0}</string>
+			<key>spriteSize</key>
+			<string>{120, 84}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2, 2}, {84, 120}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>clownEye0.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 26}, {32, 26}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, 4}</string>
+			<key>spriteSize</key>
+			<string>{32, 26}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{462, 92}, {32, 26}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>clownEye1.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 25}, {32, 26}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, 5}</string>
+			<key>spriteSize</key>
+			<string>{32, 26}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{462, 120}, {32, 26}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>clownEye2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 25}, {34, 28}}</string>
+			<key>spriteOffset</key>
+			<string>{-24, 4}</string>
+			<key>spriteSize</key>
+			<string>{34, 28}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{428, 2}, {34, 28}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>clownEye3.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{23, 26}, {34, 28}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, 3}</string>
+			<key>spriteSize</key>
+			<string>{34, 28}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{464, 2}, {34, 28}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>clownEye4.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{23, 28}, {34, 28}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, 1}</string>
+			<key>spriteSize</key>
+			<string>{34, 28}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{428, 32}, {34, 28}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>clownEye5.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{23, 29}, {34, 28}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, -0}</string>
+			<key>spriteSize</key>
+			<string>{34, 28}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{464, 32}, {34, 28}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>clownEye6.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 30}, {32, 28}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, -1}</string>
+			<key>spriteSize</key>
+			<string>{32, 28}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{464, 62}, {32, 28}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>clownEye7.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 29}, {32, 28}}</string>
+			<key>spriteOffset</key>
+			<string>{-25, -0}</string>
+			<key>spriteSize</key>
+			<string>{32, 28}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{428, 92}, {32, 28}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>clownEye8.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{24, 26}, {34, 28}}</string>
+			<key>spriteOffset</key>
+			<string>{-24, 3}</string>
+			<key>spriteSize</key>
+			<string>{34, 28}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{428, 62}, {34, 28}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>format</key>
+		<integer>3</integer>
+		<key>size</key>
+		<string>{512, 256}</string>
+	</dict>
+</dict>
+</plist>

@@ -10,7 +10,7 @@
 #import "Box2D.h"
 
 @implementation FishView
-@synthesize fishBody, fishSprite, world, delegate;
+@synthesize fishBody, fishSprite, world, delegate, bubblePoint, bubbleSprite;
 
 -(id)initWithFishName:(NSString*)fishName andWorld:(b2World*)aWorld andPosition:(CGPoint)position
 {
@@ -21,7 +21,9 @@
 		[[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
         
         self.world = aWorld;
-        self.fishSprite = [CCSprite spriteWithFile:@"fish.png"];
+        self.fishSprite = [FishAnimated fishWithName:fishName];
+        self.bubbleSprite = [BubbleSprite spriteWithFile:[NSString stringWithFormat:@"%@Bubble.png",fishName]];
+        self.bubbleSprite.target = self;
         //
         b2BodyDef bodyDef;
         bodyDef.type = b2_dynamicBody;
@@ -56,18 +58,15 @@
 {
     UITouch *touch = [touches anyObject];
     
-    //NSLog(NSStringFromCGRect(fishSprite.textureRect));
-    //NSLog(NSStringFromCGPoint(fishSprite.position));
-    
     if([self containsTouchLocation:touch]) [self.delegate setSelectedFish:self];
 }
 
 - (BOOL)containsTouchLocation:(UITouch *)touch
 {
 	if (![self visible]) return NO;
-    
+        
     CGPoint fishOrigin = self.fishSprite.position;
-    CGRect rect = CGRectMake(fishOrigin.x, fishOrigin.y, fishSprite.textureRect.size.width, fishSprite.textureRect.size.height);
+    CGRect rect = CGRectMake(fishOrigin.x - 60, fishOrigin.y - 60, 120, 120);
 	Boolean isTouch = CGRectContainsPoint(rect, [self convertTouchToNodeSpaceAR:touch]);
 	return isTouch;
 }
@@ -77,7 +76,7 @@
     b2Vec2 tchPos = b2Vec2(position.x / PTM_RATIO, position.y / PTM_RATIO);
     b2Vec2 fishPos = fishBody->GetPosition();
     b2Vec2 fishToTch = tchPos - fishPos;
-    float dist = fishToTch.Normalize();
+    fishToTch.Normalize();
     float maxSpeed = 700;
     
     b2Vec2 desiredVelocity = b2Vec2(fishToTch.x, fishToTch.y);
@@ -90,11 +89,11 @@
         
     float angleInRad = fishBody->GetAngle();
     float angleInDeg = -1 * CC_RADIANS_TO_DEGREES(angleInRad);
-    BOOL flip = NO;
+    BOOL flip = YES;
     if(cosf(angleInRad) < 0)
     {
         angleInDeg -= 180;
-        flip = YES;
+        flip = NO;
     }
     
     [fishSprite setFlipX:flip];
@@ -102,7 +101,7 @@
 }
 
 -(void)update:(ccTime) dt
-{
+{       
     // ANTI GRAVITY
     b2Vec2 gravity = world->GetGravity();
     b2Vec2 antiGravity = b2Vec2(-gravity.x, -gravity.y);
@@ -111,9 +110,53 @@
     f*= fishBody->GetMass();
     fishBody->ApplyForce(f, fishBody->GetWorldCenter());
     
-    //
     [fishSprite setPosition:CGPointMake(fishBody->GetPosition().x * PTM_RATIO, fishBody->GetPosition().y * PTM_RATIO)];
-
+    
+    //NSLog(@"Camera Position : %@",NSStringFromCGPoint([[Camera standardCamera] position]));
+    CGPoint posForLevel = fishSprite.position;
+    posForLevel.x = 2000 - posForLevel.x + 512;
+    posForLevel.y = 2000 - posForLevel.y + 384;
+    
+    CGPoint posForCamera = ccpSub([[Camera standardCamera] position], posForLevel);
+    float bubbleHalfSize = self.bubbleSprite.contentSize.width * 0.5;
+    //bubbleHalfSize = 0;
+    float bubblePadding = 13;
+    float bubbleOffset = bubbleHalfSize - bubblePadding;
+    
+       //float anchorX =  
+    
+    
+    if(fabsf(posForCamera.x)-60 > 512 || fabsf(posForCamera.y)-60 > 384)
+    {
+             
+       
+        
+        float angle = atan2f(posForCamera.y, posForCamera.x);
+        
+       // CCLOG(@"angle = %f", angle);
+        
+        CGPoint circlePoint = ccp(CAM_RADIUS*cosf(angle),CAM_RADIUS*sinf(angle));
+        CGPoint bublePoinForCam = ccp(fminf(512 - bubbleOffset, fmaxf(-512 + bubbleOffset, circlePoint.x)),fminf(384 - bubbleOffset, fmaxf(-384 + bubbleOffset, circlePoint.y)));
+        self.bubblePoint = ccp(512 + bublePoinForCam.x, 384 + bublePoinForCam.y);
+        
+        if(self.visible) 
+        {
+            self.visible = NO;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"showMe" object:self];
+        }
+        else
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"trackMe" object:self];
+        }
+        
+        //NSLog(@"radius : %f / angle : %f / bubble point : %@",radius,angle,NSStringFromCGPoint(bubblePoint));
+        
+    }
+    else if(!self.visible)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"unTrackMe" object:self];
+        self.visible = YES;
+    }
 }
 
 @end

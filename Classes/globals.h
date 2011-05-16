@@ -11,4 +11,5 @@
 extern float MAP_WIDTH;
 extern float MAP_HEIGHT;
 extern int PTM_RATIO;
+extern float CAM_RADIUS;
 

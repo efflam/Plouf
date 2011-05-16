@@ -12,3 +12,4 @@
 float MAP_WIDTH = 4000;
 float MAP_HEIGHT = 4000;
 int PTM_RATIO = 32;
+float CAM_RADIUS = 640;

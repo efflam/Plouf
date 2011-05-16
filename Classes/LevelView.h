@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-
+#import "BubbleView.h"
 
 @interface LevelView : CCNode {
     
