@@ -57,7 +57,6 @@ static void storePath(float* dst, const float* src, const int npts,
 {
 	if((self = [super init]))
 	{
-         
 		[[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
         
         /*
@@ -70,7 +69,7 @@ static void storePath(float* dst, const float* src, const int npts,
         
 		NavmeshAgent* agent = &navScene.agents[0];
         
-        FishView *fishView = [FishView fishWithName:@"clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
+        FishView *fishView  = [FishView fishWithName:@"clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
         FishView *fishView2 = [FishView fishWithName:@"clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
         currentFish = fishView;
         
