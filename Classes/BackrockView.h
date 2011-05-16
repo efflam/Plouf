@@ -21,15 +21,15 @@ struct RockMemPool
 
 @interface BackrockView : CCNode
 {	
-	struct SVGPath* svgLevel;
+//	struct SVGPath* svgLevel;
 	int nbVertices;
     		
-	int i,j;
+//	int i,j;
     
-    struct CGPoint* verti;
+//    struct CGPoint* verti;
     int nbPoints;
 	
-	float t;
+//	float t;
 	TESSalloc ma;
 	TESStesselator* tess;
 	int nvp;

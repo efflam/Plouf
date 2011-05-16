@@ -6,10 +6,11 @@
 //  Copyright 2011 Gobelins. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "globals.h"
 
 float MAP_WIDTH = 4000;
 float MAP_HEIGHT = 4000;
 int PTM_RATIO = 32;
 float CAM_RADIUS = 640;
+//CGPoint SCREEN_CENTER = CGPointMake(512, 384);
+CGPoint SCREEN_CENTER = CGPointMake(240, 160);

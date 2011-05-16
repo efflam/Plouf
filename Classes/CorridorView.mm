@@ -7,17 +7,6 @@
 //
 
 #import "CorridorView.h"
-#import <stdio.h>
-#import <stdlib.h>
-#import <string.h>
-#import <ctype.h>
-#import <float.h>
-#import "mathutil.h"
-#import "nanosvg.h"
-#import "navmesh.h"
-#import "math.h"
-#import "nanosvg.h"
-#import "FishView.h"
 
 @implementation CorridorView
 @synthesize moveToFinger;
@@ -119,12 +108,15 @@ static void storePath(float* dst, const float* src, const int npts,
     SVGPath* plist = [self loadMesh:levelName];
     if (!plist) CCLOG(@"loadMesh: Could not load Mesh");   
     
+    NSLog(@"TRACAGE");
+    
     float bmin[2] = {FLT_MAX,FLT_MAX}, bmax[2] = {-FLT_MAX,-FLT_MAX};
 	for (SVGPath* it = plist; it; it = it->next)
 	{
 		for (int i = 0; i < it->npts; ++i)
 		{
 			const float* p = &it->pts[i*2];
+            
 			bmin[0] = min(bmin[0], p[0]);
 			bmin[1] = min(bmin[1], p[1]);
 			bmax[0] = max(bmax[0], p[0]);
@@ -139,6 +131,8 @@ static void storePath(float* dst, const float* src, const int npts,
 	int nagentPaths = 0;
 	for (SVGPath* it = plist; it; it = it->next)
 	{
+        NSLog(@"strokeColor : %d",it->strokeColor);
+        
 		if (it->strokeColor == 0xff000000)
 			boundaryPath = it;
 		else if (it->strokeColor == 0xff0000ff)
@@ -193,7 +187,7 @@ static void storePath(float* dst, const float* src, const int npts,
 		vcpy(ag->opos, ag->pos);
 		vcpy(ag->otarget, ag->target);
 	}
-    
+        
     // ADD AGENT FOR CAMERA
     
     navScene.nagents++;
@@ -289,11 +283,12 @@ static void storePath(float* dst, const float* src, const int npts,
         
     fingerPos = tchLoc;
 	
-    const float lx = tchLoc.x;
-    const float ly = tchLoc.y;
+//    const float lx = tchLoc.x;
+//    const float ly = tchLoc.y;
     
     moveToFinger = true;
-			
+    
+    /*
     float pos[2] = {lx,ly};
     float nearest[2] = {lx,ly};
     if (navScene.nav)
@@ -303,7 +298,7 @@ static void storePath(float* dst, const float* src, const int npts,
     vcpy(navScene.agents[0].oldpos, navScene.agents[0].pos);
     agentFindPath(&navScene.agents[0], navScene.nav);
     vset(navScene.agents[0].corner, FLT_MAX,FLT_MAX);
-	
+    */
 }
 
 -(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -476,7 +471,7 @@ static void storePath(float* dst, const float* src, const int npts,
 
 -(CGPoint)convertToScreenCenter:(CGPoint)point
 {
-    return ccpAdd(ccpMult(ccpSub(point, ccp(2000, 2000)), -1), ccp(512, 384));
+    return ccpAdd(ccpMult(ccpSub(point, ccp(2000, 2000)), -1), SCREEN_CENTER);
 }
 
 @end

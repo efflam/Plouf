@@ -15,6 +15,7 @@
 #import "globals.h"
 #import "FishView.h"
 #import "Camera.h"
+#import "mathutil.h"
 
 static const float AGENT_RAD = 20.0f;
 static const int MAX_NAV_AGENTS = 16;
@@ -45,8 +46,6 @@ struct NavScene
     
     BOOL travelling;
 }
-
-
 
 @property(nonatomic, assign) BOOL moveToFinger;
 @property(nonatomic, assign) CGPoint fingerPos;

@@ -28,7 +28,6 @@
 
 #include <cstdio>
 #include <cstdarg>
-
 #include <cstring>
 
 GLESDebugDraw::GLESDebugDraw()

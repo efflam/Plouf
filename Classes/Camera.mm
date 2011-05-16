@@ -56,7 +56,6 @@ static Camera* _standardCamera = nil;
 
 -(void)update:(ccTime) dt
 {
-    
 }
 
 -(CGPoint)position

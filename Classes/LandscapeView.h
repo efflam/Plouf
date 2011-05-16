@@ -9,9 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "globals.h"
+#import "Camera.h"
 
 @interface LandscapeView : CCNode {
-    
+    BOOL hasChild[16][16];
+    CGPoint tilePosition;
+    CGPoint lastTilePosition;
+    NSString *level;
+    NSMutableArray *positions;
 }
 
 -(id)initWithLevelName:(NSString*)levelName;
