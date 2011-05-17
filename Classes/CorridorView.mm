@@ -18,12 +18,17 @@
 #import "math.h"
 #import "nanosvg.h"
 #import "FishView.h"
+#import "Actor.h"
+#import "Rock.h"
 
 @implementation CorridorView
 @synthesize moveToFinger;
 @synthesize fingerPos;
-@synthesize navScene;
- 
+@synthesize navScene; 
+@synthesize actorSet;
+@synthesize contactListener;
+@synthesize world;
+
 #define MAX_NAV_AGENTS 8
 
 float camSpring = 0.02;
@@ -120,26 +125,14 @@ static void storePath(float* dst, const float* src, const int npts,
     if (!plist) CCLOG(@"loadMesh: Could not load Mesh");   
     
     float bmin[2] = {FLT_MAX,FLT_MAX}, bmax[2] = {-FLT_MAX,-FLT_MAX};
-	for (SVGPath* it = plist; it; it = it->next)
-	{
-		for (int i = 0; i < it->npts; ++i)
-		{
-			const float* p = &it->pts[i*2];
-			bmin[0] = min(bmin[0], p[0]);
-			bmin[1] = min(bmin[1], p[1]);
-			bmax[0] = max(bmax[0], p[0]);
-			bmax[1] = max(bmax[1], p[1]);
-		}
-	}
-	
-	SVGPath* walkablePath = 0;
+    SVGPath* walkablePath = 0;
     SVGPath* edgePath = 0;
 	SVGPath* boundaryPath = 0;
 	SVGPath* agentPaths[MAX_NAV_AGENTS];
 	int nagentPaths = 0;
 	for (SVGPath* it = plist; it; it = it->next)
 	{
-		if (it->strokeColor == 0xff000000)
+        if (it->strokeColor == 0xff000000)
 			boundaryPath = it;
 		else if (it->strokeColor == 0xff0000ff)
 			walkablePath = it;
@@ -150,7 +143,18 @@ static void storePath(float* dst, const float* src, const int npts,
 			if (it->npts > 1 && nagentPaths < MAX_NAV_AGENTS)
 				agentPaths[nagentPaths++] = it;
 		}
+
+		for (int i = 0; i < it->npts; ++i)
+		{
+			const float* p = &it->pts[i*2];
+			bmin[0] = min(bmin[0], p[0]);
+			bmin[1] = min(bmin[1], p[1]);
+			bmax[0] = max(bmax[0], p[0]);
+			bmax[1] = max(bmax[1], p[1]);
+		}
 	}
+	
+
 	
 	if (!boundaryPath) printf("navsceneLoad: No boundary!\n");
 	if (!walkablePath) printf("navsceneLoad: No walkable!\n");
@@ -250,7 +254,12 @@ static void storePath(float* dst, const float* src, const int npts,
     world->SetDebugDraw(debugDraw);
     uint32 flags = 0;
     flags += b2DebugDraw::e_shapeBit;
-    debugDraw->SetFlags(flags);		
+    debugDraw->SetFlags(flags);	
+	
+    CCSpriteBatchNode *batch = [CCSpriteBatchNode batchNodeWithFile:@"blocks.png" capacity:150];
+    [self addChild:batch z:0 tag:1];
+    
+    [self setActorSet:[[[NSMutableSet alloc] init] autorelease]];
 
 }
 
@@ -356,6 +365,11 @@ static void storePath(float* dst, const float* src, const int npts,
 	int32 velocityIterations = 8;
 	int32 positionIterations = 1;
     
+    if(rand()%100 <= 1)
+    {
+        [self addNewRockWithCoords:ccp(1095, 869)];
+    }
+    
     if(self.moveToFinger && !travelling)
     {
         [currentFish setPosition:fingerPos];
@@ -369,6 +383,12 @@ static void storePath(float* dst, const float* src, const int npts,
     }
     
 	world->Step(dt, velocityIterations, positionIterations);
+    
+    for(Actor *anActor in [NSSet setWithSet:[self actorSet]]) 
+    {
+         //CCLOG(@"yeah");
+		[anActor worldDidStep];
+	}
     
     if(!travelling) return;
     
@@ -389,7 +409,7 @@ static void storePath(float* dst, const float* src, const int npts,
         
     float distFromCam = ccpDistance([[Camera standardCamera] position], [[Camera standardCamera] checkBoundsForPoint:[self convertToScreenCenter:currentFish.fishSprite.position] withScale:1]);
     
-    NSLog(@"distFromCam : %f",distFromCam);
+    //NSLog(@"distFromCam : %f",distFromCam);
         
 	if (last && vdist(agent->pos, corner) < 2.0f)
 	{
@@ -442,6 +462,45 @@ static void storePath(float* dst, const float* src, const int npts,
     body->ApplyForce(f, body->GetWorldCenter());
 }
 
+-(void) addNewRockWithCoords:(CGPoint)p
+{
+    /*
+	CCLOG(@"Add sprite %0.2f x %02.f",p.x,p.y);
+	CCSpriteBatchNode *batch = (CCSpriteBatchNode*) [self getChildByTag:1];
+	
+
+	CCSprite *sprite = [CCSprite spriteWithBatchNode:batch rect:CGRectMake(32, 32,32,32)];
+	[batch addChild:sprite];
+	
+	sprite.position = ccp( p.x, p.y);
+	
+	// Define the dynamic body.
+	//Set up a 1m squared box in the physics world
+	b2BodyDef bodyDef;
+	bodyDef.type = b2_dynamicBody;
+    
+	bodyDef.position.Set(p.x/PTM_RATIO, p.y/PTM_RATIO);
+	bodyDef.userData = sprite;
+	b2Body *body = world->CreateBody(&bodyDef);
+	
+	// Define another box shape for our dynamic body.
+	b2CircleShape rockShape;
+	rockShape.m_radius = 0.5f;
+	
+	// Define the dynamic body fixture.
+	b2FixtureDef fixtureDef;
+	fixtureDef.shape = &rockShape;	
+	fixtureDef.density = 1.0f;
+	fixtureDef.friction = 0.3f;
+	body->CreateFixture(&fixtureDef);
+    */
+    
+    Rock *rock = [[[Rock alloc] init] autorelease];
+	[rock setPosition:p];
+	[self addActor:rock];
+
+}
+
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -462,12 +521,47 @@ static void storePath(float* dst, const float* src, const int npts,
     glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-//	world->DrawDebugData();
+	world->DrawDebugData();
     glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	[super draw];
 }
+
+
+
+#pragma mark Actor Methods
+
+- (void)addActor:(Actor *)anActor 
+{
+	if(anActor && ![[self actorSet] containsObject:anActor]) 
+    {
+		[anActor setGame:self];
+		[[self actorSet] addObject:anActor];
+		[anActor actorDidAppear];
+	}
+}
+
+- (void)removeActor:(Actor *)anActor 
+{
+	if(anActor && [[self actorSet] containsObject:anActor])
+    {
+		[anActor retain];
+		[anActor actorWillDisappear];
+		[[self actorSet] removeObject:anActor];
+		[anActor setGame:nil];
+		[anActor release];
+	}
+}
+
+- (void)removeAllActors 
+{
+	for(Actor *anActor in [NSSet setWithSet:[self actorSet]]) 
+    {
+		[self removeActor:anActor];
+	}
+}
+
 
 -(CGPoint)convertVertToCGPoint:(float*)v;
 {

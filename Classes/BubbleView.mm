@@ -54,7 +54,7 @@
     CCSequence *seq = [CCSequence actions:[CCScaleTo actionWithDuration:0.2 scale:0.0], func,nil];
     
     [[bubbleTrackable bubbleSprite] runAction:seq];
-    //[self removeChild:[bubbleTrackable bubbleSprite] cleanup:NO];
+    //[self removeChild:[bubbleTrackable bubbleSprite] cleanup:NO]
 }
 
 -(void)removeBubble:(id)node

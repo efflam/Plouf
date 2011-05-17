@@ -25,6 +25,9 @@
 		2D526CDC1368835A009ED81B /* LevelView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D526CDA1368835A009ED81B /* LevelView.mm */; };
 		2D526CDF1368838E009ED81B /* ScrollLevelView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D526CDE1368838E009ED81B /* ScrollLevelView.mm */; };
 		2D5B165A131F015D00F8A20A /* minifish.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D5B1659131F015D00F8A20A /* minifish.png */; };
+		2D611A8B1381507900E9B405 /* Actor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D611A821381506D00E9B405 /* Actor.mm */; };
+		2D611A8D1381507900E9B405 /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D611A861381507000E9B405 /* MyContactListener.mm */; };
+		2D611A9213815A9B00E9B405 /* Rock.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D611A9113815A9400E9B405 /* Rock.mm */; };
 		2DB060971344BA67003993D1 /* bucketalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB060891344BA65003993D1 /* bucketalloc.c */; };
 		2DB060981344BA67003993D1 /* dict.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0608B1344BA66003993D1 /* dict.c */; };
 		2DB060991344BA67003993D1 /* geom.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0608D1344BA66003993D1 /* geom.c */; };
@@ -403,6 +406,12 @@
 		2D526CDD1368838E009ED81B /* ScrollLevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollLevelView.h; sourceTree = "<group>"; };
 		2D526CDE1368838E009ED81B /* ScrollLevelView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScrollLevelView.mm; sourceTree = "<group>"; };
 		2D5B1659131F015D00F8A20A /* minifish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minifish.png; sourceTree = "<group>"; };
+		2D611A811381506C00E9B405 /* Actor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Actor.h; sourceTree = "<group>"; };
+		2D611A821381506D00E9B405 /* Actor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Actor.mm; sourceTree = "<group>"; };
+		2D611A851381506F00E9B405 /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MyContactListener.h; sourceTree = "<group>"; };
+		2D611A861381507000E9B405 /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
+		2D611A9013815A9000E9B405 /* Rock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rock.h; sourceTree = "<group>"; };
+		2D611A9113815A9400E9B405 /* Rock.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Rock.mm; sourceTree = "<group>"; };
 		2D6ED340131D944300C902C4 /* Navscene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Navscene.cpp; sourceTree = "<group>"; };
 		2DB060891344BA65003993D1 /* bucketalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bucketalloc.c; sourceTree = "<group>"; };
 		2DB0608A1344BA65003993D1 /* bucketalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bucketalloc.h; sourceTree = "<group>"; };
@@ -925,6 +934,10 @@
 				2DBE5D11136992A700AE4149 /* CorridorView.h */,
 				2DBE5D12136992A700AE4149 /* CorridorView.mm */,
 				75AC3AD313696DB2004AE5E9 /* BackgroundView.h */,
+				2D611A811381506C00E9B405 /* Actor.h */,
+				2D611A821381506D00E9B405 /* Actor.mm */,
+				2D611A851381506F00E9B405 /* MyContactListener.h */,
+				2D611A861381507000E9B405 /* MyContactListener.mm */,
 				75AC3AD413696DB2004AE5E9 /* BackgroundView.m */,
 				2D526CD71368835A009ED81B /* LandscapeView.h */,
 				2D526CD81368835A009ED81B /* LandscapeView.mm */,
@@ -936,6 +949,8 @@
 				756BAD27137AC986009BD968 /* Camera.mm */,
 				753A8AD2137C0C6200429A6E /* BubbleView.h */,
 				753A8AD3137C0C6200429A6E /* BubbleView.mm */,
+				2D611A9013815A9000E9B405 /* Rock.h */,
+				2D611A9113815A9400E9B405 /* Rock.mm */,
 			);
 			name = level;
 			sourceTree = "<group>";
@@ -1742,6 +1757,9 @@
 				756BAD28137AC986009BD968 /* Camera.mm in Sources */,
 				753A8AD4137C0C6300429A6E /* BubbleView.mm in Sources */,
 				75328DCE137C188700C84466 /* BubbleSprite.mm in Sources */,
+				2D611A8B1381507900E9B405 /* Actor.mm in Sources */,
+				2D611A8D1381507900E9B405 /* MyContactListener.mm in Sources */,
+				2D611A9213815A9B00E9B405 /* Rock.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
