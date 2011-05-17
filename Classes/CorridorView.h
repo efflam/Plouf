@@ -55,8 +55,6 @@ struct NavScene
     BOOL travelling;
 }
 
-
-
 @property(nonatomic, assign) BOOL moveToFinger;
 @property(nonatomic, assign) CGPoint fingerPos;
 @property(nonatomic, assign) NavScene navScene;

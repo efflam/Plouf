@@ -7,7 +7,6 @@
 //
 
 #import "BackrockView.h"
-#import "nanosvg.h"
 
 @implementation BackrockView
 
@@ -37,22 +36,19 @@ void rockPoolFree( void* userData, void* ptr )
 {
 	if((self = [super init]))
 	{			
-		// Load
-		svgLevel = 0;
-		
-		t = 0.0f;
+		// Load		
 		tess = 0;
 		nvp = 3;
 				
 		// Load assets
         
         NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@-rocks",levelName] ofType:@"svg"];
-        
 		SVGPath *fg = svgParseFromFile([path UTF8String]);
 		
 		pool.size = 0;
 		pool.cap = sizeof(mem);
 		pool.buf = mem;
+        
 		memset(&ma, 0, sizeof(ma));
 		ma.memalloc = rockPoolAlloc;
 		ma.memfree = rockPoolFree;
@@ -71,6 +67,8 @@ void rockPoolFree( void* userData, void* ptr )
             
             [self fixedArrays];
 		}
+        
+        svgDelete(fg);
     }
     
 	return self;
@@ -87,11 +85,11 @@ void rockPoolFree( void* userData, void* ptr )
 		const int* elems = tessGetElements(tess);
 		const int nelems = tessGetElementCount(tess);
                 
-		for (i = 0; i < nelems; ++i)
+		for (int i = 0; i < nelems; ++i)
 		{
 			const int* p = &elems[i*nvp];
 			
-			for (j = 0; j < nvp && p[j] != TESS_UNDEF; ++j)
+			for (int j = 0; j < nvp && p[j] != TESS_UNDEF; ++j)
             {
                 /* add ONE element to the array */
                 verticesFixed = (struct CGPoint *)realloc(verticesFixed, (counterFixed + 1) * sizeof(struct CGPoint));
@@ -105,8 +103,6 @@ void rockPoolFree( void* userData, void* ptr )
                 verticesFixed[counterFixed].y = temp.y;
                                 
                 counterFixed++;
-                
-                
             }
         }
         
@@ -124,10 +120,10 @@ void rockPoolFree( void* userData, void* ptr )
     
     glColor4f(47/255, 21/255, 76/255, 0.23f);
 	
-    for(int initi = 0 ; initi < counterFixed ; initi += 3)
+    for(int i = 0 ; i < counterFixed ; i += 3)
     {
         glVertexPointer(2, GL_FLOAT, 0, verticesFixed);
-        glDrawArrays(GL_TRIANGLE_STRIP, initi, 3);
+        glDrawArrays(GL_TRIANGLE_STRIP, i, 3);
     }
     
     glEnableClientState(GL_COLOR_ARRAY);
@@ -155,7 +151,7 @@ void stdFree(void* userData, void* ptr)
 
 -(void)dealloc 
 {
-	svgDelete(svgLevel);
+    free(verticesFixed);
 	[super dealloc];
 }
 

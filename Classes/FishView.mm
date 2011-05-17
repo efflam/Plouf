@@ -114,8 +114,8 @@
     
     //NSLog(@"Camera Position : %@",NSStringFromCGPoint([[Camera standardCamera] position]));
     CGPoint posForLevel = fishSprite.position;
-    posForLevel.x = 2000 - posForLevel.x + 512;
-    posForLevel.y = 2000 - posForLevel.y + 384;
+    posForLevel.x = 2000 - posForLevel.x + SCREEN_CENTER.x;
+    posForLevel.y = 2000 - posForLevel.y + SCREEN_CENTER.y;
     
     CGPoint posForCamera = ccpSub([[Camera standardCamera] position], posForLevel);
     float bubbleHalfSize = self.bubbleSprite.contentSize.width * 0.5;
@@ -126,18 +126,18 @@
        //float anchorX =  
     
     
-    if(fabsf(posForCamera.x)-60 > 512 || fabsf(posForCamera.y)-60 > 384)
+    if(fabsf(posForCamera.x)-60 > SCREEN_CENTER.x || fabsf(posForCamera.y)-60 > SCREEN_CENTER.y)
     {
-             
-       
-        
         float angle = atan2f(posForCamera.y, posForCamera.x);
         
        // CCLOG(@"angle = %f", angle);
         
         CGPoint circlePoint = ccp(CAM_RADIUS*cosf(angle),CAM_RADIUS*sinf(angle));
-        CGPoint bublePoinForCam = ccp(fminf(512 - bubbleOffset, fmaxf(-512 + bubbleOffset, circlePoint.x)),fminf(384 - bubbleOffset, fmaxf(-384 + bubbleOffset, circlePoint.y)));
-        self.bubblePoint = ccp(512 + bublePoinForCam.x, 384 + bublePoinForCam.y);
+        CGPoint bubblePointForCam = ccp(fminf(SCREEN_CENTER.x - bubbleOffset, fmaxf(-SCREEN_CENTER.x + bubbleOffset, circlePoint.x)),fminf(SCREEN_CENTER.y - bubbleOffset, fmaxf(-SCREEN_CENTER.y + bubbleOffset, circlePoint.y)));
+        
+//        NSLog(@"Bubble Point For Cam : %@",NSStringFromCGPoint(bubblePointForCam));
+        
+        self.bubblePoint = ccp(SCREEN_CENTER.x + bubblePointForCam.x, SCREEN_CENTER.y + bubblePointForCam.y);
         
         if(self.visible) 
         {

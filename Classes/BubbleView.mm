@@ -62,4 +62,13 @@
     [self removeChild:node cleanup:NO];
 }
 
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"showMe" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"trackMe" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"unTrackMe" object:nil];
+    
+    [super dealloc];
+}
+
 @end

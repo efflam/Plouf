@@ -73,7 +73,6 @@ static void storePath(float* dst, const float* src, const int npts,
 {
 	if((self = [super init]))
 	{
-         
 		[[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
         
         /*
@@ -86,7 +85,7 @@ static void storePath(float* dst, const float* src, const int npts,
         
 		NavmeshAgent* agent = &navScene.agents[0];
         
-        FishView *fishView = [FishView fishWithName:@"clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
+        FishView *fishView  = [FishView fishWithName:@"clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
         FishView *fishView2 = [FishView fishWithName:@"clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
         currentFish = fishView;
         
@@ -123,6 +122,8 @@ static void storePath(float* dst, const float* src, const int npts,
 {
     SVGPath* plist = [self loadMesh:levelName];
     if (!plist) CCLOG(@"loadMesh: Could not load Mesh");   
+    
+    NSLog(@"TRACAGE");
     
     float bmin[2] = {FLT_MAX,FLT_MAX}, bmax[2] = {-FLT_MAX,-FLT_MAX};
     SVGPath* walkablePath = 0;
@@ -197,7 +198,7 @@ static void storePath(float* dst, const float* src, const int npts,
 		vcpy(ag->opos, ag->pos);
 		vcpy(ag->otarget, ag->target);
 	}
-    
+        
     // ADD AGENT FOR CAMERA
     
     navScene.nagents++;
@@ -298,11 +299,12 @@ static void storePath(float* dst, const float* src, const int npts,
         
     fingerPos = tchLoc;
 	
-    const float lx = tchLoc.x;
-    const float ly = tchLoc.y;
+//    const float lx = tchLoc.x;
+//    const float ly = tchLoc.y;
     
     moveToFinger = true;
-			
+    
+    /*
     float pos[2] = {lx,ly};
     float nearest[2] = {lx,ly};
     if (navScene.nav)
@@ -312,7 +314,7 @@ static void storePath(float* dst, const float* src, const int npts,
     vcpy(navScene.agents[0].oldpos, navScene.agents[0].pos);
     agentFindPath(&navScene.agents[0], navScene.nav);
     vset(navScene.agents[0].corner, FLT_MAX,FLT_MAX);
-	
+    */
 }
 
 -(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -570,7 +572,7 @@ static void storePath(float* dst, const float* src, const int npts,
 
 -(CGPoint)convertToScreenCenter:(CGPoint)point
 {
-    return ccpAdd(ccpMult(ccpSub(point, ccp(2000, 2000)), -1), ccp(512, 384));
+    return ccpAdd(ccpMult(ccpSub(point, ccp(2000, 2000)), -1), SCREEN_CENTER);
 }
 
 @end

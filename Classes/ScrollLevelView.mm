@@ -13,8 +13,6 @@
 
 @implementation ScrollLevelView
 
-@synthesize mapSize, winSize, scaleMin, isScrolling, isScaling;
-
 +(id)levelWithName:(NSString *)levelName
 {
     return [[[ScrollLevelView alloc] initWithLevelName:levelName] autorelease];
@@ -25,37 +23,36 @@
 	if((self=[super init])) 
 	{
         [[Camera standardCamera] setDelegate:self];
-         
 		[[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
 		
         [self setAnchorPoint:ccp(0,0)];
-                
-        BackrockView *rocks = [BackrockView backrockWithName:levelName];
-        LandscapeView *landscape = [LandscapeView landscapeWithName:levelName];
-        CorridorView *corridor = [CorridorView corridorWithName:levelName];
         
-        [corridor setTag:123];
-                
+        BackrockView *rocks         = [BackrockView backrockWithName:levelName];
+        LandscapeView *landscape    = [LandscapeView landscapeWithName:levelName];
+        CorridorView *corridor      = [CorridorView corridorWithName:levelName];
+                        
 		[self addChild:rocks        z:-2    parallaxRatio:ccp(.7,.7)    positionOffset:ccp(0,0)];
         [self addChild:corridor     z:-1    parallaxRatio:ccp(1,1)      positionOffset:ccp(-MAP_WIDTH/2,-MAP_HEIGHT/2)];
 		[self addChild:landscape    z:0     parallaxRatio:ccp(1,1)      positionOffset:ccp(-MAP_WIDTH/2,-MAP_HEIGHT/2)];
 		
-		mapSize    = CGSizeMake(MAP_WIDTH, MAP_HEIGHT);
-		winSize    = [[CCDirector sharedDirector] winSize];
-		scaleMin   = fmaxf(winSize.width/mapSize.width,winSize.height/mapSize.height);
+		//mapSize    = CGSizeMake(MAP_WIDTH, MAP_HEIGHT);
+		//winSize    = [[CCDirector sharedDirector] winSize];
+		//scaleMin   = fmaxf(winSize.width/mapSize.width,winSize.height/mapSize.height);
         
         [[Camera standardCamera] setPosition:self.position];
 	}
 	return self;
 }
 
+/*
 -(void)setPosition:(CGPoint)position 
 {    
-    [self setIsScaling:NO];
-	[self setIsScrolling:YES];
+    //[self setIsScaling:NO];
+	//[self setIsScrolling:YES];
     
     [super setPosition:position];
 }
+*/
 
 // OLD FUNCTIONS
 

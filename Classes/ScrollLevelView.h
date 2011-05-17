@@ -14,7 +14,7 @@
 @interface ScrollLevelView : CCParallaxNode <CCStandardTouchDelegate, CameraDelegate>
 {
 //	SVGNode *mapSVG;
-	
+	/*
 	CGSize mapSize;
 	CGSize winSize;
 	float scaleMin;
@@ -26,13 +26,16 @@
 	CGPoint touchOffset;
 	
 	float delta;
+    */
 }
 
+/*
 @property(readwrite, assign) CGSize mapSize;
 @property(readwrite, assign) CGSize winSize;
 @property(readwrite, assign) float scaleMin;
 @property(readwrite, assign) BOOL isScrolling;
 @property(readwrite, assign) BOOL isScaling;
+*/
 
 //-(void)handlePinch:(NSSet *)touches withEvent:(UIEvent *)event;
 -(id)initWithLevelName:(NSString*)levelName;
