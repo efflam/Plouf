@@ -57,6 +57,7 @@
 +(id)fishWithName:(NSString*)fishName andPosition:(CGPoint)position;
 - (BOOL)containsTouchLocation:(UITouch *)touch;
 -(void)swimTo:(CGPoint)destination;
+-(void)hit;
 
 @end
 

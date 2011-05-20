@@ -8,12 +8,10 @@
 
 @property (nonatomic, retain) NSMutableArray *contactArray;
 @property (nonatomic, retain) NSMutableArray *instanceOperationArray;
+@property (nonatomic, retain) NSMutableArray *classOperationArray;
 
 
 @end
-
-
-
 
 
 @implementation Actor
@@ -23,6 +21,8 @@
 
 - (void)dealloc {
 	[self setContactArray:nil];
+    [self setInstanceOperationArray:nil];
+    [self setClassOperationArray:nil];
 	[self setWorld:nil];
     [self setScene:nil];
 	[super dealloc];
@@ -33,6 +33,7 @@
     {
 		[self setContactArray:[[[NSMutableArray alloc] init] autorelease]];
         [self setInstanceOperationArray:[[[NSMutableArray alloc] init] autorelease]];
+        [self setClassOperationArray:[[[NSMutableArray alloc] init] autorelease]];
 
 	}
         return self;
@@ -43,6 +44,7 @@
 
 @synthesize contactArray;
 @synthesize instanceOperationArray;
+@synthesize classOperationArray;
 
 - (NSSet *)contactSet {
 	return [NSSet setWithArray:[self contactArray]];
@@ -65,6 +67,23 @@
                 [self removeInstanceOperation:op];
         }
     }
+    
+    ClassContactOperation *cop;
+    count = [[self classOperationArray] count];
+    //CCLOG(@"NumClassOP = %d", count);
+    for(int i = 0; i < count; i++)
+    {
+        cop = [[self classOperationArray] objectAtIndex:i];
+        //CCLOG( @"class : %@", [cop.actorClass class]);
+        if([aContact isKindOfClass:[cop.actorClass class]] && (cop.whenTag == 0 || cop.whenTag == 1))
+        { 
+            [cop execute];
+            if(cop.fireOnce)
+                [self removeClassOperation:cop];
+        }
+    }
+    
+
 }
 
 - (void)removeContact:(Actor *)aContact {
@@ -109,6 +128,25 @@
 {
     [[self instanceOperationArray] removeAllObjects];
 }
+
+- (void)addClassOperation:(ClassContactOperation *)aOperation
+{
+    [[self classOperationArray] addObject:aOperation];
+}
+
+- (void)removeClassOperation:(ClassContactOperation *)aOperation
+{
+    NSUInteger anIndex = [[self classOperationArray] indexOfObject:aOperation];
+	if(anIndex != NSNotFound) {
+		[[self classOperationArray] removeObjectAtIndex:anIndex];
+	}
+    
+}
+- (void)removeAllClassOperations
+{
+    [[self classOperationArray] removeAllObjects];
+}
+
 
 #pragma mark Event Methods
 

@@ -2,6 +2,7 @@
 #import "Box2D.h"
 #import "cocos2d.h"
 #import "InstanceContactOperation.h"
+#import "ClassContactOperation.h"
 
 @class InstanceContactOperation;
 
@@ -9,6 +10,7 @@
 {
 	NSMutableArray *contactArray;
     NSMutableArray *instanceOperationArray;
+    NSMutableArray *classOperationArray;
 	b2World *world;
     CCNode *scene;
 }
@@ -32,6 +34,12 @@
 - (void)removeInstanceOperation:(InstanceContactOperation *)aOperation;
 
 - (void)removeAllInstanceOperations;
+
+- (void)addClassOperation:(ClassContactOperation *)aOperation;
+
+- (void)removeClassOperation:(ClassContactOperation *)aOperation;
+
+- (void)removeAllClassOperations;
 
 
 #pragma mark Event Methods

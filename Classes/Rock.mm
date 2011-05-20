@@ -52,10 +52,10 @@
 - (void)actorDidAppear 
 {	
 	[super actorDidAppear];
-	
+	[self bodyDef]->userData =  self;
 	[self setBody:[self world]->CreateBody([self bodyDef])];
 	[self fixtureDef]->shape = [self shapeDef];
-	[self bodyDef]->userData = (void *)self;
+	
     [self body]->CreateFixture([self fixtureDef]);
     CCSpriteBatchNode *batch = (CCSpriteBatchNode*) [[self scene] getChildByTag:999];
     int idx = (CCRANDOM_0_1() > .5 ? 0:1);

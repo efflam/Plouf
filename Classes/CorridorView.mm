@@ -21,6 +21,7 @@
 #import "RockFall.h"
 #import "RectSensor.h"
 #import "MyContactListener.h"
+#import "ClassContactOperation.h"
 
 @implementation CorridorView
 @synthesize moveToFinger;
@@ -111,7 +112,7 @@ static void storePath(float* dst, const float* src, const int npts,
         [fall setEmissionPoint:ccp(1080, 1300)];
         //[fall startEmission];
         
-        RectSensor *fallSensor = [RectSensor rectSensorFrom:ccp(1600, 760) to:ccp(1800, 660)];
+        RectSensor *fallSensor = [RectSensor rectSensorFrom:ccp(200, 1300) to:ccp(1500, 660)];
         [self addActor:fallSensor];
         
         [self setContactListener: new MyContactListener()];
@@ -120,6 +121,9 @@ static void storePath(float* dst, const float* src, const int npts,
         InstanceContactOperation *op = [InstanceContactOperation operationFor:currentFish WithTarget:fall andSelector:@selector(toggleEmission) when:0];
         
         [fallSensor addInstanceOperation:op];
+        
+        ClassContactOperation *hitOp = [ClassContactOperation operationFor:[Rock class] WithTarget:currentFish andSelector:@selector(hit) when:1];
+        [currentFish addClassOperation:hitOp];
 
     
          

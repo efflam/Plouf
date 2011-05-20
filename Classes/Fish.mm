@@ -242,10 +242,11 @@
 - (void)addContact:(Actor *)aContact
 {
 	[super addContact:aContact]; 
-    if([aContact isKindOfClass:[RectSensor class]] )
-    {
-        CCLOG(@"SUR LE RECTANGLE");
-    }
+}
+
+-(void)hit
+{
+    CCLOG(@"aie !");
 }
 
 

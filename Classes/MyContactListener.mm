@@ -24,8 +24,7 @@ void MyContactListener::BeginContact(b2Contact* contact)
     
     id userDataA = (id)fixtureA->GetBody()->GetUserData();
 	id userDataB = (id)fixtureB->GetBody()->GetUserData();
-    
-    
+
     if(userDataA && userDataB && [userDataA isKindOfClass:[Actor class]] && [userDataB isKindOfClass:[Actor class]]) 
     {
         Actor *actorA = (Actor *)userDataA; 

@@ -29,6 +29,7 @@
 		2D611A9213815A9B00E9B405 /* Rock.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D611A9113815A9400E9B405 /* Rock.mm */; };
 		2D6B9BE013828FA7005DADF0 /* RockFall.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D6B9BDF13828FA7005DADF0 /* RockFall.mm */; };
 		2D98EBF013866DB600EE6A67 /* InstanceContactOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D98EBEF13866DAA00EE6A67 /* InstanceContactOperation.mm */; };
+		2D98EBF31386A4F100EE6A67 /* ClassContactOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D98EBF21386A4D500EE6A67 /* ClassContactOperation.m */; };
 		2DB060971344BA67003993D1 /* bucketalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB060891344BA65003993D1 /* bucketalloc.c */; };
 		2DB060981344BA67003993D1 /* dict.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0608B1344BA66003993D1 /* dict.c */; };
 		2DB060991344BA67003993D1 /* geom.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0608D1344BA66003993D1 /* geom.c */; };
@@ -404,6 +405,8 @@
 		2D6B9BDF13828FA7005DADF0 /* RockFall.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RockFall.mm; sourceTree = "<group>"; };
 		2D98EBEE13866DA400EE6A67 /* InstanceContactOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstanceContactOperation.h; sourceTree = "<group>"; };
 		2D98EBEF13866DAA00EE6A67 /* InstanceContactOperation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InstanceContactOperation.mm; sourceTree = "<group>"; };
+		2D98EBF11386A4C700EE6A67 /* ClassContactOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassContactOperation.h; sourceTree = "<group>"; };
+		2D98EBF21386A4D500EE6A67 /* ClassContactOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassContactOperation.m; sourceTree = "<group>"; };
 		2DB060891344BA65003993D1 /* bucketalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bucketalloc.c; sourceTree = "<group>"; };
 		2DB0608A1344BA65003993D1 /* bucketalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bucketalloc.h; sourceTree = "<group>"; };
 		2DB0608B1344BA66003993D1 /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dict.c; sourceTree = "<group>"; };
@@ -927,6 +930,8 @@
 				2DB0EEDE1382C5D300548316 /* RectSensor.mm */,
 				2D98EBEE13866DA400EE6A67 /* InstanceContactOperation.h */,
 				2D98EBEF13866DAA00EE6A67 /* InstanceContactOperation.mm */,
+				2D98EBF11386A4C700EE6A67 /* ClassContactOperation.h */,
+				2D98EBF21386A4D500EE6A67 /* ClassContactOperation.m */,
 				2D57A70113856EB700C8797D /* MyContactListener.mm */,
 				2D57A70213856EBE00C8797D /* MyContactListener.h */,
 			);
@@ -1718,6 +1723,7 @@
 				2D57A70313856ECF00C8797D /* MyContactListener.mm in Sources */,
 				2D57A7091385755E00C8797D /* Fish.mm in Sources */,
 				2D98EBF013866DB600EE6A67 /* InstanceContactOperation.mm in Sources */,
+				2D98EBF31386A4F100EE6A67 /* ClassContactOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
