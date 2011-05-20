@@ -1,19 +1,18 @@
-#include "Box2D.h"
+//
+//  MyContactListener.h
+//  ProtoMesh2
+//
+//  Created by Efflam on 19/05/11.
+//  Copyright 2011 Plouf. All rights reserved.
+//
 
-const int32 k_maxContactPoints = 2048;
-struct ContactPoint
+#import "Box2D.h"
+#import "b2Contact.h"
+class MyContactListener : public b2ContactListener
 {
-    b2Fixture* fixtureA;
-    b2Fixture* fixtureB;
-    b2Vec2 normal;
-    b2Vec2 position;
-    b2PointState state;
-};
-
-class MyContactListener : public b2ContactListener {
 public:
-	void BeginContact(b2Contact* contact);
+	MyContactListener();
+    
+    void BeginContact(b2Contact* contact);
 	void EndContact(b2Contact* contact);
-    void PreSolve(b2Contact* contact, const b2Manifold* oldManifold);
-    void PostSolve(b2Contact* contact);
 };

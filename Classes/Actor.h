@@ -1,12 +1,16 @@
 #import <Foundation/Foundation.h>
 #import "Box2D.h"
+#import "cocos2d.h"
+#import "InstanceContactOperation.h"
 
-@class CorridorView;
+@class InstanceContactOperation;
 
-@interface Actor : NSObject {
- @private
+@interface Actor : NSObject 
+{
 	NSMutableArray *contactArray;
-	CorridorView *game;
+    NSMutableArray *instanceOperationArray;
+	b2World *world;
+    CCNode *scene;
 }
 
 
@@ -23,6 +27,12 @@
 
 - (void)removeAllContacts;
 
+- (void)addInstanceOperation:(InstanceContactOperation *)aOperation;
+
+- (void)removeInstanceOperation:(InstanceContactOperation *)aOperation;
+
+- (void)removeAllInstanceOperations;
+
 
 #pragma mark Event Methods
 
@@ -35,7 +45,8 @@
 
 #pragma mark Game Properties
 
-@property (nonatomic, retain) CorridorView *game;
+@property (nonatomic, assign) b2World *world;
+@property (nonatomic, retain) CCNode *scene;
 
 
 @end

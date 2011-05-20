@@ -7,9 +7,13 @@
 //
 
 #import "Rock.h"
-
+#import "globals.h"
 
 @implementation Rock
+@synthesize body;
+@synthesize bodyDef;
+@synthesize shapeDef;
+@synthesize fixtureDef;
 
 #pragma mark Object Methods
 
@@ -35,10 +39,9 @@
         [self bodyDef]->type = b2_dynamicBody;
 		[self setShapeDef:new b2CircleShape];
         [self setFixtureDef:new b2FixtureDef];
-		[self fixtureDef]->density = 2.0f;
-		[self fixtureDef]->restitution = 0.75f;
-		[self setRadius:15.0f];
-		//[self setRockSprite:[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Ball.png"]] autorelease]];
+		[self fixtureDef]->density = 5.0f;
+		[self fixtureDef]->restitution = 0.1f;
+		[self setRadius:10.0f + rand()% 14 - 8.0f];
 	}
 	return self;
 }
@@ -50,40 +53,49 @@
 {	
 	[super actorDidAppear];
 	
-	[self setBody:[[self game] world]->CreateBody([self bodyDef])];
+	[self setBody:[self world]->CreateBody([self bodyDef])];
 	[self fixtureDef]->shape = [self shapeDef];
 	[self bodyDef]->userData = (void *)self;
     [self body]->CreateFixture([self fixtureDef]);
-	
+    CCSpriteBatchNode *batch = (CCSpriteBatchNode*) [[self scene] getChildByTag:999];
+    int idx = (CCRANDOM_0_1() > .5 ? 0:1);
+	int idy = (CCRANDOM_0_1() > .5 ? 0:1);
+	CCSprite *sprite = [CCSprite spriteWithBatchNode:batch rect:CGRectMake(30 * idx,30 * idy,30,30)];
+    [batch addChild:sprite];
+    [self setRockSprite:sprite];
+    [[self rockSprite] setScaleX: [self radius]/[self rockSprite].contentSize.width * 2];
+    [[self rockSprite] setScaleY: [self radius]/[self rockSprite].contentSize.height * 2];
 	//[[self game] addChild:[self rockSprite]];
 	
 }
 
+
 - (void)actorWillDisappear 
 {
 	[self body]->SetUserData(nil);
-	[[self game] world]->DestroyBody([self body]);
+	[self world]->DestroyBody([self body]);
 	[self setBody:nil];
-	[[self game] removeChild:[self rockSprite] cleanup:NO];
+	[[self scene] removeChild:[self rockSprite] cleanup:NO];
+    CCSpriteBatchNode *batch = (CCSpriteBatchNode*) [[self scene] getChildByTag:999];
+    [batch removeChild:[self rockSprite] cleanup:YES];
+    [self setRockSprite:nil];
 	[super actorWillDisappear];
 }
+
 
 - (void)worldDidStep 
 {
 	[super worldDidStep];
+    //CCLOG(@"body ? %@", ([self body]));
+//     CCLOG(@"world body ? %d", ([self body] == nil));
+    
+    [[self rockSprite] setPosition:ccp(WORLD_TO_SCREEN([self body]->GetPosition().x), WORLD_TO_SCREEN([self body]->GetPosition().y))];
+    [[self rockSprite] setRotation: -1 * RADIANS_TO_DEGREES([self body]->GetAngle())];
 	
 }
 
 
 #pragma mark Physics Accessors
-
-@synthesize body;
-
-@synthesize bodyDef;
-
-@synthesize shapeDef;
-
-@synthesize fixtureDef;
 
 
 #pragma mark Transform Accessors
@@ -96,8 +108,11 @@
 
 - (void)setPosition:(CGPoint)aPosition
 {
-	NSAssert(![self body], @"Cannot set position");
+    //CCLOG(@"body ? %@", ([self body]));
+	//NSAssert(![self body], @"Cannot set position");
 	[self bodyDef]->position.Set(SCREEN_TO_WORLD(aPosition.x), SCREEN_TO_WORLD(aPosition.y));
+    //[self body]->SetTransform(b2Vec2(SCREEN_TO_WORLD(aPosition.x), SCREEN_TO_WORLD(aPosition.y)), [self body]->GetAngle());
+    
 }
 
 - (CGFloat)radius
@@ -127,7 +142,5 @@
 #pragma mark View Accessors
 
 @synthesize rockSprite;
-
-
 
 @end

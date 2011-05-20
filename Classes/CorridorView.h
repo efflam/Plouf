@@ -13,16 +13,15 @@
 #import "nanosvg.h"
 #import "navmesh.h"
 #import "globals.h"
-#import "FishView.h"
+#import "Fish.h"
 #import "Camera.h"
 #import "MyContactListener.h"
-#import "Actor.h"
 
-#define SCREEN_TO_WORLD(n) ((n) / 30)
-#define WORLD_TO_SCREEN(n) ((n) * 30)
+@class Fish;
+@protocol FishDelegate;
 
-#define DEGREES_TO_RADIANS(n) ((n) * (b2_pi / 180.0f))
-#define RADIANS_TO_DEGREES(n) ((n) * (180.0f / b2_pi))
+
+
 
 static const float AGENT_RAD = 20.0f;
 static const int MAX_NAV_AGENTS = 16;
@@ -41,7 +40,10 @@ struct NavScene
 	float dim[2];
 };
 
-@interface CorridorView : CCNode<CCStandardTouchDelegate,FishViewDelegate>
+
+
+
+@interface CorridorView : CCNode<CCStandardTouchDelegate, FishDelegate>
 {    
     b2World *world;
 	GLESDebugDraw *debugDraw;
@@ -49,7 +51,7 @@ struct NavScene
     CGPoint fingerPos;
     NavScene navScene;
     NSMutableArray *fishes;
-    FishView *currentFish;
+    Fish *currentFish;
     NSMutableSet *actorSet;
 	b2ContactListener *contactListener;
     BOOL travelling;
@@ -73,7 +75,7 @@ struct NavScene
 -(void) counterGravity:(b2Body*)body antiGravity:(b2Vec2)antiGravity;
 //-(void)drawNavMesh;
 -(CGPoint)convertVertToCGPoint:(float*)v;
--(void)setSelectedFish:(FishView *)fish;
+-(void)setSelectedFish:(Fish *)fish;
 -(CGPoint)convertToScreenCenter:(CGPoint)point;
 -(void) addNewRockWithCoords:(CGPoint)p;
 #pragma mark Actor Methods

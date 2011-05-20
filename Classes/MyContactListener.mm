@@ -1,29 +1,54 @@
-#import "MyContactListener.h"
+//
+//  MyContactListener.cpp
+//  ProtoMesh2
+//
+//  Created by Efflam on 19/05/11.
+//  Copyright 2011 Plouf. All rights reserved.
+//
+
+#include "MyContactListener.h"
 
 
-    int32 m_pointCount;
-    ContactPoint m_points[k_maxContactPoints];
+#import "Box2D.h"
+#import "b2Contact.h"
+#import "Actor.h"
 
-    void BeginContact(b2Contact* contact)
-    {
-        b2Fixture* fixtureA = contact->GetFixtureA();
-        b2Fixture* fixtureB = contact->GetFixtureB();
-       /* if (contact->IsSolid()) {
-            NSLog(@"Contact is solid");
-        }*/
-    }
+// Implement contact listener.
+MyContactListener::MyContactListener(){};
+
+void MyContactListener::BeginContact(b2Contact* contact)
+{
+    //NSLog(@"begin contact");
+    b2Fixture* fixtureA = contact->GetFixtureA();
+    b2Fixture* fixtureB = contact->GetFixtureB();
     
-    void EndContact(b2Contact* contact)
-    {
-        NSLog(@"end contact");
-    }
+    id userDataA = (id)fixtureA->GetBody()->GetUserData();
+	id userDataB = (id)fixtureB->GetBody()->GetUserData();
     
-    void PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
-    {
-        const b2Manifold* manifold = contact->GetManifold();
-    }
     
-    void PostSolve(b2Contact* contact)
+    if(userDataA && userDataB && [userDataA isKindOfClass:[Actor class]] && [userDataB isKindOfClass:[Actor class]]) 
     {
-        const b2ContactImpulse* impulse;
+        Actor *actorA = (Actor *)userDataA; 
+        Actor *actorB = (Actor *)userDataB;
+
+        [actorA addContact:actorB];
+        [actorB addContact:actorA];
     }
+
+}
+
+// Implement contact listener.
+void MyContactListener::EndContact(b2Contact* contact)
+{
+    //NSLog(@"end contact");
+    b2Fixture* fixtureA = contact->GetFixtureA();
+    b2Fixture* fixtureB = contact->GetFixtureB();
+    Actor *actorA = (Actor *)fixtureA->GetBody()->GetUserData(); 
+    Actor *actorB = (Actor *)fixtureB->GetBody()->GetUserData();
+    if(actorA && actorB) 
+    {
+        [actorA removeContact:actorB];
+        [actorB removeContact:actorA];
+    }
+
+}

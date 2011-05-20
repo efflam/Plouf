@@ -21,10 +21,14 @@
 		2D526CDB1368835A009ED81B /* LandscapeView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D526CD81368835A009ED81B /* LandscapeView.mm */; };
 		2D526CDC1368835A009ED81B /* LevelView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D526CDA1368835A009ED81B /* LevelView.mm */; };
 		2D526CDF1368838E009ED81B /* ScrollLevelView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D526CDE1368838E009ED81B /* ScrollLevelView.mm */; };
-		2D5B165A131F015D00F8A20A /* minifish.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D5B1659131F015D00F8A20A /* minifish.png */; };
+		2D57A6EE1383F34400C8797D /* caillou.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D57A6ED1383F34400C8797D /* caillou.png */; };
+		2D57A6F813840BBC00C8797D /* cailloux.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D57A6F713840BBC00C8797D /* cailloux.png */; };
+		2D57A70313856ECF00C8797D /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D57A70113856EB700C8797D /* MyContactListener.mm */; };
+		2D57A7091385755E00C8797D /* Fish.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D57A7081385755D00C8797D /* Fish.mm */; };
 		2D611A8B1381507900E9B405 /* Actor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D611A821381506D00E9B405 /* Actor.mm */; };
-		2D611A8D1381507900E9B405 /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D611A861381507000E9B405 /* MyContactListener.mm */; };
 		2D611A9213815A9B00E9B405 /* Rock.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D611A9113815A9400E9B405 /* Rock.mm */; };
+		2D6B9BE013828FA7005DADF0 /* RockFall.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D6B9BDF13828FA7005DADF0 /* RockFall.mm */; };
+		2D98EBF013866DB600EE6A67 /* InstanceContactOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D98EBEF13866DAA00EE6A67 /* InstanceContactOperation.mm */; };
 		2DB060971344BA67003993D1 /* bucketalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB060891344BA65003993D1 /* bucketalloc.c */; };
 		2DB060981344BA67003993D1 /* dict.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0608B1344BA66003993D1 /* dict.c */; };
 		2DB060991344BA67003993D1 /* geom.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0608D1344BA66003993D1 /* geom.c */; };
@@ -32,6 +36,7 @@
 		2DB0609B1344BA67003993D1 /* priorityq.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB060911344BA66003993D1 /* priorityq.c */; };
 		2DB0609C1344BA67003993D1 /* sweep.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB060931344BA66003993D1 /* sweep.c */; };
 		2DB0609D1344BA67003993D1 /* tess.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB060951344BA67003993D1 /* tess.c */; };
+		2DB0EEDF1382C5DA00548316 /* RectSensor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0EEDE1382C5D300548316 /* RectSensor.mm */; };
 		2DBE5D13136992A700AE4149 /* CorridorView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE5D12136992A700AE4149 /* CorridorView.mm */; };
 		2DE8E833131D4C8400F6F60E /* nanosvg.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8E831131D4C8400F6F60E /* nanosvg.mm */; };
 		2DE8E8D5131D607500F6F60E /* navmesh.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8E8D3131D607500F6F60E /* navmesh.mm */; };
@@ -165,7 +170,6 @@
 		50F4144810692EE7002A0D5E /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144310692EE7002A0D5E /* blocks.png */; };
 		50F4144A10692EE7002A0D5E /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144510692EE7002A0D5E /* fps_images.png */; };
 		50F4144B10692EE7002A0D5E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144610692EE7002A0D5E /* Icon.png */; };
-		75108E3B137810FB0066266E /* FishView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75108E3A137810FB0066266E /* FishView.mm */; };
 		753062B413796D9700AB6005 /* FishAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 753062B313796D9700AB6005 /* FishAnimation.m */; };
 		753062BF137977AC00AB6005 /* clown.png in Resources */ = {isa = PBXBuildFile; fileRef = 753062BD137977AC00AB6005 /* clown.png */; };
 		753062C0137977AC00AB6005 /* clown.plist in Resources */ = {isa = PBXBuildFile; fileRef = 753062BE137977AC00AB6005 /* clown.plist */; };
@@ -386,14 +390,20 @@
 		2D526CDA1368835A009ED81B /* LevelView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LevelView.mm; sourceTree = "<group>"; };
 		2D526CDD1368838E009ED81B /* ScrollLevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollLevelView.h; sourceTree = "<group>"; };
 		2D526CDE1368838E009ED81B /* ScrollLevelView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScrollLevelView.mm; sourceTree = "<group>"; };
-		2D5B1659131F015D00F8A20A /* minifish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minifish.png; sourceTree = "<group>"; };
+		2D57A6ED1383F34400C8797D /* caillou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = caillou.png; sourceTree = "<group>"; };
+		2D57A6F713840BBC00C8797D /* cailloux.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cailloux.png; sourceTree = "<group>"; };
+		2D57A70113856EB700C8797D /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
+		2D57A70213856EBE00C8797D /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
+		2D57A7071385755C00C8797D /* Fish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fish.h; sourceTree = "<group>"; };
+		2D57A7081385755D00C8797D /* Fish.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Fish.mm; sourceTree = "<group>"; };
 		2D611A811381506C00E9B405 /* Actor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Actor.h; sourceTree = "<group>"; };
 		2D611A821381506D00E9B405 /* Actor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Actor.mm; sourceTree = "<group>"; };
-		2D611A851381506F00E9B405 /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MyContactListener.h; sourceTree = "<group>"; };
-		2D611A861381507000E9B405 /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
 		2D611A9013815A9000E9B405 /* Rock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rock.h; sourceTree = "<group>"; };
 		2D611A9113815A9400E9B405 /* Rock.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Rock.mm; sourceTree = "<group>"; };
-		2D6ED340131D944300C902C4 /* Navscene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Navscene.cpp; sourceTree = "<group>"; };
+		2D6B9BDE13828FA6005DADF0 /* RockFall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RockFall.h; sourceTree = "<group>"; };
+		2D6B9BDF13828FA7005DADF0 /* RockFall.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RockFall.mm; sourceTree = "<group>"; };
+		2D98EBEE13866DA400EE6A67 /* InstanceContactOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstanceContactOperation.h; sourceTree = "<group>"; };
+		2D98EBEF13866DAA00EE6A67 /* InstanceContactOperation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InstanceContactOperation.mm; sourceTree = "<group>"; };
 		2DB060891344BA65003993D1 /* bucketalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bucketalloc.c; sourceTree = "<group>"; };
 		2DB0608A1344BA65003993D1 /* bucketalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bucketalloc.h; sourceTree = "<group>"; };
 		2DB0608B1344BA66003993D1 /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dict.c; sourceTree = "<group>"; };
@@ -409,6 +419,8 @@
 		2DB060951344BA67003993D1 /* tess.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tess.c; sourceTree = "<group>"; };
 		2DB060961344BA67003993D1 /* tess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tess.h; sourceTree = "<group>"; };
 		2DB0609E1344BA74003993D1 /* tesselator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tesselator.h; sourceTree = "<group>"; };
+		2DB0EEDD1382C5CC00548316 /* RectSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RectSensor.h; sourceTree = "<group>"; };
+		2DB0EEDE1382C5D300548316 /* RectSensor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RectSensor.mm; sourceTree = "<group>"; };
 		2DBE5D11136992A700AE4149 /* CorridorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorridorView.h; sourceTree = "<group>"; };
 		2DBE5D12136992A700AE4149 /* CorridorView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CorridorView.mm; sourceTree = "<group>"; };
 		2DE8E831131D4C8400F6F60E /* nanosvg.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = nanosvg.mm; sourceTree = "<group>"; };
@@ -545,8 +557,6 @@
 		50F4144510692EE7002A0D5E /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fps_images.png; sourceTree = "<group>"; };
 		50F4144610692EE7002A0D5E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		50F4144710692EE7002A0D5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		75108E39137810FB0066266E /* FishView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FishView.h; sourceTree = "<group>"; };
-		75108E3A137810FB0066266E /* FishView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FishView.mm; sourceTree = "<group>"; };
 		753062B213796D9700AB6005 /* FishAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FishAnimation.h; path = ../../Plouf/Classes/FishAnimation.h; sourceTree = "<group>"; };
 		753062B313796D9700AB6005 /* FishAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FishAnimation.m; path = ../../Plouf/Classes/FishAnimation.m; sourceTree = "<group>"; };
 		753062BD137977AC00AB6005 /* clown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clown.png; sourceTree = "<group>"; };
@@ -891,15 +901,13 @@
 			isa = PBXGroup;
 			children = (
 				753062B013796D7300AB6005 /* fishes */,
-				75AC3AD713696DDA004AE5E9 /* BackrockView.h */,
-				75AC3AD813696DDA004AE5E9 /* BackrockView.mm */,
 				2DBE5D11136992A700AE4149 /* CorridorView.h */,
 				2DBE5D12136992A700AE4149 /* CorridorView.mm */,
+				75AC3AD713696DDA004AE5E9 /* BackrockView.h */,
+				75AC3AD813696DDA004AE5E9 /* BackrockView.mm */,
 				75AC3AD313696DB2004AE5E9 /* BackgroundView.h */,
 				2D611A811381506C00E9B405 /* Actor.h */,
 				2D611A821381506D00E9B405 /* Actor.mm */,
-				2D611A851381506F00E9B405 /* MyContactListener.h */,
-				2D611A861381507000E9B405 /* MyContactListener.mm */,
 				75AC3AD413696DB2004AE5E9 /* BackgroundView.m */,
 				2D526CD71368835A009ED81B /* LandscapeView.h */,
 				2D526CD81368835A009ED81B /* LandscapeView.mm */,
@@ -911,8 +919,16 @@
 				756BAD27137AC986009BD968 /* Camera.mm */,
 				753A8AD2137C0C6200429A6E /* BubbleView.h */,
 				753A8AD3137C0C6200429A6E /* BubbleView.mm */,
+				2D6B9BDE13828FA6005DADF0 /* RockFall.h */,
+				2D6B9BDF13828FA7005DADF0 /* RockFall.mm */,
 				2D611A9013815A9000E9B405 /* Rock.h */,
 				2D611A9113815A9400E9B405 /* Rock.mm */,
+				2DB0EEDD1382C5CC00548316 /* RectSensor.h */,
+				2DB0EEDE1382C5D300548316 /* RectSensor.mm */,
+				2D98EBEE13866DA400EE6A67 /* InstanceContactOperation.h */,
+				2D98EBEF13866DAA00EE6A67 /* InstanceContactOperation.mm */,
+				2D57A70113856EB700C8797D /* MyContactListener.mm */,
+				2D57A70213856EBE00C8797D /* MyContactListener.h */,
 			);
 			name = level;
 			sourceTree = "<group>";
@@ -1177,14 +1193,14 @@
 		753062B013796D7300AB6005 /* fishes */ = {
 			isa = PBXGroup;
 			children = (
-				75108E39137810FB0066266E /* FishView.h */,
-				75108E3A137810FB0066266E /* FishView.mm */,
 				753062B213796D9700AB6005 /* FishAnimation.h */,
 				753062B313796D9700AB6005 /* FishAnimation.m */,
 				75D7C78E13798ED900A80587 /* FishAnimated.h */,
 				75D7C78F13798ED900A80587 /* FishAnimated.m */,
 				75328DCC137C188700C84466 /* BubbleSprite.h */,
 				75328DCD137C188700C84466 /* BubbleSprite.mm */,
+				2D57A7071385755C00C8797D /* Fish.h */,
+				2D57A7081385755D00C8797D /* Fish.mm */,
 			);
 			name = fishes;
 			sourceTree = "<group>";
@@ -1195,6 +1211,8 @@
 				2D1CBFB2136885DF005040AA /* level1-1.png */,
 				2D1CBFB3136885DF005040AA /* level1-2.png */,
 				2D1CBFB4136885DF005040AA /* level1-3.png */,
+				2D57A6ED1383F34400C8797D /* caillou.png */,
+				2D57A6F713840BBC00C8797D /* cailloux.png */,
 				2D1CBFB5136885DF005040AA /* level1-4.png */,
 				2D1CBFB6136885DF005040AA /* level1-background.png */,
 				2D1CBFB9136885DF005040AA /* level1-mesh.svg */,
@@ -1654,6 +1672,8 @@
 				75328DCA137C13C100C84466 /* clownBubble.png in Resources */,
 				75C95F861381B8F800DB45F2 /* Default-Landscape~ipad.png in Resources */,
 				75C95F871381B8F800DB45F2 /* Default-Portrait~ipad.png in Resources */,
+				2D57A6EE1383F34400C8797D /* caillou.png in Resources */,
+				2D57A6F813840BBC00C8797D /* cailloux.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1686,15 +1706,18 @@
 				75AC3AD513696DB2004AE5E9 /* BackgroundView.m in Sources */,
 				75AC3AD913696DDA004AE5E9 /* BackrockView.mm in Sources */,
 				2DBE5D13136992A700AE4149 /* CorridorView.mm in Sources */,
-				75108E3B137810FB0066266E /* FishView.mm in Sources */,
 				753062B413796D9700AB6005 /* FishAnimation.m in Sources */,
 				75D7C79013798ED900A80587 /* FishAnimated.m in Sources */,
 				756BAD28137AC986009BD968 /* Camera.mm in Sources */,
 				753A8AD4137C0C6300429A6E /* BubbleView.mm in Sources */,
 				75328DCE137C188700C84466 /* BubbleSprite.mm in Sources */,
 				2D611A8B1381507900E9B405 /* Actor.mm in Sources */,
-				2D611A8D1381507900E9B405 /* MyContactListener.mm in Sources */,
 				2D611A9213815A9B00E9B405 /* Rock.mm in Sources */,
+				2D6B9BE013828FA7005DADF0 /* RockFall.mm in Sources */,
+				2DB0EEDF1382C5DA00548316 /* RectSensor.mm in Sources */,
+				2D57A70313856ECF00C8797D /* MyContactListener.mm in Sources */,
+				2D57A7091385755E00C8797D /* Fish.mm in Sources */,
+				2D98EBF013866DB600EE6A67 /* InstanceContactOperation.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1933,7 +1956,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Clement RUCHETON (NG8EL967FZ)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEBUG,
@@ -1950,6 +1973,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-fvisibility=hidden";
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "946843A8-B664-4281-8F57-592591B2D0A3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

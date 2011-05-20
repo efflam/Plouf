@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface BubbleSprite : CCSprite <CCStandardTouchDelegate> {
-    CCNode *target;
+
+@interface BubbleSprite : CCSprite <CCStandardTouchDelegate> 
+{
+    NSObject *target;
 }
-@property(nonatomic,retain) CCNode *target;
+@property(nonatomic,retain) NSObject *target;
 
 @end

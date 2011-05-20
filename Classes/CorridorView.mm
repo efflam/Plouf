@@ -17,9 +17,10 @@
 #import "navmesh.h"
 #import "math.h"
 #import "nanosvg.h"
-#import "FishView.h"
-#import "Actor.h"
 #import "Rock.h"
+#import "RockFall.h"
+#import "RectSensor.h"
+#import "MyContactListener.h"
 
 @implementation CorridorView
 @synthesize moveToFinger;
@@ -85,19 +86,43 @@ static void storePath(float* dst, const float* src, const int npts,
         
 		NavmeshAgent* agent = &navScene.agents[0];
         
-        FishView *fishView  = [FishView fishWithName:@"clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
-        FishView *fishView2 = [FishView fishWithName:@"clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
-        currentFish = fishView;
+        Fish *fish1  = [Fish fishWithName:@"clown" andPosition:ccp(agent->pos[0],agent->pos[1])];
+        Fish *fish2  = [Fish fishWithName:@"clown" andPosition:ccp(agent->pos[0],agent->pos[1])];
+        //FishView *fishView2 = [FishView fishWithName:@"clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
+        currentFish = fish1;
         
-        fishes = [NSMutableArray arrayWithObjects:fishView, fishView2, nil];
+        fishes = [NSMutableArray arrayWithObjects:fish1, fish2, nil];
         
         for(uint i = 0 ; i < [fishes count];i++)
         {
-            FishView *fish = (FishView*)[fishes objectAtIndex:i];
-            [self addChild:fish];
-            [fish setDelegate:self];
+            Fish *fish = (Fish*)[fishes objectAtIndex:i];
+            //[self addChild:fish];
+           //[fish setDelegate:self];
+            [self addActor:fish];
         }
         
+        
+        CCSpriteBatchNode *batch = [CCSpriteBatchNode batchNodeWithFile:@"blocks.png" capacity:150];
+        [self addChild:batch z:0 tag:1];
+        
+        
+        
+        RockFall *fall = [RockFall rockFallWithGame:self];
+        [fall setEmissionPoint:ccp(1080, 1300)];
+        //[fall startEmission];
+        
+        RectSensor *fallSensor = [RectSensor rectSensorFrom:ccp(1600, 760) to:ccp(1800, 660)];
+        [self addActor:fallSensor];
+        
+        [self setContactListener: new MyContactListener()];
+        world->SetContactListener([self contactListener]);
+        CCLOG(@"fish = %@", currentFish);
+        InstanceContactOperation *op = [InstanceContactOperation operationFor:currentFish WithTarget:fall andSelector:@selector(toggleEmission) when:0];
+        
+        [fallSensor addInstanceOperation:op];
+
+    
+         
         [self scheduleUpdate];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bubbleTouch:) name:@"bubbleTouch" object:nil];
@@ -108,7 +133,7 @@ static void storePath(float* dst, const float* src, const int npts,
 -(void)bubbleTouch:(NSNotification*)notification
 {
     BubbleSprite* bubbleSprite = [notification object];
-    [self setSelectedFish:(FishView*)[bubbleSprite target]];
+    [self setSelectedFish:(Fish*)[bubbleSprite target]];
 }
 
 
@@ -247,22 +272,20 @@ static void storePath(float* dst, const float* src, const int npts,
 
 -(void)initPhysics
 {
-    b2Vec2 gravity = b2Vec2(0.0f, -5.0f);
+    b2Vec2 gravity = b2Vec2(0.0f, -2.0f);
     bool doSleep = true;
     world = new b2World(gravity, doSleep);    
     world->SetContinuousPhysics(true);
     debugDraw = new GLESDebugDraw( PTM_RATIO );
-    world->SetDebugDraw(debugDraw);
+    world->SetDebugDraw(debugDraw) ;
     uint32 flags = 0;
     flags += b2DebugDraw::e_shapeBit;
     debugDraw->SetFlags(flags);	
-	
-    CCSpriteBatchNode *batch = [CCSpriteBatchNode batchNodeWithFile:@"blocks.png" capacity:150];
-    [self addChild:batch z:0 tag:1];
     
     [self setActorSet:[[[NSMutableSet alloc] init] autorelease]];
-
 }
+
+
 
 -(void)initCorridor:(float *)vertices count:(int)count
 {
@@ -328,7 +351,7 @@ static void storePath(float* dst, const float* src, const int npts,
     fingerPos = tchLoc;
 }
 
--(void)setSelectedFish:(FishView *)fish
+-(void)setSelectedFish:(Fish *)fish
 {
     if(fish == currentFish) 
     {
@@ -338,14 +361,14 @@ static void storePath(float* dst, const float* src, const int npts,
     
     NavmeshAgent* agent = &navScene.agents[navScene.nagents-1];
     
-    if(!travelling) vset(agent->pos, currentFish.fishSprite.position.x,currentFish.fishSprite.position.y);
+    if(!travelling) vset(agent->pos, currentFish.sprite.position.x,currentFish.sprite.position.y);
     
-    float pos[2] = {fish.fishSprite.position.x,fish.fishSprite.position.y};
-    float nearest[2] = {fish.fishSprite.position.x,fish.fishSprite.position.y};
+    float pos[2] = {fish.sprite.position.x,fish.sprite.position.y};
+    float nearest[2] = {fish.sprite.position.x,fish.sprite.position.y};
     
     NSLog(@"Départ agent    : %f : %f",agent->pos[0],agent->pos[1]);
-    NSLog(@"Départ poisson  : %f : %f",currentFish.fishSprite.position.x,currentFish.fishSprite.position.y);
-    NSLog(@"Arrivée poisson : %f : %f",fish.fishSprite.position.x,fish.fishSprite.position.y);
+    NSLog(@"Départ poisson  : %f : %f",currentFish.sprite.position.x,currentFish.sprite.position.y);
+    NSLog(@"Arrivée poisson : %f : %f",fish.sprite.position.x,fish.sprite.position.y);
     
     if (navScene.nav)
         navmeshFindNearestTri(navScene.nav, pos, nearest);
@@ -369,17 +392,17 @@ static void storePath(float* dst, const float* src, const int npts,
     
     if(rand()%100 <= 1)
     {
-        [self addNewRockWithCoords:ccp(1095, 869)];
+        //[self addNewRockWithCoords:ccp(1095, 869)];
     }
     
     if(self.moveToFinger && !travelling)
     {
-        [currentFish setPosition:fingerPos];
+        [currentFish swimTo:fingerPos];
     }
         
     if(!travelling)
     {        
-        CGPoint fishpoint = [self convertToScreenCenter:currentFish.fishSprite.position];
+        CGPoint fishpoint = [self convertToScreenCenter:currentFish.sprite.position];
     
         [[Camera standardCamera] setPosition:fishpoint];
     }
@@ -409,7 +432,7 @@ static void storePath(float* dst, const float* src, const int npts,
 	vcpy(corner, agent->pos);
 	last = agentFindNextCornerSmooth(agent, dir, navScene.nav, corner);
         
-    float distFromCam = ccpDistance([[Camera standardCamera] position], [[Camera standardCamera] checkBoundsForPoint:[self convertToScreenCenter:currentFish.fishSprite.position] withScale:1]);
+    float distFromCam = ccpDistance([[Camera standardCamera] position], [[Camera standardCamera] checkBoundsForPoint:[self convertToScreenCenter:currentFish.sprite.position] withScale:1]);
     
     //NSLog(@"distFromCam : %f",distFromCam);
         
@@ -424,12 +447,12 @@ static void storePath(float* dst, const float* src, const int npts,
         if(distFromCam > 1.0f)
         {
             camSpring *= 1.05;
-            [[Camera standardCamera] springTo: [self convertToScreenCenter:currentFish.fishSprite.position] withSpring:camSpring]; 
+            [[Camera standardCamera] springTo: [self convertToScreenCenter:currentFish.sprite.position] withSpring:camSpring]; 
         } 
         else
         {
             travelling = NO;
-            [[Camera standardCamera] setPosition:[self convertToScreenCenter:currentFish.fishSprite.position]];
+            [[Camera standardCamera] setPosition:[self convertToScreenCenter:currentFish.sprite.position]];
         }
         return;
 	}
@@ -519,11 +542,12 @@ static void storePath(float* dst, const float* src, const int npts,
 
 -(void)draw
 {
+    
     //[self drawNavMesh];
     glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	world->DrawDebugData();
+	//world->DrawDebugData();
     glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -538,7 +562,8 @@ static void storePath(float* dst, const float* src, const int npts,
 {
 	if(anActor && ![[self actorSet] containsObject:anActor]) 
     {
-		[anActor setGame:self];
+		[anActor setScene:self];
+		[anActor setWorld:self.world];
 		[[self actorSet] addObject:anActor];
 		[anActor actorDidAppear];
 	}
@@ -551,7 +576,8 @@ static void storePath(float* dst, const float* src, const int npts,
 		[anActor retain];
 		[anActor actorWillDisappear];
 		[[self actorSet] removeObject:anActor];
-		[anActor setGame:nil];
+		[anActor setScene:nil];
+        [anActor setWorld:nil];
 		[anActor release];
 	}
 }

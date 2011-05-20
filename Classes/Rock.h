@@ -9,36 +9,26 @@
 #import <Foundation/Foundation.h>
 #import "Actor.h"
 #import "Box2D.h"
-#import "cocos2d.h"
-#import "CorridorView.h"    
+#import "cocos2d.h"  
 
 @interface Rock:Actor 
 {
-    @private
-        b2Body *body;
-        b2BodyDef *bodyDef;
-        b2CircleShape *shapeDef;
-        b2FixtureDef *fixtureDef;
-        CCSprite *rockSprite;
+    b2Body *body;
+    b2BodyDef *bodyDef;
+    b2CircleShape *shapeDef;
+    b2FixtureDef *fixtureDef;
+    CCSprite *rockSprite;
 }
 
 
 #pragma mark Physics Properties
 
-@property (nonatomic, assign) b2Body *body;
-
-@property (nonatomic, assign) b2BodyDef *bodyDef;
-
-@property (nonatomic, assign) b2CircleShape *shapeDef;
-
-@property (nonatomic, assign) b2FixtureDef *fixtureDef;
-
-
-
+@property (readwrite, assign) b2Body *body;
+@property (readwrite, assign) b2BodyDef *bodyDef;
+@property (readwrite, assign) b2CircleShape *shapeDef;
+@property (readwrite, assign) b2FixtureDef *fixtureDef;
 @property (nonatomic, assign) CGPoint position;
-
 @property (nonatomic, assign) CGFloat radius;
-
 @property (nonatomic, assign) CGFloat rotation;
 
 
