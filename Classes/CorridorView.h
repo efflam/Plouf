@@ -49,6 +49,7 @@ struct NavScene
 	GLESDebugDraw *debugDraw;
     BOOL moveToFinger;
     CGPoint fingerPos;
+    CGPoint previousCamPos;
     NavScene navScene;
     NSMutableArray *fishes;
     Fish *currentFish;
