@@ -20,9 +20,6 @@
 @class Fish;
 @protocol FishDelegate;
 
-
-
-
 static const float AGENT_RAD = 20.0f;
 static const int MAX_NAV_AGENTS = 16;
 
@@ -39,9 +36,6 @@ struct NavScene
 	Navmesh* nav;
 	float dim[2];
 };
-
-
-
 
 @interface CorridorView : CCNode<CCStandardTouchDelegate, FishDelegate>
 {    

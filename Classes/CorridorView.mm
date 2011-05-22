@@ -98,7 +98,7 @@ static void storePath(float* dst, const float* src, const int npts,
         {
             Fish *fish = (Fish*)[fishes objectAtIndex:i];
             //[self addChild:fish];
-           //[fish setDelegate:self];
+            [fish setDelegate:self];
             [self addActor:fish];
         }
         
