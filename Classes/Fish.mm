@@ -132,17 +132,18 @@
     
 
     CGPoint posForLevel = self.sprite.position;
+    
+    
     posForLevel.x = 2000 - posForLevel.x + SCREEN_CENTER.x;
     posForLevel.y = 2000 - posForLevel.y + SCREEN_CENTER.y;
+    
     
     CGPoint posForCamera = ccpSub([[Camera standardCamera] position], posForLevel);
     float bubbleHalfSize = self.bubbleSprite.contentSize.width * 0.5;
     //bubbleHalfSize = 0;
     float bubblePadding = 13;
     float bubbleOffset = bubbleHalfSize - bubblePadding;
-    
-    
-    
+        
     if(fabsf(posForCamera.x)-60 > SCREEN_CENTER.x || fabsf(posForCamera.y)-60 > SCREEN_CENTER.y)
     {
         float angle = atan2f(posForCamera.y, posForCamera.x);

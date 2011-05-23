@@ -23,12 +23,12 @@
     
     if(self)
     {
-        self.eye = [FishAnimation fishWithName:name andOption:@"Eye"];        
+        self.eye = [AnimationHelper animationWithName:name andOption:@"Eye" frameNumber:8];        
         
-        [self addChild:[FishAnimation fishWithName:name andOption:@""] z:0 tag:0];
+        [self addChild:[AnimationHelper animationWithName:name andOption:@"" frameNumber:8] z:0 tag:0];
         [self addChild:self.eye z:1 tag:1];
         
-        [(FishAnimation*)[self getChildByTag:0] setListen:YES];
+        [(AnimationHelper*)[self getChildByTag:0] setListen:YES];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEyes) name:@"animationComplete" object:nil];
     }

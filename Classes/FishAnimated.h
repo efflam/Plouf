@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "FishAnimation.h"
+#import "AnimationHelper.h"
 
 @interface FishAnimated : CCNode {
     CCSprite *eyes;
-    FishAnimation *eye;
+    AnimationHelper *eye;
 }
-@property(nonatomic,retain) FishAnimation *eye;
+@property(nonatomic,retain) AnimationHelper *eye;
 
 +(id) fishWithName:(NSString*)name;
 -(id) initWithFishName:(NSString*)name;

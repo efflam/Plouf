@@ -412,6 +412,12 @@ static void storePath(float* dst, const float* src, const int npts,
 	int32 velocityIterations = 8;
 	int32 positionIterations = 1;
     
+    world->Step(dt, velocityIterations, positionIterations);
+    
+    for(Actor *anActor in [NSSet setWithSet:[self actorSet]]) 
+    {
+        [anActor worldDidStep];
+    }
     
     if(!travelling)
     {
@@ -427,13 +433,6 @@ static void storePath(float* dst, const float* src, const int npts,
         CGPoint fishpoint = [self convertToScreenCenter:currentFish.sprite.position];
         
         [[Camera standardCamera] setPosition:fishpoint];
-        
-        world->Step(dt, velocityIterations, positionIterations);
-        
-        for(Actor *anActor in [NSSet setWithSet:[self actorSet]]) 
-        {
-            [anActor worldDidStep];
-        }
         
         return;
     }

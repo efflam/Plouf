@@ -172,7 +172,6 @@
 		50F4144810692EE7002A0D5E /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144310692EE7002A0D5E /* blocks.png */; };
 		50F4144A10692EE7002A0D5E /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144510692EE7002A0D5E /* fps_images.png */; };
 		50F4144B10692EE7002A0D5E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144610692EE7002A0D5E /* Icon.png */; };
-		753062B413796D9700AB6005 /* FishAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 753062B313796D9700AB6005 /* FishAnimation.m */; };
 		753062BF137977AC00AB6005 /* clown.png in Resources */ = {isa = PBXBuildFile; fileRef = 753062BD137977AC00AB6005 /* clown.png */; };
 		753062C0137977AC00AB6005 /* clown.plist in Resources */ = {isa = PBXBuildFile; fileRef = 753062BE137977AC00AB6005 /* clown.plist */; };
 		75328DCA137C13C100C84466 /* clownBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 75328DC9137C13C100C84466 /* clownBubble.png */; };
@@ -184,6 +183,7 @@
 		75C95F861381B8F800DB45F2 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 75C95F841381B8F800DB45F2 /* Default-Landscape~ipad.png */; };
 		75C95F871381B8F800DB45F2 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 75C95F851381B8F800DB45F2 /* Default-Portrait~ipad.png */; };
 		75D7C79013798ED900A80587 /* FishAnimated.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D7C78F13798ED900A80587 /* FishAnimated.m */; };
+		75F4F74A138AA8A70029E8F1 /* AnimationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F4F749138AA8A70029E8F1 /* AnimationHelper.m */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -563,8 +563,6 @@
 		50F4144510692EE7002A0D5E /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fps_images.png; sourceTree = "<group>"; };
 		50F4144610692EE7002A0D5E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		50F4144710692EE7002A0D5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		753062B213796D9700AB6005 /* FishAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FishAnimation.h; path = ../../Plouf/Classes/FishAnimation.h; sourceTree = "<group>"; };
-		753062B313796D9700AB6005 /* FishAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FishAnimation.m; path = ../../Plouf/Classes/FishAnimation.m; sourceTree = "<group>"; };
 		753062BD137977AC00AB6005 /* clown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clown.png; sourceTree = "<group>"; };
 		753062BE137977AC00AB6005 /* clown.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = clown.plist; sourceTree = "<group>"; };
 		75328DC9137C13C100C84466 /* clownBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clownBubble.png; sourceTree = "<group>"; };
@@ -582,6 +580,8 @@
 		75C95F851381B8F800DB45F2 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../../Plouf/Resources/Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		75D7C78E13798ED900A80587 /* FishAnimated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FishAnimated.h; path = ../../Plouf/Classes/FishAnimated.h; sourceTree = "<group>"; };
 		75D7C78F13798ED900A80587 /* FishAnimated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FishAnimated.m; path = ../../Plouf/Classes/FishAnimated.m; sourceTree = "<group>"; };
+		75F4F748138AA8A70029E8F1 /* AnimationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationHelper.h; path = ../../Plouf/Classes/AnimationHelper.h; sourceTree = "<group>"; };
+		75F4F749138AA8A70029E8F1 /* AnimationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationHelper.m; path = ../../Plouf/Classes/AnimationHelper.m; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -849,6 +849,8 @@
 		2D500B1D0D5A766B00DBA0E3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				75F4F748138AA8A70029E8F1 /* AnimationHelper.h */,
+				75F4F749138AA8A70029E8F1 /* AnimationHelper.m */,
 				2DF95489131E763500E6649A /* navmesh */,
 				2DF9548A131E76E100E6649A /* level */,
 				2DF95488131E762C00E6649A /* nanosvg */,
@@ -906,6 +908,7 @@
 		2DF9548A131E76E100E6649A /* level */ = {
 			isa = PBXGroup;
 			children = (
+				75F4F74B138AC2850029E8F1 /* obstacles */,
 				753062B013796D7300AB6005 /* fishes */,
 				2DBE5D11136992A700AE4149 /* CorridorView.h */,
 				2DBE5D12136992A700AE4149 /* CorridorView.mm */,
@@ -1203,8 +1206,6 @@
 		753062B013796D7300AB6005 /* fishes */ = {
 			isa = PBXGroup;
 			children = (
-				753062B213796D9700AB6005 /* FishAnimation.h */,
-				753062B313796D9700AB6005 /* FishAnimation.m */,
 				75D7C78E13798ED900A80587 /* FishAnimated.h */,
 				75D7C78F13798ED900A80587 /* FishAnimated.m */,
 				75328DCC137C188700C84466 /* BubbleSprite.h */,
@@ -1229,6 +1230,13 @@
 				2D1CBFBA136885DF005040AA /* level1-rocks.svg */,
 			);
 			name = level;
+			sourceTree = "<group>";
+		};
+		75F4F74B138AC2850029E8F1 /* obstacles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = obstacles;
 			sourceTree = "<group>";
 		};
 		E02BB8BF126CC28A006E46A2 /* cocos2d */ = {
@@ -1716,7 +1724,6 @@
 				75AC3AD513696DB2004AE5E9 /* BackgroundView.m in Sources */,
 				75AC3AD913696DDA004AE5E9 /* BackrockView.mm in Sources */,
 				2DBE5D13136992A700AE4149 /* CorridorView.mm in Sources */,
-				753062B413796D9700AB6005 /* FishAnimation.m in Sources */,
 				75D7C79013798ED900A80587 /* FishAnimated.m in Sources */,
 				756BAD28137AC986009BD968 /* Camera.mm in Sources */,
 				753A8AD4137C0C6300429A6E /* BubbleView.mm in Sources */,
@@ -1730,6 +1737,7 @@
 				2D98EBF013866DB600EE6A67 /* InstanceContactOperation.mm in Sources */,
 				2D98EBF31386A4F100EE6A67 /* ClassContactOperation.m in Sources */,
 				2D40B3AF138A673800F80E42 /* RockFallSensor.mm in Sources */,
+				75F4F74A138AA8A70029E8F1 /* AnimationHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
