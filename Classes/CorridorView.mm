@@ -162,6 +162,8 @@ static void storePath(float* dst, const float* src, const int npts,
     SVGPath* edgePath = 0;
 	SVGPath* boundaryPath = 0;
 	SVGPath* agentPaths[MAX_NAV_AGENTS];
+    SVGPath* rockPaths[50];
+    int nrockPaths = 0;
 	int nagentPaths = 0;
 	for (SVGPath* it = plist; it; it = it->next)
 	{
@@ -176,6 +178,11 @@ static void storePath(float* dst, const float* src, const int npts,
 			if (it->npts > 1 && nagentPaths < MAX_NAV_AGENTS)
 				agentPaths[nagentPaths++] = it;
 		}
+        else if (it->strokeColor == 0xff9E55C9)
+		{
+			rockPaths[nrockPaths++] = it;
+		}
+
 
 		for (int i = 0; i < it->npts; ++i)
 		{
@@ -274,6 +281,15 @@ static void storePath(float* dst, const float* src, const int npts,
 	//return true;
 
     //navsceneInit(&navScene, plist);
+}
+
+
+-(void)createCrumblyRocks:(SVGPath *)paths count:(int)count
+{
+    for(int i = 0; i < count; i++)
+    {
+        
+    }
 }
 
 
