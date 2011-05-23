@@ -197,6 +197,15 @@
     self.body->ApplyForce(steeringForce, self.body->GetWorldPoint(appPtOffset));
 }
 
+-(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    if([self containsTouchLocation:touch]) 
+    {
+        [delegate setSelectedFish:self];
+    }
+}
+
 #pragma mark Physics Accessors
 
 
@@ -232,11 +241,7 @@
 - (BOOL)containsTouchLocation:(UITouch *)touch
 {
 	if (!self.sprite.visible) return NO;
-    
-    CGPoint fishOrigin = self.sprite.position;
-    CGRect rect = CGRectMake(fishOrigin.x - 60, fishOrigin.y - 60, 120, 120);
-	Boolean isTouch = CGRectContainsPoint(rect, [self.sprite convertTouchToNodeSpaceAR:touch]);
-	return isTouch;
+    return (60.0f > fabsf(ccpLength([self.sprite convertTouchToNodeSpaceAR:touch])));
 }
 
 - (void)addContact:(Actor *)aContact

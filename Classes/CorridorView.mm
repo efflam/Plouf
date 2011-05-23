@@ -98,7 +98,7 @@ static void storePath(float* dst, const float* src, const int npts,
         {
             Fish *fish = (Fish*)[fishes objectAtIndex:i];
             //[self addChild:fish];
-           //[fish setDelegate:self];
+            [fish setDelegate:self];
             [self addActor:fish];
         }
         
@@ -289,8 +289,6 @@ static void storePath(float* dst, const float* src, const int npts,
     [self setActorSet:[[[NSMutableSet alloc] init] autorelease]];
 }
 
-
-
 -(void)initCorridor:(float *)vertices count:(int)count
 {
     for(int i = 0; i < count * 2 - 2; i+=2)
@@ -325,6 +323,7 @@ static void storePath(float* dst, const float* src, const int npts,
     tchLoc.y += 2000 - [Camera standardCamera].position.y;
         
     fingerPos = tchLoc;
+    previousCamPos = [Camera standardCamera].position;
 	
 //    const float lx = tchLoc.x;
 //    const float ly = tchLoc.y;
@@ -394,33 +393,32 @@ static void storePath(float* dst, const float* src, const int npts,
 	int32 velocityIterations = 8;
 	int32 positionIterations = 1;
     
-    if(rand()%100 <= 1)
-    {
-        //[self addNewRockWithCoords:ccp(1095, 869)];
-    }
     
-    if(self.moveToFinger && !travelling)
-    {
-        [currentFish swimTo:fingerPos];
-    }
-        
     if(!travelling)
-    {        
-        CGPoint fishpoint = [self convertToScreenCenter:currentFish.sprite.position];
-    
-        [[Camera standardCamera] setPosition:fishpoint];
-    }
-    
-	world->Step(dt, velocityIterations, positionIterations);
-    
-    for(Actor *anActor in [NSSet setWithSet:[self actorSet]]) 
     {
-         //CCLOG(@"yeah");
-		[anActor worldDidStep];
-	}
-    
-    if(!travelling) return;
-    
+        
+        if(moveToFinger)
+        {
+            fingerPos = ccpSub(fingerPos, ccpSub([[Camera standardCamera] position],previousCamPos));
+            [currentFish swimTo:fingerPos];
+            
+            previousCamPos = [[Camera standardCamera] position];
+        }
+        
+        CGPoint fishpoint = [self convertToScreenCenter:currentFish.sprite.position];
+        
+        [[Camera standardCamera] setPosition:fishpoint];
+        
+        world->Step(dt, velocityIterations, positionIterations);
+        
+        for(Actor *anActor in [NSSet setWithSet:[self actorSet]]) 
+        {
+            [anActor worldDidStep];
+        }
+        
+        return;
+    }
+	
 	const float maxSpeed = 1500.0f;
 	NavmeshAgent* agent = &navScene.agents[navScene.nagents-1];
 	
