@@ -17,6 +17,7 @@
 		2D1CBFBF136885DF005040AA /* level1-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D1CBFB6136885DF005040AA /* level1-background.png */; };
 		2D1CBFC2136885DF005040AA /* level1-mesh.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2D1CBFB9136885DF005040AA /* level1-mesh.svg */; };
 		2D1CBFC3136885DF005040AA /* level1-rocks.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2D1CBFBA136885DF005040AA /* level1-rocks.svg */; };
+		2D40B3AF138A673800F80E42 /* RockFallSensor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D40B3AE138A673600F80E42 /* RockFallSensor.mm */; };
 		2D4B48CC131E966A007B7091 /* fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B48CB131E966A007B7091 /* fish.png */; };
 		2D526CDB1368835A009ED81B /* LandscapeView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D526CD81368835A009ED81B /* LandscapeView.mm */; };
 		2D526CDC1368835A009ED81B /* LevelView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D526CDA1368835A009ED81B /* LevelView.mm */; };
@@ -384,6 +385,8 @@
 		2D1CBFB6136885DF005040AA /* level1-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level1-background.png"; sourceTree = "<group>"; };
 		2D1CBFB9136885DF005040AA /* level1-mesh.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "level1-mesh.svg"; sourceTree = "<group>"; };
 		2D1CBFBA136885DF005040AA /* level1-rocks.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "level1-rocks.svg"; sourceTree = "<group>"; };
+		2D40B3AD138A673400F80E42 /* RockFallSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RockFallSensor.h; sourceTree = "<group>"; };
+		2D40B3AE138A673600F80E42 /* RockFallSensor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RockFallSensor.mm; sourceTree = "<group>"; };
 		2D4B48CB131E966A007B7091 /* fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish.png; sourceTree = "<group>"; };
 		2D526CD71368835A009ED81B /* LandscapeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeView.h; sourceTree = "<group>"; };
 		2D526CD81368835A009ED81B /* LandscapeView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LandscapeView.mm; sourceTree = "<group>"; };
@@ -934,6 +937,8 @@
 				2D98EBF21386A4D500EE6A67 /* ClassContactOperation.m */,
 				2D57A70113856EB700C8797D /* MyContactListener.mm */,
 				2D57A70213856EBE00C8797D /* MyContactListener.h */,
+				2D40B3AD138A673400F80E42 /* RockFallSensor.h */,
+				2D40B3AE138A673600F80E42 /* RockFallSensor.mm */,
 			);
 			name = level;
 			sourceTree = "<group>";
@@ -1724,6 +1729,7 @@
 				2D57A7091385755E00C8797D /* Fish.mm in Sources */,
 				2D98EBF013866DB600EE6A67 /* InstanceContactOperation.mm in Sources */,
 				2D98EBF31386A4F100EE6A67 /* ClassContactOperation.m in Sources */,
+				2D40B3AF138A673800F80E42 /* RockFallSensor.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

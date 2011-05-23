@@ -22,6 +22,7 @@
 #import "RectSensor.h"
 #import "MyContactListener.h"
 #import "ClassContactOperation.h"
+#import "RockFallSensor.h"
 
 @implementation CorridorView
 @synthesize moveToFinger;
@@ -112,19 +113,21 @@ static void storePath(float* dst, const float* src, const int npts,
         [fall setEmissionPoint:ccp(1080, 1300)];
         //[fall startEmission];
         
-        RectSensor *fallSensor = [RectSensor rectSensorFrom:ccp(200, 1300) to:ccp(1500, 660)];
+        RectSensor *fallSensor = [RockFallSensor rockFallSensorFor:fall from:ccp(200, 1300) to:ccp(1500, 660)];
         [self addActor:fallSensor];
         
         [self setContactListener: new MyContactListener()];
         world->SetContactListener([self contactListener]);
         CCLOG(@"fish = %@", currentFish);
-        InstanceContactOperation *op = [InstanceContactOperation operationFor:currentFish WithTarget:fall andSelector:@selector(toggleEmission) when:0];
+        //InstanceContactOperation *op = [InstanceContactOperation operationFor:currentFish WithTarget:fall andSelector:@selector(toggleEmission) when:0];
         
-        [fallSensor addInstanceOperation:op];
+       // InstanceContactOperation *op2 = [InstanceContactOperation operationFor:[fishes objectAtIndex:1] WithTarget:fall andSelector:@selector(toggleEmission) when:0];
+        
+        //[fallSensor addInstanceOperation:op];
+        //[fallSensor addInstanceOperation:op2];
         
         ClassContactOperation *hitOp = [ClassContactOperation operationFor:[Rock class] WithTarget:currentFish andSelector:@selector(hit) when:1];
         [currentFish addClassOperation:hitOp];
-
     
          
         [self scheduleUpdate];
@@ -159,6 +162,8 @@ static void storePath(float* dst, const float* src, const int npts,
     SVGPath* edgePath = 0;
 	SVGPath* boundaryPath = 0;
 	SVGPath* agentPaths[MAX_NAV_AGENTS];
+    SVGPath* rockPaths[50];
+    int nrockPaths = 0;
 	int nagentPaths = 0;
 	for (SVGPath* it = plist; it; it = it->next)
 	{
@@ -173,6 +178,11 @@ static void storePath(float* dst, const float* src, const int npts,
 			if (it->npts > 1 && nagentPaths < MAX_NAV_AGENTS)
 				agentPaths[nagentPaths++] = it;
 		}
+        else if (it->strokeColor == 0xff9E55C9)
+		{
+			rockPaths[nrockPaths++] = it;
+		}
+
 
 		for (int i = 0; i < it->npts; ++i)
 		{
@@ -271,6 +281,15 @@ static void storePath(float* dst, const float* src, const int npts,
 	//return true;
 
     //navsceneInit(&navScene, plist);
+}
+
+
+-(void)createCrumblyRocks:(SVGPath *)paths count:(int)count
+{
+    for(int i = 0; i < count; i++)
+    {
+        
+    }
 }
 
 

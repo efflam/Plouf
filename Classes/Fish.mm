@@ -252,6 +252,7 @@
 -(void)hit
 {
     CCLOG(@"aie !");
+    self.body->ApplyLinearImpulse(b2Vec2(100.0f, 0.0f), self.body->GetWorldCenter());
 }
 
 
