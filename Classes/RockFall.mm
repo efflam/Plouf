@@ -37,7 +37,6 @@
         CCSpriteBatchNode *batch = [CCSpriteBatchNode batchNodeWithFile:@"cailloux.png" capacity:[self maxRocks]];
 		[[self game] addChild:batch z:0 tag:999];
         self.emitting = NO;
-
 	}
 	return self;
 }
@@ -50,6 +49,7 @@
 
 -(void)startEmission
 {
+    if(self.emitting) return;
     [self setTimer:[NSTimer scheduledTimerWithTimeInterval:([self frequency]) target:self selector:@selector(onTimer) userInfo:nil repeats:YES]];
     self.emitting = YES;
 }
@@ -57,6 +57,7 @@
 
 -(void)stopEmission
 {
+    if(!self.emitting) return;
     [self setTimer:nil];
     self.emitting = NO;
 }
