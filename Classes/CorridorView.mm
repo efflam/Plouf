@@ -23,8 +23,10 @@
 #import "MyContactListener.h"
 #import "ClassContactOperation.h"
 #import "RockFallSensor.h"
+#import "CrumblyRockTriangle.h"
 
 @implementation CorridorView
+
 @synthesize moveToFinger;
 @synthesize fingerPos;
 @synthesize navScene; 
@@ -35,35 +37,6 @@
 #define MAX_NAV_AGENTS 8
 
 float camSpring = 0.02;
-
-static void reversePoly(float* poly, const int npoly)
-{
-	int i = 0;
-	int j = npoly-1;
-	while (i < j)
-	{
-		swap(poly[i*2+0], poly[j*2+0]);
-		swap(poly[i*2+1], poly[j*2+1]);
-		i++;
-		--j;
-	}
-}
-
-static void convertPoint(float* dst, const float* src,
-						 const float s, const float* bmin, const float* bmax)
-{
-	dst[0] = (src[0] - bmin[0])*s;
-	dst[1] = (bmax[1] - src[1])*s;
-}
-
-static void storePath(float* dst, const float* src, const int npts,
-					  const float s, const float* bmin, const float* bmax)
-{
-	for (int i = 0; i < npts; ++i)
-		convertPoint(&dst[i*2], &src[i*2], s, bmin, bmax);
-	if (polyarea(dst, npts) < 0.0f)
-		reversePoly(dst, npts);
-}
 
 
 +(id)corridorWithName:(NSString *)levelName
@@ -82,8 +55,10 @@ static void storePath(float* dst, const float* src, const int npts,
         bodyDef.position.Set(agent->pos[0]/PTM_RATIO,  agent->pos[1]/PTM_RATIO);
         */
         
-        [self initMesh:levelName];
         [self initPhysics];
+        
+        [self initMesh:levelName];
+      
         [self initCorridor:navScene.edge count:navScene.nedge];
         
 		NavmeshAgent* agent = &navScene.agents[0];
@@ -128,10 +103,24 @@ static void storePath(float* dst, const float* src, const int npts,
         
         ClassContactOperation *hitOp = [ClassContactOperation operationFor:[Rock class] WithTarget:currentFish andSelector:@selector(hit) when:1];
         [currentFish addClassOperation:hitOp];
-    
+        
+        CrumblyRockTriangle *rock;
+        for(Actor *anActor in [NSSet setWithSet:[self actorSet]]) 
+        {
+            if([anActor isKindOfClass:[CrumblyRockTriangle class]])
+            {
+                rock = (CrumblyRockTriangle *)anActor;
+                InstanceContactOperation *destroyOp = [InstanceContactOperation operationFor:[fishes objectAtIndex:1] WithTarget:rock andSelector:@selector(destroy) when:1];
+                [rock addInstanceOperation:destroyOp];
+
+            }
+        }
+        
+        
          
         [self scheduleUpdate];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeActorHandler:) name:@"removeActor" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bubbleTouch:) name:@"bubbleTouch" object:nil];
 	}
 	return self;
@@ -141,6 +130,12 @@ static void storePath(float* dst, const float* src, const int npts,
 {
     BubbleSprite* bubbleSprite = [notification object];
     [self setSelectedFish:(Fish*)[bubbleSprite target]];
+}
+
+-(void)removeActorHandler:(NSNotification*)notification
+{
+    Actor* actor = [notification object];
+    [self removeActor:actor];
 }
 
 
@@ -194,7 +189,6 @@ static void storePath(float* dst, const float* src, const int npts,
 		}
 	}
 	
-
 	
 	if (!boundaryPath) printf("navsceneLoad: No boundary!\n");
 	if (!walkablePath) printf("navsceneLoad: No walkable!\n");
@@ -202,6 +196,15 @@ static void storePath(float* dst, const float* src, const int npts,
     if (!edgePath)printf("navsceneLoad: No edge!\n");
 
 	const float s = 1;
+    
+    for(int i = 0; i < nrockPaths; i++)
+    {
+        float *pts = new float [rockPaths[i]->npts * 2];
+        storePath(pts, rockPaths[i]->pts, rockPaths[i]->npts, 1, bmin, bmax);
+        CrumblyRockTriangle *tri = [CrumblyRockTriangle crumblyRockTriangle:pts];
+        [self addActor:tri];
+    }
+    
     
     navScene.nedge = edgePath->npts;
 	navScene.edge = new float [navScene.nedge*2];
@@ -284,13 +287,6 @@ static void storePath(float* dst, const float* src, const int npts,
 }
 
 
--(void)createCrumblyRocks:(SVGPath *)paths count:(int)count
-{
-    for(int i = 0; i < count; i++)
-    {
-        
-    }
-}
 
 
 -(void)initPhysics
@@ -411,7 +407,24 @@ static void storePath(float* dst, const float* src, const int npts,
 {
 	int32 velocityIterations = 8;
 	int32 positionIterations = 1;
+    world->Step(dt, velocityIterations, positionIterations);
     
+    for(Actor *anActor in [NSSet setWithSet:[self actorSet]]) 
+    {
+        [anActor worldDidStep];
+        if(anActor.destroyable)
+        {
+            [anActor retain];
+            [anActor actorWillDisappear];
+            [[self actorSet] removeObject:anActor];
+            [anActor setScene:nil];
+            [anActor setWorld:nil];
+            [anActor release];
+
+        }
+               
+    }
+
     
     if(!travelling)
     {
@@ -427,13 +440,6 @@ static void storePath(float* dst, const float* src, const int npts,
         CGPoint fishpoint = [self convertToScreenCenter:currentFish.sprite.position];
         
         [[Camera standardCamera] setPosition:fishpoint];
-        
-        world->Step(dt, velocityIterations, positionIterations);
-        
-        for(Actor *anActor in [NSSet setWithSet:[self actorSet]]) 
-        {
-            [anActor worldDidStep];
-        }
         
         return;
     }
@@ -508,45 +514,6 @@ static void storePath(float* dst, const float* src, const int npts,
     body->ApplyForce(f, body->GetWorldCenter());
 }
 
--(void) addNewRockWithCoords:(CGPoint)p
-{
-    /*
-	CCLOG(@"Add sprite %0.2f x %02.f",p.x,p.y);
-	CCSpriteBatchNode *batch = (CCSpriteBatchNode*) [self getChildByTag:1];
-	
-
-	CCSprite *sprite = [CCSprite spriteWithBatchNode:batch rect:CGRectMake(32, 32,32,32)];
-	[batch addChild:sprite];
-	
-	sprite.position = ccp( p.x, p.y);
-	
-	// Define the dynamic body.
-	//Set up a 1m squared box in the physics world
-	b2BodyDef bodyDef;
-	bodyDef.type = b2_dynamicBody;
-    
-	bodyDef.position.Set(p.x/PTM_RATIO, p.y/PTM_RATIO);
-	bodyDef.userData = sprite;
-	b2Body *body = world->CreateBody(&bodyDef);
-	
-	// Define another box shape for our dynamic body.
-	b2CircleShape rockShape;
-	rockShape.m_radius = 0.5f;
-	
-	// Define the dynamic body fixture.
-	b2FixtureDef fixtureDef;
-	fixtureDef.shape = &rockShape;	
-	fixtureDef.density = 1.0f;
-	fixtureDef.friction = 0.3f;
-	body->CreateFixture(&fixtureDef);
-    */
-    
-    Rock *rock = [[[Rock alloc] init] autorelease];
-	[rock setPosition:p];
-	[self addActor:rock];
-
-}
-
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -568,7 +535,7 @@ static void storePath(float* dst, const float* src, const int npts,
     glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	//world->DrawDebugData();
+	world->DrawDebugData();
     glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -590,17 +557,13 @@ static void storePath(float* dst, const float* src, const int npts,
 	}
 }
 
+
 - (void)removeActor:(Actor *)anActor 
 {
 	if(anActor && [[self actorSet] containsObject:anActor])
     {
-		[anActor retain];
-		[anActor actorWillDisappear];
-		[[self actorSet] removeObject:anActor];
-		[anActor setScene:nil];
-        [anActor setWorld:nil];
-		[anActor release];
-	}
+        anActor.destroyable = YES;
+    }
 }
 
 - (void)removeAllActors 

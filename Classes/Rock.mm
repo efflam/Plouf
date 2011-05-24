@@ -10,6 +10,7 @@
 #import "globals.h"
 
 @implementation Rock
+
 @synthesize body;
 @synthesize bodyDef;
 @synthesize shapeDef;

@@ -13,12 +13,14 @@
     NSMutableArray *classOperationArray;
 	b2World *world;
     CCNode *scene;
+    BOOL destroyable;
 }
 
 
 #pragma mark Contact Properties
 
 @property (nonatomic, readonly) NSSet *contactSet;
+@property(readwrite, assign) BOOL destroyable;
 
 
 #pragma mark Contact Methods

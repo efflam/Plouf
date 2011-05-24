@@ -16,6 +16,7 @@
 
 @implementation Actor
 
+@synthesize destroyable;
 
 #pragma mark Object Methods
 
@@ -31,6 +32,7 @@
 - (id)init {
 	if((self = [super init]))
     {
+        self.destroyable = NO;
 		[self setContactArray:[[[NSMutableArray alloc] init] autorelease]];
         [self setInstanceOperationArray:[[[NSMutableArray alloc] init] autorelease]];
         [self setClassOperationArray:[[[NSMutableArray alloc] init] autorelease]];
@@ -155,7 +157,6 @@
 }
 
 - (void)actorWillDisappear {
-	
 }
 
 - (void)worldDidStep {
