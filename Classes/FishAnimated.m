@@ -10,7 +10,7 @@
 
 
 @implementation FishAnimated
-@synthesize eye;
+@synthesize eye,hit,body,wound;
 
 +(id) fishWithName:(NSString*)name
 {
@@ -23,17 +23,64 @@
     
     if(self)
     {
-        self.eye = [FishAnimation fishWithName:name andOption:@"Eye"];        
+        self.eye = [AnimationHelper animationWithName:name andOption:@"Eye" frameNumber:9];
+        self.hit = [AnimationHelper animationWithName:name andOption:@"Aie" frameNumber:9];
+        self.hit.visible = NO;
         
-        [self addChild:[FishAnimation fishWithName:name andOption:@""] z:0 tag:0];
+        self.body = [AnimationHelper animationWithName:name andOption:@"" frameNumber:9];
+        self.body.listen = YES;
+        
+        [self addChild:self.body z:0 tag:0];
         [self addChild:self.eye z:1 tag:1];
+        [self addChild:self.hit z:2 tag:2];
+                
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationComplete) name:@"animationComplete" object:nil];
         
-        [(FishAnimation*)[self getChildByTag:0] setListen:YES];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEyes) name:@"animationComplete" object:nil];
+        [self.body runAction:self.body.action];
+        [self.eye runAction:self.eye.action];
+        [self.hit runAction:self.hit.action];
+        [[CCActionManager sharedManager] pauseTarget:self.hit];
     }
     
     return self;
+}
+
+-(void)punch
+{
+    self.body.visible = NO;
+    self.eye.visible = NO;
+    
+    [[CCActionManager sharedManager] pauseTarget:self.body];
+    [[CCActionManager sharedManager] pauseTarget:self.eye];
+    [[CCActionManager sharedManager] resumeTarget:self.hit];
+
+    self.hit.visible = YES;
+    
+    
+    [self.hit setListen:YES];
+    
+    self.wound = YES;
+}
+
+-(void)animationComplete
+{
+    if(!self.wound)
+    {
+        self.body.visible = YES;
+        self.eye.visible = YES;
+        self.hit.visible = NO;
+        
+        self.body.listen = YES;
+        self.hit.listen = NO;
+        
+        [self changeEyes];
+        
+        [[CCActionManager sharedManager] resumeTarget:self.body];
+        [[CCActionManager sharedManager] resumeTarget:self.eye];
+        [[CCActionManager sharedManager] pauseTarget:self.hit];
+    }
+    
+    self.wound = NO;
 }
 
 -(void)changeEyes
