@@ -14,8 +14,10 @@
 // HelloWorld Layer
 @interface HelloWorld : CCLayer
 {
-	
+	CCTexture2D *image;
 }
+
+@property(nonatomic,retain)CCTexture2D *image;
 
 // returns a Scene that contains the HelloWorld as the only child
 +(id) scene;

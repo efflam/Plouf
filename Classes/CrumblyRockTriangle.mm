@@ -54,6 +54,7 @@
         self.shapeDef->Set(vertices, 3);
         [self setFixtureDef:new b2FixtureDef];
 		[self fixtureDef]->restitution = 0.1f;
+        [self setTexture:[CrumblyRockTriangleTexture nodeWithPoints:pts]];
 	}
 	return self;
 }
