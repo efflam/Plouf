@@ -182,6 +182,7 @@
 		75AC3AD513696DB2004AE5E9 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3AD413696DB2004AE5E9 /* BackgroundView.m */; };
 		75AC3AD913696DDA004AE5E9 /* BackrockView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3AD813696DDA004AE5E9 /* BackrockView.mm */; };
 		75AEA1AD138BD5AF0097F2C6 /* AnimationHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75AEA1AC138BD5AF0097F2C6 /* AnimationHelper.mm */; };
+		75AEA1B0138BD6E10097F2C6 /* CrumblyRockTriangleTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AEA1AF138BD6E10097F2C6 /* CrumblyRockTriangleTexture.m */; };
 		75C95F861381B8F800DB45F2 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 75C95F841381B8F800DB45F2 /* Default-Landscape~ipad.png */; };
 		75C95F871381B8F800DB45F2 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 75C95F851381B8F800DB45F2 /* Default-Portrait~ipad.png */; };
 		75D7C79013798ED900A80587 /* FishAnimated.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75D7C78F13798ED900A80587 /* FishAnimated.mm */; };
@@ -583,6 +584,8 @@
 		75AC3AD813696DDA004AE5E9 /* BackrockView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BackrockView.mm; sourceTree = "<group>"; };
 		75AEA1AB138BD5AF0097F2C6 /* AnimationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationHelper.h; path = ../../Plouf/Classes/AnimationHelper.h; sourceTree = "<group>"; };
 		75AEA1AC138BD5AF0097F2C6 /* AnimationHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AnimationHelper.mm; path = ../../Plouf/Classes/AnimationHelper.mm; sourceTree = "<group>"; };
+		75AEA1AE138BD6E10097F2C6 /* CrumblyRockTriangleTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CrumblyRockTriangleTexture.h; path = ../../Plouf/Classes/CrumblyRockTriangleTexture.h; sourceTree = "<group>"; };
+		75AEA1AF138BD6E10097F2C6 /* CrumblyRockTriangleTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CrumblyRockTriangleTexture.m; path = ../../Plouf/Classes/CrumblyRockTriangleTexture.m; sourceTree = "<group>"; };
 		75C95F841381B8F800DB45F2 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../../Plouf/Resources/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		75C95F851381B8F800DB45F2 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../../Plouf/Resources/Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		75D7C78E13798ED900A80587 /* FishAnimated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FishAnimated.h; path = ../../Plouf/Classes/FishAnimated.h; sourceTree = "<group>"; };
@@ -1253,6 +1256,8 @@
 				75F4F74D138BB72A0029E8F1 /* AnemoneAnimated.mm */,
 				75F61116138BBF5500468DB6 /* MureneAnimated.h */,
 				75F61117138BBF5500468DB6 /* MureneAnimated.mm */,
+				75AEA1AE138BD6E10097F2C6 /* CrumblyRockTriangleTexture.h */,
+				75AEA1AF138BD6E10097F2C6 /* CrumblyRockTriangleTexture.m */,
 			);
 			name = obstacles;
 			sourceTree = "<group>";
@@ -1768,6 +1773,7 @@
 				2D40B3AF138A673800F80E42 /* RockFallSensor.mm in Sources */,
 				2D30CA97138BACE7006AB6D7 /* CrumblyRockTriangle.mm in Sources */,
 				75AEA1AD138BD5AF0097F2C6 /* AnimationHelper.mm in Sources */,
+				75AEA1B0138BD6E10097F2C6 /* CrumblyRockTriangleTexture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

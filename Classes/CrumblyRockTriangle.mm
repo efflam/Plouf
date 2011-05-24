@@ -16,6 +16,7 @@
 @synthesize shapeDef;
 @synthesize fixtureDef;
 @synthesize points;
+@synthesize texture;
 
 - (void)dealloc
 {
@@ -64,6 +65,7 @@
 	[self setBody:[self world]->CreateBody([self bodyDef])];
 	[self fixtureDef]->shape = [self shapeDef];
     [self body]->CreateFixture([self fixtureDef]);
+    [[self scene] addChild:self.texture];
 }
 
 
@@ -72,6 +74,7 @@
 	[self body]->SetUserData(nil);
 	[self world]->DestroyBody([self body]);
 	[self setBody:nil];
+    [[self scene] removeChild:texture cleanup:NO];
 	[super actorWillDisappear];
 }
 

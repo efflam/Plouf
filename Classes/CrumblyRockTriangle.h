@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Actor.h"
 #import "Box2D.h"
-
+#import "CrumblyRockTriangleTexture.h"
 
 @interface CrumblyRockTriangle : Actor
 {
@@ -18,8 +18,10 @@
     b2PolygonShape *shapeDef;
     b2FixtureDef *fixtureDef;
     float *points;
+    CrumblyRockTriangleTexture *texture;
 }
 
+@property (nonatomic, retain) CrumblyRockTriangleTexture *texture;
 @property (readwrite, assign) b2Body *body;
 @property (readwrite, assign) b2BodyDef *bodyDef;
 @property (readwrite, assign) b2PolygonShape *shapeDef;
