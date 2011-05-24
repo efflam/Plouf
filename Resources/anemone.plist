@@ -4,7 +4,25 @@
 <dict>
 	<key>frames</key>
 	<dict>
-		
+		<key>anemone.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{9, 0}, {25, 186}}</string>
+			<key>spriteOffset</key>
+			<string>{-4, 2}</string>
+			<key>spriteSize</key>
+			<string>{25, 186}</string>
+			<key>spriteSourceSize</key>
+			<string>{51, 190}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2, 2}, {25, 186}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
 		<key>anemone0.png</key>
 		<dict>
 			<key>aliases</key>
@@ -24,7 +42,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemone1.png</key>
 		<dict>
 			<key>aliases</key>
@@ -44,7 +61,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemone10.png</key>
 		<dict>
 			<key>aliases</key>
@@ -64,7 +80,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemone11.png</key>
 		<dict>
 			<key>aliases</key>
@@ -84,7 +99,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemone2.png</key>
 		<dict>
 			<key>aliases</key>
@@ -104,7 +118,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemone3.png</key>
 		<dict>
 			<key>aliases</key>
@@ -124,7 +137,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemone4.png</key>
 		<dict>
 			<key>aliases</key>
@@ -144,7 +156,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemone5.png</key>
 		<dict>
 			<key>aliases</key>
@@ -164,7 +175,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemone6.png</key>
 		<dict>
 			<key>aliases</key>
@@ -184,7 +194,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemone7.png</key>
 		<dict>
 			<key>aliases</key>
@@ -204,7 +213,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemone8.png</key>
 		<dict>
 			<key>aliases</key>
@@ -224,7 +232,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemone9.png</key>
 		<dict>
 			<key>aliases</key>
@@ -244,7 +251,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemonecoup0.png</key>
 		<dict>
 			<key>aliases</key>
@@ -264,7 +270,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemonecoup1.png</key>
 		<dict>
 			<key>aliases</key>
@@ -284,7 +289,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemonecoup10.png</key>
 		<dict>
 			<key>aliases</key>
@@ -304,7 +308,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemonecoup11.png</key>
 		<dict>
 			<key>aliases</key>
@@ -324,7 +327,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemonecoup2.png</key>
 		<dict>
 			<key>aliases</key>
@@ -344,7 +346,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemonecoup3.png</key>
 		<dict>
 			<key>aliases</key>
@@ -364,7 +365,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemonecoup4.png</key>
 		<dict>
 			<key>aliases</key>
@@ -384,7 +384,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemonecoup5.png</key>
 		<dict>
 			<key>aliases</key>
@@ -404,7 +403,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemonecoup6.png</key>
 		<dict>
 			<key>aliases</key>
@@ -424,7 +422,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemonecoup7.png</key>
 		<dict>
 			<key>aliases</key>
@@ -444,7 +441,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemonecoup8.png</key>
 		<dict>
 			<key>aliases</key>
@@ -464,7 +460,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>anemonecoup9.png</key>
 		<dict>
 			<key>aliases</key>
@@ -484,7 +479,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 	</dict>
 	<key>metadata</key>
 	<dict>
