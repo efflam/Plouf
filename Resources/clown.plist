@@ -4,6 +4,7 @@
 <dict>
 	<key>frames</key>
 	<dict>
+		
 		<key>clown.png</key>
 		<dict>
 			<key>aliases</key>
@@ -19,10 +20,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{2, 124}, {82, 120}}</string>
+			<string>{{2, 368}, {82, 120}}</string>
 			<key>textureRotated</key>
 			<true/>
 		</dict>
+		
 		<key>clown0.png</key>
 		<dict>
 			<key>aliases</key>
@@ -38,10 +40,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{86, 124}, {82, 120}}</string>
+			<string>{{2, 246}, {82, 120}}</string>
 			<key>textureRotated</key>
 			<true/>
 		</dict>
+		
 		<key>clown1.png</key>
 		<dict>
 			<key>aliases</key>
@@ -57,10 +60,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{254, 122}, {82, 118}}</string>
+			<string>{{170, 242}, {82, 118}}</string>
 			<key>textureRotated</key>
 			<true/>
 		</dict>
+		
 		<key>clown2.png</key>
 		<dict>
 			<key>aliases</key>
@@ -76,10 +80,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{172, 2}, {86, 118}}</string>
+			<string>{{88, 2}, {86, 118}}</string>
 			<key>textureRotated</key>
 			<true/>
 		</dict>
+		
 		<key>clown3.png</key>
 		<dict>
 			<key>aliases</key>
@@ -95,10 +100,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{88, 2}, {82, 120}}</string>
+			<string>{{86, 368}, {82, 120}}</string>
 			<key>textureRotated</key>
 			<true/>
 		</dict>
+		
 		<key>clown4.png</key>
 		<dict>
 			<key>aliases</key>
@@ -114,10 +120,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{170, 124}, {82, 120}}</string>
+			<string>{{86, 246}, {82, 120}}</string>
 			<key>textureRotated</key>
 			<true/>
 		</dict>
+		
 		<key>clown5.png</key>
 		<dict>
 			<key>aliases</key>
@@ -133,10 +140,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{260, 2}, {82, 118}}</string>
+			<string>{{172, 122}, {82, 118}}</string>
 			<key>textureRotated</key>
 			<true/>
 		</dict>
+		
 		<key>clown6.png</key>
 		<dict>
 			<key>aliases</key>
@@ -152,10 +160,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{344, 2}, {82, 112}}</string>
+			<string>{{254, 242}, {82, 112}}</string>
 			<key>textureRotated</key>
 			<true/>
 		</dict>
+		
 		<key>clown7.png</key>
 		<dict>
 			<key>aliases</key>
@@ -171,10 +180,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{338, 122}, {82, 118}}</string>
+			<string>{{88, 122}, {82, 118}}</string>
 			<key>textureRotated</key>
 			<true/>
 		</dict>
+		
 		<key>clown8.png</key>
 		<dict>
 			<key>aliases</key>
@@ -194,6 +204,187 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
+		
+		<key>clownAie0.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{13, 4}, {108, 80}}</string>
+			<key>spriteOffset</key>
+			<string>{2, -1}</string>
+			<key>spriteSize</key>
+			<string>{108, 80}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{262, 2}, {80, 108}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		
+		<key>clownAie1.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{14, 4}, {110, 80}}</string>
+			<key>spriteOffset</key>
+			<string>{4, -1}</string>
+			<key>spriteSize</key>
+			<string>{110, 80}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{256, 120}, {80, 110}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		
+		<key>clownAie2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{20, 4}, {104, 80}}</string>
+			<key>spriteOffset</key>
+			<string>{7, -1}</string>
+			<key>spriteSize</key>
+			<string>{104, 80}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{348, 86}, {104, 80}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>clownAie3.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{23, 4}, {102, 80}}</string>
+			<key>spriteOffset</key>
+			<string>{9, -1}</string>
+			<key>spriteSize</key>
+			<string>{102, 80}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{348, 168}, {102, 80}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>clownAie4.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{22, 3}, {104, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{9, -1}</string>
+			<key>spriteSize</key>
+			<string>{104, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{348, 2}, {104, 82}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>clownAie5.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{20, 4}, {106, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{8, -2}</string>
+			<key>spriteSize</key>
+			<string>{106, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{254, 356}, {82, 106}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		
+		<key>clownAie6.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{12, 2}, {114, 82}}</string>
+			<key>spriteOffset</key>
+			<string>{4, -0}</string>
+			<key>spriteSize</key>
+			<string>{114, 82}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{170, 362}, {82, 114}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		
+		<key>clownAie7.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{9, 1}, {116, 84}}</string>
+			<key>spriteOffset</key>
+			<string>{2, -0}</string>
+			<key>spriteSize</key>
+			<string>{116, 84}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{176, 2}, {84, 116}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		
+		<key>clownAie8.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{5, 2}, {120, 84}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -1}</string>
+			<key>spriteSize</key>
+			<string>{120, 84}</string>
+			<key>spriteSourceSize</key>
+			<string>{130, 86}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2, 124}, {84, 120}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		
 		<key>clownEye0.png</key>
 		<dict>
 			<key>aliases</key>
@@ -209,10 +400,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{462, 92}, {32, 26}}</string>
+			<string>{{230, 478}, {26, 32}}</string>
 			<key>textureRotated</key>
-			<false/>
+			<true/>
 		</dict>
+		
 		<key>clownEye1.png</key>
 		<dict>
 			<key>aliases</key>
@@ -228,10 +420,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{462, 120}, {32, 26}}</string>
+			<string>{{454, 62}, {32, 26}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
+		
 		<key>clownEye2.png</key>
 		<dict>
 			<key>aliases</key>
@@ -247,10 +440,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{428, 2}, {34, 28}}</string>
+			<string>{{318, 464}, {28, 34}}</string>
 			<key>textureRotated</key>
-			<false/>
+			<true/>
 		</dict>
+		
 		<key>clownEye3.png</key>
 		<dict>
 			<key>aliases</key>
@@ -266,10 +460,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{464, 2}, {34, 28}}</string>
+			<string>{{258, 464}, {28, 34}}</string>
 			<key>textureRotated</key>
-			<false/>
+			<true/>
 		</dict>
+		
 		<key>clownEye4.png</key>
 		<dict>
 			<key>aliases</key>
@@ -285,10 +480,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{428, 32}, {34, 28}}</string>
+			<string>{{288, 464}, {28, 34}}</string>
 			<key>textureRotated</key>
-			<false/>
+			<true/>
 		</dict>
+		
 		<key>clownEye5.png</key>
 		<dict>
 			<key>aliases</key>
@@ -304,10 +500,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{464, 32}, {34, 28}}</string>
+			<string>{{454, 2}, {34, 28}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
+		
 		<key>clownEye6.png</key>
 		<dict>
 			<key>aliases</key>
@@ -323,10 +520,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{464, 62}, {32, 28}}</string>
+			<string>{{170, 478}, {28, 32}}</string>
 			<key>textureRotated</key>
-			<false/>
+			<true/>
 		</dict>
+		
 		<key>clownEye7.png</key>
 		<dict>
 			<key>aliases</key>
@@ -342,10 +540,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{428, 92}, {32, 28}}</string>
+			<string>{{200, 478}, {28, 32}}</string>
 			<key>textureRotated</key>
-			<false/>
+			<true/>
 		</dict>
+		
 		<key>clownEye8.png</key>
 		<dict>
 			<key>aliases</key>
@@ -361,17 +560,18 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{428, 62}, {34, 28}}</string>
+			<string>{{454, 32}, {34, 28}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
+		
 	</dict>
 	<key>metadata</key>
 	<dict>
 		<key>format</key>
 		<integer>3</integer>
 		<key>size</key>
-		<string>{512, 256}</string>
+		<string>{512, 512}</string>
 	</dict>
 </dict>
 </plist>

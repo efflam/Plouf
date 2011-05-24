@@ -184,6 +184,10 @@
 		75C95F871381B8F800DB45F2 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 75C95F851381B8F800DB45F2 /* Default-Portrait~ipad.png */; };
 		75D7C79013798ED900A80587 /* FishAnimated.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D7C78F13798ED900A80587 /* FishAnimated.m */; };
 		75F4F74A138AA8A70029E8F1 /* AnimationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F4F749138AA8A70029E8F1 /* AnimationHelper.m */; };
+		75F4F74E138BB72A0029E8F1 /* AnemoneAnimated.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75F4F74D138BB72A0029E8F1 /* AnemoneAnimated.mm */; };
+		75F61114138BBC8000468DB6 /* anemone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75F61112138BBC8000468DB6 /* anemone.plist */; };
+		75F61115138BBC8000468DB6 /* anemone.png in Resources */ = {isa = PBXBuildFile; fileRef = 75F61113138BBC8000468DB6 /* anemone.png */; };
+		75F61118138BBF5500468DB6 /* MureneAnimated.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75F61117138BBF5500468DB6 /* MureneAnimated.mm */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -582,6 +586,12 @@
 		75D7C78F13798ED900A80587 /* FishAnimated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FishAnimated.m; path = ../../Plouf/Classes/FishAnimated.m; sourceTree = "<group>"; };
 		75F4F748138AA8A70029E8F1 /* AnimationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationHelper.h; path = ../../Plouf/Classes/AnimationHelper.h; sourceTree = "<group>"; };
 		75F4F749138AA8A70029E8F1 /* AnimationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationHelper.m; path = ../../Plouf/Classes/AnimationHelper.m; sourceTree = "<group>"; };
+		75F4F74C138BB72A0029E8F1 /* AnemoneAnimated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnemoneAnimated.h; path = ../../Plouf/Classes/AnemoneAnimated.h; sourceTree = "<group>"; };
+		75F4F74D138BB72A0029E8F1 /* AnemoneAnimated.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AnemoneAnimated.mm; path = ../../Plouf/Classes/AnemoneAnimated.mm; sourceTree = "<group>"; };
+		75F61112138BBC8000468DB6 /* anemone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = anemone.plist; sourceTree = "<group>"; };
+		75F61113138BBC8000468DB6 /* anemone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anemone.png; sourceTree = "<group>"; };
+		75F61116138BBF5500468DB6 /* MureneAnimated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MureneAnimated.h; path = ../../Plouf/Classes/MureneAnimated.h; sourceTree = "<group>"; };
+		75F61117138BBF5500468DB6 /* MureneAnimated.mm */ = {isa = PBXFileReference; fileEncoding = 4; name = MureneAnimated.mm; path = ../../Plouf/Classes/MureneAnimated.mm; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1180,6 +1190,7 @@
 		50F4144210692EE7002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				75F61110138BBC6F00468DB6 /* obstacles */,
 				751901AC13795B6E0093AAC3 /* fishes */,
 				2D4B48CB131E966A007B7091 /* fish.png */,
 				75C95F881381B93E00DB45F2 /* level */,
@@ -1235,6 +1246,19 @@
 		75F4F74B138AC2850029E8F1 /* obstacles */ = {
 			isa = PBXGroup;
 			children = (
+				75F4F74C138BB72A0029E8F1 /* AnemoneAnimated.h */,
+				75F4F74D138BB72A0029E8F1 /* AnemoneAnimated.mm */,
+				75F61116138BBF5500468DB6 /* MureneAnimated.h */,
+				75F61117138BBF5500468DB6 /* MureneAnimated.mm */,
+			);
+			name = obstacles;
+			sourceTree = "<group>";
+		};
+		75F61110138BBC6F00468DB6 /* obstacles */ = {
+			isa = PBXGroup;
+			children = (
+				75F61112138BBC8000468DB6 /* anemone.plist */,
+				75F61113138BBC8000468DB6 /* anemone.png */,
 			);
 			name = obstacles;
 			sourceTree = "<group>";
@@ -1692,6 +1716,8 @@
 				75C95F871381B8F800DB45F2 /* Default-Portrait~ipad.png in Resources */,
 				2D57A6EE1383F34400C8797D /* caillou.png in Resources */,
 				2D57A6F813840BBC00C8797D /* cailloux.png in Resources */,
+				75F61114138BBC8000468DB6 /* anemone.plist in Resources */,
+				75F61115138BBC8000468DB6 /* anemone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1738,6 +1764,8 @@
 				2D98EBF31386A4F100EE6A67 /* ClassContactOperation.m in Sources */,
 				2D40B3AF138A673800F80E42 /* RockFallSensor.mm in Sources */,
 				75F4F74A138AA8A70029E8F1 /* AnimationHelper.m in Sources */,
+				75F4F74E138BB72A0029E8F1 /* AnemoneAnimated.mm in Sources */,
+				75F61118138BBF5500468DB6 /* MureneAnimated.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

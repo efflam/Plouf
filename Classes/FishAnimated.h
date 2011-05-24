@@ -11,13 +11,21 @@
 #import "AnimationHelper.h"
 
 @interface FishAnimated : CCNode {
-    CCSprite *eyes;
+    AnimationHelper *body;
     AnimationHelper *eye;
+    AnimationHelper *hit;
+    
+    BOOL wound;
 }
+@property(nonatomic,assign) BOOL wound;
 @property(nonatomic,retain) AnimationHelper *eye;
+@property(nonatomic,retain) AnimationHelper *hit;
+@property(nonatomic,retain) AnimationHelper *body;
 
 +(id) fishWithName:(NSString*)name;
 -(id) initWithFishName:(NSString*)name;
 -(void) setFlipX:(BOOL)flip;
+-(void)changeEyes;
+-(void)punch;
 
 @end

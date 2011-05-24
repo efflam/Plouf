@@ -17,7 +17,6 @@
 #import "Actor.h"
 #import "CorridorView.h"
 
-
 @protocol FishDelegate;
 
 @interface Fish:Actor <CCStandardTouchDelegate,BubbleTrackable>

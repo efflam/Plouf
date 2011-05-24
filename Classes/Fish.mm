@@ -140,21 +140,16 @@
     
     CGPoint posForCamera = ccpSub([[Camera standardCamera] position], posForLevel);
     float bubbleHalfSize = self.bubbleSprite.contentSize.width * 0.5;
-    //bubbleHalfSize = 0;
     float bubblePadding = 13;
     float bubbleOffset = bubbleHalfSize - bubblePadding;
         
     if(fabsf(posForCamera.x)-60 > SCREEN_CENTER.x || fabsf(posForCamera.y)-60 > SCREEN_CENTER.y)
     {
         float angle = atan2f(posForCamera.y, posForCamera.x);
-        
-        // CCLOG(@"angle = %f", angle);
-        
+                
         CGPoint circlePoint = ccp(CAM_RADIUS*cosf(angle),CAM_RADIUS*sinf(angle));
         CGPoint bubblePointForCam = ccp(fminf(SCREEN_CENTER.x - bubbleOffset, fmaxf(-SCREEN_CENTER.x + bubbleOffset, circlePoint.x)),fminf(SCREEN_CENTER.y - bubbleOffset, fmaxf(-SCREEN_CENTER.y + bubbleOffset, circlePoint.y)));
-        
-        //        NSLog(@"Bubble Point For Cam : %@",NSStringFromCGPoint(bubblePointForCam));
-        
+                
         self.bubblePoint = ccp(SCREEN_CENTER.x + bubblePointForCam.x, SCREEN_CENTER.y + bubblePointForCam.y);
         
         if(self.sprite.visible) 
@@ -166,9 +161,6 @@
         {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"trackMe" object:self];
         }
-        
-        //NSLog(@"radius : %f / angle : %f / bubble point : %@",radius,angle,NSStringFromCGPoint(bubblePoint));
-        
     }
     else if(!self.sprite.visible)
     {
@@ -220,11 +212,7 @@
 
 - (void)setPosition:(CGPoint)aPosition
 {
-    //CCLOG(@"body ? %@", ([self body]));
-	//NSAssert(![self body], @"Cannot set position");
-	[self bodyDef]->position.Set(SCREEN_TO_WORLD(aPosition.x), SCREEN_TO_WORLD(aPosition.y));
-    //[self body]->SetTransform(b2Vec2(SCREEN_TO_WORLD(aPosition.x), SCREEN_TO_WORLD(aPosition.y)), [self body]->GetAngle());
-    
+	[self bodyDef]->position.Set(SCREEN_TO_WORLD(aPosition.x), SCREEN_TO_WORLD(aPosition.y)); 
 }
 
 - (CGFloat)rotation
@@ -253,6 +241,7 @@
 -(void)hit
 {
     CCLOG(@"aie !");
+    [[self sprite] punch];
     self.body->ApplyLinearImpulse(b2Vec2(100.0f, 0.0f), self.body->GetWorldCenter());
 }
 
