@@ -76,6 +76,9 @@
 	[self body]->SetUserData(nil);
 	[self world]->DestroyBody([self body]);
 	[self setBody:nil];
+	[self setBodyDef:nil];
+	[self setShapeDef:nil];
+    [self setFixtureDef:nil];
 	[[self scene] removeChild:[self rockSprite] cleanup:NO];
     CCSpriteBatchNode *batch = (CCSpriteBatchNode*) [[self scene] getChildByTag:999];
     [batch removeChild:[self rockSprite] cleanup:YES];

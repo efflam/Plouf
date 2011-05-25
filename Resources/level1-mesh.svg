@@ -3,7 +3,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="4000px" height="4000px" viewBox="0 0 4000 4000" enable-background="new 0 0 4000 4000" xml:space="preserve">
-<image display="none" overflow="visible" enable-background="new    " width="4000" height="4000" xlink:href="_Graphisme/Decors/Decor20_05.png"  transform="matrix(0.9999 0 0 0.9999 0.251 0.25)">
+<image display="none" overflow="visible" enable-background="new    " width="4000" height="4000" xlink:href="../../../../Dropbox/plouf/_Graphisme/Decors/Decor20_05.png"  transform="matrix(0.9999 0 0 0.9999 0.251 0.25)">
 </image>
 <rect fill="none" stroke="#000000" stroke-miterlimit="10" width="4000" height="4000"/>
 <line fill="none" stroke="#FF0000" stroke-miterlimit="10" x1="2518.758" y1="3357.773" x2="2926.676" y2="3328.596"/>
@@ -42,16 +42,22 @@
 	1797.832,849.621 2097.047,1227.864 1693.375,1323.975 1629.25,1580.47 2456.866,1530.812 2710.503,1020.588 3050.386,1114.862 
 	2879.362,1685.62 3223.801,1701.014 3472.787,1461.363 3624.893,1372.033 3815.137,1662.389 3877.626,2105.812 3709.125,2335.832 
 	3630.441,2341.66 3295.155,2716.01 3359.704,2909.654 2986.787,3534.006 2437.471,3453.057 1898.819,3529.354 1463.578,3669.301 "/>
-<line fill="none" stroke="#FF7FDB" stroke-miterlimit="10" x1="1609.28" y1="1873.307" x2="1493.5" y2="1764.5"/>
-<line fill="none" stroke="#FF7FDB" stroke-miterlimit="10" x1="1616.08" y1="1848.66" x2="1533.5" y2="1721.5"/>
-<line fill="none" stroke="#FF7FDB" stroke-miterlimit="10" x1="1580.75" y1="1896.581" x2="1454.5" y2="1796.5"/>
+<line fill="none" stroke="#FF7FDB" stroke-miterlimit="10" x1="1609.28" y1="1873.307" x2="1760" y2="1873.307"/>
+<line fill="none" stroke="#FF7FDB" stroke-miterlimit="10" x1="1658.5" y1="1699.66" x2="1658.5" y2="1572.5"/>
+<line fill="none" stroke="#FF7FDB" stroke-miterlimit="10" x1="1467.684" y1="1989.194" x2="1299.933" y2="2018.113"/>
 <polygon fill="none" stroke="#9E55C9" stroke-miterlimit="10" points="3073.5,1878.5 3028.5,1781.5 2990.29,1851.698 "/>
 <polygon fill="none" stroke="#9E55C9" stroke-miterlimit="10" points="3069.5,1756.5 3028.5,1781.5 3073.5,1878.5 "/>
-<polygon fill="none" stroke="#9E55C9" stroke-miterlimit="10" points="3176.573,1658.863 3095.601,1657 3095.601,1717.5 "/>
-<polygon fill="none" stroke="#9E55C9" stroke-miterlimit="10" points="3189.5,1704.5 3176.573,1658.863 3095.601,1717.5 "/>
-<polygon fill="none" stroke="#9E55C9" stroke-miterlimit="10" points="3176.5,1755.5 3189.5,1704.5 3095.601,1717.5 "/>
-<polygon fill="none" stroke="#9E55C9" stroke-miterlimit="10" points="3069.5,1756.5 3176.5,1755.5 3095.601,1717.5 "/>
+<polygon fill="none" stroke="#9E55C9" stroke-miterlimit="10" points="3176.573,1658.863 3095.602,1657 3095.602,1717.5 "/>
+<polygon fill="none" stroke="#9E55C9" stroke-miterlimit="10" points="3189.5,1704.5 3176.573,1658.863 3095.602,1717.5 "/>
+<polygon fill="none" stroke="#9E55C9" stroke-miterlimit="10" points="3176.5,1755.5 3189.5,1704.5 3095.602,1717.5 "/>
+<polygon fill="none" stroke="#9E55C9" stroke-miterlimit="10" points="3069.5,1756.5 3176.5,1755.5 3095.602,1717.5 "/>
 <polygon fill="none" stroke="#9E55C9" stroke-miterlimit="10" points="3189.5,1825.5 3176.5,1755.5 3069.5,1756.5 "/>
 <polygon fill="none" stroke="#9E55C9" stroke-miterlimit="10" points="3073.5,1878.5 3189.5,1825.5 3069.5,1756.5 "/>
-<polygon fill="none" stroke="#9E55C9" stroke-miterlimit="10" points="3155.5,1934.815 3189.5,1825.5 3073.5,1878.5 "/>
+<polygon fill="none" stroke="#9E55C9" stroke-miterlimit="10" points="3155.5,1934.814 3189.5,1825.5 3073.5,1878.5 "/>
+<line fill="none" stroke="#FF7FDB" stroke-miterlimit="10" x1="3006.5" y1="3574.66" x2="2962.217" y2="3499.336"/>
+<line fill="none" stroke="#FF7FDB" stroke-miterlimit="10" x1="2892" y1="3560.158" x2="2931.717" y2="3493.834"/>
+<line fill="none" stroke="#FF7FDB" stroke-miterlimit="10" x1="2857.217" y1="3610.994" x2="2899.217" y2="3483.834"/>
+<line fill="none" stroke="#FF7FDB" stroke-miterlimit="10" x1="2613.272" y1="3572.496" x2="2571.217" y2="3460.336"/>
+<line fill="none" stroke="#FF7FDB" stroke-miterlimit="10" x1="2821.717" y1="3603.994" x2="2857.217" y2="3483.834"/>
+<line fill="none" stroke="#FF7FDB" stroke-miterlimit="10" x1="2786.217" y1="3603.994" x2="2808.717" y2="3483.834"/>
 </svg>

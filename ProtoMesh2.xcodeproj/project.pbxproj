@@ -23,6 +23,8 @@
 		2D526CDB1368835A009ED81B /* LandscapeView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D526CD81368835A009ED81B /* LandscapeView.mm */; };
 		2D526CDC1368835A009ED81B /* LevelView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D526CDA1368835A009ED81B /* LevelView.mm */; };
 		2D526CDF1368838E009ED81B /* ScrollLevelView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D526CDE1368838E009ED81B /* ScrollLevelView.mm */; };
+		2D5699D8138BF6BF00C86B96 /* Anemone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D5699D7138BF6BF00C86B96 /* Anemone.mm */; };
+		2D5699DB138C006C00C86B96 /* AnemoneAnimated.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D5699DA138C006C00C86B96 /* AnemoneAnimated.mm */; };
 		2D57A6EE1383F34400C8797D /* caillou.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D57A6ED1383F34400C8797D /* caillou.png */; };
 		2D57A6F813840BBC00C8797D /* cailloux.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D57A6F713840BBC00C8797D /* cailloux.png */; };
 		2D57A70313856ECF00C8797D /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D57A70113856EB700C8797D /* MyContactListener.mm */; };
@@ -401,6 +403,10 @@
 		2D526CDA1368835A009ED81B /* LevelView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LevelView.mm; sourceTree = "<group>"; };
 		2D526CDD1368838E009ED81B /* ScrollLevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollLevelView.h; sourceTree = "<group>"; };
 		2D526CDE1368838E009ED81B /* ScrollLevelView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScrollLevelView.mm; sourceTree = "<group>"; };
+		2D5699D6138BF6BF00C86B96 /* Anemone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anemone.h; sourceTree = "<group>"; };
+		2D5699D7138BF6BF00C86B96 /* Anemone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Anemone.mm; sourceTree = "<group>"; };
+		2D5699D9138C006C00C86B96 /* AnemoneAnimated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnemoneAnimated.h; sourceTree = "<group>"; };
+		2D5699DA138C006C00C86B96 /* AnemoneAnimated.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AnemoneAnimated.mm; sourceTree = "<group>"; };
 		2D57A6ED1383F34400C8797D /* caillou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = caillou.png; sourceTree = "<group>"; };
 		2D57A6F713840BBC00C8797D /* cailloux.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cailloux.png; sourceTree = "<group>"; };
 		2D57A70113856EB700C8797D /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
@@ -592,8 +598,6 @@
 		75C95F851381B8F800DB45F2 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../../Plouf/Resources/Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		75D7C78E13798ED900A80587 /* FishAnimated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FishAnimated.h; path = ../../Plouf/Classes/FishAnimated.h; sourceTree = "<group>"; };
 		75D7C78F13798ED900A80587 /* FishAnimated.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FishAnimated.mm; path = ../../Plouf/Classes/FishAnimated.mm; sourceTree = "<group>"; };
-		75F4F74C138BB72A0029E8F1 /* AnemoneAnimated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnemoneAnimated.h; path = ../../Plouf/Classes/AnemoneAnimated.h; sourceTree = "<group>"; };
-		75F4F74D138BB72A0029E8F1 /* AnemoneAnimated.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AnemoneAnimated.mm; path = ../../Plouf/Classes/AnemoneAnimated.mm; sourceTree = "<group>"; };
 		75F61112138BBC8000468DB6 /* anemone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = anemone.plist; sourceTree = "<group>"; };
 		75F61113138BBC8000468DB6 /* anemone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anemone.png; sourceTree = "<group>"; };
 		75F61116138BBF5500468DB6 /* MureneAnimated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MureneAnimated.h; path = ../../Plouf/Classes/MureneAnimated.h; sourceTree = "<group>"; };
@@ -931,6 +935,8 @@
 				75AC3AD713696DDA004AE5E9 /* BackrockView.h */,
 				75AC3AD813696DDA004AE5E9 /* BackrockView.mm */,
 				75AC3AD313696DB2004AE5E9 /* BackgroundView.h */,
+				2D5699D6138BF6BF00C86B96 /* Anemone.h */,
+				2D5699D7138BF6BF00C86B96 /* Anemone.mm */,
 				2D611A811381506C00E9B405 /* Actor.h */,
 				2D611A821381506D00E9B405 /* Actor.mm */,
 				75AC3AD413696DB2004AE5E9 /* BackgroundView.m */,
@@ -1254,10 +1260,10 @@
 		75F4F74B138AC2850029E8F1 /* obstacles */ = {
 			isa = PBXGroup;
 			children = (
-				75F4F74C138BB72A0029E8F1 /* AnemoneAnimated.h */,
-				75F4F74D138BB72A0029E8F1 /* AnemoneAnimated.mm */,
 				75F61116138BBF5500468DB6 /* MureneAnimated.h */,
 				75F61117138BBF5500468DB6 /* MureneAnimated.mm */,
+				2D5699D9138C006C00C86B96 /* AnemoneAnimated.h */,
+				2D5699DA138C006C00C86B96 /* AnemoneAnimated.mm */,
 				75AEA1AE138BD6E10097F2C6 /* CrumblyRockTriangleTexture.h */,
 				75AEA1AF138BD6E10097F2C6 /* CrumblyRockTriangleTexture.m */,
 			);
@@ -1778,6 +1784,8 @@
 				2D30CA97138BACE7006AB6D7 /* CrumblyRockTriangle.mm in Sources */,
 				75AEA1AD138BD5AF0097F2C6 /* AnimationHelper.mm in Sources */,
 				75AEA1B0138BD6E10097F2C6 /* CrumblyRockTriangleTexture.m in Sources */,
+				2D5699D8138BF6BF00C86B96 /* Anemone.mm in Sources */,
+				2D5699DB138C006C00C86B96 /* AnemoneAnimated.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,6 +24,7 @@
 #import "ClassContactOperation.h"
 #import "RockFallSensor.h"
 #import "CrumblyRockTriangle.h"
+#import "Anemone.h"
 
 @implementation CorridorView
 
@@ -114,6 +115,13 @@ float camSpring = 0.02;
                 [rock addInstanceOperation:destroyOp];
 
             }
+            else if([anActor isKindOfClass:[Anemone class]])
+            {
+                Anemone *anem = (Anemone *)anActor;
+                InstanceContactOperation *ateOp = [InstanceContactOperation operationFor:[fishes objectAtIndex:1] WithTarget:anem andSelector:@selector(ate) when:1];
+                [anem addInstanceOperation:ateOp];
+                
+            }
         }
         
         
@@ -158,8 +166,10 @@ float camSpring = 0.02;
 	SVGPath* boundaryPath = 0;
 	SVGPath* agentPaths[MAX_NAV_AGENTS];
     SVGPath* rockPaths[50];
+    SVGPath* anemonePaths[50];
     int nrockPaths = 0;
 	int nagentPaths = 0;
+	int nanemonePaths = 0;
 	for (SVGPath* it = plist; it; it = it->next)
 	{
         if (it->strokeColor == 0xff000000)
@@ -176,6 +186,10 @@ float camSpring = 0.02;
         else if (it->strokeColor == 0xff9E55C9)
 		{
 			rockPaths[nrockPaths++] = it;
+		}
+        else if (it->strokeColor == 0xffFF7FDB && !it->closed)
+		{
+			anemonePaths[nanemonePaths++] = it;
 		}
 
 
@@ -204,6 +218,41 @@ float camSpring = 0.02;
         CrumblyRockTriangle *tri = [CrumblyRockTriangle crumblyRockTriangle:pts];
         [self addActor:tri];
     }
+    
+    for(int i = 0; i < nanemonePaths; i++)
+    {
+        
+        const float* pa = &anemonePaths[i]->pts[0];
+		const float* pb = &anemonePaths[i]->pts[(anemonePaths[i]->npts-1)*2];
+        
+        CCLOG(@"ANEMONE %i -> pa : (%f, %f); pb : (%f, %f)", i, pa[0], pa[1], pb[0], pb[1]);
+
+        
+        float p1[2];
+        float p2[2];
+        convertPoint(p1, pa, s, bmin, bmax);
+		convertPoint(p2, pb, s, bmin, bmax);
+        
+        CCLOG(@"ANEMONE %i -> p1 : (%f, %f); p2 : (%f, %f)", i, p1[0], p1[1], p2[0], p2[1]);
+        
+        CGPoint point1 = ccp(p1[0], p1[1]);
+        CGPoint point2 = ccp(p2[0], p2[1]);
+        CGPoint point2ForPoint1 = ccpSub(point1, point2);
+        float angle = ccpAngleSigned(point1, point2);
+        
+        CCLOG(@"point %d : (angle = %f),", i, angle);
+
+        float a = p1[0] - p2[0];
+        float b = p1[1] - p2[1];
+        float ang = atan2f(b, a) + M_PI * 0.5;
+        
+        
+        
+        Anemone *anem = [Anemone anemoneAtPosition:ccp(p1[0], p1[1]) andRotation:ang];
+        
+        [self addActor:anem];
+    }
+
     
     
     navScene.nedge = edgePath->npts;
