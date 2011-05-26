@@ -40,9 +40,12 @@
 -(id) initWithAnimationName:(NSString*)name andOption:(NSString*)option frameNumber:(int)frameNumber
 {
     CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
-    [frameCache addSpriteFramesWithFile:[NSString stringWithFormat:@"%@.plist",name]];
     
-    self = [super initWithSpriteFrameName:[NSString stringWithFormat:@"%@.png",name]];
+    [frameCache addSpriteFramesWithFile:[NSString stringWithFormat:@"%@.plist",name] texture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"%@.png",name]]];
+    
+//    self = [super initWithSpriteFrameName:[NSString stringWithFormat:@"%@.png",name]];
+    
+    self = [super init];
     
     if (self)
     {

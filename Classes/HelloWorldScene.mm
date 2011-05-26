@@ -7,21 +7,23 @@
 //
 
 #import "HelloWorldScene.h"
-#import "LevelView.h"
-#import "CrumblyRockTriangleTexture.h"
+//#import "LevelView.h"
+#import "MainMenu.h"
 
 @implementation HelloWorld
-@synthesize image;
+//@synthesize image;
 
 +(id) scene
 {
 	CCScene *scene = [CCScene node];
-	[scene addChild: [LevelView levelWithName:@"level1"]];
+//	[scene addChild: [LevelView levelWithName:@"level1"]];
+	[scene addChild: [MainMenu scene]];
 //    [scene addChild:[HelloWorld node]];
             
 	return scene;
 }
 
+/*
 -(id) init
 {
 	if( (self=[super init] )) {
@@ -29,7 +31,7 @@
 		self.image = [[CCTextureCache sharedTextureCache] addImage: @"motifRoche.png"];
 	}
 	return self;
-}
+}*/
 
 /*
 - (void) draw {

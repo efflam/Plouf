@@ -22,7 +22,7 @@
         {
             ptts[i/2] = ccp(pts[i],pts[i+1]);
             
-            NSLog(@"Point ROCK : %@",NSStringFromCGPoint(ptts[i/2]));
+            //NSLog(@"Point ROCK : %@",NSStringFromCGPoint(ptts[i/2]));
             
             tex[i/2] = ccp(pts[i]/64,pts[i+1]/64);
             self.image = [[CCTextureCache sharedTextureCache] addImage:@"motifRoche.png"];
