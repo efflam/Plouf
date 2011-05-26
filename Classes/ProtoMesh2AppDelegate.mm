@@ -10,7 +10,7 @@
 
 #import "ProtoMesh2AppDelegate.h"
 #import "GameConfig.h"
-#import "HelloWorldScene.h"
+#import "MainMenu.h"
 #import "RootViewController.h"
 
 @implementation ProtoMesh2AppDelegate
@@ -111,7 +111,7 @@
 	[self removeStartupFlicker];
 	
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [HelloWorld scene]];		
+	[[CCDirector sharedDirector] runWithScene: [MainMenu scene]];		
 }
 
 

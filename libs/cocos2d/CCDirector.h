@@ -240,6 +240,7 @@ and when to execute the Scenes.
  * ONLY call it if there is a running scene.
  */
 - (void) popScene;
+-(void) popSceneWithTransition: (Class)transitionClass duration:(ccTime)t;
 
 /** Replaces the running scene with a new one. The running scene is terminated.
  * ONLY call it if there is a running scene.

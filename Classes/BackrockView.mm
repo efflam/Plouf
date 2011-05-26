@@ -95,7 +95,7 @@ void rockPoolFree( void* userData, void* ptr )
                 verticesFixed = (struct CGPoint *)realloc(verticesFixed, (counterFixed + 1) * sizeof(struct CGPoint));
                 
                 /* allocate memory for one `struct node` */
-                verticesFixed[counterFixed] = *(struct CGPoint *)malloc(sizeof(struct CGPoint));
+                //verticesFixed[counterFixed] = *(struct CGPoint *)malloc(sizeof(struct CGPoint));
                 
                 CGPoint temp = [[CCDirector sharedDirector] convertToGL:ccp(verts[p[j]*2],verts[p[j]*2+1])];
                 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>blackTiles</key>
+	<array>
+		<string>0_2</string>
+		<string>0_3</string>
+		<string>0_4</string>
+		<string>0_7</string>
+		<string>1_7</string>
+		<string>3_4</string>
+		<string>4_0</string>
+		<string>4_4</string>
+		<string>5_0</string>
+		<string>5_4</string>
+		<string>6_0</string>
+		<string>6_1</string>
+		<string>6_7</string>
+		<string>7_0</string>
+		<string>7_1</string>
+		<string>7_5</string>
+		<string>7_6</string>
+		<string>7_7</string>
+	</array>
+</dict>
+</plist>

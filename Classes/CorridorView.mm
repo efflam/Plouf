@@ -130,6 +130,8 @@ float camSpring = 0.02;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeActorHandler:) name:@"removeActor" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bubbleTouch:) name:@"bubbleTouch" object:nil];
+        
+        NSLog(@"LOADED GROS !");
 	}
 	return self;
 }

@@ -17,7 +17,10 @@
     CGPoint lastTilePosition;
     NSString *level;
     NSMutableArray *positions;
+    
+    NSMutableArray *tiles;
 }
+@property(nonatomic,retain) NSMutableArray *tiles;
 
 -(id)initWithLevelName:(NSString*)levelName;
 +(id)landscapeWithName:(NSString*)levelName;
