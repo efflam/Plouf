@@ -32,6 +32,12 @@
 		2D611A8B1381507900E9B405 /* Actor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D611A821381506D00E9B405 /* Actor.mm */; };
 		2D611A9213815A9B00E9B405 /* Rock.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D611A9113815A9400E9B405 /* Rock.mm */; };
 		2D6B9BE013828FA7005DADF0 /* RockFall.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D6B9BDF13828FA7005DADF0 /* RockFall.mm */; };
+		2D7267E7138E76F4004054C6 /* Murene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D7267E6138E76F3004054C6 /* Murene.mm */; };
+		2D7267EA138E772A004054C6 /* MureneAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D7267E9138E7729004054C6 /* MureneAnimation.mm */; };
+		2D7267EF138E777D004054C6 /* corps.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7267EC138E777D004054C6 /* corps.png */; };
+		2D7267F0138E777D004054C6 /* machoire_bas.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7267ED138E777D004054C6 /* machoire_bas.png */; };
+		2D7267F1138E777D004054C6 /* machoire_haut.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7267EE138E777D004054C6 /* machoire_haut.png */; };
+		2D7267F3138E788B004054C6 /* Ambiance.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D7267F2138E788B004054C6 /* Ambiance.mp3 */; };
 		2D98EBF013866DB600EE6A67 /* InstanceContactOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D98EBEF13866DAA00EE6A67 /* InstanceContactOperation.mm */; };
 		2D98EBF31386A4F100EE6A67 /* ClassContactOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D98EBF21386A4D500EE6A67 /* ClassContactOperation.m */; };
 		2DB060971344BA67003993D1 /* bucketalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB060891344BA65003993D1 /* bucketalloc.c */; };
@@ -419,6 +425,14 @@
 		2D611A9113815A9400E9B405 /* Rock.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Rock.mm; sourceTree = "<group>"; };
 		2D6B9BDE13828FA6005DADF0 /* RockFall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RockFall.h; sourceTree = "<group>"; };
 		2D6B9BDF13828FA7005DADF0 /* RockFall.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RockFall.mm; sourceTree = "<group>"; };
+		2D7267E5138E76F2004054C6 /* Murene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Murene.h; sourceTree = "<group>"; };
+		2D7267E6138E76F3004054C6 /* Murene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Murene.mm; sourceTree = "<group>"; };
+		2D7267E8138E7728004054C6 /* MureneAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MureneAnimation.h; sourceTree = "<group>"; };
+		2D7267E9138E7729004054C6 /* MureneAnimation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MureneAnimation.mm; sourceTree = "<group>"; };
+		2D7267EC138E777D004054C6 /* corps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = corps.png; sourceTree = "<group>"; };
+		2D7267ED138E777D004054C6 /* machoire_bas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = machoire_bas.png; sourceTree = "<group>"; };
+		2D7267EE138E777D004054C6 /* machoire_haut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = machoire_haut.png; sourceTree = "<group>"; };
+		2D7267F2138E788B004054C6 /* Ambiance.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ambiance.mp3; sourceTree = "<group>"; };
 		2D98EBEE13866DA400EE6A67 /* InstanceContactOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstanceContactOperation.h; sourceTree = "<group>"; };
 		2D98EBEF13866DAA00EE6A67 /* InstanceContactOperation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InstanceContactOperation.mm; sourceTree = "<group>"; };
 		2D98EBF11386A4C700EE6A67 /* ClassContactOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassContactOperation.h; sourceTree = "<group>"; };
@@ -888,6 +902,16 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		2D7267EB138E7752004054C6 /* murene */ = {
+			isa = PBXGroup;
+			children = (
+				2D7267EC138E777D004054C6 /* corps.png */,
+				2D7267ED138E777D004054C6 /* machoire_bas.png */,
+				2D7267EE138E777D004054C6 /* machoire_haut.png */,
+			);
+			name = murene;
+			sourceTree = "<group>";
+		};
 		2DF95488131E762C00E6649A /* nanosvg */ = {
 			isa = PBXGroup;
 			children = (
@@ -1204,6 +1228,7 @@
 		50F4144210692EE7002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2D7267F2138E788B004054C6 /* Ambiance.mp3 */,
 				75F61110138BBC6F00468DB6 /* obstacles */,
 				751901AC13795B6E0093AAC3 /* fishes */,
 				2D4B48CB131E966A007B7091 /* fish.png */,
@@ -1266,6 +1291,10 @@
 				2D5699DA138C006C00C86B96 /* AnemoneAnimated.mm */,
 				75AEA1AE138BD6E10097F2C6 /* CrumblyRockTriangleTexture.h */,
 				75AEA1AF138BD6E10097F2C6 /* CrumblyRockTriangleTexture.m */,
+				2D7267E5138E76F2004054C6 /* Murene.h */,
+				2D7267E6138E76F3004054C6 /* Murene.mm */,
+				2D7267E8138E7728004054C6 /* MureneAnimation.h */,
+				2D7267E9138E7729004054C6 /* MureneAnimation.mm */,
 			);
 			name = obstacles;
 			sourceTree = "<group>";
@@ -1273,6 +1302,7 @@
 		75F61110138BBC6F00468DB6 /* obstacles */ = {
 			isa = PBXGroup;
 			children = (
+				2D7267EB138E7752004054C6 /* murene */,
 				75AEA1B1138BDD210097F2C6 /* motifRoche.png */,
 				75F61112138BBC8000468DB6 /* anemone.plist */,
 				75F61113138BBC8000468DB6 /* anemone.png */,
@@ -1736,6 +1766,10 @@
 				75F61114138BBC8000468DB6 /* anemone.plist in Resources */,
 				75F61115138BBC8000468DB6 /* anemone.png in Resources */,
 				75AEA1B2138BDD210097F2C6 /* motifRoche.png in Resources */,
+				2D7267EF138E777D004054C6 /* corps.png in Resources */,
+				2D7267F0138E777D004054C6 /* machoire_bas.png in Resources */,
+				2D7267F1138E777D004054C6 /* machoire_haut.png in Resources */,
+				2D7267F3138E788B004054C6 /* Ambiance.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1786,6 +1820,8 @@
 				75AEA1B0138BD6E10097F2C6 /* CrumblyRockTriangleTexture.m in Sources */,
 				2D5699D8138BF6BF00C86B96 /* Anemone.mm in Sources */,
 				2D5699DB138C006C00C86B96 /* AnemoneAnimated.mm in Sources */,
+				2D7267E7138E76F4004054C6 /* Murene.mm in Sources */,
+				2D7267EA138E772A004054C6 /* MureneAnimation.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

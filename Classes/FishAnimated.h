@@ -17,6 +17,7 @@
     
     BOOL wound;
 }
+
 @property(nonatomic,assign) BOOL wound;
 @property(nonatomic,retain) AnimationHelper *eye;
 @property(nonatomic,retain) AnimationHelper *hit;

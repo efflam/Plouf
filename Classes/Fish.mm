@@ -242,7 +242,10 @@
 {
     CCLOG(@"aie !");
     [[self sprite] punch];
-    self.body->ApplyLinearImpulse(b2Vec2(100.0f, 0.0f), self.body->GetWorldCenter());
+    float force = 100.0f;
+    float fx = -cosf(self.body->GetAngle())* force;
+    float fy = -sinf(self.body->GetAngle())* force;
+    self.body->ApplyLinearImpulse(b2Vec2(fx, fy), self.body->GetWorldCenter());
 }
 
 

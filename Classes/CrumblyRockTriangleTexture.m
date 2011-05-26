@@ -77,7 +77,7 @@
     //glPushMatrix();
 	//glTranslatef(0, 0, 0);
     
-//	glEnable(GL_LINE_SMOOTH);
+    //glEnable(GL_LINE_SMOOTH);
     //glShadeModel(GL_LINE_SMOOTH);
 	glBindTexture(GL_TEXTURE_2D, self.image.name);
     

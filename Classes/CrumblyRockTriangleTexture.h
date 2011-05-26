@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface CrumblyRockTriangleTexture : CCNode {
+@interface CrumblyRockTriangleTexture : CCNode 
+{
     struct CGPoint ptts[3];
     struct CGPoint tex[3];
     CCTexture2D *image;

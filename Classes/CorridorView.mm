@@ -25,6 +25,8 @@
 #import "RockFallSensor.h"
 #import "CrumblyRockTriangle.h"
 #import "Anemone.h"
+#import "SimpleAudioEngine.h"
+#import "Murene.h"
 
 @implementation CorridorView
 
@@ -102,8 +104,18 @@ float camSpring = 0.02;
         //[fallSensor addInstanceOperation:op];
         //[fallSensor addInstanceOperation:op2];
         
+        
+        Murene *murene = [Murene murene];
+        [self addActor:murene];
+        
+        
+        
+        
         ClassContactOperation *hitOp = [ClassContactOperation operationFor:[Rock class] WithTarget:currentFish andSelector:@selector(hit) when:1];
         [currentFish addClassOperation:hitOp];
+        
+        ClassContactOperation *electOp = [ClassContactOperation operationFor:[Anemone class] WithTarget:[fishes objectAtIndex:0] andSelector:@selector(hit) when:1];
+        [[fishes objectAtIndex:0] addClassOperation:electOp];
         
         CrumblyRockTriangle *rock;
         for(Actor *anActor in [NSSet setWithSet:[self actorSet]]) 
@@ -121,8 +133,10 @@ float camSpring = 0.02;
                 InstanceContactOperation *ateOp = [InstanceContactOperation operationFor:[fishes objectAtIndex:1] WithTarget:anem andSelector:@selector(ate) when:1];
                 [anem addInstanceOperation:ateOp];
                 
+                
             }
         }
+    
         
         
          
@@ -130,6 +144,8 @@ float camSpring = 0.02;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeActorHandler:) name:@"removeActor" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bubbleTouch:) name:@"bubbleTouch" object:nil];
+        
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Ambiance.mp3" loop:YES];
 	}
 	return self;
 }
