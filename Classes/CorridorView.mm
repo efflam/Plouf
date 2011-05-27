@@ -106,7 +106,7 @@ float camSpring = 0.02;
         
         
         Murene *murene = [Murene murene];
-        [self addActor:murene];
+        //[self addActor:murene];
         
         
         
@@ -508,7 +508,7 @@ float camSpring = 0.02;
         
         return;
     }
-	
+    	
 	const float maxSpeed = 1500.0f;
 	NavmeshAgent* agent = &navScene.agents[navScene.nagents-1];
 	
@@ -522,7 +522,8 @@ float camSpring = 0.02;
 	vsub(dir, agent->pos, agent->oldpos); // This delta handles wall-hugging better than using current velocity.
 	vnorm(dir);
 	vcpy(corner, agent->pos);
-	last = agentFindNextCornerSmooth(agent, dir, navScene.nav, corner);
+//	last = agentFindNextCornerSmooth(agent, dir, navScene.nav, corner);
+	last = agentFindNextCorner(agent, navScene.nav, corner);
         
     float distFromCam = ccpDistance([[Camera standardCamera] position], [[Camera standardCamera] checkBoundsForPoint:[self convertToScreenCenter:currentFish.sprite.position] withScale:1]);
     
@@ -530,7 +531,6 @@ float camSpring = 0.02;
         
 	if (last && vdist(agent->pos, corner) < 2.0f)
 	{
-        NSLog(@"stop travalling pute.");
 		// Reached goal
 		vcpy(agent->oldpos, agent->pos);
 		vset(agent->dvel, 0,0);
