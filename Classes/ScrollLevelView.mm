@@ -7,15 +7,23 @@
 //
 
 #import "ScrollLevelView.h"
-#import "LandscapeView.h"
-#import "CorridorView.h"
-#import "BackrockView.h"
+
 
 @implementation ScrollLevelView
+@synthesize corridor,landscape,rocks;
 
 +(id)levelWithName:(NSString *)levelName
 {
     return [[[ScrollLevelView alloc] initWithLevelName:levelName] autorelease];
+}
+
+-(void)dealloc
+{
+    [self unscheduleUpdate];
+    [rocks release];
+    [landscape release];
+    [corridor release];
+    [super dealloc];
 }
 
 -(id) initWithLevelName:(NSString *)levelName
@@ -27,9 +35,9 @@
 		
         [self setAnchorPoint:ccp(0,0)];
         
-        BackrockView *rocks         = [BackrockView backrockWithName:levelName];
-        LandscapeView *landscape    = [LandscapeView landscapeWithName:levelName];
-        CorridorView *corridor      = [CorridorView corridorWithName:levelName];
+        self.rocks       = [BackrockView backrockWithName:levelName];
+        self.landscape   = [LandscapeView landscapeWithName:levelName];
+        self.corridor    = [CorridorView corridorWithName:levelName];
                         
 		[self addChild:rocks        z:-2    parallaxRatio:ccp(.7,.7)    positionOffset:ccp(0,0)];
         [self addChild:corridor     z:-1    parallaxRatio:ccp(1,1)      positionOffset:ccp(-MAP_WIDTH/2,-MAP_HEIGHT/2)];
@@ -40,8 +48,16 @@
 		//scaleMin   = fmaxf(winSize.width/mapSize.width,winSize.height/mapSize.height);
         
         [[Camera standardCamera] setPosition:self.position];
+        
+        [self scheduleUpdate];
 	}
 	return self;
+}
+
+-(void)update:(ccTime)dt
+{
+    [corridor update:dt];
+    [landscape update:dt];
 }
 
 /*

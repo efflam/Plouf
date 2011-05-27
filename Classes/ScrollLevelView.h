@@ -10,6 +10,9 @@
 #import "cocos2d.h"
 #import "globals.h"
 #import "Camera.h"
+#import "LandscapeView.h"
+#import "CorridorView.h"
+#import "BackrockView.h"
 
 @interface ScrollLevelView : CCParallaxNode <CCStandardTouchDelegate, CameraDelegate>
 {
@@ -27,7 +30,15 @@
 	
 	float delta;
     */
+    
+    BackrockView *rocks;
+    LandscapeView *landscape;
+    CorridorView *corridor;
 }
+
+@property(nonatomic,retain)BackrockView *rocks;
+@property(nonatomic,retain)LandscapeView *landscape;
+@property(nonatomic,retain)CorridorView *corridor;
 
 /*
 @property(readwrite, assign) CGSize mapSize;

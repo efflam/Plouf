@@ -108,7 +108,7 @@
 
 
 //-(void)update:(ccTime)dt
--(void)draw
+-(void)update:(ccTime)dt
 {
     CGPoint visibleScreen = CGPointMake(2000-([[Camera standardCamera] position].x), 2000-([[Camera standardCamera] position].y));
     
@@ -131,7 +131,7 @@
         else tile.visible = NO;
     }
     
-    [super draw];
+//    [super draw];
     
 //    NSLog(@"tiles : %i",j);
     

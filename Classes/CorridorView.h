@@ -59,7 +59,6 @@ struct NavScene
 @property (nonatomic, readwrite) b2ContactListener *contactListener;
 @property (nonatomic, assign) b2World *world;
 
-
 +(id)corridorWithName:(NSString *)levelName;
 -(id)initWithLevelName:(NSString *)levelName;
 -(SVGPath*)loadMesh:(NSString*)levelName;
@@ -75,7 +74,7 @@ struct NavScene
 -(CGPoint)convertToScreenCenter:(CGPoint)point;
 
 -(void)removeActorHandler:(NSNotification*)notification;
-
+-(void)update:(ccTime)dt;
 
 #pragma mark Actor Methods
 
