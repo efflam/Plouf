@@ -15,8 +15,16 @@
     float pageWidth;
     
     float desiredX;
+    CCNode *bubblesHolder;
+    int currentBubbleIndex;
+    CGPoint origin;
+    BOOL changed;
 }
 
 @property(nonatomic,retain) NSMutableArray *environments;
+@property(nonatomic, retain) CCNode *bubblesHolder;
+@property(readwrite, assign) int currentBubbleIndex;
+@property(nonatomic, assign) CGPoint origin;
+@property(readwrite, assign) BOOL changed;
 
 @end

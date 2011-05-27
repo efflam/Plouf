@@ -33,7 +33,7 @@
     
     if(self)
     {        
-        self.loader = [Loader node];
+        self.loader = [EnvironmentMenu node];
         
         CCSprite *background = [CCSprite spriteWithFile:@"mainMenuBackground.png"];
         [background setAnchorPoint:ccp(0,0)];
