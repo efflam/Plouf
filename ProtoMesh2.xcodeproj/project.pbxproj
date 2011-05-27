@@ -247,6 +247,12 @@
 		75328DCE137C188700C84466 /* BubbleSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75328DCD137C188700C84466 /* BubbleSprite.mm */; };
 		753A8AD4137C0C6300429A6E /* BubbleView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 753A8AD3137C0C6200429A6E /* BubbleView.mm */; };
 		756BAD28137AC986009BD968 /* Camera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 756BAD27137AC986009BD968 /* Camera.mm */; };
+		75A37DE813902FA300A8C9DD /* levelNumbers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75A37DE613902FA300A8C9DD /* levelNumbers.plist */; };
+		75A37DE913902FA300A8C9DD /* levelNumbers.png in Resources */ = {isa = PBXBuildFile; fileRef = 75A37DE713902FA300A8C9DD /* levelNumbers.png */; };
+		75A37DEB1390377E00A8C9DD /* backgroundMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 75A37DEA1390377E00A8C9DD /* backgroundMenu.png */; };
+		75A37DEE1390380500A8C9DD /* tropicInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 75A37DEC1390380500A8C9DD /* tropicInfo.png */; };
+		75A37DEF1390380500A8C9DD /* tropicTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = 75A37DED1390380500A8C9DD /* tropicTitle.png */; };
+		75A37DF113903EBE00A8C9DD /* pauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 75A37DF013903EBE00A8C9DD /* pauseButton.png */; };
 		75AC3AD513696DB2004AE5E9 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3AD413696DB2004AE5E9 /* BackgroundView.m */; };
 		75AC3AD913696DDA004AE5E9 /* BackrockView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3AD813696DDA004AE5E9 /* BackrockView.mm */; };
 		75AEA1AD138BD5AF0097F2C6 /* AnimationHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75AEA1AC138BD5AF0097F2C6 /* AnimationHelper.mm */; };
@@ -255,8 +261,6 @@
 		75C95F861381B8F800DB45F2 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 75C95F841381B8F800DB45F2 /* Default-Landscape~ipad.png */; };
 		75C95F871381B8F800DB45F2 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 75C95F851381B8F800DB45F2 /* Default-Portrait~ipad.png */; };
 		75D7C79013798ED900A80587 /* FishAnimated.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75D7C78F13798ED900A80587 /* FishAnimated.mm */; };
-		75DA1127138FCF050025F1F2 /* bulle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75DA1125138FCF050025F1F2 /* bulle.plist */; };
-		75DA1128138FCF050025F1F2 /* bulle.png in Resources */ = {isa = PBXBuildFile; fileRef = 75DA1126138FCF050025F1F2 /* bulle.png */; };
 		75F61114138BBC8000468DB6 /* anemone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75F61112138BBC8000468DB6 /* anemone.plist */; };
 		75F61115138BBC8000468DB6 /* anemone.png in Resources */ = {isa = PBXBuildFile; fileRef = 75F61113138BBC8000468DB6 /* anemone.png */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
@@ -772,6 +776,12 @@
 		755FABED138D13FF0090BB76 /* level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level1.plist; sourceTree = "<group>"; };
 		756BAD26137AC985009BD968 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Camera.h; path = ../../Plouf/Classes/Camera.h; sourceTree = "<group>"; };
 		756BAD27137AC986009BD968 /* Camera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Camera.mm; path = ../../Plouf/Classes/Camera.mm; sourceTree = "<group>"; };
+		75A37DE613902FA300A8C9DD /* levelNumbers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = levelNumbers.plist; sourceTree = "<group>"; };
+		75A37DE713902FA300A8C9DD /* levelNumbers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = levelNumbers.png; sourceTree = "<group>"; };
+		75A37DEA1390377E00A8C9DD /* backgroundMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundMenu.png; sourceTree = "<group>"; };
+		75A37DEC1390380500A8C9DD /* tropicInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tropicInfo.png; sourceTree = "<group>"; };
+		75A37DED1390380500A8C9DD /* tropicTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tropicTitle.png; sourceTree = "<group>"; };
+		75A37DF013903EBE00A8C9DD /* pauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pauseButton.png; sourceTree = "<group>"; };
 		75AC3AD313696DB2004AE5E9 /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundView.h; sourceTree = "<group>"; };
 		75AC3AD413696DB2004AE5E9 /* BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundView.m; sourceTree = "<group>"; };
 		75AC3AD713696DDA004AE5E9 /* BackrockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackrockView.h; sourceTree = "<group>"; };
@@ -1457,6 +1467,12 @@
 		50F4144210692EE7002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				75A37DF013903EBE00A8C9DD /* pauseButton.png */,
+				75A37DEC1390380500A8C9DD /* tropicInfo.png */,
+				75A37DED1390380500A8C9DD /* tropicTitle.png */,
+				75A37DEA1390377E00A8C9DD /* backgroundMenu.png */,
+				75A37DE613902FA300A8C9DD /* levelNumbers.plist */,
+				75A37DE713902FA300A8C9DD /* levelNumbers.png */,
 				2D726871138EA34B004054C6 /* blank.png */,
 				2D726877138FA80C004054C6 /* arcticEnvironment.png */,
 				2D72686F138E9DEA004054C6 /* level1.plist */,
@@ -2134,6 +2150,12 @@
 				2D726870138E9DEA004054C6 /* level1.plist in Resources */,
 				2D726872138EA34B004054C6 /* blank.png in Resources */,
 				2D726878138FA80C004054C6 /* arcticEnvironment.png in Resources */,
+				75A37DE813902FA300A8C9DD /* levelNumbers.plist in Resources */,
+				75A37DE913902FA300A8C9DD /* levelNumbers.png in Resources */,
+				75A37DEB1390377E00A8C9DD /* backgroundMenu.png in Resources */,
+				75A37DEE1390380500A8C9DD /* tropicInfo.png in Resources */,
+				75A37DEF1390380500A8C9DD /* tropicTitle.png in Resources */,
+				75A37DF113903EBE00A8C9DD /* pauseButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

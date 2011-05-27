@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "LevelMenu.h"
 
 @interface EnvironmentMenu : CCNode <CCStandardTouchDelegate> {
     NSMutableArray *environments ;
@@ -19,12 +20,17 @@
     int currentBubbleIndex;
     CGPoint origin;
     BOOL changed;
+    BOOL moved;
+    
+    CCSprite *backButton;
 }
 
+@property(nonatomic, retain) CCSprite *backButton;
 @property(nonatomic,retain) NSMutableArray *environments;
 @property(nonatomic, retain) CCNode *bubblesHolder;
 @property(readwrite, assign) int currentBubbleIndex;
 @property(nonatomic, assign) CGPoint origin;
 @property(readwrite, assign) BOOL changed;
+@property(readwrite, assign) BOOL moved;
 
 @end

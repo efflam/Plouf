@@ -22,9 +22,17 @@
         [self addChild:background];
         [self addChild:[ScrollLevelView levelWithName:levelName]];
         [self addChild:[BubbleView node]];
+        
+        
     }
     
     return self;
+}
+
+-(void)onEnterTransitionDidFinish
+{
+    [[CCTextureCache sharedTextureCache] removeUnusedTextures];
+    NSLog(@"removed textures!");
 }
 
 +(id)levelWithName:(NSString *)levelName

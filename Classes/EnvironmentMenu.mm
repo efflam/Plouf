@@ -14,7 +14,25 @@
 @synthesize bubblesHolder;
 @synthesize currentBubbleIndex;
 @synthesize origin;
-@synthesize changed;
+@synthesize changed, moved;
+@synthesize backButton;
+
+-(void)dealloc
+{
+    [bubblesHolder release];
+    [environments release];
+    [super dealloc];
+}
+
+-(void)onExit
+{
+    [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
+}
+
+-(void)onEnter
+{
+    [[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
+}
 
 - (id)init 
 {
@@ -22,9 +40,12 @@
     
     if (self) 
     {
-        [[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
         
         [self setAnchorPoint:ccp(0,0)];
+        
+        CCSprite *bg = [CCSprite spriteWithFile:@"backgroundMenu.png"];
+        [bg setAnchorPoint:ccp(0,0)];
+        [self addChild:bg];
         
         self.environments = [NSMutableArray arrayWithCapacity:4];
         
@@ -50,6 +71,16 @@
         }
         
         self.currentBubbleIndex = 0;
+        
+        self.backButton = [CCSprite spriteWithFile:@"backButton.png"];
+        
+        //[menu setPosition:ccp(-SCREEN_CENTER.x,-SCREEN_CENTER.y)];
+        
+        [backButton setAnchorPoint:ccp(0.5,0.5)];
+        [backButton setPosition:ccp(73,74)];
+        
+        [self addChild:backButton];
+
     }
     return self;
 }
@@ -58,12 +89,47 @@
 {        
     diff = ccp(0.0f, 0.0f);
     self.changed = NO;
+    self.moved = NO;
     [self unscheduleUpdate];
 }
 
 -(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    CCLOG(@"diff = %f", diff.x);
+{    
+    if(!moved)
+    {
+        UITouch *touch = [touches anyObject];
+        CGPoint touchPos = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
+        
+        CCSprite *item = [[bubblesHolder children] objectAtIndex:currentBubbleIndex];
+        CGPoint itemPos = ccpAdd([bubblesHolder position], [item position]);
+        itemPos = ccpAdd(itemPos, ccp(256,256));
+                        
+        float dist = ccpDistance(itemPos, touchPos);
+            
+        if(dist < 256.0)
+        {
+            NSLog(@"EnvironmentMenu");
+            
+            CCScene *scene = [CCScene node];
+            LevelMenu *levelMenu = [LevelMenu node];
+            
+            [scene addChild:levelMenu];
+            
+            [[CCDirector sharedDirector] pushScene:[CCTransitionFade transitionWithDuration:.5 scene:scene]];
+            
+            return;
+        }
+        
+        dist = ccpDistance(touchPos, backButton.position);
+        
+        if(dist < 74.0)
+        {
+            [[CCDirector sharedDirector] popSceneWithTransition:[CCTransitionFade class] duration:0.5];
+        }
+        
+        
+    }
+    
     float limit;
     if(self.changed)
         limit = 50.0f;
@@ -112,6 +178,8 @@
 
 -(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    self.moved = YES;
+    
     UITouch *touch = [touches anyObject];
     
     CGPoint touchLocation = [touch locationInView: [touch view]];
