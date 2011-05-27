@@ -13,9 +13,9 @@
 #import "EnvironmentMenu.h"
 
 @interface MainMenu : CCNode {
-    Loader *loader;
+    EnvironmentMenu *loader;
 }
-@property(nonatomic,retain)Loader *loader;
+@property(nonatomic,retain)EnvironmentMenu *loader;
 
 +(id)scene;
 

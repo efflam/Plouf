@@ -11,6 +11,10 @@
 
 @implementation EnvironmentMenu
 @synthesize environments;
+@synthesize bubblesHolder;
+@synthesize currentBubbleIndex;
+@synthesize origin;
+@synthesize changed;
 
 - (id)init 
 {
@@ -29,57 +33,82 @@
         [environments addObject:[CCSprite spriteWithFile:@"arcticEnvironment.png"]];
         [environments addObject:[CCSprite spriteWithFile:@"abyssalEnvironment.png"]];
         
+        self.origin = ccpSub(SCREEN_CENTER, ccp(256, 256));
         
-        pageWidth = 512;
+        self.bubblesHolder = [CCNode node];
+        [self addChild:self.bubblesHolder];
+        [[self bubblesHolder] setPosition:origin];
+        
+        pageWidth = 650;
         
         for(int i = 0 ; i < 4 ; i++)
         {
             CCSprite *bubble = [environments objectAtIndex:i];
             [bubble setAnchorPoint:ccp(0,0)];
-            [bubble setPosition:ccp(i*SCREEN_CENTER.x,0)];
-            [self addChild:bubble];
+            [bubble setPosition:ccp(i*pageWidth,0)];
+            [[self bubblesHolder] addChild:bubble];
         }
+        
+        self.currentBubbleIndex = 0;
     }
     return self;
 }
 
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {        
+    diff = ccp(0.0f, 0.0f);
+    self.changed = NO;
     [self unscheduleUpdate];
 }
 
 -(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    CCLOG(@"diff = %f", diff.x);
+    float limit;
+    if(self.changed)
+        limit = 50.0f;
+    else
+        limit = 5.0f;
+
+    if(fabs(diff.x) >= limit)
+    {
+        if(diff.x < 0)
+        {
+            self.currentBubbleIndex--;
+        }
+        else
+        {
+            self.currentBubbleIndex++;
+        }       
+    }
+    self.currentBubbleIndex = max(0, min(3, self.currentBubbleIndex));
     
+    desiredX = -self.currentBubbleIndex * 650 + origin.x;
     
-    int currentBubble = max(0,min(round(-self.position.x / 512),3));
-    int desiredBubbleIndex = currentBubble + (diff.x >= 0) ? -1 : 1;
+   //NSLog(@"currentBubble : %d / desiredBubbleIndex : %d /diffX: %f / desiredX : %f",currentBubble,desiredBubbleIndex, diff.x, desiredX);
     
-    desiredX = desiredBubbleIndex * 512;
-    
-    //NSLog(@"currentBubble : %d / desiredBubbleIndex : %d / desiredX : %f",currentBubble,desiredBubbleIndex,desiredX);
-    
-    //[self scheduleUpdate];
+    [self scheduleUpdate];
+    //[[self bubblesHolder]setPosition:ccp(desiredX,self.bubblesHolder.position.y)];
 }
-/*
+
 -(void)update:(ccTime)dt
 {
     
     
-    float newPos = self.position.x + (desiredX - self.position.x) * .1;
+    float newPos = self.bubblesHolder.position.x + (desiredX - self.bubblesHolder.position.x) * .1;
     
     float diffPos = fabsf(desiredX - newPos);
     
     if(diffPos > 1)
     {
-        [self setPosition:ccp(newPos,self.position.y)];
+        [[self bubblesHolder]setPosition:ccp(newPos,self.bubblesHolder.position.y)];
     }
     else
     {
         [self unscheduleUpdate];
     }
      
-}*/
+}
 
 -(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -91,12 +120,24 @@
     CGPoint newTouch = [[CCDirector sharedDirector] convertToGL:touchLocation];
     
     diff = ccpSub(prevLocation, newTouch);
-    diff.y = self.position.y;
+    //diff.y = self.bubblesHolder.position.y;
     
-    [self setPosition:ccpSub(self.position, diff)];
+    CGPoint pos = ccpSub(self.bubblesHolder.position, diff);
+    pos.y =  self.bubblesHolder.position.y;
     
-    NSLog(@"%@",NSStringFromCGPoint(self.position));
-    NSLog(@"current bubble : %f",max(0,min(round(-self.position.x / 512),3)));
+    
+    [[self bubblesHolder] setPosition:pos];
+    
+    int newIndex = max(0,min(floor((origin.x-self.bubblesHolder.position.x + 256) / 650),3));
+
+    if(self.currentBubbleIndex != newIndex)
+    {
+        self.currentBubbleIndex = newIndex;
+        self.changed = YES;
+    }
+    
+    //NSLog(@"%@",NSStringFromCGPoint(self.bubblesHolder.position));
+    //NSLog(@"current bubble : %f",max(0,min(floor(-self.bubblesHolder.position.x / 650),3)));
 }
 
 @end
