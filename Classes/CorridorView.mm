@@ -106,7 +106,7 @@ float camSpring = 0.02;
         
         
         Murene *murene = [Murene murene];
-        //[self addActor:murene];
+        [self addActor:murene];
         
         
         
@@ -140,7 +140,7 @@ float camSpring = 0.02;
         
         
          
-        [self scheduleUpdate];
+//        [self scheduleUpdate];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeActorHandler:) name:@"removeActor" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bubbleTouch:) name:@"bubbleTouch" object:nil];
@@ -468,7 +468,7 @@ float camSpring = 0.02;
     camSpring = 0.02;
 }
 
--(void)update:(ccTime) dt
+-(void)update:(ccTime)dt
 {
 	int32 velocityIterations = 8;
 	int32 positionIterations = 1;

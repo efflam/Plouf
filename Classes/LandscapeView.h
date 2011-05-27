@@ -24,5 +24,6 @@
 
 -(id)initWithLevelName:(NSString*)levelName;
 +(id)landscapeWithName:(NSString*)levelName;
+-(void)update:(ccTime)dt;
 
 @end

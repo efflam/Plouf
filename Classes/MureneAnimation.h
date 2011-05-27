@@ -8,14 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "AnimationHelper.h"
 
 @interface MureneAnimation : CCNode
 {
     CCSprite *topJaw;
     CCSprite *bottomJaw;
     CCSprite *body;
+    AnimationHelper *bulles;
 }
-
+@property(nonatomic,retain)AnimationHelper *bulles;
 
 @property(nonatomic, retain) CCSprite *topJaw;
 
@@ -25,5 +27,10 @@
 
 -(id)init;
 +(id)animation;
+-(void)openToAngle:(float)angle andDuration:(float)duration;
+-(void)wash;
+-(void)endWash;
+-(void)eat;
+-(void)close;
 
 @end
