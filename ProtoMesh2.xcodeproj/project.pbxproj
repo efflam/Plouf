@@ -1170,10 +1170,10 @@
 		2DF9548A131E76E100E6649A /* level */ = {
 			isa = PBXGroup;
 			children = (
-				75AEA1AB138BD5AF0097F2C6 /* AnimationHelper.h */,
-				75AEA1AC138BD5AF0097F2C6 /* AnimationHelper.mm */,
 				75F4F74B138AC2850029E8F1 /* obstacles */,
 				753062B013796D7300AB6005 /* fishes */,
+				75AEA1AB138BD5AF0097F2C6 /* AnimationHelper.h */,
+				75AEA1AC138BD5AF0097F2C6 /* AnimationHelper.mm */,
 				2DBE5D11136992A700AE4149 /* CorridorView.h */,
 				2DBE5D12136992A700AE4149 /* CorridorView.mm */,
 				75AC3AD713696DDA004AE5E9 /* BackrockView.h */,
@@ -1562,9 +1562,25 @@
 			name = menus;
 			sourceTree = "<group>";
 		};
+		75972BDE138FA3B600DBF763 /* menu */ = {
+			isa = PBXGroup;
+			children = (
+				750383F0138EA20D00E32B16 /* abyssalEnvironment.png */,
+				750383F1138EA20D00E32B16 /* arcticEnvironment.png */,
+				750383F2138EA20D00E32B16 /* loader.png */,
+				750383F3138EA20D00E32B16 /* logo.png */,
+				750383F4138EA20D00E32B16 /* mainMenuBackground.png */,
+				750383F5138EA20D00E32B16 /* oceanEnvironment.png */,
+				750383F6138EA20D00E32B16 /* playButton.png */,
+				750383F7138EA20D00E32B16 /* tropicEnvironment.png */,
+			);
+			name = menu;
+			sourceTree = "<group>";
+		};
 		75C95F881381B93E00DB45F2 /* level */ = {
 			isa = PBXGroup;
 			children = (
+				75038400138EA21C00E32B16 /* blank.png */,
 				755FABBE138D13FF0090BB76 /* level1-tiles */,
 				755FABED138D13FF0090BB76 /* level1.plist */,
 				2D1CBFB2136885DF005040AA /* level1-1.png */,
