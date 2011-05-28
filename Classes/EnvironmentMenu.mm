@@ -26,11 +26,14 @@
 
 -(void)onExit
 {
+    [super onExit];
     [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
+    
 }
 
 -(void)onEnter
 {
+    [super onEnter];
     [[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
 }
 
@@ -153,13 +156,12 @@
    //NSLog(@"currentBubble : %d / desiredBubbleIndex : %d /diffX: %f / desiredX : %f",currentBubble,desiredBubbleIndex, diff.x, desiredX);
     
     [self scheduleUpdate];
+        
     //[[self bubblesHolder]setPosition:ccp(desiredX,self.bubblesHolder.position.y)];
 }
 
 -(void)update:(ccTime)dt
 {
-    
-    
     float newPos = self.bubblesHolder.position.x + (desiredX - self.bubblesHolder.position.x) * .1;
     
     float diffPos = fabsf(desiredX - newPos);

@@ -254,6 +254,7 @@
 		75AEA1AD138BD5AF0097F2C6 /* AnimationHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75AEA1AC138BD5AF0097F2C6 /* AnimationHelper.mm */; };
 		75AEA1B0138BD6E10097F2C6 /* CrumblyRockTriangleTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AEA1AF138BD6E10097F2C6 /* CrumblyRockTriangleTexture.m */; };
 		75AEA1B2138BDD210097F2C6 /* motifRoche.png in Resources */ = {isa = PBXBuildFile; fileRef = 75AEA1B1138BDD210097F2C6 /* motifRoche.png */; };
+		75AEF5FE13913A1600C5B032 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 75AEF5FD13913A1600C5B032 /* backButton.png */; };
 		75C95F861381B8F800DB45F2 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 75C95F841381B8F800DB45F2 /* Default-Landscape~ipad.png */; };
 		75C95F871381B8F800DB45F2 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 75C95F851381B8F800DB45F2 /* Default-Portrait~ipad.png */; };
 		75D7C79013798ED900A80587 /* FishAnimated.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75D7C78F13798ED900A80587 /* FishAnimated.mm */; };
@@ -789,6 +790,7 @@
 		75AEA1AE138BD6E10097F2C6 /* CrumblyRockTriangleTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CrumblyRockTriangleTexture.h; path = ../../Plouf/Classes/CrumblyRockTriangleTexture.h; sourceTree = "<group>"; };
 		75AEA1AF138BD6E10097F2C6 /* CrumblyRockTriangleTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CrumblyRockTriangleTexture.m; path = ../../Plouf/Classes/CrumblyRockTriangleTexture.m; sourceTree = "<group>"; };
 		75AEA1B1138BDD210097F2C6 /* motifRoche.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = motifRoche.png; sourceTree = "<group>"; };
+		75AEF5FD13913A1600C5B032 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
 		75C95F841381B8F800DB45F2 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../../Plouf/Resources/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		75C95F851381B8F800DB45F2 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../../Plouf/Resources/Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		75D7C78E13798ED900A80587 /* FishAnimated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FishAnimated.h; path = ../../Plouf/Classes/FishAnimated.h; sourceTree = "<group>"; };
@@ -1466,6 +1468,7 @@
 			isa = PBXGroup;
 			children = (
 				75A37DF013903EBE00A8C9DD /* pauseButton.png */,
+				75AEF5FD13913A1600C5B032 /* backButton.png */,
 				75A37DEC1390380500A8C9DD /* tropicInfo.png */,
 				75A37DED1390380500A8C9DD /* tropicTitle.png */,
 				75A37DEA1390377E00A8C9DD /* backgroundMenu.png */,
