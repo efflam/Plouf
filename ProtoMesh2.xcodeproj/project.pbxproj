@@ -790,6 +790,10 @@
 		75AEA1AF138BD6E10097F2C6 /* CrumblyRockTriangleTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CrumblyRockTriangleTexture.m; path = ../../Plouf/Classes/CrumblyRockTriangleTexture.m; sourceTree = "<group>"; };
 		75AEA1B1138BDD210097F2C6 /* motifRoche.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = motifRoche.png; sourceTree = "<group>"; };
 		75AEF5FD13913A1600C5B032 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
+		75AEF600139141E300C5B032 /* backgroundGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backgroundGame.png; path = ../Classes/backgroundGame.png; sourceTree = "<group>"; };
+		75AEF601139141E300C5B032 /* backgroundGame.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = backgroundGame.plist; path = ../Classes/backgroundGame.plist; sourceTree = "<group>"; };
+		75AEF604139142ED00C5B032 /* PauseMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseMenu.h; sourceTree = "<group>"; };
+		75AEF605139142ED00C5B032 /* PauseMenu.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PauseMenu.mm; sourceTree = "<group>"; };
 		75C95F841381B8F800DB45F2 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../../Plouf/Resources/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		75C95F851381B8F800DB45F2 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../../Plouf/Resources/Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		75D7C78E13798ED900A80587 /* FishAnimated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FishAnimated.h; path = ../../Plouf/Classes/FishAnimated.h; sourceTree = "<group>"; };
@@ -1466,6 +1470,8 @@
 		50F4144210692EE7002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				75AEF600139141E300C5B032 /* backgroundGame.png */,
+				75AEF601139141E300C5B032 /* backgroundGame.plist */,
 				75A37DF013903EBE00A8C9DD /* pauseButton.png */,
 				75AEF5FD13913A1600C5B032 /* backButton.png */,
 				75A37DEC1390380500A8C9DD /* tropicInfo.png */,
@@ -1588,6 +1594,8 @@
 				2D726800138E9C73004054C6 /* MainMenu.mm */,
 				2DC5D0C9138FE18C006ABCE1 /* LevelMenu.h */,
 				2DC5D0CA138FE18C006ABCE1 /* LevelMenu.m */,
+				75AEF604139142ED00C5B032 /* PauseMenu.h */,
+				75AEF605139142ED00C5B032 /* PauseMenu.mm */,
 			);
 			name = menus;
 			sourceTree = "<group>";
@@ -2210,6 +2218,7 @@
 				2D726802138E9C73004054C6 /* Loader.mm in Sources */,
 				2D726803138E9C73004054C6 /* MainMenu.mm in Sources */,
 				2DC5D0CB138FE18C006ABCE1 /* LevelMenu.m in Sources */,
+				75AEF606139142ED00C5B032 /* PauseMenu.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
