@@ -17,6 +17,7 @@
 @synthesize bodyDef;
 @synthesize shapeDef;
 @synthesize fixtureDef;
+@synthesize spriteLinked;
 
 #pragma mark View Accessors
 
@@ -63,6 +64,8 @@
         self.fixtureDef->friction = 0.1f;
         self.fixtureDef->restitution = 0.1f;
         //[self scheduleUpdate];
+        
+        self.spriteLinked = YES;
     }
     
     return self;
@@ -94,9 +97,11 @@
 
 - (void)actorWillDisappear 
 {
+    CCLOG(@"disappear !!!!!!");
 	[self body]->SetUserData(nil);
 	[self world]->DestroyBody([self body]);
 	[self setBody:nil];
+    [[self sprite] stopAllActions];
 	[[self scene] removeChild:[self sprite] cleanup:NO];
     [self setSprite:nil];
 	[super actorWillDisappear]; 
@@ -105,6 +110,7 @@
 
 - (void)worldDidStep 
 {
+    if(!self.spriteLinked) return;
 	[super worldDidStep];
     
     [[self sprite] setPosition:ccp(WORLD_TO_SCREEN([self body]->GetPosition().x), WORLD_TO_SCREEN([self body]->GetPosition().y))];
@@ -247,6 +253,4 @@
     float fy = -sinf(self.body->GetAngle())* force;
     self.body->ApplyLinearImpulse(b2Vec2(fx, fy), self.body->GetWorldCenter());
 }
-
-
 @end

@@ -9,15 +9,25 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
+@protocol AnimationHelperDelegate;
 @interface AnimationHelper : CCSprite {
+    
+    id <AnimationHelperDelegate> delegate;
     BOOL listen;
     CCAction *action;
 }
+@property(nonatomic,assign) id <AnimationHelperDelegate> delegate;
 @property(readwrite,assign) BOOL listen;
 @property(nonatomic,retain) CCAction* action;
 
 //+(CCAnimate*) animateWithName:(NSString*)name option:(NSString*)option frameNumber:(int)frameNumber;
 +(id) animationWithName:(NSString*)name andOption:(NSString*)option frameNumber:(int)frameNumber;
 -(id) initWithAnimationName:(NSString*)name andOption:(NSString*)option frameNumber:(int)frameNumber;
+
+@end
+
+@protocol AnimationHelperDelegate <NSObject>
+
+-(void)animationComplete;
 
 @end

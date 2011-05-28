@@ -72,6 +72,7 @@ struct NavScene
 -(CGPoint)convertVertToCGPoint:(float*)v;
 -(void)setSelectedFish:(Fish *)fish;
 -(CGPoint)convertToScreenCenter:(CGPoint)point;
+-(void)mureneEat;
 
 -(void)removeActorHandler:(NSNotification*)notification;
 -(void)update:(ccTime)dt;
@@ -83,5 +84,6 @@ struct NavScene
 - (void)removeActor:(Actor *)anActor;
 
 - (void)removeAllActors;
+-(void)fishEatenByMurene;
 
 @end

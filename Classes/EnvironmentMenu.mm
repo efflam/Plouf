@@ -46,10 +46,9 @@
         
         [self setAnchorPoint:ccp(0,0)];
         
-        CCSprite *bg = [CCSprite spriteWithFile:@"backgroundMenu.png"];
-        [bg setAnchorPoint:ccp(0,0)];
+        CCSprite *bg = [CCSprite spriteWithFile:@"fond_milieu_niveau_fiche.png"];
         [self addChild:bg];
-        
+        [bg setPosition:SCREEN_CENTER];
         self.environments = [NSMutableArray arrayWithCapacity:4];
         
         [environments addObject:[CCSprite spriteWithFile:@"tropicEnvironment.png"]];

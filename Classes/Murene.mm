@@ -40,7 +40,6 @@
 {	
 	[super actorDidAppear];
     self.sprite = [MureneAnimation animation];
-    [self.sprite setPosition:ccp(2100, 760)];
     [[self scene] addChild:self.sprite];
 }
 
@@ -51,11 +50,46 @@
 }
 
 
+-(void)eat
+{
+    
+    [[self sprite] runAction:
+                    [CCSequence actions:
+                                [CCMoveBy actionWithDuration:0.4 position:ccp(100.0f, 0.0f)],
+                                [CCMoveBy actionWithDuration:0.5 position:ccp(-100.0f, 0.0f)],
+                                nil 
+                    ]
+    ];
+ [self.sprite eat];
+}
+
+
 - (void)worldDidStep 
 {
 	[super worldDidStep];
 }
 
+
+
+- (CGPoint)position
+{
+	return self.sprite.position;
+}
+
+- (void)setPosition:(CGPoint)aPosition
+{
+    [self.sprite setPosition:aPosition];
+}
+
+- (CGFloat)rotation
+{
+	return self.sprite.rotation;
+}
+
+- (void)setRotation:(CGFloat)aRotation
+{
+	[self.sprite setRotation:aRotation];
+}
 
 
 

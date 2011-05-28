@@ -10,7 +10,16 @@
 
 
 @implementation FishAnimated
-@synthesize eye,hit,body,wound;
+@synthesize eye,hit,body,wound,listen;
+
+-(void)dealloc
+{
+    [self stopAllActions];
+    [body release];
+    [eye release];
+    [hit release];
+    [super dealloc];
+}
 
 +(id) fishWithName:(NSString*)name
 {
@@ -23,18 +32,24 @@
     
     if(self)
     {
+        self.listen = YES;
+        
         self.eye = [AnimationHelper animationWithName:name andOption:@"Eye" frameNumber:9];
         self.hit = [AnimationHelper animationWithName:name andOption:@"Aie" frameNumber:9];
         self.hit.visible = NO;
         
         self.body = [AnimationHelper animationWithName:name andOption:@"" frameNumber:9];
-        self.body.listen = YES;
+        self.body.listen = self.listen;
+        
+        self.body.delegate = self;
+        self.eye.delegate = self;
+        self.hit.delegate = self;
         
         [self addChild:self.body z:0 tag:0];
         [self addChild:self.eye z:1 tag:1];
         [self addChild:self.hit z:2 tag:2];
                 
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationComplete) name:@"animationComplete" object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationComplete) name:@"animationComplete" object:nil];
         
         [self.body runAction:self.body.action];
         [self.eye runAction:self.eye.action];
