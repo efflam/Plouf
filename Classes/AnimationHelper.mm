@@ -12,6 +12,13 @@
 @implementation AnimationHelper
 @synthesize listen,action;
 
+-(void)dealloc
+{
+    [self setListen:NO];
+    [action release];
+    [super dealloc];
+}
+
 +(id) animationWithName:(NSString*)name andOption:(NSString*)option frameNumber:(int)frameNumber
 {
     return [[[AnimationHelper alloc] initWithAnimationName:name andOption:option frameNumber:frameNumber] autorelease];

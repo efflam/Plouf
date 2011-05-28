@@ -11,8 +11,9 @@
 #import "BubbleView.h"
 
 @interface LevelView : CCNode {
-    
+    CCMenu *menu;
 }
+@property(nonatomic,retain)CCMenu *menu;
 
 -(id)initWithLevelName:(NSString*)levelName;
 +(id)levelWithName:(NSString*)levelName;

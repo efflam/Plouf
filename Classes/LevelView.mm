@@ -11,6 +11,12 @@
 #import "BackgroundView.h"
 
 @implementation LevelView
+@synthesize menu;
+
+-(void)dealloc
+{
+    [menu release];
+}
 
 -(id)initWithLevelName:(NSString *)levelName
 {
@@ -18,15 +24,53 @@
     
     if(self)
     {
-        BackgroundView *background = [BackgroundView backgroundWithName:levelName];
+        CCSpriteFrameCache *frames = [CCSpriteFrameCache sharedSpriteFrameCache];
+        
+        [frames addSpriteFramesWithFile:@"backgroundGame.plist" 
+                                texture:[[CCTextureCache sharedTextureCache] addImage:@"backgroundGame.png"]];
+        
+        CCSprite *background = [CCSprite spriteWithSpriteFrame:[frames spriteFrameByName:@"backgroundGame.png"]];
+        [background setAnchorPoint:ccp(0,0)];
+        
+        CCSprite *pauseSprite = [CCSprite spriteWithSpriteFrame:[frames spriteFrameByName:@"pauseButton.png"]];
+        CCMenuItemImage *pauseButton = [CCMenuItemImage itemFromNormalSprite:pauseSprite 
+                                                              selectedSprite:nil 
+                                                                      target:self 
+                                                                    selector:@selector(pauseGame)];
+        
+        self.menu = [CCMenu menuWithItems:pauseButton, nil];
+        
         [self addChild:background];
         [self addChild:[ScrollLevelView levelWithName:levelName]];
         [self addChild:[BubbleView node]];
-        
-        
+        [self addChild:menu];
     }
     
     return self;
+}
+
+-(void)pauseGame
+{
+    [menu setIsTouchEnabled:NO];
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(restartHandler) 
+                                                 name:@"restartButtonTouched" 
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(restartHandler) 
+                                                 name:@"restartButtonTouched" 
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(restartHandler) 
+                                                 name:@"restartButtonTouched" 
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(restartHandler) 
+                                                 name:@"restartButtonTouched" 
+                                               object:nil];
 }
 
 -(void)onEnterTransitionDidFinish
