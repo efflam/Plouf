@@ -111,6 +111,7 @@
 		2DBE5D13136992A700AE4149 /* CorridorView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE5D12136992A700AE4149 /* CorridorView.mm */; };
 		2DC5D0CB138FE18C006ABCE1 /* LevelMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5D0CA138FE18C006ABCE1 /* LevelMenu.m */; };
 		2DC5D0D1138FF02C006ABCE1 /* fond_milieu_niveau_fiche.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5D0D0138FF02C006ABCE1 /* fond_milieu_niveau_fiche.png */; };
+		2DC5D0D713912C25006ABCE1 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5D0D613912C25006ABCE1 /* backButton.png */; };
 		2DE8E833131D4C8400F6F60E /* nanosvg.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8E831131D4C8400F6F60E /* nanosvg.mm */; };
 		2DE8E8D5131D607500F6F60E /* navmesh.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8E8D3131D607500F6F60E /* navmesh.mm */; };
 		2DE8E90C131D6A6000F6F60E /* mathutil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8E90A131D6A6000F6F60E /* mathutil.mm */; };
@@ -248,12 +249,6 @@
 		75328DCE137C188700C84466 /* BubbleSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75328DCD137C188700C84466 /* BubbleSprite.mm */; };
 		753A8AD4137C0C6300429A6E /* BubbleView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 753A8AD3137C0C6200429A6E /* BubbleView.mm */; };
 		756BAD28137AC986009BD968 /* Camera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 756BAD27137AC986009BD968 /* Camera.mm */; };
-		75A37DE813902FA300A8C9DD /* levelNumbers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75A37DE613902FA300A8C9DD /* levelNumbers.plist */; };
-		75A37DE913902FA300A8C9DD /* levelNumbers.png in Resources */ = {isa = PBXBuildFile; fileRef = 75A37DE713902FA300A8C9DD /* levelNumbers.png */; };
-		75A37DEB1390377E00A8C9DD /* backgroundMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 75A37DEA1390377E00A8C9DD /* backgroundMenu.png */; };
-		75A37DEE1390380500A8C9DD /* tropicInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 75A37DEC1390380500A8C9DD /* tropicInfo.png */; };
-		75A37DEF1390380500A8C9DD /* tropicTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = 75A37DED1390380500A8C9DD /* tropicTitle.png */; };
-		75A37DF113903EBE00A8C9DD /* pauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 75A37DF013903EBE00A8C9DD /* pauseButton.png */; };
 		75AC3AD513696DB2004AE5E9 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3AD413696DB2004AE5E9 /* BackgroundView.m */; };
 		75AC3AD913696DDA004AE5E9 /* BackrockView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3AD813696DDA004AE5E9 /* BackrockView.mm */; };
 		75AEA1AD138BD5AF0097F2C6 /* AnimationHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75AEA1AC138BD5AF0097F2C6 /* AnimationHelper.mm */; };
@@ -590,6 +585,7 @@
 		2DC5D0C9138FE18C006ABCE1 /* LevelMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelMenu.h; sourceTree = "<group>"; };
 		2DC5D0CA138FE18C006ABCE1 /* LevelMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelMenu.m; sourceTree = "<group>"; };
 		2DC5D0D0138FF02C006ABCE1 /* fond_milieu_niveau_fiche.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fond_milieu_niveau_fiche.png; sourceTree = "<group>"; };
+		2DC5D0D613912C25006ABCE1 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
 		2DE8E831131D4C8400F6F60E /* nanosvg.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = nanosvg.mm; sourceTree = "<group>"; };
 		2DE8E832131D4C8400F6F60E /* nanosvg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nanosvg.h; sourceTree = "<group>"; };
 		2DE8E8D0131D5EE400F6F60E /* Slide_Navmesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Slide_Navmesh.cpp; sourceTree = "<group>"; };
@@ -1473,6 +1469,7 @@
 				75A37DEC1390380500A8C9DD /* tropicInfo.png */,
 				75A37DED1390380500A8C9DD /* tropicTitle.png */,
 				75A37DEA1390377E00A8C9DD /* backgroundMenu.png */,
+				2DC5D0D613912C25006ABCE1 /* backButton.png */,
 				75A37DE613902FA300A8C9DD /* levelNumbers.plist */,
 				75A37DE713902FA300A8C9DD /* levelNumbers.png */,
 				2D726871138EA34B004054C6 /* blank.png */,
@@ -2154,6 +2151,7 @@
 				2D726872138EA34B004054C6 /* blank.png in Resources */,
 				2D726878138FA80C004054C6 /* arcticEnvironment.png in Resources */,
 				2DC5D0D1138FF02C006ABCE1 /* fond_milieu_niveau_fiche.png in Resources */,
+				2DC5D0D713912C25006ABCE1 /* backButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

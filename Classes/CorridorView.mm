@@ -107,7 +107,7 @@ float camSpring = 0.02;
         
         Murene *murene = [Murene murene];
         [self addActor:murene];
-        
+        [murene setPosition:ccp(1000.0f, 3000.0f)];
         
         
         

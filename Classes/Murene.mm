@@ -40,7 +40,6 @@
 {	
 	[super actorDidAppear];
     self.sprite = [MureneAnimation animation];
-    [self.sprite setPosition:ccp(2100, 760)];
     [[self scene] addChild:self.sprite];
 }
 
@@ -56,6 +55,27 @@
 	[super worldDidStep];
 }
 
+
+
+- (CGPoint)position
+{
+	return self.sprite.position;
+}
+
+- (void)setPosition:(CGPoint)aPosition
+{
+    [self.sprite setPosition:aPosition];
+}
+
+- (CGFloat)rotation
+{
+	return self.sprite.rotation;
+}
+
+- (void)setRotation:(CGFloat)aRotation
+{
+	[self.sprite setRotation:aRotation];
+}
 
 
 

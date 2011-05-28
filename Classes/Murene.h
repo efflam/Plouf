@@ -19,5 +19,9 @@
 
 - (id)init;
 +(id)murene;
+- (CGPoint)position;
+- (void)setPosition:(CGPoint)aPosition;
+- (CGFloat)rotation;
+- (void)setRotation:(CGFloat)aRotation;
 
 @end
