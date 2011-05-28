@@ -39,10 +39,21 @@
         [self.body runAction:self.body.action];
         [self.eye runAction:self.eye.action];
         [self.hit runAction:self.hit.action];
+        
+        self.listen = YES;
+        
         [[CCActionManager sharedManager] pauseTarget:self.hit];
     }
     
     return self;
+}
+
+-(void)stopAllActions
+{
+    [self.body setListen:self.listen];
+    [self.hit setListen:self.listen];
+    [self.eye setListen:self.listen];
+    [super stopAllActions];
 }
 
 -(void)punch
@@ -56,8 +67,7 @@
 
     self.hit.visible = YES;
     
-    
-    [self.hit setListen:YES];
+    [self.hit setListen:self.listen];
     
     self.wound = YES;
 }
@@ -70,7 +80,7 @@
         self.eye.visible = YES;
         self.hit.visible = NO;
         
-        self.body.listen = YES;
+        self.body.listen = self.listen;
         self.hit.listen = NO;
         
         [self changeEyes];

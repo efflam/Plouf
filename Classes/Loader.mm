@@ -68,7 +68,7 @@
 
 -(void)onEnterTransitionDidFinish
 {
-    [super onEnterTransitionDidFinish];
+    //[super onEnterTransitionDidFinish];
     self.playScene = [CCScene node];
     [playScene addChild:[LevelView levelWithName:@"level1"]];
     [playButton runAction:[CCEaseSineInOut actionWithAction:[CCMoveTo actionWithDuration:1.5 position:ccp(840,100)]]];

@@ -15,8 +15,12 @@
     AnimationHelper *eye;
     AnimationHelper *hit;
     
+    BOOL listen;
+    
     BOOL wound;
 }
+
+@property(nonatomic,assign) BOOL listen;
 
 @property(nonatomic,assign) BOOL wound;
 @property(nonatomic,retain) AnimationHelper *eye;
