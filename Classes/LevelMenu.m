@@ -116,7 +116,7 @@
     CCScene *scene = [CCScene node];
     [scene addChild:[Loader node]];
     
-    [[CCDirector sharedDirector] replaceScene:
+    [[CCDirector sharedDirector] pushScene:
      [CCTransitionFade transitionWithDuration:.5 
                                         scene:scene]];
     

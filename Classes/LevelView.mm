@@ -11,10 +11,12 @@
 #import "BackgroundView.h"
 
 @implementation LevelView
-@synthesize menu,pause;
+@synthesize menu,pause,scrollView;
 
 -(void)dealloc
 {
+    [self unscheduleUpdate];
+    [scrollView release];
     [menu release];
     [pause release];
     [super dealloc];
@@ -26,7 +28,6 @@
     
     if(self)
     {
-        
         CCSpriteFrameCache *frames = [CCSpriteFrameCache sharedSpriteFrameCache];
         
         [frames addSpriteFramesWithFile:@"backgroundGame.plist" 
@@ -43,23 +44,32 @@
                                                                       target:self 
                                                                     selector:@selector(pauseGame)];
         
-        [pauseButton setPosition:ccp(-480,300)];
+        [pauseButton setPosition:ccp(-450,320)];
         
         self.menu = [CCMenu menuWithItems:pauseButton, nil];
         
+        self.scrollView = [ScrollLevelView levelWithName:levelName];
+        
         [self addChild:background];
-        [self addChild:[ScrollLevelView levelWithName:levelName]];
+        [self addChild:scrollView];
         [self addChild:[BubbleView node]];
         [self addChild:menu];
         [self addChild:pause];
+        
+        [self scheduleUpdate];
     }
     
     return self;
 }
 
+-(void)update:(ccTime)dt
+{
+    [self.scrollView update:dt];
+}
+
 -(void)pauseGame
 {
-    //[self unscheduleUpdate];
+    [self unscheduleUpdate];
     
     [pause setVisible:YES];
     [pause pause:YES];
@@ -73,25 +83,39 @@
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(restartHandler) 
+                                             selector:@selector(levelMenuHandler) 
                                                  name:@"levelButtonTouched" 
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(restartHandler) 
+                                             selector:@selector(continueHandler) 
                                                  name:@"continueButtonTouched" 
                                                object:nil];
 }
 
--(void)restartHandler
+-(void)continueHandler
 {
-    //[self scheduleUpdate];
-    NSLog(@"restart");
+    [self scheduleUpdate];
+    
     [menu setIsTouchEnabled:YES];
     [menu runAction:[CCFadeIn actionWithDuration:.5]];
     [pause pause:NO];
     
     [self removePauseHandlers];
+}
+
+-(void)levelMenuHandler
+{
+    [self unscheduleUpdate];
+    CCScene *scene = [CCScene node];
+    [scene addChild:[LevelMenu node]];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:.5 scene:scene]];
+}
+
+-(void)restartHandler
+{
+    [self unscheduleUpdate];
+    [[CCDirector sharedDirector] popSceneWithTransition:[CCTransitionFade class] duration:.5];
 }
 
 -(void)removePauseHandlers
@@ -106,7 +130,7 @@
     [[CCTextureCache sharedTextureCache] removeUnusedTextures];
     
     [pause setOpacity:0];
-    //[super onEnterTransitionDidFinish];
+    [super onEnterTransitionDidFinish];
 }
 
 +(id)levelWithName:(NSString *)levelName

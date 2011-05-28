@@ -8,13 +8,12 @@
 
 #import "PauseMenu.h"
 
-
 @implementation PauseMenu
 @synthesize soundButton,menu,soundOn,background;
 
 -(void)dealloc
 {
-    [background dealloc];
+    [background release];
     [soundButton release];
     [menu release];
     [super dealloc];

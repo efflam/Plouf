@@ -42,6 +42,11 @@
     [[CCActionManager sharedManager] pauseTarget:self.body];
 }
 
+-(void)animationComplete
+{
+    //
+}
+
 +(id)anemone
 {
     return [[[AnemoneAnimated alloc] init] autorelease];

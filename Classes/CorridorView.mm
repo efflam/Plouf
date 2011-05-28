@@ -96,7 +96,7 @@ float camSpring = 0.02;
         
         [self setContactListener: new MyContactListener()];
         world->SetContactListener([self contactListener]);
-        CCLOG(@"fish = %@", currentFish);
+//        CCLOG(@"fish = %@", currentFish);
         //InstanceContactOperation *op = [InstanceContactOperation operationFor:currentFish WithTarget:fall andSelector:@selector(toggleEmission) when:0];
         
        // InstanceContactOperation *op2 = [InstanceContactOperation operationFor:[fishes objectAtIndex:1] WithTarget:fall andSelector:@selector(toggleEmission) when:0];
@@ -199,7 +199,7 @@ float camSpring = 0.02;
     SVGPath* plist = [self loadMesh:levelName];
     if (!plist) CCLOG(@"loadMesh: Could not load Mesh");   
     
-    NSLog(@"TRACAGE");
+//    NSLog(@"TRACAGE");
     
     float bmin[2] = {FLT_MAX,FLT_MAX}, bmax[2] = {-FLT_MAX,-FLT_MAX};
     SVGPath* walkablePath = 0;
@@ -266,7 +266,7 @@ float camSpring = 0.02;
         const float* pa = &anemonePaths[i]->pts[0];
 		const float* pb = &anemonePaths[i]->pts[(anemonePaths[i]->npts-1)*2];
         
-        CCLOG(@"ANEMONE %i -> pa : (%f, %f); pb : (%f, %f)", i, pa[0], pa[1], pb[0], pb[1]);
+//        CCLOG(@"ANEMONE %i -> pa : (%f, %f); pb : (%f, %f)", i, pa[0], pa[1], pb[0], pb[1]);
 
         
         float p1[2];
@@ -274,14 +274,14 @@ float camSpring = 0.02;
         convertPoint(p1, pa, s, bmin, bmax);
 		convertPoint(p2, pb, s, bmin, bmax);
         
-        CCLOG(@"ANEMONE %i -> p1 : (%f, %f); p2 : (%f, %f)", i, p1[0], p1[1], p2[0], p2[1]);
+//        CCLOG(@"ANEMONE %i -> p1 : (%f, %f); p2 : (%f, %f)", i, p1[0], p1[1], p2[0], p2[1]);
         
-        CGPoint point1 = ccp(p1[0], p1[1]);
-        CGPoint point2 = ccp(p2[0], p2[1]);
-        CGPoint point2ForPoint1 = ccpSub(point1, point2);
-        float angle = ccpAngleSigned(point1, point2);
+//        CGPoint point1 = ccp(p1[0], p1[1]);
+//        CGPoint point2 = ccp(p2[0], p2[1]);
+//        CGPoint point2ForPoint1 = ccpSub(point1, point2);
+//        float angle = ccpAngleSigned(point1, point2);
         
-        CCLOG(@"point %d : (angle = %f),", i, angle);
+//        CCLOG(@"point %d : (angle = %f),", i, angle);
 
         float a = p1[0] - p2[0];
         float b = p1[1] - p2[1];
@@ -321,7 +321,7 @@ float camSpring = 0.02;
 		const float* pa = &agentPaths[i]->pts[0];
 		const float* pb = &agentPaths[i]->pts[(agentPaths[i]->npts-1)*2];
         
-        NSLog(@"HEYYYYY : %f : %f",agentPaths[i]->pts[0],agentPaths[i]->pts[(agentPaths[i]->npts-1)*2]);
+//        NSLog(@"HEYYYYY : %f : %f",agentPaths[i]->pts[0],agentPaths[i]->pts[(agentPaths[i]->npts-1)*2]);
 		
 		convertPoint(ag->pos, pa, s, bmin, bmax);
 		vcpy(ag->oldpos, ag->pos);

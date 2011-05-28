@@ -21,6 +21,7 @@
 {
     [bubblesHolder release];
     [environments release];
+    [backButton release];
     [super dealloc];
 }
 

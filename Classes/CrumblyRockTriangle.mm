@@ -88,7 +88,7 @@
 
 -(void)destroy
 {
-    CCLOG(@"Destroy");
+//    CCLOG(@"Destroy");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"removeActor" object:self];
 }
 

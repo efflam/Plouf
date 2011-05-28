@@ -13,6 +13,7 @@
     CCScene *playScene;
     CCMenuItemImage *playButton;
 }
+
 @property(nonatomic,retain) CCScene *playScene;
 @property(nonatomic,retain) CCMenuItemImage *playButton;
 

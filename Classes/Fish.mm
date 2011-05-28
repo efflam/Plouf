@@ -97,7 +97,7 @@
 
 - (void)actorWillDisappear 
 {
-    CCLOG(@"disappear !!!!!!");
+//    CCLOG(@"disappear !!!!!!");
 	[self body]->SetUserData(nil);
 	[self world]->DestroyBody([self body]);
 	[self setBody:nil];
@@ -246,7 +246,7 @@
 
 -(void)hit
 {
-    CCLOG(@"aie !");
+//    CCLOG(@"aie !");
     [[self sprite] punch];
     float force = 100.0f;
     float fx = -cosf(self.body->GetAngle())* force;

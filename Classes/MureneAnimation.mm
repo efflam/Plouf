@@ -40,6 +40,7 @@
         
         self.bulles = [AnimationHelper animationWithName:@"bulle" andOption:@"" frameNumber:9];
         [bulles setOpacity:0.0];
+        [bulles setDelegate:self];
         
         [self addChild:bulles];
         [bulles setPosition:ccp(383,45)];
@@ -61,6 +62,11 @@
     }];
     
     [self runAction:block];
+}
+
+-(void)animationComplete
+{
+    //
 }
 
 -(void)endWash

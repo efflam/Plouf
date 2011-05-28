@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "AnimationHelper.h"
 
-@interface MureneAnimation : CCNode
+@interface MureneAnimation : CCNode <AnimationHelperDelegate>
 {
     CCSprite *topJaw;
     CCSprite *bottomJaw;

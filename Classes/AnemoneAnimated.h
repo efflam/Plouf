@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "AnimationHelper.h"
 
-@interface AnemoneAnimated : CCNode {
+@interface AnemoneAnimated : CCNode <AnimationHelperDelegate> {
     AnimationHelper *body;
     AnimationHelper *eat;
 }

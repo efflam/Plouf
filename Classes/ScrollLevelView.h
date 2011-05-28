@@ -51,5 +51,6 @@
 //-(void)handlePinch:(NSSet *)touches withEvent:(UIEvent *)event;
 -(id)initWithLevelName:(NSString*)levelName;
 +(id)levelWithName:(NSString*)levelName;
+-(void)update:(ccTime)dt;
 
 @end

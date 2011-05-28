@@ -10,15 +10,22 @@
 #import "cocos2d.h"
 #import "BubbleView.h"
 #import "PauseMenu.h"
+#import "ScrollLevelView.h"
+#import "Loader.h"
+#import "LevelMenu.h"
 
 @interface LevelView : CCNode {
     CCMenu *menu;
     PauseMenu *pause;
+    ScrollLevelView *scrollView;
 }
+@property(nonatomic,retain)ScrollLevelView *scrollView;
 @property(nonatomic,retain)CCMenu *menu;
 @property(nonatomic,retain)    PauseMenu *pause;
 
 -(id)initWithLevelName:(NSString*)levelName;
 +(id)levelWithName:(NSString*)levelName;
+-(void)removePauseHandlers;
+-(void)update:(ccTime)dt;
 
 @end
