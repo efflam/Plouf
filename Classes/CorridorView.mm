@@ -107,9 +107,16 @@ float camSpring = 0.02;
         
         Murene *murene = [Murene murene];
         [self addActor:murene];
-        [murene setPosition:ccp(1000.0f, 3000.0f)];
+        [murene setPosition:ccp(1100.0f, 2400.0f)];
         
+        RectSensor *mureneSensor = [RectSensor rectSensorFrom:ccp(1400, 2510) to:ccp(1550, 2400)];
+        [self addActor:mureneSensor];
         
+        InstanceContactOperation *mureneAteOp = [InstanceContactOperation operationFor:[fishes objectAtIndex:1] WithTarget:murene andSelector:@selector(eat) when:1];
+        [mureneSensor addInstanceOperation:mureneAteOp];
+        InstanceContactOperation *fishMureneAteOp = [InstanceContactOperation operationFor:[fishes objectAtIndex:1] WithTarget:self andSelector:@selector(mureneEat) when:1];
+        [mureneSensor addInstanceOperation:fishMureneAteOp];
+
         
         ClassContactOperation *hitOp = [ClassContactOperation operationFor:[Rock class] WithTarget:currentFish andSelector:@selector(hit) when:1];
         [currentFish addClassOperation:hitOp];
@@ -148,6 +155,24 @@ float camSpring = 0.02;
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Ambiance.mp3" loop:YES];
 	}
 	return self;
+}
+
+
+-(void)mureneEat
+{
+    currentFish.spriteLinked = NO;
+    
+    [currentFish.sprite runAction:
+                                    [CCSequence actions:[CCMoveTo actionWithDuration:0.5 position:ccp(1510, 2450)], 
+                                     [CCCallFunc actionWithTarget:self selector:@selector(fishEatenByMurene)], 
+                                     nil]
+     ];
+}
+
+-(void)fishEatenByMurene
+{ 
+    [self removeActor:currentFish];
+    currentFish = nil;
 }
 
 -(void)bubbleTouch:(NSNotification*)notification
@@ -444,13 +469,13 @@ float camSpring = 0.02;
     
     NavmeshAgent* agent = &navScene.agents[navScene.nagents-1];
     
-    if(!travelling) vset(agent->pos, currentFish.sprite.position.x,currentFish.sprite.position.y);
+    if(!travelling && currentFish) vset(agent->pos, currentFish.sprite.position.x,currentFish.sprite.position.y);
     
     float pos[2] = {fish.sprite.position.x,fish.sprite.position.y};
     float nearest[2] = {fish.sprite.position.x,fish.sprite.position.y};
     
     NSLog(@"Départ agent    : %f : %f",agent->pos[0],agent->pos[1]);
-    NSLog(@"Départ poisson  : %f : %f",currentFish.sprite.position.x,currentFish.sprite.position.y);
+    if(currentFish) NSLog(@"Départ poisson  : %f : %f",currentFish.sprite.position.x,currentFish.sprite.position.y);
     NSLog(@"Arrivée poisson : %f : %f",fish.sprite.position.x,fish.sprite.position.y);
     
     if (navScene.nav)
@@ -502,9 +527,13 @@ float camSpring = 0.02;
             previousCamPos = [[Camera standardCamera] position];
         }
         
-        CGPoint fishpoint = [self convertToScreenCenter:currentFish.sprite.position];
+        if(currentFish)
+        {
+            CGPoint fishpoint = [self convertToScreenCenter:currentFish.sprite.position];
+            
+            [[Camera standardCamera] setPosition:fishpoint];
+        }
         
-        [[Camera standardCamera] setPosition:fishpoint];
         
         return;
     }
@@ -600,7 +629,7 @@ float camSpring = 0.02;
     glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	//world->DrawDebugData();
+	world->DrawDebugData();
     glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);

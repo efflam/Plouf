@@ -30,6 +30,7 @@
     CGPoint bubblePoint;
     BubbleSprite *bubbleSprite;
     NSString *name;
+    BOOL spriteLinked;
 }
 
 
@@ -42,6 +43,7 @@
 @property (nonatomic, assign) CGPoint position;
 @property (nonatomic, assign) CGFloat rotation;
 @property (nonatomic, assign) NSString *name;
+@property(readwrite, assign) BOOL spriteLinked;
 
 
 #pragma mark View Properties
@@ -57,6 +59,7 @@
 - (BOOL)containsTouchLocation:(UITouch *)touch;
 -(void)swimTo:(CGPoint)destination;
 -(void)hit;
+
 
 @end
 

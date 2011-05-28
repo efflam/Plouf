@@ -23,5 +23,6 @@
 - (void)setPosition:(CGPoint)aPosition;
 - (CGFloat)rotation;
 - (void)setRotation:(CGFloat)aRotation;
+-(void)eat;
 
 @end

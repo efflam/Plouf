@@ -254,7 +254,6 @@
 		75AEA1AD138BD5AF0097F2C6 /* AnimationHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75AEA1AC138BD5AF0097F2C6 /* AnimationHelper.mm */; };
 		75AEA1B0138BD6E10097F2C6 /* CrumblyRockTriangleTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AEA1AF138BD6E10097F2C6 /* CrumblyRockTriangleTexture.m */; };
 		75AEA1B2138BDD210097F2C6 /* motifRoche.png in Resources */ = {isa = PBXBuildFile; fileRef = 75AEA1B1138BDD210097F2C6 /* motifRoche.png */; };
-		75AEF5FE13913A1600C5B032 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 75AEF5FD13913A1600C5B032 /* backButton.png */; };
 		75C95F861381B8F800DB45F2 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 75C95F841381B8F800DB45F2 /* Default-Landscape~ipad.png */; };
 		75C95F871381B8F800DB45F2 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 75C95F851381B8F800DB45F2 /* Default-Portrait~ipad.png */; };
 		75D7C79013798ED900A80587 /* FishAnimated.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75D7C78F13798ED900A80587 /* FishAnimated.mm */; };

@@ -10,7 +10,14 @@
 
 
 @implementation AnimationHelper
-@synthesize listen,action;
+@synthesize listen,action,delegate;
+
+-(void)dealloc
+{
+    [self setListen:NO];
+    [action release];
+    [super dealloc];
+}
 
 +(id) animationWithName:(NSString*)name andOption:(NSString*)option frameNumber:(int)frameNumber
 {
@@ -39,6 +46,7 @@
 
 -(id) initWithAnimationName:(NSString*)name andOption:(NSString*)option frameNumber:(int)frameNumber
 {
+    self.listen = NO;
     CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
     
     [frameCache addSpriteFramesWithFile:[NSString stringWithFormat:@"%@.plist",name] texture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"%@.png",name]]];
@@ -71,7 +79,20 @@
 
 -(void)animationComplete
 {
-    if(listen) [[NSNotificationCenter defaultCenter] postNotificationName:@"animationComplete" object:self];
+    CCLOG(@"listen ?%d", self.listen);
+    
+    if(self.listen) 
+    {
+        NSLog(@"listened");
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"animationComplete" object:nil];
+        [self.delegate animationComplete];
+    }
+}
+
+-(void)stopAllActions
+{
+    self.listen = NO;
+    [super stopAllActions];
 }
 
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
