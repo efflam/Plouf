@@ -12,7 +12,7 @@
 @implementation Murene
 
 @synthesize sprite;
-
+@synthesize washing;
 
 - (void)dealloc
 {
@@ -25,7 +25,7 @@
 	self = [super init];
     if(self)
     {
-		
+		self.washing = NO;
 	}
 	return self;
 }
@@ -63,6 +63,18 @@
  [self.sprite eat];
 }
 
+-(void)wash
+{
+    [self.sprite wash];
+    self.washing = YES;
+}
+
+
+-(void)unwash
+{
+    [self.sprite endWash];
+    self.washing = NO;
+}
 
 - (void)worldDidStep 
 {

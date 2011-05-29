@@ -36,6 +36,7 @@
 @synthesize actorSet;
 @synthesize contactListener;
 @synthesize world;
+@synthesize murene;
 
 #define MAX_NAV_AGENTS 8
 
@@ -105,17 +106,26 @@ float camSpring = 0.02;
         //[fallSensor addInstanceOperation:op2];
         
         
-        Murene *murene = [Murene murene];
-        [self addActor:murene];
-        [murene setPosition:ccp(1100.0f, 2400.0f)];
+        self.murene = [Murene murene];
+        [self addActor:self.murene];
+        [self.murene setPosition:ccp(1100.0f, 2400.0f)];
+        
+        RectSensor *mureneWashSensor = [RectSensor rectSensorFrom:ccp(1400, 2460) to:ccp(1470, 2420)];
+        [self addActor:mureneWashSensor];
         
         RectSensor *mureneSensor = [RectSensor rectSensorFrom:ccp(1400, 2510) to:ccp(1550, 2400)];
         [self addActor:mureneSensor];
+
         
-        InstanceContactOperation *mureneAteOp = [InstanceContactOperation operationFor:[fishes objectAtIndex:1] WithTarget:murene andSelector:@selector(eat) when:1];
-        [mureneSensor addInstanceOperation:mureneAteOp];
         InstanceContactOperation *fishMureneAteOp = [InstanceContactOperation operationFor:[fishes objectAtIndex:1] WithTarget:self andSelector:@selector(mureneEat) when:1];
         [mureneSensor addInstanceOperation:fishMureneAteOp];
+        
+        InstanceContactOperation *washMureneAteOp = [InstanceContactOperation operationFor:[fishes objectAtIndex:0] WithTarget:self.murene andSelector:@selector(wash) when:1];
+        [mureneWashSensor addInstanceOperation:washMureneAteOp];
+        
+        InstanceContactOperation *unwashMureneAteOp = [InstanceContactOperation operationFor:[fishes objectAtIndex:0] WithTarget:self.murene andSelector:@selector(unwash) when:2];
+        [mureneWashSensor addInstanceOperation:unwashMureneAteOp];
+
 
         
         ClassContactOperation *hitOp = [ClassContactOperation operationFor:[Rock class] WithTarget:currentFish andSelector:@selector(hit) when:1];
@@ -160,6 +170,8 @@ float camSpring = 0.02;
 
 -(void)mureneEat
 {
+    if([[self murene] washing]) return;
+    [self.murene eat];
     currentFish.spriteLinked = NO;
     
     [currentFish.sprite runAction:
@@ -501,7 +513,6 @@ float camSpring = 0.02;
     
     for(Actor *anActor in [NSSet setWithSet:[self actorSet]]) 
     {
-        [anActor worldDidStep];
         if(anActor.destroyable)
         {
             [anActor retain];
@@ -510,7 +521,10 @@ float camSpring = 0.02;
             [anActor setScene:nil];
             [anActor setWorld:nil];
             [anActor release];
-
+        }
+        else
+        {
+            [anActor worldDidStep];
         }
                
     }
@@ -629,7 +643,7 @@ float camSpring = 0.02;
     glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	world->DrawDebugData();
+	//world->DrawDebugData();
     glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);

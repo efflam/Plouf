@@ -13,9 +13,11 @@
 @interface Murene : Actor
 {
     MureneAnimation *sprite;
+    BOOL washing;
 }
 
 @property(nonatomic, retain) MureneAnimation *sprite;
+@property(readwrite, assign) BOOL washing;
 
 - (id)init;
 +(id)murene;
@@ -24,5 +26,7 @@
 - (CGFloat)rotation;
 - (void)setRotation:(CGFloat)aRotation;
 -(void)eat;
+-(void)wash;
+-(void)unwash;
 
 @end

@@ -16,6 +16,7 @@
 #import "Fish.h"
 #import "Camera.h"
 #import "MyContactListener.h"
+#import "Murene.h"
 
 @class Fish;
 
@@ -50,6 +51,7 @@ struct NavScene
     NSMutableSet *actorSet;
 	b2ContactListener *contactListener;
     BOOL travelling;
+    Murene *murene;
 }
 
 @property(nonatomic, assign) BOOL moveToFinger;
@@ -58,6 +60,7 @@ struct NavScene
 @property (nonatomic, retain) NSMutableSet *actorSet;
 @property (nonatomic, readwrite) b2ContactListener *contactListener;
 @property (nonatomic, assign) b2World *world;
+@property(nonatomic, retain) Murene *murene;
 
 +(id)corridorWithName:(NSString *)levelName;
 -(id)initWithLevelName:(NSString *)levelName;

@@ -2218,7 +2218,6 @@
 				2D726802138E9C73004054C6 /* Loader.mm in Sources */,
 				2D726803138E9C73004054C6 /* MainMenu.mm in Sources */,
 				2DC5D0CB138FE18C006ABCE1 /* LevelMenu.m in Sources */,
-				75AEF606139142ED00C5B032 /* PauseMenu.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
