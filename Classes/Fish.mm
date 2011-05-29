@@ -18,6 +18,7 @@
 @synthesize shapeDef;
 @synthesize fixtureDef;
 @synthesize spriteLinked;
+@synthesize shipping;
 
 
 #pragma mark View Accessors
@@ -98,6 +99,7 @@
     
     self.parcel = [CCSprite spriteWithTexture: [[CCTextureCache sharedTextureCache] textureForKey:@"colis.png"]];
     [self.sprite addChild:self.parcel z:10];
+    self.parcel.visible = NO;
     [self.parcel setPosition:ccp(0.0f, 50.0f)];
 }
 
@@ -108,9 +110,12 @@
 	[self body]->SetUserData(nil);
 	[self world]->DestroyBody([self body]);
 	[self setBody:nil];
+    [[self sprite] removeChild:self.parcel cleanup:YES];
+    [self setParcel:nil];
     [[self sprite] stopAllActions];
-	[[self scene] removeChild:[self sprite] cleanup:NO];
+	[[self scene] removeChild:[self sprite] cleanup:YES];
     [self setSprite:nil];
+   
 	[super actorWillDisappear]; 
 }
 
@@ -260,4 +265,17 @@
     float fy = -sinf(self.body->GetAngle())* force;
     self.body->ApplyLinearImpulse(b2Vec2(fx, fy), self.body->GetWorldCenter());
 }
+
+-(void)ship
+{
+    self.parcel.visible = self.shipping = YES;
+    CCLOG(@"shiioooo");
+}
+
+-(void)unship
+{
+    self.parcel.visible = self.shipping = NO;
+}
+
+
 @end

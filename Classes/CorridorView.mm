@@ -80,9 +80,11 @@ float camSpring = 0.02;
         for(uint i = 0 ; i < [fishes count];i++)
         {
             Fish *fish = (Fish*)[fishes objectAtIndex:i];
+            ClassContactOperation *giveParcelOp = [ClassContactOperation operationFor:[Fish class] WithTarget:self andSelector:@selector(giveParcel) when:1];
             //[self addChild:fish];
             [fish setDelegate:self];
             [self addActor:fish];
+            [fish addClassOperation:giveParcelOp];
         }
         
         
@@ -161,6 +163,9 @@ float camSpring = 0.02;
         self.parcel = [Parcel parcelAtPosition:ccp(1120, 1960)];
         [self addActor:self.parcel];
         
+        ClassContactOperation *pickParcelOp = [ClassContactOperation operationFor:[Fish class] WithTarget:self andSelector:@selector(pickParcel) when:1];
+
+        [self.parcel addClassOperation:pickParcelOp];
          
 //        [self scheduleUpdate];
         
@@ -170,6 +175,20 @@ float camSpring = 0.02;
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Ambiance.mp3" loop:YES];
 	}
 	return self;
+}
+
+
+-(void)giveParcel
+{
+    if(shippingFish) [self setShippingFish:currentFish];
+}
+
+-(void)pickParcel
+{
+    if(shippingFish)return;
+    [self removeActor:self.parcel];
+    self.parcel = nil;
+    [self setShippingFish:currentFish];        
 }
 
 
@@ -188,8 +207,19 @@ float camSpring = 0.02;
 
 -(void)fishEatenByMurene
 { 
-    [self removeActor:currentFish];
+    [self removeFish:currentFish];
     currentFish = nil;
+}
+
+-(void)removeFish:(Fish *)aFish
+{
+    if(aFish == shippingFish) [self loose];
+    [self removeActor:aFish];
+}
+
+-(void)loose
+{
+    CCLOG(@"LOOSER :(");
 }
 
 -(void)bubbleTouch:(NSNotification*)notification
@@ -510,6 +540,18 @@ float camSpring = 0.02;
     camSpring = 0.02;
 }
 
+-(void)setShippingFish:(Fish *)fish
+{
+    if(fish == shippingFish) 
+        return; 
+    
+    if(shippingFish)
+        [shippingFish unship];
+    
+    shippingFish = fish;
+    [shippingFish ship];
+}
+    
 -(void)update:(ccTime)dt
 {
 	int32 velocityIterations = 8;

@@ -32,6 +32,7 @@
     NSString *name;
     BOOL spriteLinked;
     CCSprite *parcel;
+    BOOL shipping;
 }
 
 @property (readwrite, assign) b2Body *body;
@@ -43,6 +44,7 @@
 @property (nonatomic, assign) NSString *name;
 @property(readwrite, assign) BOOL spriteLinked;
 @property(nonatomic, retain) CCSprite *parcel;
+@property(readwrite, assign) BOOL shipping;
 
 @property (nonatomic, retain) FishAnimated *sprite;
 @property(nonatomic,retain) BubbleSprite *bubbleSprite;
@@ -54,6 +56,8 @@
 - (BOOL)containsTouchLocation:(UITouch *)touch;
 -(void)swimTo:(CGPoint)destination;
 -(void)hit;
+-(void)ship;
+-(void)unship;
 
 @end
 
