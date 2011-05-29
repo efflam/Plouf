@@ -19,10 +19,12 @@
 @synthesize fixtureDef;
 @synthesize spriteLinked;
 
+
 #pragma mark View Accessors
 
 @synthesize sprite;
 @synthesize  delegate, bubblePoint, bubbleSprite, name;
+@synthesize parcel;
 
 #pragma mark Object Methods
 
@@ -92,6 +94,11 @@
 
     self.sprite = [FishAnimated fishWithName:self.name];
 	[[self scene] addChild:self.sprite];
+    
+    
+    self.parcel = [CCSprite spriteWithTexture: [[CCTextureCache sharedTextureCache] textureForKey:@"colis.png"]];
+    [self.sprite addChild:self.parcel z:10];
+    [self.parcel setPosition:ccp(0.0f, 50.0f)];
 }
 
 

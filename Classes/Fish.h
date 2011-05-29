@@ -31,6 +31,7 @@
     BubbleSprite *bubbleSprite;
     NSString *name;
     BOOL spriteLinked;
+    CCSprite *parcel;
 }
 
 @property (readwrite, assign) b2Body *body;
@@ -41,6 +42,7 @@
 @property (nonatomic, assign) CGFloat rotation;
 @property (nonatomic, assign) NSString *name;
 @property(readwrite, assign) BOOL spriteLinked;
+@property(nonatomic, retain) CCSprite *parcel;
 
 @property (nonatomic, retain) FishAnimated *sprite;
 @property(nonatomic,retain) BubbleSprite *bubbleSprite;

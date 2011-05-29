@@ -17,6 +17,7 @@
 #import "Camera.h"
 #import "MyContactListener.h"
 #import "Murene.h"
+#import "Parcel.h"
 
 @class Fish;
 
@@ -52,6 +53,7 @@ struct NavScene
 	b2ContactListener *contactListener;
     BOOL travelling;
     Murene *murene;
+    Parcel *parcel;
 }
 
 @property(nonatomic, assign) BOOL moveToFinger;
@@ -61,6 +63,7 @@ struct NavScene
 @property (nonatomic, readwrite) b2ContactListener *contactListener;
 @property (nonatomic, assign) b2World *world;
 @property(nonatomic, retain) Murene *murene;
+@property(nonatomic, retain) Parcel *parcel;
 
 +(id)corridorWithName:(NSString *)levelName;
 -(id)initWithLevelName:(NSString *)levelName;

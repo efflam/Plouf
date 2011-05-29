@@ -37,6 +37,7 @@
 @synthesize contactListener;
 @synthesize world;
 @synthesize murene;
+@synthesize parcel;
 
 #define MAX_NAV_AGENTS 8
 
@@ -58,6 +59,8 @@ float camSpring = 0.02;
         /*
         bodyDef.position.Set(agent->pos[0]/PTM_RATIO,  agent->pos[1]/PTM_RATIO);
         */
+        
+        [[CCTextureCache sharedTextureCache] addImage:@"colis.png"];
         
         [self initPhysics];
         
@@ -155,6 +158,8 @@ float camSpring = 0.02;
         }
     
         
+        self.parcel = [Parcel parcelAtPosition:ccp(1120, 1960)];
+        [self addActor:self.parcel];
         
          
 //        [self scheduleUpdate];
@@ -643,7 +648,7 @@ float camSpring = 0.02;
     glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	//world->DrawDebugData();
+	world->DrawDebugData();
     glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -678,7 +683,12 @@ float camSpring = 0.02;
 {
 	for(Actor *anActor in [NSSet setWithSet:[self actorSet]]) 
     {
-		[self removeActor:anActor];
+        [anActor retain];
+        [anActor actorWillDisappear];
+        [[self actorSet] removeObject:anActor];
+        [anActor setScene:nil];
+        [anActor setWorld:nil];
+        [anActor release];
 	}
 }
 
