@@ -91,6 +91,9 @@
 		2D726870138E9DEA004054C6 /* level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D72686F138E9DEA004054C6 /* level1.plist */; };
 		2D726872138EA34B004054C6 /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D726871138EA34B004054C6 /* blank.png */; };
 		2D726878138FA80C004054C6 /* arcticEnvironment.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D726877138FA80C004054C6 /* arcticEnvironment.png */; };
+		2D97D1741392891100443928 /* PauseMenu.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D97D1731392891100443928 /* PauseMenu.mm */; };
+		2D97D17613928E4700443928 /* colis.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D97D17513928E4700443928 /* colis.png */; };
+		2D97D17913928EA700443928 /* Parcel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D97D17813928EA600443928 /* Parcel.mm */; };
 		2D98EBF013866DB600EE6A67 /* InstanceContactOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D98EBEF13866DAA00EE6A67 /* InstanceContactOperation.mm */; };
 		2D98EBF31386A4F100EE6A67 /* ClassContactOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D98EBF21386A4D500EE6A67 /* ClassContactOperation.m */; };
 		2DB060971344BA67003993D1 /* bucketalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB060891344BA65003993D1 /* bucketalloc.c */; };
@@ -545,6 +548,11 @@
 		2D72686F138E9DEA004054C6 /* level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level1.plist; sourceTree = "<group>"; };
 		2D726871138EA34B004054C6 /* blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blank.png; sourceTree = "<group>"; };
 		2D726877138FA80C004054C6 /* arcticEnvironment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arcticEnvironment.png; sourceTree = "<group>"; };
+		2D97D1721392891100443928 /* PauseMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseMenu.h; sourceTree = "<group>"; };
+		2D97D1731392891100443928 /* PauseMenu.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PauseMenu.mm; sourceTree = "<group>"; };
+		2D97D17513928E4700443928 /* colis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colis.png; sourceTree = "<group>"; };
+		2D97D17713928EA600443928 /* Parcel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parcel.h; sourceTree = "<group>"; };
+		2D97D17813928EA600443928 /* Parcel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Parcel.mm; sourceTree = "<group>"; };
 		2D98EBEE13866DA400EE6A67 /* InstanceContactOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstanceContactOperation.h; sourceTree = "<group>"; };
 		2D98EBEF13866DAA00EE6A67 /* InstanceContactOperation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InstanceContactOperation.mm; sourceTree = "<group>"; };
 		2D98EBF11386A4C700EE6A67 /* ClassContactOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassContactOperation.h; sourceTree = "<group>"; };
@@ -1393,6 +1401,7 @@
 		50F4144210692EE7002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2D97D17513928E4700443928 /* colis.png */,
 				7552B1831391A257009F5479 /* menu */,
 				75F61110138BBC6F00468DB6 /* obstacles */,
 				751901AC13795B6E0093AAC3 /* fishes */,
@@ -2039,6 +2048,7 @@
 				2D726878138FA80C004054C6 /* arcticEnvironment.png in Resources */,
 				7552B17E13919DF5009F5479 /* bulle.plist in Resources */,
 				7552B17F13919DF5009F5479 /* bulle.png in Resources */,
+				2D97D17613928E4700443928 /* colis.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
