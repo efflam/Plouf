@@ -48,6 +48,7 @@
 @property(nonatomic,retain) BubbleSprite *bubbleSprite;
 @property(readwrite,assign) CGPoint bubblePoint;
 @property(nonatomic,retain) id <FishDelegate> delegate;
+@property(readwrite,assign) BOOL shipping;
 
 -(id)initWithFishName:(NSString*)fishName andPosition:(CGPoint)position;
 +(id)fishWithName:(NSString*)fishName andPosition:(CGPoint)position;

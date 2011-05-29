@@ -97,6 +97,8 @@ float camSpring = 0.02;
         for(uint i = 0 ; i < [fishes count];i++)
         {
             Fish *fish = (Fish*)[fishes objectAtIndex:i];
+            ClassContactOperation *giveParcelOp = [ClassContactOperation operationFor:[Fish class] WithTarget:self andSelector:@selector(giveParcel) when:1];
+            
             [fish setDelegate:self];
             [self addActor:fish];
             [fish addClassOperation:giveParcelOp];
@@ -161,6 +163,10 @@ float camSpring = 0.02;
         
         self.parcel = [Parcel parcelAtPosition:ccp(1120, 1960)];
         [self addActor:self.parcel];
+        
+        ClassContactOperation *pickParcelOp = [ClassContactOperation operationFor:[Fish class] WithTarget:self andSelector:@selector(pickParcel) when:1];
+        
+        [self.parcel addClassOperation:pickParcelOp];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeActorHandler:) name:@"removeActor" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bubbleTouch:) name:@"bubbleTouch" object:nil];

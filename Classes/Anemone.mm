@@ -70,7 +70,7 @@
 
 - (void)actorWillDisappear 
 {
-	[self body]->SetUserData(nil);
+//	[self body]->SetUserData(nil);
 	[self world]->DestroyBody([self body]);
 	[self setBody:nil];
 	[[self scene] removeChild:[self sprite] cleanup:NO];
