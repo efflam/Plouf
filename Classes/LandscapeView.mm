@@ -14,9 +14,13 @@
 -(void)dealloc
 {
     [tiles release];
+    [super dealloc];
+}
+
+-(void)onExit
+{
     [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
     [[CCTextureCache sharedTextureCache] removeUnusedTextures];
-    [super dealloc];
 }
 
 -(id)initWithLevelName:(NSString*)levelName

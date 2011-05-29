@@ -18,7 +18,11 @@
     [[Camera standardCamera] setDelegate:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self unscheduleUpdate];
+    
+    [[CCTouchDispatcher sharedDispatcher]removeDelegate:scrollView];
     [scrollView release];
+    
+    
     [menu release];
     [pause release];
     [super dealloc];
@@ -83,7 +87,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(restartHandler) 
-                                                 name:@"restartButtonTouche" 
+                                                 name:@"restartButtonTouched" 
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self 
@@ -111,6 +115,9 @@
 -(void)levelMenuHandler
 {
     [self unscheduleUpdate];
+    
+    [[CCTouchDispatcher sharedDispatcher] removeAllDelegates];
+    
     CCScene *scene = [CCScene node];
     [scene addChild:[LevelMenu node]];
     
@@ -120,15 +127,19 @@
 -(void)restartHandler
 {
     [self unscheduleUpdate];
-    [[CCDirector sharedDirector] pause];
-    [[CCDirector sharedDirector] popSceneWithTransition:[CCTransitionFade class] duration:.5];
+    
+    
+    [[CCTouchDispatcher sharedDispatcher] removeAllDelegates];
+    
+    CCScene *scene = [CCScene node];
+    [scene addChild:[Loader node]];
+        
+    [[CCDirector sharedDirector] replaceScene:scene];
 }
 
 -(void)removePauseHandlers
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"restartButtonTouched" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"levelButtonTouched" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"continueButtonTouched" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)onEnterTransitionDidFinish

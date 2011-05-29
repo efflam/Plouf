@@ -18,7 +18,6 @@
 #import "math.h"
 #import "nanosvg.h"
 #import "Rock.h"
-#import "RockFall.h"
 #import "RectSensor.h"
 #import "MyContactListener.h"
 #import "ClassContactOperation.h"
@@ -38,28 +37,47 @@
 @synthesize world;
 @synthesize murene;
 @synthesize parcel;
+@synthesize fall;
 
 #define MAX_NAV_AGENTS 8
 
 float camSpring = 0.02;
 
+- (void) dealloc
+{
+    
+
+	delete world;
+	delete debugDraw;
+    delete contactListener;
+    
+    world = NULL;
+    
+    [fall release];
+    [actorSet release];
+    [parcel release];
+    [murene release];
+	[super dealloc];
+}
 
 +(id)corridorWithName:(NSString *)levelName
 {
 	return [[[self alloc] initWithLevelName:levelName] autorelease];
 }
 
+-(void)onExit
+{
+    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [fall setDelegate:nil];
+    [self removeAllActors];
+}
 
 -(id)initWithLevelName:(NSString *)levelName 
 {
 	if((self = [super init]))
 	{
 		[[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
-        
-        /*
-        bodyDef.position.Set(agent->pos[0]/PTM_RATIO,  agent->pos[1]/PTM_RATIO);
-        */
-        
         [[CCTextureCache sharedTextureCache] addImage:@"colis.png"];
         
         [self initPhysics];
@@ -72,7 +90,6 @@ float camSpring = 0.02;
         
         Fish *fish1  = [Fish fishWithName:@"clown" andPosition:ccp(agent->pos[0],agent->pos[1])];
         Fish *fish2  = [Fish fishWithName:@"clown" andPosition:ccp(agent->pos[0],agent->pos[1])];
-        //FishView *fishView2 = [FishView fishWithName:@"clown" andWorld:world andPosition:ccp(agent->pos[0],agent->pos[1])];
         currentFish = fish1;
         
         fishes = [NSMutableArray arrayWithObjects:fish1, fish2, nil];
@@ -80,34 +97,21 @@ float camSpring = 0.02;
         for(uint i = 0 ; i < [fishes count];i++)
         {
             Fish *fish = (Fish*)[fishes objectAtIndex:i];
-            //[self addChild:fish];
             [fish setDelegate:self];
             [self addActor:fish];
         }
         
-        
         CCSpriteBatchNode *batch = [CCSpriteBatchNode batchNodeWithFile:@"blocks.png" capacity:150];
         [self addChild:batch z:0 tag:1];
         
-        
-        
-        RockFall *fall = [RockFall rockFallWithGame:self];
+        self.fall = [RockFall rockFallWithDelegate:self];
         [fall setEmissionPoint:ccp(1080, 1300)];
-        //[fall startEmission];
         
         RectSensor *fallSensor = [RockFallSensor rockFallSensorFor:fall from:ccp(200, 1300) to:ccp(1500, 660)];
         [self addActor:fallSensor];
         
         [self setContactListener: new MyContactListener()];
         world->SetContactListener([self contactListener]);
-//        CCLOG(@"fish = %@", currentFish);
-        //InstanceContactOperation *op = [InstanceContactOperation operationFor:currentFish WithTarget:fall andSelector:@selector(toggleEmission) when:0];
-        
-       // InstanceContactOperation *op2 = [InstanceContactOperation operationFor:[fishes objectAtIndex:1] WithTarget:fall andSelector:@selector(toggleEmission) when:0];
-        
-        //[fallSensor addInstanceOperation:op];
-        //[fallSensor addInstanceOperation:op2];
-        
         
         self.murene = [Murene murene];
         [self addActor:self.murene];
@@ -128,8 +132,6 @@ float camSpring = 0.02;
         
         InstanceContactOperation *unwashMureneAteOp = [InstanceContactOperation operationFor:[fishes objectAtIndex:0] WithTarget:self.murene andSelector:@selector(unwash) when:2];
         [mureneWashSensor addInstanceOperation:unwashMureneAteOp];
-
-
         
         ClassContactOperation *hitOp = [ClassContactOperation operationFor:[Rock class] WithTarget:currentFish andSelector:@selector(hit) when:1];
         [currentFish addClassOperation:hitOp];
@@ -152,8 +154,6 @@ float camSpring = 0.02;
                 Anemone *anem = (Anemone *)anActor;
                 InstanceContactOperation *ateOp = [InstanceContactOperation operationFor:[fishes objectAtIndex:1] WithTarget:anem andSelector:@selector(ate) when:1];
                 [anem addInstanceOperation:ateOp];
-                
-                
             }
         }
     
@@ -161,15 +161,16 @@ float camSpring = 0.02;
         self.parcel = [Parcel parcelAtPosition:ccp(1120, 1960)];
         [self addActor:self.parcel];
         
-         
-//        [self scheduleUpdate];
-        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeActorHandler:) name:@"removeActor" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bubbleTouch:) name:@"bubbleTouch" object:nil];
-        
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Ambiance.mp3" loop:YES];
 	}
 	return self;
+}
+
+-(void)onEnter
+{
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Ambiance.mp3" loop:YES];
+    [super onEnter];
 }
 
 
@@ -215,9 +216,7 @@ float camSpring = 0.02;
 {
     SVGPath* plist = [self loadMesh:levelName];
     if (!plist) CCLOG(@"loadMesh: Could not load Mesh");   
-    
-//    NSLog(@"TRACAGE");
-    
+        
     float bmin[2] = {FLT_MAX,FLT_MAX}, bmax[2] = {-FLT_MAX,-FLT_MAX};
     SVGPath* walkablePath = 0;
     SVGPath* edgePath = 0;
@@ -283,28 +282,14 @@ float camSpring = 0.02;
         const float* pa = &anemonePaths[i]->pts[0];
 		const float* pb = &anemonePaths[i]->pts[(anemonePaths[i]->npts-1)*2];
         
-//        CCLOG(@"ANEMONE %i -> pa : (%f, %f); pb : (%f, %f)", i, pa[0], pa[1], pb[0], pb[1]);
-
-        
         float p1[2];
         float p2[2];
         convertPoint(p1, pa, s, bmin, bmax);
 		convertPoint(p2, pb, s, bmin, bmax);
-        
-//        CCLOG(@"ANEMONE %i -> p1 : (%f, %f); p2 : (%f, %f)", i, p1[0], p1[1], p2[0], p2[1]);
-        
-//        CGPoint point1 = ccp(p1[0], p1[1]);
-//        CGPoint point2 = ccp(p2[0], p2[1]);
-//        CGPoint point2ForPoint1 = ccpSub(point1, point2);
-//        float angle = ccpAngleSigned(point1, point2);
-        
-//        CCLOG(@"point %d : (angle = %f),", i, angle);
 
         float a = p1[0] - p2[0];
         float b = p1[1] - p2[1];
         float ang = atan2f(b, a) + M_PI * 0.5;
-        
-        
         
         Anemone *anem = [Anemone anemoneAtPosition:ccp(p1[0], p1[1]) andRotation:ang];
         
@@ -446,23 +431,8 @@ float camSpring = 0.02;
         
     fingerPos = tchLoc;
     previousCamPos = [Camera standardCamera].position;
-	
-//    const float lx = tchLoc.x;
-//    const float ly = tchLoc.y;
     
     moveToFinger = true;
-    
-    /*
-    float pos[2] = {lx,ly};
-    float nearest[2] = {lx,ly};
-    if (navScene.nav)
-        navmeshFindNearestTri(navScene.nav, pos, nearest);
-	
-    vcpy(navScene.agents[0].target, nearest);
-    vcpy(navScene.agents[0].oldpos, navScene.agents[0].pos);
-    agentFindPath(&navScene.agents[0], navScene.nav);
-    vset(navScene.agents[0].corner, FLT_MAX,FLT_MAX);
-    */
 }
 
 -(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -631,19 +601,6 @@ float camSpring = 0.02;
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     moveToFinger = false;
-}
-
-- (void) dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self removeAllActors];
-    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
-	delete world;
-	world = NULL;	
-	delete debugDraw;
-    [actorSet release];
-    [murene release];
-	[super dealloc];
 }
 
 -(void)draw

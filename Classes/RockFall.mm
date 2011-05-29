@@ -13,28 +13,29 @@
 @implementation RockFall
 
 @synthesize emissionPoint;
-@synthesize game;
 @synthesize frequency;
 @synthesize timer;
 @synthesize maxRocks;
 @synthesize rocks;
 @synthesize emitting;
+@synthesize delegate;
 
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [timer release];
-    [game release];
+    [delegate release];
     [rocks release];
 	[super dealloc];
 }
 
-- (id)initWithGame:(CorridorView *)aGame
+- (id)initWithDelegate:(id)del
 {
 	self = [super init];
     if(self)
     {
-		[self setGame:aGame];
+        self.delegate = del;
+        
         [self setMaxRocks:60];
         [self setFrequency:0.1f];
         [self setRocks:[NSMutableArray array]];
@@ -42,7 +43,7 @@
         CCTexture2D *texCailloux = [[CCTextureCache sharedTextureCache] addImage:@"cailloux.png"];
         
         CCSpriteBatchNode *batch = [CCSpriteBatchNode batchNodeWithTexture:texCailloux capacity:[self maxRocks]];
-		[[self game] addChild:batch z:0 tag:999];
+		[[self delegate] addChild:batch z:0 tag:999];
         self.emitting = NO;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopEmission) name:@"pauseLevel" object:nil];
@@ -50,9 +51,9 @@
 	return self;
 }
 
-+(id)rockFallWithGame:(CorridorView *)aGame
++(id)rockFallWithDelegate:(id)del
 {
-    return [[[RockFall alloc] initWithGame:aGame] autorelease];
+    return [[[RockFall alloc] initWithDelegate:del] autorelease];
 }
 
 -(void)startEmission
@@ -99,7 +100,7 @@
     if([[self rocks] count] >= [self maxRocks])
     {
         Rock *rock = [rocks objectAtIndex:0];
-        [game removeActor:rock];
+        [delegate removeActor:rock];
         [rocks removeObject:rock];
     }
     
@@ -107,7 +108,7 @@
     
     newRock = [[Rock alloc] init];
     [newRock setPosition:p];
-    [game addActor:newRock];
+    [delegate addActor:newRock];
     [rocks addObject:newRock];
     [newRock release];
 }

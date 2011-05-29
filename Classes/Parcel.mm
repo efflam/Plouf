@@ -17,6 +17,16 @@
 @synthesize fixtureDef;
 @synthesize sprite;
 
+-(void)dealloc
+{
+    delete bodyDef;
+    delete shapeDef;
+    delete fixtureDef;
+    
+    [sprite release];
+    
+    [super dealloc];
+}
 
 +(id)parcelAtPosition:(CGPoint)aPosition
 {

@@ -1,53 +1,47 @@
 #import "Actor.h"
 
-
-@interface Actor ()
-
-
-#pragma mark Contact Properties
-
-@property (nonatomic, retain) NSMutableArray *contactArray;
-@property (nonatomic, retain) NSMutableArray *instanceOperationArray;
-@property (nonatomic, retain) NSMutableArray *classOperationArray;
-
-
-@end
+//@interface Actor ()
+//
+//
+//#pragma mark Contact Properties
+//
+//@property (nonatomic, retain) NSMutableArray *contactArray;
+//@property (nonatomic, retain) NSMutableArray *instanceOperationArray;
+//@property (nonatomic, retain) NSMutableArray *classOperationArray;
+//
+//@end
 
 
 @implementation Actor
 
-@synthesize destroyable;
+@synthesize destroyable,contactArray,instanceOperationArray,classOperationArray;
+@synthesize world;
+@synthesize scene;
 
 #pragma mark Object Methods
 
 - (void)dealloc {
-	[self setContactArray:nil];
-    [self setInstanceOperationArray:nil];
-    [self setClassOperationArray:nil];
-	[self setWorld:nil];
+    delete world;
+    
+    [contactArray release];
+    [instanceOperationArray release];
+    [classOperationArray release];
     [scene release];
-    [self setScene:nil];
-	[super dealloc];
+	
+    [super dealloc];
 }
 
 - (id)init {
 	if((self = [super init]))
     {
         self.destroyable = NO;
-		[self setContactArray:[[[NSMutableArray alloc] init] autorelease]];
-        [self setInstanceOperationArray:[[[NSMutableArray alloc] init] autorelease]];
-        [self setClassOperationArray:[[[NSMutableArray alloc] init] autorelease]];
+		[self setContactArray:[NSMutableArray array]];
+        [self setInstanceOperationArray:[NSMutableArray array]];
+        [self setClassOperationArray:[NSMutableArray array]];
 
 	}
         return self;
 }
-
-
-#pragma mark Contact Accessors
-
-@synthesize contactArray;
-@synthesize instanceOperationArray;
-@synthesize classOperationArray;
 
 - (NSSet *)contactSet {
 	return [NSSet setWithArray:[self contactArray]];
@@ -164,12 +158,5 @@
 - (void)worldDidStep {
 	
 }
-
-
-#pragma mark Game Accessors
-
-@synthesize world;
-@synthesize scene;
-
 
 @end

@@ -40,10 +40,9 @@
 @property (readwrite, assign) b2FixtureDef *fixtureDef;
 @property (nonatomic, assign) CGPoint position;
 @property (nonatomic, assign) CGFloat rotation;
-@property (nonatomic, assign) NSString *name;
+@property (nonatomic, retain) NSString *name;
 @property(readwrite, assign) BOOL spriteLinked;
 @property(nonatomic, retain) CCSprite *parcel;
-
 @property (nonatomic, retain) FishAnimated *sprite;
 @property(nonatomic,retain) BubbleSprite *bubbleSprite;
 @property(readwrite,assign) CGPoint bubblePoint;

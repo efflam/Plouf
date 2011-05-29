@@ -20,6 +20,9 @@
 
 -(void)dealloc
 {
+    delete shapeDef;
+    delete bodyDef;
+    delete fixtureDef;
     [sprite release];
     [super dealloc];
 }

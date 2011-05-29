@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "RockFall.h"
 #import "Box2D.h"
 #import "GLES-Render.h"
 #import "nanosvg.h"
@@ -19,7 +20,9 @@
 #import "Murene.h"
 #import "Parcel.h"
 
+
 @class Fish;
+@class RockFall;
 
 static const float AGENT_RAD = 20.0f;
 static const int MAX_NAV_AGENTS = 16;
@@ -39,7 +42,7 @@ struct NavScene
 };
 
 @protocol FishDelegate;
-@interface CorridorView : CCNode <CCStandardTouchDelegate, FishDelegate>
+@interface CorridorView : CCNode <CCStandardTouchDelegate,FishDelegate,RockFallDelegate>
 {    
     b2World *world;
 	GLESDebugDraw *debugDraw;
@@ -54,8 +57,10 @@ struct NavScene
     BOOL travelling;
     Murene *murene;
     Parcel *parcel;
+    RockFall *fall;
 }
 
+@property(nonatomic, retain) RockFall *fall;
 @property(nonatomic, assign) BOOL moveToFinger;
 @property(nonatomic, assign) CGPoint fingerPos;
 @property(nonatomic, assign) NavScene navScene;
@@ -79,17 +84,14 @@ struct NavScene
 -(void)setSelectedFish:(Fish *)fish;
 -(CGPoint)convertToScreenCenter:(CGPoint)point;
 -(void)mureneEat;
-
 -(void)removeActorHandler:(NSNotification*)notification;
 -(void)update:(ccTime)dt;
 
 #pragma mark Actor Methods
 
-- (void)addActor:(Actor *)anActor;
-
-- (void)removeActor:(Actor *)anActor;
-
-- (void)removeAllActors;
+-(void)addActor:(Actor *)anActor;
+-(void)removeActor:(Actor *)anActor;
+-(void)removeAllActors;
 -(void)fishEatenByMurene;
 
 @end
