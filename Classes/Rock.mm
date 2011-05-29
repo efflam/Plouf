@@ -23,11 +23,15 @@
 	delete bodyDef;
 	delete shapeDef;
     delete fixtureDef;
-	[self setBody:nil];
-	[self setBodyDef:nil];
-	[self setShapeDef:nil];
-    [self setFixtureDef:nil];
-	[self setRockSprite:nil];
+//	[self setBody:nil];
+//    delete body;
+    [self setBody:nil];
+//	[self setBodyDef:nil];
+//	[self setShapeDef:nil];
+    delete shapeDef;
+//    [self setFixtureDef:nil];
+//	[self setRockSprite:nil];
+    [rockSprite release];
 	[super dealloc];
 }
 

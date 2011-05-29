@@ -93,13 +93,14 @@
     {
         rock = [rocks objectAtIndex:0];
         [game removeActor:rock];
-        [rocks removeObjectAtIndex:0];
+        [rocks removeObject:rock];
     }
     
     rock = [[Rock alloc] init];
     [rock setPosition:p];
     [game addActor:rock];
     [rocks addObject:rock];
+    [rock release];
 }
 
 
