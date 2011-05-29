@@ -16,7 +16,7 @@
 
 - (void)dealloc
 {
-	[self setSprite:nil];
+	[sprite release];
 	[super dealloc];
 }
 

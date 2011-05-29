@@ -12,6 +12,12 @@
 @implementation CrumblyRockTriangleTexture
 @synthesize image;
 
+-(void)dealloc
+{
+    [image release];
+    [super dealloc];
+}
+
 -(id)initWithPoints:(float*)pts
 {
     self = [super init];

@@ -22,6 +22,10 @@
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [timer release];
+    [game release];
+    [rocks release];
 	[super dealloc];
 }
 
@@ -33,11 +37,16 @@
 		[self setGame:aGame];
         [self setMaxRocks:60];
         [self setFrequency:0.1f];
-        [self setRocks:[[NSMutableArray alloc] init]];
-        CCSpriteBatchNode *batch = [CCSpriteBatchNode batchNodeWithFile:@"cailloux.png" capacity:[self maxRocks]];
+        [self setRocks:[NSMutableArray array]];
+        
+        CCTexture2D *texCailloux = [[CCTextureCache sharedTextureCache] addImage:@"cailloux.png"];
+        
+        CCSpriteBatchNode *batch = [CCSpriteBatchNode batchNodeWithTexture:texCailloux capacity:[self maxRocks]];
 		[[self game] addChild:batch z:0 tag:999];
         self.emitting = NO;
-	}
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopEmission) name:@"pauseLevel" object:nil];
+    }
 	return self;
 }
 
@@ -45,7 +54,6 @@
 {
     return [[[RockFall alloc] initWithGame:aGame] autorelease];
 }
-
 
 -(void)startEmission
 {
@@ -67,8 +75,6 @@
     self.emitting ? [self stopEmission] : [self startEmission];
 }
 
-
-
 -(void)setTimer:(NSTimer *)aTimer 
 {
 	if(timer != aTimer) 
@@ -88,19 +94,22 @@
 -(void)emitRockAt:(CGPoint)p
 {
     //CCLOG(@"%d", [[self rocks] count] );
-    Rock *rock;
+    
+    
     if([[self rocks] count] >= [self maxRocks])
     {
-        rock = [rocks objectAtIndex:0];
+        Rock *rock = [rocks objectAtIndex:0];
         [game removeActor:rock];
         [rocks removeObject:rock];
     }
     
-    rock = [[Rock alloc] init];
-    [rock setPosition:p];
-    [game addActor:rock];
-    [rocks addObject:rock];
-    [rock release];
+    Rock *newRock;
+    
+    newRock = [[Rock alloc] init];
+    [newRock setPosition:p];
+    [game addActor:newRock];
+    [rocks addObject:newRock];
+    [newRock release];
 }
 
 

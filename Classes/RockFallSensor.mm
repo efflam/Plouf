@@ -64,6 +64,11 @@
 
 
 
+-(void)dealloc
+{
+    [rockFall release];
+    [super dealloc];
+}
 
 
 

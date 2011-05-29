@@ -46,5 +46,12 @@
 }
 
 
+-(void)dealloc
+{
+    [actor release];
+    [target release];
+    [super dealloc];
+}
+
 
 @end

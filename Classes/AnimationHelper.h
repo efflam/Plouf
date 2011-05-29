@@ -16,7 +16,7 @@
     BOOL listen;
     CCAction *action;
 }
-@property(nonatomic,assign) id <AnimationHelperDelegate> delegate;
+@property(nonatomic,retain) id <AnimationHelperDelegate> delegate;
 @property(readwrite,assign) BOOL listen;
 @property(nonatomic,retain) CCAction* action;
 

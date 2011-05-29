@@ -20,19 +20,13 @@
 
 - (void)dealloc
 {
-	delete bodyDef;
-	delete shapeDef;
-    delete fixtureDef;
-//	[self setBody:nil];
-//    delete body;
-    [self setBody:nil];
-//	[self setBodyDef:nil];
-//	[self setShapeDef:nil];
-    delete shapeDef;
-//    [self setFixtureDef:nil];
-//	[self setRockSprite:nil];
     [rockSprite release];
 	[super dealloc];
+}
+
+-(void)release
+{
+    [super release];
 }
 
 - (id)init
@@ -77,6 +71,12 @@
 
 - (void)actorWillDisappear 
 {
+    for(Actor *anActor in [self contactSet])
+    {
+        [anActor removeContact:self];
+        
+    }
+    
 	[self body]->SetUserData(nil);
 	[self world]->DestroyBody([self body]);
 	[self setBody:nil];
@@ -86,10 +86,15 @@
 	[[self scene] removeChild:[self rockSprite] cleanup:NO];
     CCSpriteBatchNode *batch = (CCSpriteBatchNode*) [[self scene] getChildByTag:999];
     [batch removeChild:[self rockSprite] cleanup:YES];
-    [self setRockSprite:nil];
+    
 	[super actorWillDisappear];
 }
 
+-(id)retain
+{
+    
+    return [super retain];
+}
 
 - (void)worldDidStep 
 {

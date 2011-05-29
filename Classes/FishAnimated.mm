@@ -48,9 +48,7 @@
         [self addChild:self.body z:0 tag:0];
         [self addChild:self.eye z:1 tag:1];
         [self addChild:self.hit z:2 tag:2];
-                
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationComplete) name:@"animationComplete" object:nil];
-        
+                        
         [self.body runAction:self.body.action];
         [self.eye runAction:self.eye.action];
         [self.hit runAction:self.hit.action];

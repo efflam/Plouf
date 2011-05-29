@@ -79,6 +79,12 @@ static Camera* _standardCamera = nil;
 	return point;
 }
 
+-(void)clean
+{
+    [delegate release];
+    [self setDelegate:nil];
+}
+
 -(void)dealloc
 {
     [delegate release];

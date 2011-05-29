@@ -13,6 +13,7 @@
 #import "ScrollLevelView.h"
 #import "Loader.h"
 #import "LevelMenu.h"
+#import "Camera.h"
 
 @interface LevelView : CCNode {
     CCMenu *menu;

@@ -16,6 +16,7 @@
 {
     [self setListen:NO];
     [action release];
+    [delegate release];
     [super dealloc];
 }
 
@@ -57,13 +58,9 @@
 }
 
 -(void)animationComplete
-{
-//    CCLOG(@"listen ?%d", self.listen);
-    
+{    
     if(self.listen) 
     {
-//        NSLog(@"listened");
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"animationComplete" object:nil];
         [self.delegate animationComplete];
     }
 }
