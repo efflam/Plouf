@@ -23,11 +23,7 @@
 	delete bodyDef;
 	delete shapeDef;
     delete fixtureDef;
-	[self setBody:nil];
-	[self setBodyDef:nil];
-	[self setShapeDef:nil];
-    [self setFixtureDef:nil];
-    [self setPoints:nil];
+    [texture release];
 	[super dealloc];
 }
 

@@ -15,6 +15,8 @@
 
 -(void)dealloc
 {
+    [[Camera standardCamera] setDelegate:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self unscheduleUpdate];
     [scrollView release];
     [menu release];
@@ -71,6 +73,8 @@
 {
     [self unscheduleUpdate];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"pauseLevel" object:nil];
+    
     [pause setVisible:YES];
     [pause pause:YES];
     [menu setIsTouchEnabled:NO];
@@ -109,12 +113,14 @@
     [self unscheduleUpdate];
     CCScene *scene = [CCScene node];
     [scene addChild:[LevelMenu node]];
+    
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:.5 scene:scene]];
 }
 
 -(void)restartHandler
 {
     [self unscheduleUpdate];
+    [[CCDirector sharedDirector] pause];
     [[CCDirector sharedDirector] popSceneWithTransition:[CCTransitionFade class] duration:.5];
 }
 

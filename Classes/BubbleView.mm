@@ -64,10 +64,7 @@
 
 -(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"showMe" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"trackMe" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"unTrackMe" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
 

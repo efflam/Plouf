@@ -515,12 +515,12 @@ float camSpring = 0.02;
     {
         if(anActor.destroyable)
         {
-            [anActor retain];
+//            [anActor retain];
             [anActor actorWillDisappear];
-            [[self actorSet] removeObject:anActor];
             [anActor setScene:nil];
             [anActor setWorld:nil];
-            [anActor release];
+            [[self actorSet] removeObject:anActor];
+//            [anActor release];
         }
         else
         {
@@ -630,9 +630,13 @@ float camSpring = 0.02;
 
 - (void) dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 	delete world;
 	world = NULL;	
 	delete debugDraw;
+    [actorSet release];
+    [murene release];
 	[super dealloc];
 }
 

@@ -25,6 +25,7 @@
     [self setInstanceOperationArray:nil];
     [self setClassOperationArray:nil];
 	[self setWorld:nil];
+    [scene release];
     [self setScene:nil];
 	[super dealloc];
 }
@@ -157,6 +158,7 @@
 }
 
 - (void)actorWillDisappear {
+    
 }
 
 - (void)worldDidStep {

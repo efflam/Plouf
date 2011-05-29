@@ -16,6 +16,16 @@
 @synthesize body;
 @synthesize bulles;
 
+
+-(void)dealloc
+{
+    [topJaw release];
+    [bottomJaw release];
+    [body release];
+    [bulles release];
+    [super dealloc];
+}
+
 - (id)init
 {
 	self = [super init];

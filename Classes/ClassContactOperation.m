@@ -45,5 +45,11 @@
     }
 }
 
+-(void)dealloc
+{
+    [target release];
+    [super dealloc];
+}
+
 
 @end
