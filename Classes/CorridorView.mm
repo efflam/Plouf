@@ -636,6 +636,7 @@ float camSpring = 0.02;
 - (void) dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self removeAllActors];
     [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 	delete world;
 	world = NULL;	
