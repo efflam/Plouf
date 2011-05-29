@@ -34,6 +34,9 @@
 	delete bodyDef;
 	delete shapeDef;
     delete fixtureDef;
+        
+    [parcel release];
+    [name release];
     [delegate release];
     [sprite release];
     [bubbleSprite release];
@@ -113,7 +116,7 @@
     [[self sprite] stopAllActions];
 	[[self scene] removeChild:[self sprite] cleanup:YES];
     [self setSprite:nil];
-   
+    [self setDelegate:nil];
 	[super actorWillDisappear]; 
 }
 

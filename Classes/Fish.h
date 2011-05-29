@@ -41,15 +41,14 @@
 @property (readwrite, assign) b2FixtureDef *fixtureDef;
 @property (nonatomic, assign) CGPoint position;
 @property (nonatomic, assign) CGFloat rotation;
-@property (nonatomic, assign) NSString *name;
+@property (nonatomic, retain) NSString *name;
 @property(readwrite, assign) BOOL spriteLinked;
 @property(nonatomic, retain) CCSprite *parcel;
-@property(readwrite, assign) BOOL shipping;
-
 @property (nonatomic, retain) FishAnimated *sprite;
 @property(nonatomic,retain) BubbleSprite *bubbleSprite;
 @property(readwrite,assign) CGPoint bubblePoint;
 @property(nonatomic,retain) id <FishDelegate> delegate;
+@property(readwrite,assign) BOOL shipping;
 
 -(id)initWithFishName:(NSString*)fishName andPosition:(CGPoint)position;
 +(id)fishWithName:(NSString*)fishName andPosition:(CGPoint)position;

@@ -20,6 +20,9 @@
 
 - (void)dealloc
 {
+    delete bodyDef;
+    delete shapeDef;
+    delete fixtureDef;
     [rockSprite release];
 	[super dealloc];
 }
@@ -88,12 +91,6 @@
     [batch removeChild:[self rockSprite] cleanup:YES];
     
 	[super actorWillDisappear];
-}
-
--(id)retain
-{
-    
-    return [super retain];
 }
 
 - (void)worldDidStep 
