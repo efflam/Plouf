@@ -14,6 +14,8 @@
 -(void)dealloc
 {
     [tiles release];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
+    [[CCTextureCache sharedTextureCache] removeUnusedTextures];
     [super dealloc];
 }
 
@@ -25,37 +27,8 @@
     {   
         [self setAnchorPoint:ccp(0,0)];
         
-        /*
-        CCSprite *level1 = [CCSprite spriteWithFile:[NSString stringWithFormat:@"%@-1.png",levelName]];
-        CCSprite *level2 = [CCSprite spriteWithFile:[NSString stringWithFormat:@"%@-2.png",levelName]];
-        CCSprite *level3 = [CCSprite spriteWithFile:[NSString stringWithFormat:@"%@-3.png",levelName]];
-        CCSprite *level4 = [CCSprite spriteWithFile:[NSString stringWithFormat:@"%@-4.png",levelName]];
-                
-        [level1 setAnchorPoint:ccp(0,0)];
-        [level2 setAnchorPoint:ccp(0,0)];
-        [level3 setAnchorPoint:ccp(0,0)];
-        [level4 setAnchorPoint:ccp(0,0)];
-        
-        [level1 setPosition:ccp(0,MAP_HEIGHT/2)];
-        [level2 setPosition:ccp(MAP_WIDTH/2,MAP_HEIGHT/2)];
-        [level3 setPosition:ccp(MAP_WIDTH/2,0)];
-        [level4 setPosition:ccp(0,0)];
-        
-        [self addChild:level1];
-        [self addChild:level2];
-        [self addChild:level3];
-        [self addChild:level4];
-         */
-        
-        /*
-        
-        level = levelName;
-        */
-        
-        
         NSString *path = [CCFileUtils fullPathFromRelativePath:[NSString stringWithFormat:@"%@.plist",levelName]];
         NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
-        
         NSArray *blanks = [dict objectForKey:@"blackTiles"];
         
         self.tiles = [NSMutableArray arrayWithCapacity:64];
@@ -70,12 +43,9 @@
                 BOOL blank = NO;
                 
                 for (uint k = 0 ; k < [blanks count]; k++) 
-                {
-                    //NSLog(@"blanks : %@",[blanks objectAtIndex:k]);
-                    
+                {                    
                     if([tileNumber isEqualToString:[blanks objectAtIndex:k]])
                     {
-                        //NSLog(@"Nop : %@",tileNumber);
                         blank = YES;
                     }
                 }
@@ -92,31 +62,16 @@
                 [self.tiles addObject:tile];
             }
         }
-        
-        
-        //lastTilePosition.x = roundf(4000 - ([[Camera standardCamera] position].x + 2000)/512);
-        //lastTilePosition.y = roundf(4000 - ([[Camera standardCamera] position].y + 2000)/512);
-        
-        
-        //positions = [[NSMutableArray alloc] init];
-        
-        //[self scheduleUpdate];
     }
     
     return self;
 }
 
-
-//-(void)update:(ccTime)dt
 -(void)update:(ccTime)dt
 {
     CGPoint visibleScreen = CGPointMake(2000-([[Camera standardCamera] position].x), 2000-([[Camera standardCamera] position].y));
     
-    //NSLog(@"Rect Tile : %@",NSStringFromCGRect(visibleScreen));
-    
-    
     uint count = [self.tiles count];
-//    int j = 0;
     
     for(uint i = 0 ; i < count;i++)
     {
@@ -126,36 +81,11 @@
                tile.position.y < visibleScreen.y + SCREEN_CENTER.y*2 && tile.position.y + 512 > visibleScreen.y) 
         {
             tile.visible = YES;
-//            j++;
         }
         else tile.visible = NO;
     }
-    
-//    [super draw];
-    
-//    NSLog(@"tiles : %i",j);
-    
-    //tilePosition.x = fmaxf((roundf(([[Camera standardCamera] position].x + 2000)/512)-2),0);
-    //tilePosition.y = fmaxf((roundf(([[Camera standardCamera] position].y + 2000)/512)-2),0);
-    
-    /*
-    for(int i = tilePosition.x ; i < tilePosition.x + 2 ; i++)
-    {
-
-    }
-     */
 }
 
-/*
--(void)addSprite:(CCTexture2D*)tex
-{
-    CCSprite *tile = [CCSprite spriteWithTexture:tex];
-    [tile setAnchorPoint:ccp(0,0)];
-    [tile setPosition:[[positions objectAtIndex:0] CGPointValue]];
-    [positions removeObjectAtIndex:0];
-    [self addChild:tile];
-}
-*/
 +(id)landscapeWithName:(NSString*)levelName
 {
     return [[[LandscapeView alloc] initWithLevelName:levelName] autorelease];

@@ -8,12 +8,12 @@
 
 #import "PauseMenu.h"
 
-
 @implementation PauseMenu
-@synthesize soundButton,menu,soundOn;
+@synthesize soundButton,menu,soundOn,background;
 
 -(void)dealloc
 {
+    [background release];
     [soundButton release];
     [menu release];
     [super dealloc];
@@ -24,13 +24,15 @@
     if (self) {
         
         [self setAnchorPoint:ccp(0,0)];
+        [self setVisible:NO];
         
         self.soundOn = YES;
         
         CCSpriteFrameCache *frames = [CCSpriteFrameCache sharedSpriteFrameCache];
                 
-        CCSprite *background = [CCSprite spriteWithSpriteFrame:[frames spriteFrameByName:@"backgroundMenu.png"]];
-        [background setOpacity:.7];
+        self.background = [CCSprite spriteWithSpriteFrame:[frames spriteFrameByName:@"backgroundGame.png"]];
+        [background setAnchorPoint:ccp(0,0)];
+        [background setOpacity:0];
         
         CCSprite *niveau        = [CCSprite spriteWithSpriteFrame:[frames spriteFrameByName:@"levelButton.png"]];
         CCSprite *recommencer   = [CCSprite spriteWithSpriteFrame:[frames spriteFrameByName:@"restartButton.png"]];
@@ -81,14 +83,23 @@
 {
     if(p)
     {
-        [self runAction:[CCFadeIn actionWithDuration:.5]];
+        [self setVisible:YES];
+        [background runAction:[CCFadeTo actionWithDuration:.5 opacity:200]];
+        [menu runAction:[CCFadeIn actionWithDuration:.5]];
         [menu setIsTouchEnabled:YES];
     }
     else
     {
-        [self runAction:[CCFadeOut actionWithDuration:.5]];
+        [background runAction:[CCFadeTo actionWithDuration:.5 opacity:0]];
+        CCSequence *seq = [CCSequence actions:[CCFadeOut actionWithDuration:.5],[CCCallFunc actionWithTarget:self selector:@selector(hide)], nil];
+        [menu runAction:seq];
         [menu setIsTouchEnabled:NO];
     }
+}
+                           
+-(void)hide
+{
+    [self setVisible:NO];
 }
 
 -(void)soundHandler

@@ -54,6 +54,9 @@
         [self.body runAction:self.body.action];
         [self.eye runAction:self.eye.action];
         [self.hit runAction:self.hit.action];
+        
+        self.listen = YES;
+        
         [[CCActionManager sharedManager] pauseTarget:self.hit];
     }
     
@@ -62,21 +65,9 @@
 
 -(void)stopAllActions
 {
-    
-    self.listen = NO;
-    CCLOG(@"stopAllActions !!!!!!");
-    [[CCActionManager sharedManager] pauseTarget:self];
-    
-    [[CCActionManager sharedManager] pauseTarget:self.body];
     [self.body setListen:self.listen];
-    
-    [[CCActionManager sharedManager] pauseTarget:self.hit];
     [self.hit setListen:self.listen];
-    
-    [[CCActionManager sharedManager] pauseTarget:self.eye];
     [self.eye setListen:self.listen];
-    
-    
     [super stopAllActions];
 }
 
@@ -90,7 +81,6 @@
     [[CCActionManager sharedManager] resumeTarget:self.hit];
 
     self.hit.visible = YES;
-    
     
     [self.hit setListen:self.listen];
     

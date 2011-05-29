@@ -11,11 +11,15 @@
 #import "BackgroundView.h"
 
 @implementation LevelView
-@synthesize menu;
+@synthesize menu,pause,scrollView;
 
 -(void)dealloc
 {
+    [self unscheduleUpdate];
+    [scrollView release];
     [menu release];
+    [pause release];
+    [super dealloc];
 }
 
 -(id)initWithLevelName:(NSString *)levelName
@@ -29,6 +33,8 @@
         [frames addSpriteFramesWithFile:@"backgroundGame.plist" 
                                 texture:[[CCTextureCache sharedTextureCache] addImage:@"backgroundGame.png"]];
         
+        self.pause = [PauseMenu node];
+        
         CCSprite *background = [CCSprite spriteWithSpriteFrame:[frames spriteFrameByName:@"backgroundGame.png"]];
         [background setAnchorPoint:ccp(0,0)];
         
@@ -38,45 +44,93 @@
                                                                       target:self 
                                                                     selector:@selector(pauseGame)];
         
+        [pauseButton setPosition:ccp(-450,320)];
+        
         self.menu = [CCMenu menuWithItems:pauseButton, nil];
         
+        self.scrollView = [ScrollLevelView levelWithName:levelName];
+        
         [self addChild:background];
-        [self addChild:[ScrollLevelView levelWithName:levelName]];
+        [self addChild:scrollView];
         [self addChild:[BubbleView node]];
         [self addChild:menu];
+        [self addChild:pause];
+        
+        [self scheduleUpdate];
     }
     
     return self;
 }
 
+-(void)update:(ccTime)dt
+{
+    [self.scrollView update:dt];
+}
+
 -(void)pauseGame
 {
+    [self unscheduleUpdate];
+    
+    [pause setVisible:YES];
+    [pause pause:YES];
     [menu setIsTouchEnabled:NO];
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(restartHandler) 
-                                                 name:@"restartButtonTouched" 
-                                               object:nil];
+    
+    [menu runAction:[CCFadeOut actionWithDuration:.5]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(restartHandler) 
-                                                 name:@"restartButtonTouched" 
+                                                 name:@"restartButtonTouche" 
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(restartHandler) 
-                                                 name:@"restartButtonTouched" 
+                                             selector:@selector(levelMenuHandler) 
+                                                 name:@"levelButtonTouched" 
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(restartHandler) 
-                                                 name:@"restartButtonTouched" 
+                                             selector:@selector(continueHandler) 
+                                                 name:@"continueButtonTouched" 
                                                object:nil];
+}
+
+-(void)continueHandler
+{
+    [self scheduleUpdate];
+    
+    [menu setIsTouchEnabled:YES];
+    [menu runAction:[CCFadeIn actionWithDuration:.5]];
+    [pause pause:NO];
+    
+    [self removePauseHandlers];
+}
+
+-(void)levelMenuHandler
+{
+    [self unscheduleUpdate];
+    CCScene *scene = [CCScene node];
+    [scene addChild:[LevelMenu node]];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:.5 scene:scene]];
+}
+
+-(void)restartHandler
+{
+    [self unscheduleUpdate];
+    [[CCDirector sharedDirector] popSceneWithTransition:[CCTransitionFade class] duration:.5];
+}
+
+-(void)removePauseHandlers
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"restartButtonTouched" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"levelButtonTouched" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"continueButtonTouched" object:nil];
 }
 
 -(void)onEnterTransitionDidFinish
 {
     [[CCTextureCache sharedTextureCache] removeUnusedTextures];
-    NSLog(@"removed textures!");
+    
+    [pause setOpacity:0];
+    [super onEnterTransitionDidFinish];
 }
 
 +(id)levelWithName:(NSString *)levelName

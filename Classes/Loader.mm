@@ -26,7 +26,7 @@
     self = [super init];
     
     if(self)
-    {
+    {        
         CCSprite *background = [CCSprite spriteWithFile:@"loader.png"];
         
         [background setAnchorPoint:ccp(0,0)];
@@ -69,6 +69,7 @@
 -(void)onEnterTransitionDidFinish
 {
     [super onEnterTransitionDidFinish];
+    
     self.playScene = [CCScene node];
     [playScene addChild:[LevelView levelWithName:@"level1"]];
     [playButton runAction:[CCEaseSineInOut actionWithAction:[CCMoveTo actionWithDuration:1.5 position:ccp(840,100)]]];

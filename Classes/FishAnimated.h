@@ -14,16 +14,18 @@
     AnimationHelper *body;
     AnimationHelper *eye;
     AnimationHelper *hit;
+    
     BOOL listen;
     
     BOOL wound;
 }
 
+@property(nonatomic,assign) BOOL listen;
+
 @property(nonatomic,assign) BOOL wound;
 @property(nonatomic,retain) AnimationHelper *eye;
 @property(nonatomic,retain) AnimationHelper *hit;
 @property(nonatomic,retain) AnimationHelper *body;
-@property(readwrite, assign) BOOL listen;
 
 +(id) fishWithName:(NSString*)name;
 -(id) initWithFishName:(NSString*)name;

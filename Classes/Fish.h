@@ -26,15 +26,12 @@
     b2BodyDef *bodyDef;
     b2CircleShape *shapeDef;
     b2FixtureDef *fixtureDef;
-    CCSprite *sprite;
+    FishAnimated *sprite;
     CGPoint bubblePoint;
     BubbleSprite *bubbleSprite;
     NSString *name;
     BOOL spriteLinked;
 }
-
-
-#pragma mark Physics Properties
 
 @property (readwrite, assign) b2Body *body;
 @property (readwrite, assign) b2BodyDef *bodyDef;
@@ -45,14 +42,10 @@
 @property (nonatomic, assign) NSString *name;
 @property(readwrite, assign) BOOL spriteLinked;
 
-
-#pragma mark View Properties
-
-@property (nonatomic, retain) CCSprite *sprite;
-
+@property (nonatomic, retain) FishAnimated *sprite;
 @property(nonatomic,retain) BubbleSprite *bubbleSprite;
 @property(readwrite,assign) CGPoint bubblePoint;
-@property(nonatomic,retain) id <FishDelegate> delegate;
+@property(nonatomic,assign) id <FishDelegate> delegate;
 
 -(id)initWithFishName:(NSString*)fishName andPosition:(CGPoint)position;
 +(id)fishWithName:(NSString*)fishName andPosition:(CGPoint)position;
@@ -60,9 +53,7 @@
 -(void)swimTo:(CGPoint)destination;
 -(void)hit;
 
-
 @end
-
 
 @protocol FishDelegate <NSObject>
 

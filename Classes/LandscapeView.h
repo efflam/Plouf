@@ -12,12 +12,6 @@
 #import "Camera.h"
 
 @interface LandscapeView : CCNode {
-    BOOL hasChild[16][16];
-    CGPoint tilePosition;
-    CGPoint lastTilePosition;
-    NSString *level;
-    NSMutableArray *positions;
-    
     NSMutableArray *tiles;
 }
 @property(nonatomic,retain) NSMutableArray *tiles;
