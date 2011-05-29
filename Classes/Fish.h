@@ -32,6 +32,7 @@
     NSString *name;
     BOOL spriteLinked;
     CCSprite *parcel;
+    BOOL shipping;
 }
 
 @property (readwrite, assign) b2Body *body;
@@ -53,6 +54,8 @@
 - (BOOL)containsTouchLocation:(UITouch *)touch;
 -(void)swimTo:(CGPoint)destination;
 -(void)hit;
+-(void)ship;
+-(void)unship;
 
 @end
 

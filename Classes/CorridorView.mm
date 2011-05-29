@@ -99,6 +99,7 @@ float camSpring = 0.02;
             Fish *fish = (Fish*)[fishes objectAtIndex:i];
             [fish setDelegate:self];
             [self addActor:fish];
+            [fish addClassOperation:giveParcelOp];
         }
         
         CCSpriteBatchNode *batch = [CCSpriteBatchNode batchNodeWithFile:@"blocks.png" capacity:150];
@@ -174,6 +175,20 @@ float camSpring = 0.02;
 }
 
 
+-(void)giveParcel
+{
+    if(shippingFish) [self setShippingFish:currentFish];
+}
+
+-(void)pickParcel
+{
+    if(shippingFish)return;
+    [self removeActor:self.parcel];
+    self.parcel = nil;
+    [self setShippingFish:currentFish];        
+}
+
+
 -(void)mureneEat
 {
     if([[self murene] washing]) return;
@@ -189,8 +204,19 @@ float camSpring = 0.02;
 
 -(void)fishEatenByMurene
 { 
-    [self removeActor:currentFish];
+    [self removeFish:currentFish];
     currentFish = nil;
+}
+
+-(void)removeFish:(Fish *)aFish
+{
+    if(aFish == shippingFish) [self loose];
+    [self removeActor:aFish];
+}
+
+-(void)loose
+{
+    CCLOG(@"LOOSER :(");
 }
 
 -(void)bubbleTouch:(NSNotification*)notification
@@ -480,6 +506,18 @@ float camSpring = 0.02;
     camSpring = 0.02;
 }
 
+-(void)setShippingFish:(Fish *)fish
+{
+    if(fish == shippingFish) 
+        return; 
+    
+    if(shippingFish)
+        [shippingFish unship];
+    
+    shippingFish = fish;
+    [shippingFish ship];
+}
+    
 -(void)update:(ccTime)dt
 {
 	int32 velocityIterations = 8;
@@ -610,7 +648,7 @@ float camSpring = 0.02;
     glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	world->DrawDebugData();
+	//world->DrawDebugData();
     glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);

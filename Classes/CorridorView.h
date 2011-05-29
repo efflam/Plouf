@@ -52,6 +52,7 @@ struct NavScene
     NavScene navScene;
     NSMutableArray *fishes;
     Fish *currentFish;
+    Fish *shippingFish;
     NSMutableSet *actorSet;
 	b2ContactListener *contactListener;
     BOOL travelling;
@@ -82,10 +83,12 @@ struct NavScene
 //-(void)drawNavMesh;
 -(CGPoint)convertVertToCGPoint:(float*)v;
 -(void)setSelectedFish:(Fish *)fish;
+-(void)setShippingFish:(Fish *)fish;
 -(CGPoint)convertToScreenCenter:(CGPoint)point;
 -(void)mureneEat;
 -(void)removeActorHandler:(NSNotification*)notification;
 -(void)update:(ccTime)dt;
+-(void)giveParcel;
 
 #pragma mark Actor Methods
 
@@ -94,4 +97,7 @@ struct NavScene
 -(void)removeAllActors;
 -(void)fishEatenByMurene;
 
+-(void)removeFish:(Fish *)aFish;
+
+-(void)loose;
 @end
