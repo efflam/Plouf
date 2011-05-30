@@ -23,19 +23,28 @@
     BOOL moved;
     
     CCSprite *backButton;
+    CCSprite *collectionButton;
     
     CCLabelBMFont *currentLegend;
     NSArray *legendes;
+    NSArray *terminatedLevels;
+    NSArray *terminatedStripes;
 }
 
 @property(nonatomic, retain) NSArray *legendes;
+@property(nonatomic, retain) NSArray *terminatedLevels;
+@property(nonatomic, retain) NSArray *terminatedStripes;
 @property(nonatomic, retain) CCLabelBMFont *currentLegend;
 @property(nonatomic, retain) CCSprite *backButton;
+@property(nonatomic, retain) CCSprite *collectionButton;
 @property(nonatomic,retain) NSMutableArray *environments;
 @property(nonatomic, retain) CCNode *bubblesHolder;
 @property(readwrite, assign) int currentBubbleIndex;
 @property(nonatomic, assign) CGPoint origin;
 @property(readwrite, assign) BOOL changed;
 @property(readwrite, assign) BOOL moved;
+
+-(void)setTerminatedLevelAndInfo;
+
 
 @end

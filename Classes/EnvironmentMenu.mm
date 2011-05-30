@@ -18,9 +18,15 @@
 @synthesize backButton;
 @synthesize legendes;
 @synthesize currentLegend;
+@synthesize collectionButton;
+@synthesize terminatedLevels;
+@synthesize terminatedStripes;
 
 -(void)dealloc
 {
+    [terminatedStripes release];
+    [terminatedLevels release];
+    [collectionButton release];
     [currentLegend release];
     [legendes release];
     [bubblesHolder release];
@@ -51,7 +57,7 @@
         
         [self setAnchorPoint:ccp(0,0)];
         
-        CCSprite *bg = [CCSprite spriteWithFile:@"fond_milieu_niveau_fiche.png"];
+        CCSprite *bg = [CCSprite spriteWithFile:@"backgroundMenu.png"];
         [self addChild:bg];
         [bg setPosition:SCREEN_CENTER];
         self.environments = [NSMutableArray arrayWithCapacity:4];
@@ -60,8 +66,22 @@
         [environments addObject:[CCSprite spriteWithFile:@"oceanEnvironment.png"]];
         [environments addObject:[CCSprite spriteWithFile:@"arcticEnvironment.png"]];
         [environments addObject:[CCSprite spriteWithFile:@"abyssalEnvironment.png"]];
+                
+        self.terminatedLevels = [NSArray arrayWithObjects:
+                                     [CCLabelBMFont labelWithString:@"Niveaux\nRésolus\n4/35" fntFile:@"childsplay.fnt"],
+                                     [CCLabelBMFont labelWithString:@"Niveaux\nRésolus\n0/35" fntFile:@"childsplay.fnt"],
+                                     [CCLabelBMFont labelWithString:@"Niveaux\nRésolus\n0/35" fntFile:@"childsplay.fnt"],
+                                     [CCLabelBMFont labelWithString:@"Niveaux\nRésolus\n0/35" fntFile:@"childsplay.fnt"],
+                                     nil];
         
-        self.origin = ccpSub(SCREEN_CENTER, ccp(256, 256));
+        self.terminatedStripes = [NSArray arrayWithObjects:
+                                      [CCSprite spriteWithFile:@"stripeHabitat.png"],
+                                      [CCSprite spriteWithFile:@"stripeHabitat.png"],
+                                      [CCSprite spriteWithFile:@"stripeHabitat.png"],
+                                      [CCSprite spriteWithFile:@"stripeHabitat.png"],
+                                      nil];
+        
+        self.origin = ccpSub(SCREEN_CENTER, ccp(256, 200));
         
         self.bubblesHolder = [CCNode node];
         [self addChild:self.bubblesHolder];
@@ -72,34 +92,60 @@
         for(int i = 0 ; i < 4 ; i++)
         {
             CCSprite *bubble = [environments objectAtIndex:i];
-            [bubble setAnchorPoint:ccp(0,0)];
+            [bubble setAnchorPoint:CGPointZero];
             [bubble setPosition:ccp(i*pageWidth,0)];
+            
+            CCSprite *stripe = [terminatedStripes objectAtIndex:i];
+            [stripe setAnchorPoint:CGPointZero];
+            [stripe setPosition:ccpAdd(bubble.position, ccp(400,390))];
+            
+            CCSprite *level = [terminatedLevels objectAtIndex:i];
+            [level setAnchorPoint:CGPointZero];
+            [level setPosition:ccpAdd(bubble.position, ccp(480,380))];
+            [level setScale:0.8];
+            
             [[self bubblesHolder] addChild:bubble];
+            [[self bubblesHolder] addChild:stripe];
+            [[self bubblesHolder] addChild:level];
+            
+            [level setOpacity:0];
+            [stripe setOpacity:0];
         }
         
         self.currentBubbleIndex = 0;
         
+        [(CCSprite*)[terminatedLevels objectAtIndex:0] setOpacity:1.0];
+        [(CCSprite*)[terminatedStripes objectAtIndex:0] setOpacity:1.0];
+        
         self.backButton = [CCSprite spriteWithFile:@"backButton.png"];
-        
-        //[menu setPosition:ccp(-SCREEN_CENTER.x,-SCREEN_CENTER.y)];
-        
         [backButton setAnchorPoint:ccp(0.5,0.5)];
         [backButton setPosition:ccp(73,74)];
         
+        self.collectionButton = [CCSprite spriteWithFile:@"collectionButton.png"];
+        [collectionButton setAnchorPoint:ccp(0.5,0.5)];
+        [collectionButton setPosition:ccp(SCREEN_CENTER.x*2 - 105,74)];
+        
         [self addChild:backButton];
+        [self addChild:collectionButton];
                
         self.currentLegend = [CCLabelBMFont labelWithString:@"Les massifs coraliens habritent\n93000 espèces différentes" fntFile:@"childsplay.fnt"];
-        [currentLegend setAnchorPoint:ccp(0.5,0)];
-        [currentLegend setPosition:ccp(SCREEN_CENTER.x,10)];
+        [currentLegend setAnchorPoint:ccp(0,0)];
+        [currentLegend setPosition:ccp(SCREEN_CENTER.x - 200,50)];
         [currentLegend setScale:.8];
         
         self.legendes = [NSArray arrayWithObjects: 
-                         @"Les massifs coraliens habritent\n93000 espèces différentes" ,  
-                         @"Au milieu de l'océan" ,  
-                         @"La banquise" ,  
-                         @"Le fond des mers" , nil];
+                    @"Les récifs coralliens habritent\n93 000 espèces différentes !" ,  
+                    @"Ici vivent les plus gros poissons !\nIls peuvent voyager très loin..." ,  
+                    @"Ici, il fait très froid !\nDe nombreux animaux y sont adapté ..." ,  
+                    @"Le soleil ne parvient pas\njusqu'à ces mystérieuses créatures..." , nil];
         
         [self addChild:currentLegend];
+        
+        CCSprite *info = [CCSprite spriteWithFile:@"habitatInformation.png"];
+        [info setAnchorPoint:ccp(1,0)];
+        [info setPosition:ccp(SCREEN_CENTER.x - 200,35)];
+        
+        [self addChild:info];
     }
     return self;
 }
@@ -126,17 +172,23 @@
         float dist = ccpDistance(itemPos, touchPos);
             
         if(dist < 256.0)
-        {
-            NSLog(@"EnvironmentMenu");
+        {      
+            if(currentBubbleIndex == 0)
+            {
+                CCScene *scene = [CCScene node];
+                LevelMenu *levelMenu = [LevelMenu node];
+                
+                [scene addChild:levelMenu];
+                
+                [[CCDirector sharedDirector] pushScene:[CCTransitionFade transitionWithDuration:.5 scene:scene]];
+                
+                return;
+            }
+            else
+            {
+                NSLog(@"finish precedent habitat");
+            }
             
-            CCScene *scene = [CCScene node];
-            LevelMenu *levelMenu = [LevelMenu node];
-            
-            [scene addChild:levelMenu];
-            
-            [[CCDirector sharedDirector] pushScene:[CCTransitionFade transitionWithDuration:.5 scene:scene]];
-            
-            return;
         }
         
         dist = ccpDistance(touchPos, backButton.position);
@@ -146,7 +198,12 @@
             [[CCDirector sharedDirector] popSceneWithTransition:[CCTransitionFade class] duration:0.5];
         }
         
+        dist = ccpDistance(touchPos, collectionButton.position);
         
+        if(dist < 100)
+        {
+            NSLog(@"collection");
+        }
     }
     
     float limit;
@@ -173,19 +230,33 @@
     
     desiredX = -self.currentBubbleIndex * 650 + origin.x;
     
-    CCCallBlock *changeLegend = [CCCallBlock actionWithBlock:^(void) {
-        [currentLegend setString:[legendes objectAtIndex:currentBubbleIndex]];
-    }];
-    
-    CCSequence *changeSequence = [CCSequence actions:[CCFadeOut actionWithDuration:.2],changeLegend,[CCFadeIn actionWithDuration:.2], nil];
-    
-    [currentLegend runAction:changeSequence];
-    
-   //NSLog(@"currentBubble : %d / desiredBubbleIndex : %d /diffX: %f / desiredX : %f",currentBubble,desiredBubbleIndex, diff.x, desiredX);
-    
+    [self setTerminatedLevelAndInfo];
     [self scheduleUpdate];
-        
-    //[[self bubblesHolder]setPosition:ccp(desiredX,self.bubblesHolder.position.y)];
+}
+
+-(void)setTerminatedLevelAndInfo
+{
+    [currentLegend runAction:
+     [CCSequence actions:
+      [CCFadeOut actionWithDuration:.2],
+      [CCCallBlock actionWithBlock:^(void) {
+         [currentLegend setString:[legendes objectAtIndex:currentBubbleIndex]];
+      }],
+      [CCFadeIn actionWithDuration:.2], 
+      nil]];
+    
+    for(CCSprite *s in terminatedStripes)
+    {
+        [s runAction:[CCFadeOut actionWithDuration:.2]];
+    }
+    
+    for(CCSprite *s in terminatedLevels)
+    {
+        [s runAction:[CCFadeOut actionWithDuration:.2]];
+    }
+    
+    [(CCSprite*)[terminatedLevels objectAtIndex:currentBubbleIndex] runAction:[CCFadeIn actionWithDuration:.2]];
+    [(CCSprite*)[terminatedStripes objectAtIndex:currentBubbleIndex] runAction:[CCFadeIn actionWithDuration:.2]];
 }
 
 -(void)update:(ccTime)dt
