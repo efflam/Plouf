@@ -16,9 +16,13 @@
 @synthesize origin;
 @synthesize changed, moved;
 @synthesize backButton;
+@synthesize legendes;
+@synthesize currentLegend;
 
 -(void)dealloc
 {
+    [currentLegend release];
+    [legendes release];
     [bubblesHolder release];
     [environments release];
     [backButton release];
@@ -83,7 +87,19 @@
         [backButton setPosition:ccp(73,74)];
         
         [self addChild:backButton];
-
+               
+        self.currentLegend = [CCLabelBMFont labelWithString:@"Les massifs coraliens habritent\n93000 espèces différentes" fntFile:@"childsplay.fnt"];
+        [currentLegend setAnchorPoint:ccp(0.5,0)];
+        [currentLegend setPosition:ccp(SCREEN_CENTER.x,10)];
+        [currentLegend setScale:.8];
+        
+        self.legendes = [NSArray arrayWithObjects: 
+                         @"Les massifs coraliens habritent\n93000 espèces différentes" ,  
+                         @"Au milieu de l'océan" ,  
+                         @"La banquise" ,  
+                         @"Le fond des mers" , nil];
+        
+        [self addChild:currentLegend];
     }
     return self;
 }
@@ -135,7 +151,10 @@
     
     float limit;
     if(self.changed)
+    {
         limit = 50.0f;
+    }
+        
     else
         limit = 5.0f;
 
@@ -153,6 +172,14 @@
     self.currentBubbleIndex = max(0, min(3, self.currentBubbleIndex));
     
     desiredX = -self.currentBubbleIndex * 650 + origin.x;
+    
+    CCCallBlock *changeLegend = [CCCallBlock actionWithBlock:^(void) {
+        [currentLegend setString:[legendes objectAtIndex:currentBubbleIndex]];
+    }];
+    
+    CCSequence *changeSequence = [CCSequence actions:[CCFadeOut actionWithDuration:.2],changeLegend,[CCFadeIn actionWithDuration:.2], nil];
+    
+    [currentLegend runAction:changeSequence];
     
    //NSLog(@"currentBubble : %d / desiredBubbleIndex : %d /diffX: %f / desiredX : %f",currentBubble,desiredBubbleIndex, diff.x, desiredX);
     

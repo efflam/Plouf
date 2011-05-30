@@ -23,8 +23,13 @@
     BOOL moved;
     
     CCSprite *backButton;
+    
+    CCLabelBMFont *currentLegend;
+    NSArray *legendes;
 }
 
+@property(nonatomic, retain) NSArray *legendes;
+@property(nonatomic, retain) CCLabelBMFont *currentLegend;
 @property(nonatomic, retain) CCSprite *backButton;
 @property(nonatomic,retain) NSMutableArray *environments;
 @property(nonatomic, retain) CCNode *bubblesHolder;
