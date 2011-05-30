@@ -70,12 +70,13 @@
 
 - (void)actorWillDisappear 
 {
+    [super actorWillDisappear];
 //	[self body]->SetUserData(nil);
-	[self world]->DestroyBody([self body]);
+	if(self.body) [self world]->DestroyBody([self body]);
 	[self setBody:nil];
 	[[self scene] removeChild:[self sprite] cleanup:NO];
     [self setSprite:nil];
-	[super actorWillDisappear];
+	
 }
 
 -(void)ate
