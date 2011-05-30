@@ -159,4 +159,9 @@
 	
 }
 
+- (CGPoint)position
+{
+    return ccp(0.0f, 0.0f);
+}
+
 @end

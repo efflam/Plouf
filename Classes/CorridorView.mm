@@ -26,6 +26,7 @@
 #import "Anemone.h"
 #import "SimpleAudioEngine.h"
 #import "Murene.h"
+#import "Finish.h"
 
 @implementation CorridorView
 
@@ -91,7 +92,7 @@ float camSpring = 0.02;
         Fish *fish1  = [Fish fishWithName:@"clown" andPosition:ccp(agent->pos[0],agent->pos[1])];
         Fish *fish2  = [Fish fishWithName:@"clown" andPosition:ccp(agent->pos[0],agent->pos[1])];
         currentFish = fish1;
-        
+        currentActor = fish1;
         fishes = [NSMutableArray arrayWithObjects:fish1, fish2, nil];
         
         for(uint i = 0 ; i < [fishes count];i++)
@@ -159,12 +160,20 @@ float camSpring = 0.02;
                 [anem addInstanceOperation:ateOp];
             }
         }
-    
+        
+        
+      
         
         self.parcel = [Parcel parcelAtPosition:ccp(1120, 1960)];
         [self addActor:self.parcel];
         
         ClassContactOperation *pickParcelOp = [ClassContactOperation operationFor:[Fish class] WithTarget:self andSelector:@selector(pickParcel) when:1];
+        
+        
+        RectSensor *finishSensor = [Finish finishFrom:ccp(0.0f, 850.0f) to:ccp(70.0f, 770.0f)];
+        [self addActor:finishSensor];
+        ClassContactOperation *shippedOp = [ClassContactOperation operationFor:[Fish class] WithTarget:self andSelector:@selector(fishOnFinish) when:1];
+        [finishSensor addClassOperation:shippedOp];
         
         [self.parcel addClassOperation:pickParcelOp];
         
@@ -192,6 +201,12 @@ float camSpring = 0.02;
     [self removeActor:self.parcel];
     self.parcel = nil;
     [self setShippingFish:currentFish];        
+}
+
+
+-(void)fishOnFinish
+{
+    if(currentFish == shippingFish) [self win];
 }
 
 
@@ -225,10 +240,42 @@ float camSpring = 0.02;
     CCLOG(@"LOOSER :(");
 }
 
+
+-(void)win
+{
+    CCLOG(@"WINNER :)");
+}
+
 -(void)bubbleTouch:(NSNotification*)notification
 {
     BubbleSprite* bubbleSprite = [notification object];
-    [self setSelectedFish:(Fish*)[bubbleSprite target]];
+    Actor *target = (Actor*)[bubbleSprite target];
+    if([target isKindOfClass:[Fish class]])
+       [self setSelectedFish:(Fish*)[bubbleSprite target]];
+    else
+    {
+        NavmeshAgent* agent = &navScene.agents[navScene.nagents-1];
+        
+        if(!travelling && currentActor) vset(agent->pos, currentActor.position.x,currentActor.position.y);
+        
+        float pos[2] = {target.position.x,target.position.y};
+        float nearest[2] = {target.position.x,target.position.y};
+        
+        if (navScene.nav)
+            navmeshFindNearestTri(navScene.nav, pos, nearest);
+        
+        vcpy(navScene.agents[navScene.nagents-1].target, nearest);
+        vcpy(navScene.agents[navScene.nagents-1].oldpos, navScene.agents[navScene.nagents-1].pos);
+        agentFindPath(&navScene.agents[navScene.nagents-1], navScene.nav);
+        vset(navScene.agents[navScene.nagents-1].corner, FLT_MAX,FLT_MAX);
+        
+        travelling = YES;
+        
+        currentFish = nil;
+        currentActor = target;
+        camSpring = 0.02;
+
+    }
 }
 
 -(void)removeActorHandler:(NSNotification*)notification
@@ -366,6 +413,7 @@ float camSpring = 0.02;
 	}
         
     // ADD AGENT FOR CAMERA
+    
     
     navScene.nagents++;
     
@@ -508,6 +556,7 @@ float camSpring = 0.02;
     travelling = YES;
     
     currentFish = fish;
+    currentActor = fish;
     
     camSpring = 0.02;
 }
@@ -560,9 +609,9 @@ float camSpring = 0.02;
             previousCamPos = [[Camera standardCamera] position];
         }
         
-        if(currentFish)
+        if(currentActor)
         {
-            CGPoint fishpoint = [self convertToScreenCenter:currentFish.sprite.position];
+            CGPoint fishpoint = [self convertToScreenCenter:currentActor.position];
             
             [[Camera standardCamera] setPosition:fishpoint];
         }
@@ -587,7 +636,7 @@ float camSpring = 0.02;
 //	last = agentFindNextCornerSmooth(agent, dir, navScene.nav, corner);
 	last = agentFindNextCorner(agent, navScene.nav, corner);
         
-    float distFromCam = ccpDistance([[Camera standardCamera] position], [[Camera standardCamera] checkBoundsForPoint:[self convertToScreenCenter:currentFish.sprite.position] withScale:1]);
+    float distFromCam = ccpDistance([[Camera standardCamera] position], [[Camera standardCamera] checkBoundsForPoint:[self convertToScreenCenter:currentActor.position] withScale:1]);
     
     //NSLog(@"distFromCam : %f",distFromCam);
         
@@ -601,12 +650,12 @@ float camSpring = 0.02;
         if(distFromCam > 1.0f)
         {
             camSpring *= 1.05;
-            [[Camera standardCamera] springTo: [self convertToScreenCenter:currentFish.sprite.position] withSpring:camSpring]; 
+            [[Camera standardCamera] springTo: [self convertToScreenCenter:currentActor.position] withSpring:camSpring]; 
         } 
         else
         {
             travelling = NO;
-            [[Camera standardCamera] setPosition:[self convertToScreenCenter:currentFish.sprite.position]];
+            [[Camera standardCamera] setPosition:[self convertToScreenCenter:currentActor.position]];
         }
         return;
 	}

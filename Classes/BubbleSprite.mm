@@ -28,11 +28,11 @@
 {
     CGPoint point = [self convertTouchToNodeSpace:[touches anyObject]];
     
-    float distance = ccpDistance(ccp(0,0), point);
+    float distance = ccpDistance(ccp(50,50), point);
     
     NSLog(@"clicked : %f",distance);
     
-    if(distance < 100)
+    if(distance < 60)
     {    
         NSLog(@"touched ? Fuck Me !");
         [[NSNotificationCenter defaultCenter] postNotificationName:@"bubbleTouch" object:self];

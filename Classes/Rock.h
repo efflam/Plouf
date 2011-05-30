@@ -27,9 +27,9 @@
 @property (readwrite, assign) b2BodyDef *bodyDef;
 @property (readwrite, assign) b2CircleShape *shapeDef;
 @property (readwrite, assign) b2FixtureDef *fixtureDef;
-@property (nonatomic, assign) CGPoint position;
 @property (nonatomic, assign) CGFloat radius;
 @property (nonatomic, assign) CGFloat rotation;
+- (void)setPosition:(CGPoint)aPosition;
 
 
 #pragma mark View Properties

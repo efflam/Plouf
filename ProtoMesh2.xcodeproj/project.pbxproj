@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1F3B9A2D0EF2145700286867 /* ProtoMesh2AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F3B9A2B0EF2145700286867 /* ProtoMesh2AppDelegate.mm */; };
+		2D01CF1F1393B475000428FA /* Finish.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D01CF1E1393B475000428FA /* Finish.mm */; };
+		2D01CF211393D297000428FA /* parcelBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D01CF201393D297000428FA /* parcelBubble.png */; };
 		2D1CBFB1136884B7005040AA /* globals.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D1CBFB0136884B7005040AA /* globals.mm */; };
 		2D1CBFC2136885DF005040AA /* level1-mesh.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2D1CBFB9136885DF005040AA /* level1-mesh.svg */; };
 		2D1CBFC3136885DF005040AA /* level1-rocks.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2D1CBFBA136885DF005040AA /* level1-rocks.svg */; };
@@ -446,6 +448,9 @@
 		1F3B9A2C0EF2145700286867 /* ProtoMesh2AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProtoMesh2AppDelegate.h; path = Classes/ProtoMesh2AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		1F3B9A820EF2151B00286867 /* ProtoMesh2_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtoMesh2_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2D01CF1D1393B475000428FA /* Finish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Finish.h; sourceTree = "<group>"; };
+		2D01CF1E1393B475000428FA /* Finish.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Finish.mm; sourceTree = "<group>"; };
+		2D01CF201393D297000428FA /* parcelBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = parcelBubble.png; sourceTree = "<group>"; };
 		2D1CBFAF136884B7005040AA /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
 		2D1CBFB0136884B7005040AA /* globals.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = globals.mm; sourceTree = "<group>"; };
 		2D1CBFB9136885DF005040AA /* level1-mesh.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "level1-mesh.svg"; sourceTree = "<group>"; };
@@ -1162,6 +1167,8 @@
 				2DB0EEDE1382C5D300548316 /* RectSensor.mm */,
 				2D526CDD1368838E009ED81B /* ScrollLevelView.h */,
 				2D526CDE1368838E009ED81B /* ScrollLevelView.mm */,
+				2D01CF1D1393B475000428FA /* Finish.h */,
+				2D01CF1E1393B475000428FA /* Finish.mm */,
 			);
 			name = level;
 			sourceTree = "<group>";
@@ -1400,6 +1407,7 @@
 		50F4144210692EE7002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2D01CF201393D297000428FA /* parcelBubble.png */,
 				2D97D17513928E4700443928 /* colis.png */,
 				7552B1831391A257009F5479 /* menu */,
 				75F61110138BBC6F00468DB6 /* obstacles */,
@@ -2048,6 +2056,7 @@
 				7552B17E13919DF5009F5479 /* bulle.plist in Resources */,
 				7552B17F13919DF5009F5479 /* bulle.png in Resources */,
 				2D97D17613928E4700443928 /* colis.png in Resources */,
+				2D01CF211393D297000428FA /* parcelBubble.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2106,6 +2115,7 @@
 				2DC5D0CB138FE18C006ABCE1 /* LevelMenu.m in Sources */,
 				75CE3A9113928A9B00E9F227 /* PauseMenu.mm in Sources */,
 				75CE3AA21392A64C00E9F227 /* Parcel.mm in Sources */,
+				2D01CF1F1393B475000428FA /* Finish.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

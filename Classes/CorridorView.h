@@ -59,6 +59,7 @@ struct NavScene
     Murene *murene;
     Parcel *parcel;
     RockFall *fall;
+    Actor *currentActor;
 }
 
 @property(nonatomic, retain) RockFall *fall;
@@ -89,6 +90,8 @@ struct NavScene
 -(void)removeActorHandler:(NSNotification*)notification;
 -(void)update:(ccTime)dt;
 -(void)giveParcel;
+-(void)fishOnFinish;
+-(void)win;
 
 #pragma mark Actor Methods
 

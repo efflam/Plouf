@@ -223,11 +223,6 @@
 
 #pragma mark Transform Accessors
 
-- (CGPoint)position
-{
-	if([self body]) return ccp(WORLD_TO_SCREEN(body->GetPosition().x), WORLD_TO_SCREEN(body->GetPosition().y));
-	else return ccp(WORLD_TO_SCREEN(bodyDef->position.x), WORLD_TO_SCREEN(bodyDef->position.y));
-}
 
 - (void)setPosition:(CGPoint)aPosition
 {
@@ -276,6 +271,11 @@
 -(void)unship
 {
     self.parcel.visible = self.shipping = NO;
+}
+
+- (CGPoint)position
+{
+	return self.sprite.position;
 }
 
 

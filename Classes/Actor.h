@@ -47,6 +47,8 @@
 
 #pragma mark Game Properties
 
+- (CGPoint)position;
+
 
 
 
