@@ -114,8 +114,8 @@
         
         self.currentBubbleIndex = 0;
         
-        [(CCSprite*)[terminatedLevels objectAtIndex:0] setOpacity:1.0];
-        [(CCSprite*)[terminatedStripes objectAtIndex:0] setOpacity:1.0];
+        [(CCSprite*)[terminatedLevels objectAtIndex:0] setOpacity:255.0];
+        [(CCSprite*)[terminatedStripes objectAtIndex:0] setOpacity:255.0];
         
         self.backButton = [CCSprite spriteWithFile:@"backButton.png"];
         [backButton setAnchorPoint:ccp(0.5,0.5)];
@@ -303,9 +303,6 @@
         self.currentBubbleIndex = newIndex;
         self.changed = YES;
     }
-    
-    //NSLog(@"%@",NSStringFromCGPoint(self.bubblesHolder.position));
-    //NSLog(@"current bubble : %f",max(0,min(floor(-self.bubblesHolder.position.x / 650),3)));
 }
 
 @end
