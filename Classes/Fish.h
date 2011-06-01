@@ -33,6 +33,7 @@
     BOOL spriteLinked;
     CCSprite *parcel;
     BOOL shipping;
+    BOOL selected;
 }
 
 @property (readwrite, assign) b2Body *body;
@@ -49,15 +50,15 @@
 @property(readwrite,assign) CGPoint bubblePoint;
 @property(nonatomic,retain) id <FishDelegate> delegate;
 @property(readwrite,assign) BOOL shipping;
+@property(readwrite, assign) BOOL selected;
 
--(id)initWithFishName:(NSString*)fishName andPosition:(CGPoint)position;
-+(id)fishWithName:(NSString*)fishName andPosition:(CGPoint)position;
+-(id)initWithFishName:(NSString*)fishName andPosition:(CGPoint)position andParcelOffset:(CGPoint)offset;
++(id)fishWithName:(NSString*)fishName andPosition:(CGPoint)position andParcelOffset:(CGPoint)offset;
 - (BOOL)containsTouchLocation:(UITouch *)touch;
 -(void)swimTo:(CGPoint)destination;
 -(void)hit;
 -(void)ship;
 -(void)unship;
-
 @end
 
 @protocol FishDelegate <NSObject>

@@ -10,7 +10,7 @@
 #import "Actor.h"
 #import "Box2D.h"
 #import "cocos2d.h"
-#import "CorridorView.h"    
+ 
 
 @interface RectSensor:Actor 
 {

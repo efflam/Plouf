@@ -7,6 +7,7 @@
 //
 
 #import "RectSensor.h"
+#import "globals.h"
 
 
 @implementation RectSensor

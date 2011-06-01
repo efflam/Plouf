@@ -9,8 +9,8 @@
 #import "LevelView.h"
 #import "ScrollLevelView.h"
 #import "BackgroundView.h"
-#import "WinMenu.h";
-#import "LoseMenu.h";
+#import "WinMenu.h"
+#import "LoseMenu.h"
 
 @implementation LevelView
 @synthesize menu,pause,scrollView,bubbleView;
@@ -50,7 +50,7 @@
         CCMenuItemImage *pauseButton = [CCMenuItemImage itemFromNormalSprite:pauseSprite 
                                                               selectedSprite:nil 
                                                                       target:self 
-                                                                    selector:@selector(looseHandler:)];
+                                                                    selector:@selector(pauseGame)];
         
         [pauseButton setPosition:ccp(-450,320)];
         

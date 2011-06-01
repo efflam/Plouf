@@ -7,8 +7,6 @@
 //
 
 #import "RockFall.h"
-#import "Rock.h"
-#import "CorridorView.h"
 
 @implementation RockFall
 
@@ -47,8 +45,26 @@
         self.emitting = NO;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopEmission) name:@"pauseLevel" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(destroyRockHandler:) name:@"destroyRock" object:nil];
+
     }
 	return self;
+}
+
+-(void)destroyRockHandler:(NSNotification *)notification
+{
+    Rock *rock = (Rock *) [notification object];
+    if(rock)
+        [self destroyRock:rock];
+}
+
+-(void)destroyRock:(Rock *)rock
+{
+    if(rock && [[self rocks] containsObject:rock])
+    {
+        [delegate removeActor:rock];
+        [rocks removeObject:rock];
+    }
 }
 
 +(id)rockFallWithDelegate:(id)del
@@ -100,8 +116,7 @@
     if([[self rocks] count] >= [self maxRocks])
     {
         Rock *rock = [rocks objectAtIndex:0];
-        [delegate removeActor:rock];
-        [rocks removeObject:rock];
+        [self destroyRock:rock];
     }
     
     Rock *newRock;

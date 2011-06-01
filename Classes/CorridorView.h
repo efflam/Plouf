@@ -89,7 +89,7 @@ struct NavScene
 -(void)mureneEat;
 -(void)removeActorHandler:(NSNotification*)notification;
 -(void)update:(ccTime)dt;
--(void)giveParcel;
+-(void)giveParcelHandler:(NSNotification*)notification;
 -(void)fishOnFinish;
 -(void)win;
 

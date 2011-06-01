@@ -30,6 +30,7 @@
 @property (nonatomic, assign) CGFloat radius;
 @property (nonatomic, assign) CGFloat rotation;
 - (void)setPosition:(CGPoint)aPosition;
+-(void)destroy;
 
 
 #pragma mark View Properties

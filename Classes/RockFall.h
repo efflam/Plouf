@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Actor.h"
+#import "Rock.h"
 
 @protocol RockFallDelegate;
 @interface RockFall : NSObject 
@@ -37,6 +38,8 @@
 -(void)toggleEmission;
 -(void)emitRockAt:(CGPoint)p;
 -(void)onTimer;
+-(void)destroyRockHandler:(NSNotification *)notification;
+-(void)destroyRock:(Rock *)rock;
 
 @end
 

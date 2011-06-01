@@ -148,6 +148,11 @@
 	[self bodyDef]->angle = DEGREES_TO_RADIANS(aRotation);
 }
 
+-(void)destroy
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"destroyRock" object:self userInfo:nil];
+}
+
 
 #pragma mark View Accessors
 
