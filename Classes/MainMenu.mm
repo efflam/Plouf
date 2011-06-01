@@ -101,9 +101,9 @@
 {    
     CCScene *loaderScene = [CCScene node];
     
-//    [loaderScene addChild:[LoseMenu node]];
+    [loaderScene addChild:[LoseMenu node]];
     
-    [loaderScene addChild:[WinMenu winWithTime:185 sacrifices:2 indices:3]];
+//    [loaderScene addChild:[WinMenu winWithTime:185 sacrifices:2 indices:3]];
     
     [[CCDirector sharedDirector] pushScene:[CCTransitionFade transitionWithDuration:1.0 scene:loaderScene]];
 }
