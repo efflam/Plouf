@@ -248,6 +248,15 @@
 		7537F52413963AEE006B9812 /* loseAssets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7537F52113963AEE006B9812 /* loseAssets.plist */; };
 		7537F52513963AEE006B9812 /* loseAssets.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F52213963AEE006B9812 /* loseAssets.png */; };
 		7537F52613963AEE006B9812 /* loseParcel.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F52313963AEE006B9812 /* loseParcel.png */; };
+		7537F53013965E96006B9812 /* coffre.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7537F52713965E96006B9812 /* coffre.plist */; };
+		7537F53113965E96006B9812 /* coffre.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F52813965E96006B9812 /* coffre.png */; };
+		7537F53213965E96006B9812 /* labre.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F52913965E96006B9812 /* labre.png */; };
+		7537F53313965E96006B9812 /* crevette.zss in Resources */ = {isa = PBXBuildFile; fileRef = 7537F52A13965E96006B9812 /* crevette.zss */; };
+		7537F53413965E96006B9812 /* crevette.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7537F52B13965E96006B9812 /* crevette.plist */; };
+		7537F53513965E96006B9812 /* crevette.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F52C13965E96006B9812 /* crevette.png */; };
+		7537F53613965E96006B9812 /* papillon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F52D13965E96006B9812 /* papillon.png */; };
+		7537F53713965E96006B9812 /* papillon.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7537F52E13965E96006B9812 /* papillon.plist */; };
+		7537F53813965E96006B9812 /* labre.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7537F52F13965E96006B9812 /* labre.plist */; };
 		753A8AD4137C0C6300429A6E /* BubbleView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 753A8AD3137C0C6200429A6E /* BubbleView.mm */; };
 		7552B17E13919DF5009F5479 /* bulle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7552B17C13919DF5009F5479 /* bulle.plist */; };
 		7552B17F13919DF5009F5479 /* bulle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7552B17D13919DF5009F5479 /* bulle.png */; };
@@ -750,6 +759,15 @@
 		7537F52113963AEE006B9812 /* loseAssets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = loseAssets.plist; path = "../../Plouf - save/Resources/loseAssets.plist"; sourceTree = "<group>"; };
 		7537F52213963AEE006B9812 /* loseAssets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loseAssets.png; path = "../../Plouf - save/Resources/loseAssets.png"; sourceTree = "<group>"; };
 		7537F52313963AEE006B9812 /* loseParcel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loseParcel.png; path = "../../Plouf - save/Resources/loseParcel.png"; sourceTree = "<group>"; };
+		7537F52713965E96006B9812 /* coffre.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = coffre.plist; sourceTree = "<group>"; };
+		7537F52813965E96006B9812 /* coffre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coffre.png; sourceTree = "<group>"; };
+		7537F52913965E96006B9812 /* labre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = labre.png; sourceTree = "<group>"; };
+		7537F52A13965E96006B9812 /* crevette.zss */ = {isa = PBXFileReference; lastKnownFileType = file; path = crevette.zss; sourceTree = "<group>"; };
+		7537F52B13965E96006B9812 /* crevette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = crevette.plist; sourceTree = "<group>"; };
+		7537F52C13965E96006B9812 /* crevette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crevette.png; sourceTree = "<group>"; };
+		7537F52D13965E96006B9812 /* papillon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = papillon.png; sourceTree = "<group>"; };
+		7537F52E13965E96006B9812 /* papillon.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = papillon.plist; sourceTree = "<group>"; };
+		7537F52F13965E96006B9812 /* labre.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = labre.plist; sourceTree = "<group>"; };
 		753A8AD2137C0C6200429A6E /* BubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleView.h; sourceTree = "<group>"; };
 		753A8AD3137C0C6200429A6E /* BubbleView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BubbleView.mm; sourceTree = "<group>"; };
 		7552B17C13919DF5009F5479 /* bulle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bulle.plist; sourceTree = "<group>"; };
@@ -1478,6 +1496,15 @@
 		751901AC13795B6E0093AAC3 /* fishes */ = {
 			isa = PBXGroup;
 			children = (
+				7537F52713965E96006B9812 /* coffre.plist */,
+				7537F52813965E96006B9812 /* coffre.png */,
+				7537F52913965E96006B9812 /* labre.png */,
+				7537F52A13965E96006B9812 /* crevette.zss */,
+				7537F52B13965E96006B9812 /* crevette.plist */,
+				7537F52C13965E96006B9812 /* crevette.png */,
+				7537F52D13965E96006B9812 /* papillon.png */,
+				7537F52E13965E96006B9812 /* papillon.plist */,
+				7537F52F13965E96006B9812 /* labre.plist */,
 				75328DC9137C13C100C84466 /* clownBubble.png */,
 				753062BD137977AC00AB6005 /* clown.png */,
 				753062BE137977AC00AB6005 /* clown.plist */,
@@ -2156,6 +2183,15 @@
 				7537F52413963AEE006B9812 /* loseAssets.plist in Resources */,
 				7537F52513963AEE006B9812 /* loseAssets.png in Resources */,
 				7537F52613963AEE006B9812 /* loseParcel.png in Resources */,
+				7537F53013965E96006B9812 /* coffre.plist in Resources */,
+				7537F53113965E96006B9812 /* coffre.png in Resources */,
+				7537F53213965E96006B9812 /* labre.png in Resources */,
+				7537F53313965E96006B9812 /* crevette.zss in Resources */,
+				7537F53413965E96006B9812 /* crevette.plist in Resources */,
+				7537F53513965E96006B9812 /* crevette.png in Resources */,
+				7537F53613965E96006B9812 /* papillon.png in Resources */,
+				7537F53713965E96006B9812 /* papillon.plist in Resources */,
+				7537F53813965E96006B9812 /* labre.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -101,6 +101,10 @@
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
     
+    glLineWidth(3);
+    glColor4ub(0,0,0, 255);
+    ccDrawPoly(ptts, 3, YES);
+    
 	//glEnableClientState(GL_COLOR_ARRAY);
     
     /*
