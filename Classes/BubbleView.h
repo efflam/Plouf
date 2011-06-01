@@ -11,8 +11,9 @@
 #import "BubbleSprite.h"
 
 @interface BubbleView : CCNode {
-    
+    NSMutableArray *bubblesTrackable;
 }
+@property(nonatomic,retain)NSMutableArray *bubblesTrackable;
 
 @end
 
@@ -20,5 +21,6 @@
 
 -(CGPoint)bubblePoint;
 -(BubbleSprite*)bubbleSprite;
+-(void)update:(ccTime)dt;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "EnvironmentMenu.h"
 #import "globals.h"
+#import "FishMenu.h"
 
 @implementation EnvironmentMenu
 @synthesize environments;
@@ -88,6 +89,8 @@
         [[self bubblesHolder] setPosition:origin];
         
         pageWidth = 650;
+        
+        lastIndex = 0;
         
         for(int i = 0 ; i < 4 ; i++)
         {
@@ -196,14 +199,24 @@
         if(dist < 74.0)
         {
             [[CCDirector sharedDirector] popSceneWithTransition:[CCTransitionFade class] duration:0.5];
+            return;
         }
         
         dist = ccpDistance(touchPos, collectionButton.position);
         
         if(dist < 100)
         {
-            NSLog(@"collection");
+            CCScene *scene = [CCScene node];
+            LevelMenu *levelMenu = [FishMenu node];
+            
+            [scene addChild:levelMenu];
+            
+            [[CCDirector sharedDirector] pushScene:[CCTransitionFade transitionWithDuration:.5 scene:scene]];
+            
+            return;
         }
+        
+        return;
     }
     
     float limit;
@@ -236,6 +249,10 @@
 
 -(void)setTerminatedLevelAndInfo
 {
+    if(lastIndex == currentBubbleIndex) return;
+    
+    lastIndex = currentBubbleIndex;
+    
     [currentLegend runAction:
      [CCSequence actions:
       [CCFadeOut actionWithDuration:.2],

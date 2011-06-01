@@ -10,6 +10,7 @@
 #import "Loader.h"
 #import "WinMenu.h"
 #import "FishMenu.h"
+#import "MerciScreen.h"
 #import "LoseMenu.h"
 
 @implementation MainMenu
@@ -56,10 +57,18 @@
                 [CCMoveTo actionWithDuration:1.5 position:ccp(280,210)]]];
     
         CCMenuItemImage *playButton = [CCMenuItemImage itemFromNormalImage:@"playButton.png" 
-                                                             selectedImage:@"playButton.png" 
+                                                             selectedImage:nil 
                                                                     target:self 
                                                                   selector:@selector(play)];
+        
         [playButton setPosition:ccp(512,-200)];
+        
+        CCMenuItemImage *infoButton = [CCMenuItemImage itemFromNormalImage:@"infoButton.png" 
+                                                             selectedImage:nil 
+                                                                    target:self 
+                                                                  selector:@selector(infoHandler)];
+        [infoButton setAnchorPoint:ccp(0,0)];
+        [infoButton setPosition:ccp(10,-250)];
         
         CCMenuItemImage *collectionButton = [CCMenuItemImage itemFromNormalImage:@"collectionButton.png" 
                                                                    selectedImage:nil 
@@ -68,7 +77,7 @@
         [collectionButton setAnchorPoint:ccp(1,0)];
         [collectionButton setPosition:ccp(SCREEN_CENTER.x*2,-250)];
         
-        CCMenu *menu = [CCMenu menuWithItems:playButton, collectionButton, nil];
+        CCMenu *menu = [CCMenu menuWithItems:playButton, infoButton,collectionButton, nil];
         [menu setPosition:ccp(0,0)];
         
         [playButton runAction:
@@ -82,29 +91,37 @@
                     [CCMoveTo actionWithDuration:1.5 position:ccp(SCREEN_CENTER.x*2,5)]],
              nil]];
         
+        [infoButton runAction:
+         [CCSequence actions:
+          [CCDelayTime actionWithDuration:0.8],
+          [CCEaseSineInOut actionWithAction:
+           [CCMoveTo actionWithDuration:1.5 position:ccp(10,5)]],
+          nil]];
+        
         [self addChild:menu];
     }
     
     return self;
 }
 
+-(void)infoHandler
+{
+    CCScene *loaderScene = [CCScene node];
+    [loaderScene addChild:[MerciScreen node]];
+    [[CCDirector sharedDirector] pushScene:[CCTransitionFade transitionWithDuration:1.0 scene:loaderScene]];
+}
+
 -(void)play
 {
     CCScene *loaderScene = [CCScene node];
-    
     [loaderScene addChild:loader];
-    
     [[CCDirector sharedDirector] pushScene:[CCTransitionFade transitionWithDuration:1.0 scene:loaderScene]];
 }
 
 -(void)collection
 {    
     CCScene *loaderScene = [CCScene node];
-    
-    [loaderScene addChild:[LoseMenu node]];
-    
-//    [loaderScene addChild:[WinMenu winWithTime:185 sacrifices:2 indices:3]];
-    
+    [loaderScene addChild:[FishMenu node]];
     [[CCDirector sharedDirector] pushScene:[CCTransitionFade transitionWithDuration:1.0 scene:loaderScene]];
 }
 

@@ -64,7 +64,9 @@
 
 -(void)wash
 {
-    
+    [self stopAllActions];
+    [bulles stopAllActions];
+    [bulles runAction:bulles.action];
     CCCallBlock *block = [CCCallBlock actionWithBlock:^(void) {        
         [self openToAngle:18 andDuration:.5];
 //        [bulles runAction:[CCSequence actions:[CCDelayTime actionWithDuration:.5],[CCFadeIn actionWithDuration:.5],[CCCallFunc actionWithTarget:self selector:@selector(endWash)],nil]];
@@ -81,12 +83,15 @@
 
 -(void)endWash
 {
-//    [bulles runAction:[CCSequence actions:[CCFadeOut actionWithDuration:.5],[CCCallFunc actionWithTarget:self selector:@selector(closeWash)],[CCDelayTime actionWithDuration:.5],[CCCallFunc actionWithTarget:self selector:@selector(wash)],nil]];
+    [self stopAllActions];
+    [bulles stopAllActions];
     [bulles runAction:[CCSequence actions:[CCFadeOut actionWithDuration:.5],[CCCallFunc actionWithTarget:self selector:@selector(close)],nil]];
 }
      
 -(void)close
 {
+    [self stopAllActions];
+    [bulles stopAllActions];
     [self openToAngle:10 andDuration:.5];
 }
 
@@ -98,6 +103,9 @@
 
 -(void)eat
 {
+    [self stopAllActions];
+    [bulles stopAllActions];
+    
     [topJaw runAction:
         [CCSequence actions:
             [CCRotateTo actionWithDuration:.3 angle:-35],

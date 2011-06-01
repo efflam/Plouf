@@ -29,6 +29,8 @@
     NSArray *legendes;
     NSArray *terminatedLevels;
     NSArray *terminatedStripes;
+    
+    int lastIndex;
 }
 
 @property(nonatomic, retain) NSArray *legendes;

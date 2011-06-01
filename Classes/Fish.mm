@@ -187,10 +187,10 @@
             self.sprite.visible = NO;
             [[NSNotificationCenter defaultCenter] postNotificationName:@"showMe" object:self];
         }
-        else
-        {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"trackMe" object:self];
-        }
+//        else
+//        {
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"trackMe" object:self];
+//        }
     }
     else if(!self.sprite.visible)
     {
