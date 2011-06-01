@@ -249,6 +249,15 @@
 		75328DCE137C188700C84466 /* BubbleSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75328DCD137C188700C84466 /* BubbleSprite.mm */; };
 		7537F51E139596A9006B9812 /* papillon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F51C139596A9006B9812 /* papillon1.png */; };
 		7537F51F139596A9006B9812 /* papillon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F51D139596A9006B9812 /* papillon2.png */; };
+		7537F54013967A9E006B9812 /* MerciScreen.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7537F53F13967A9E006B9812 /* MerciScreen.mm */; };
+		7537F54913967C60006B9812 /* merciActeurs.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F54113967C60006B9812 /* merciActeurs.png */; };
+		7537F54A13967C60006B9812 /* merciBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F54213967C60006B9812 /* merciBackground.png */; };
+		7537F54B13967C60006B9812 /* merciCRMA.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F54313967C60006B9812 /* merciCRMA.png */; };
+		7537F54C13967C60006B9812 /* merciGobelins.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F54413967C60006B9812 /* merciGobelins.png */; };
+		7537F54D13967C60006B9812 /* merciLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F54513967C60006B9812 /* merciLogo.png */; };
+		7537F54E13967C60006B9812 /* merciMerci.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F54613967C60006B9812 /* merciMerci.png */; };
+		7537F54F13967C60006B9812 /* merciPartenaires.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F54713967C60006B9812 /* merciPartenaires.png */; };
+		7537F55013967C60006B9812 /* merciRealisation.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F54813967C60006B9812 /* merciRealisation.png */; };
 		753A8AD4137C0C6300429A6E /* BubbleView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 753A8AD3137C0C6200429A6E /* BubbleView.mm */; };
 		7552B17E13919DF5009F5479 /* bulle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7552B17C13919DF5009F5479 /* bulle.plist */; };
 		7552B17F13919DF5009F5479 /* bulle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7552B17D13919DF5009F5479 /* bulle.png */; };
@@ -274,6 +283,12 @@
 		75B86293139428E10061CF18 /* childsplay.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B86291139428E10061CF18 /* childsplay.png */; };
 		75C95F861381B8F800DB45F2 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 75C95F841381B8F800DB45F2 /* Default-Landscape~ipad.png */; };
 		75C95F871381B8F800DB45F2 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 75C95F851381B8F800DB45F2 /* Default-Portrait~ipad.png */; };
+		75CB4EA913968079002B0C1B /* webButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 75CB4EA813968079002B0C1B /* webButton.png */; };
+		75CB4EAD13968A45002B0C1B /* papillon.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75CB4EAB13968A45002B0C1B /* papillon.plist */; };
+		75CB4EAE13968A45002B0C1B /* papillon.png in Resources */ = {isa = PBXBuildFile; fileRef = 75CB4EAC13968A45002B0C1B /* papillon.png */; };
+		75CB4EB113969A61002B0C1B /* labre.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75CB4EAF13969A61002B0C1B /* labre.plist */; };
+		75CB4EB213969A61002B0C1B /* labre.png in Resources */ = {isa = PBXBuildFile; fileRef = 75CB4EB013969A61002B0C1B /* labre.png */; };
+		75CB4EB41396A00D002B0C1B /* infoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 75CB4EB31396A00D002B0C1B /* infoButton.png */; };
 		75CE3A9113928A9B00E9F227 /* PauseMenu.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75CE3A9013928A9B00E9F227 /* PauseMenu.mm */; };
 		75CE3AA21392A64C00E9F227 /* Parcel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75CE3AA11392A64C00E9F227 /* Parcel.mm */; };
 		75D7C79013798ED900A80587 /* FishAnimated.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75D7C78F13798ED900A80587 /* FishAnimated.mm */; };
@@ -751,6 +766,16 @@
 		75328DCD137C188700C84466 /* BubbleSprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BubbleSprite.mm; path = ../../Plouf/Classes/BubbleSprite.mm; sourceTree = "<group>"; };
 		7537F51C139596A9006B9812 /* papillon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = papillon1.png; sourceTree = "<group>"; };
 		7537F51D139596A9006B9812 /* papillon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = papillon2.png; sourceTree = "<group>"; };
+		7537F53E13967A9E006B9812 /* MerciScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerciScreen.h; sourceTree = "<group>"; };
+		7537F53F13967A9E006B9812 /* MerciScreen.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MerciScreen.mm; sourceTree = "<group>"; };
+		7537F54113967C60006B9812 /* merciActeurs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = merciActeurs.png; sourceTree = "<group>"; };
+		7537F54213967C60006B9812 /* merciBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = merciBackground.png; sourceTree = "<group>"; };
+		7537F54313967C60006B9812 /* merciCRMA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = merciCRMA.png; sourceTree = "<group>"; };
+		7537F54413967C60006B9812 /* merciGobelins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = merciGobelins.png; sourceTree = "<group>"; };
+		7537F54513967C60006B9812 /* merciLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = merciLogo.png; sourceTree = "<group>"; };
+		7537F54613967C60006B9812 /* merciMerci.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = merciMerci.png; sourceTree = "<group>"; };
+		7537F54713967C60006B9812 /* merciPartenaires.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = merciPartenaires.png; sourceTree = "<group>"; };
+		7537F54813967C60006B9812 /* merciRealisation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = merciRealisation.png; sourceTree = "<group>"; };
 		753A8AD2137C0C6200429A6E /* BubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleView.h; sourceTree = "<group>"; };
 		753A8AD3137C0C6200429A6E /* BubbleView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BubbleView.mm; sourceTree = "<group>"; };
 		7552B17C13919DF5009F5479 /* bulle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bulle.plist; sourceTree = "<group>"; };
@@ -790,6 +815,12 @@
 		75B86291139428E10061CF18 /* childsplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = childsplay.png; sourceTree = "<group>"; };
 		75C95F841381B8F800DB45F2 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../../Plouf/Resources/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		75C95F851381B8F800DB45F2 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../../Plouf/Resources/Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		75CB4EA813968079002B0C1B /* webButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = webButton.png; sourceTree = "<group>"; };
+		75CB4EAB13968A45002B0C1B /* papillon.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = papillon.plist; sourceTree = "<group>"; };
+		75CB4EAC13968A45002B0C1B /* papillon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = papillon.png; sourceTree = "<group>"; };
+		75CB4EAF13969A61002B0C1B /* labre.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = labre.plist; sourceTree = "<group>"; };
+		75CB4EB013969A61002B0C1B /* labre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = labre.png; sourceTree = "<group>"; };
+		75CB4EB31396A00D002B0C1B /* infoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoButton.png; sourceTree = "<group>"; };
 		75CE3A8F13928A9B00E9F227 /* PauseMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseMenu.h; sourceTree = "<group>"; };
 		75CE3A9013928A9B00E9F227 /* PauseMenu.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PauseMenu.mm; sourceTree = "<group>"; };
 		75CE3AA01392A64C00E9F227 /* Parcel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parcel.h; sourceTree = "<group>"; };
@@ -1478,15 +1509,10 @@
 		751901AC13795B6E0093AAC3 /* fishes */ = {
 			isa = PBXGroup;
 			children = (
-				7537F52713965E96006B9812 /* coffre.plist */,
-				7537F52813965E96006B9812 /* coffre.png */,
-				7537F52913965E96006B9812 /* labre.png */,
-				7537F52A13965E96006B9812 /* crevette.zss */,
-				7537F52B13965E96006B9812 /* crevette.plist */,
-				7537F52C13965E96006B9812 /* crevette.png */,
-				7537F52D13965E96006B9812 /* papillon.png */,
-				7537F52E13965E96006B9812 /* papillon.plist */,
-				7537F52F13965E96006B9812 /* labre.plist */,
+				75CB4EAF13969A61002B0C1B /* labre.plist */,
+				75CB4EB013969A61002B0C1B /* labre.png */,
+				75CB4EAB13968A45002B0C1B /* papillon.plist */,
+				75CB4EAC13968A45002B0C1B /* papillon.png */,
 				75328DC9137C13C100C84466 /* clownBubble.png */,
 				753062BD137977AC00AB6005 /* clown.png */,
 				753062BE137977AC00AB6005 /* clown.plist */,
@@ -1523,6 +1549,16 @@
 		7552B1831391A257009F5479 /* menu */ = {
 			isa = PBXGroup;
 			children = (
+				75CB4EB31396A00D002B0C1B /* infoButton.png */,
+				75CB4EA813968079002B0C1B /* webButton.png */,
+				7537F54113967C60006B9812 /* merciActeurs.png */,
+				7537F54213967C60006B9812 /* merciBackground.png */,
+				7537F54313967C60006B9812 /* merciCRMA.png */,
+				7537F54413967C60006B9812 /* merciGobelins.png */,
+				7537F54513967C60006B9812 /* merciLogo.png */,
+				7537F54613967C60006B9812 /* merciMerci.png */,
+				7537F54713967C60006B9812 /* merciPartenaires.png */,
+				7537F54813967C60006B9812 /* merciRealisation.png */,
 				7537F51C139596A9006B9812 /* papillon1.png */,
 				7537F51D139596A9006B9812 /* papillon2.png */,
 				758CC41D13958CF200504018 /* levelNumbers.plist */,
@@ -1575,6 +1611,8 @@
 				2D726800138E9C73004054C6 /* MainMenu.mm */,
 				75CE3A8F13928A9B00E9F227 /* PauseMenu.h */,
 				75CE3A9013928A9B00E9F227 /* PauseMenu.mm */,
+				7537F53E13967A9E006B9812 /* MerciScreen.h */,
+				7537F53F13967A9E006B9812 /* MerciScreen.mm */,
 			);
 			name = menus;
 			sourceTree = "<group>";
@@ -2165,6 +2203,20 @@
 				2DD359CA13963CAF009B47B7 /* loseAssets.png in Resources */,
 				2DD359CB13963CAF009B47B7 /* loseParcel.png in Resources */,
 				2DD359CD13963CBB009B47B7 /* backButton.png in Resources */,
+				7537F54913967C60006B9812 /* merciActeurs.png in Resources */,
+				7537F54A13967C60006B9812 /* merciBackground.png in Resources */,
+				7537F54B13967C60006B9812 /* merciCRMA.png in Resources */,
+				7537F54C13967C60006B9812 /* merciGobelins.png in Resources */,
+				7537F54D13967C60006B9812 /* merciLogo.png in Resources */,
+				7537F54E13967C60006B9812 /* merciMerci.png in Resources */,
+				7537F54F13967C60006B9812 /* merciPartenaires.png in Resources */,
+				7537F55013967C60006B9812 /* merciRealisation.png in Resources */,
+				75CB4EA913968079002B0C1B /* webButton.png in Resources */,
+				75CB4EAD13968A45002B0C1B /* papillon.plist in Resources */,
+				75CB4EAE13968A45002B0C1B /* papillon.png in Resources */,
+				75CB4EB113969A61002B0C1B /* labre.plist in Resources */,
+				75CB4EB213969A61002B0C1B /* labre.png in Resources */,
+				75CB4EB41396A00D002B0C1B /* infoButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2227,6 +2279,7 @@
 				7589C9DF13958B5500B1AAB5 /* FishMenu.mm in Sources */,
 				7589C9E013958B5500B1AAB5 /* LoseMenu.mm in Sources */,
 				7589C9E113958B5500B1AAB5 /* WinMenu.mm in Sources */,
+				7537F54013967A9E006B9812 /* MerciScreen.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

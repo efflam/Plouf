@@ -10,6 +10,7 @@
 
 
 @implementation BubbleView
+@synthesize bubblesTrackable;
 
 -(id)init
 {
@@ -19,8 +20,10 @@
     {
         [self setAnchorPoint:ccp(0,0)];
         
+        self.bubblesTrackable = [NSMutableArray array];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMe:) name:@"showMe" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trackMe:) name:@"trackMe" object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trackMe:) name:@"trackMe" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unTrackMe:) name:@"unTrackMe" object:nil];
     }
     
@@ -37,12 +40,22 @@
         
     [[bubbleTrackable bubbleSprite] setPosition:[bubbleTrackable bubblePoint]];
     [[CCTouchDispatcher sharedDispatcher] addStandardDelegate:[bubbleTrackable bubbleSprite] priority:1];
+    
+    [self.bubblesTrackable addObject:bubbleTrackable];
 }
 
--(void)trackMe:(NSNotification*)notification
+//-(void)trackMe:(NSNotification*)notification
+//{
+//    id <BubbleTrackable> bubbleTrackable = [notification object];
+//    [[bubbleTrackable bubbleSprite] setPosition:[bubbleTrackable bubblePoint]];
+//}
+
+-(void)update:(ccTime)dt
 {
-    id <BubbleTrackable> bubbleTrackable = [notification object];
-    [[bubbleTrackable bubbleSprite] setPosition:[bubbleTrackable bubblePoint]];
+    for(id <BubbleTrackable> item in bubblesTrackable)
+    {
+        [[item bubbleSprite] setPosition:[item bubblePoint]];
+    }
 }
 
 -(void)unTrackMe:(NSNotification*)notification
@@ -54,6 +67,8 @@
     CCSequence *seq = [CCSequence actions:[CCScaleTo actionWithDuration:0.2 scale:0.0], func,nil];
     
     [[bubbleTrackable bubbleSprite] runAction:seq];
+    
+    [self.bubblesTrackable removeObject:bubbleTrackable];
     //[self removeChild:[bubbleTrackable bubbleSprite] cleanup:NO]
 }
 
@@ -65,6 +80,8 @@
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [bubblesTrackable removeAllObjects];
+    [bubblesTrackable release];
     [super dealloc];
 }
 

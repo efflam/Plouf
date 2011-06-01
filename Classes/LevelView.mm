@@ -13,7 +13,7 @@
 #import "LoseMenu.h";
 
 @implementation LevelView
-@synthesize menu,pause,scrollView;
+@synthesize menu,pause,scrollView,bubbleView;
 
 -(void)dealloc
 {
@@ -23,7 +23,7 @@
     
     [[CCTouchDispatcher sharedDispatcher]removeDelegate:scrollView];
     [scrollView release];
-    
+    [bubbleView release];
     
     [menu release];
     [pause release];
@@ -55,12 +55,12 @@
         [pauseButton setPosition:ccp(-450,320)];
         
         self.menu = [CCMenu menuWithItems:pauseButton, nil];
-        
         self.scrollView = [ScrollLevelView levelWithName:levelName];
+        self.bubbleView = [BubbleView node];
         
         [self addChild:background];
         [self addChild:scrollView];
-        [self addChild:[BubbleView node]];
+        [self addChild:bubbleView];
         [self addChild:menu];
         [self addChild:pause];
         
@@ -83,6 +83,7 @@
 -(void)update:(ccTime)dt
 {
     [self.scrollView update:dt];
+    [self.bubbleView update:dt];
 }
 
 -(void)pauseGame

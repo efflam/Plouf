@@ -14,12 +14,16 @@
 #import "Loader.h"
 #import "LevelMenu.h"
 #import "Camera.h"
+#import "BubbleView.h"
 
 @interface LevelView : CCNode {
     CCMenu *menu;
     PauseMenu *pause;
     ScrollLevelView *scrollView;
+    BubbleView *bubbleView;
+    
 }
+@property(nonatomic,retain)BubbleView *bubbleView;
 @property(nonatomic,retain)ScrollLevelView *scrollView;
 @property(nonatomic,retain)CCMenu *menu;
 @property(nonatomic,retain)    PauseMenu *pause;
