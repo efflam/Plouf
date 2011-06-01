@@ -9,6 +9,8 @@
 #import "LevelView.h"
 #import "ScrollLevelView.h"
 #import "BackgroundView.h"
+#import "WinMenu.h";
+#import "LoseMenu.h";
 
 @implementation LevelView
 @synthesize menu,pause,scrollView;
@@ -48,7 +50,7 @@
         CCMenuItemImage *pauseButton = [CCMenuItemImage itemFromNormalSprite:pauseSprite 
                                                               selectedSprite:nil 
                                                                       target:self 
-                                                                    selector:@selector(pauseGame)];
+                                                                    selector:@selector(looseHandler:)];
         
         [pauseButton setPosition:ccp(-450,320)];
         
@@ -61,6 +63,16 @@
         [self addChild:[BubbleView node]];
         [self addChild:menu];
         [self addChild:pause];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(winHandler:) 
+                                                     name:@"win" 
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(looseHandler:) 
+                                                     name:@"loose" 
+                                                   object:nil];
         
         [self scheduleUpdate];
     }
@@ -139,6 +151,7 @@
 
 -(void)removePauseHandlers
 {
+    //
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -154,5 +167,43 @@
 {
     return [[[LevelView alloc] initWithLevelName:levelName] autorelease];
 }
+
+
+-(void)winHandler:(NSNotification*)notification
+{
+   
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"pauseLevel" object:nil];
+
+    
+    
+    [[CCTouchDispatcher sharedDispatcher] removeAllDelegates];
+    
+    CCScene *scene = [CCScene node];
+    [scene addChild:[WinMenu winWithTime:180 sacrifices:0 indices:1]];
+    
+    [[CCDirector sharedDirector] replaceScene:scene];
+    
+}
+
+
+-(void)looseHandler:(NSNotification*)notification
+{
+    CCLOG(@"loose");
+    //[notification object];
+    
+    
+    //[self unscheduleUpdate];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"pauseLevel" object:nil];
+    
+    [[CCTouchDispatcher sharedDispatcher] removeAllDelegates];
+    
+    CCScene *scene = [CCScene node];
+    [scene addChild:[LoseMenu node]];
+    
+    [[CCDirector sharedDirector] replaceScene:scene];
+    
+}
+
 
 @end
