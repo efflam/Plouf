@@ -68,7 +68,8 @@
         self.fixtureDef->density = 1.0f;
         self.fixtureDef->friction = 0.1f;
         self.fixtureDef->restitution = 0.1f;
-        //[self scheduleUpdate];
+        
+                //[self scheduleUpdate];
         
         self.parcel = [CCSprite spriteWithTexture: [[CCTextureCache sharedTextureCache] textureForKey:@"colis.png"]];
         [self.parcel setPosition:offset];  
@@ -95,6 +96,14 @@
     [self bodyDef]->userData = self;
 	[self setBody:[self world]->CreateBody([self bodyDef])];
 	[self fixtureDef]->shape = [self shapeDef];
+    
+    if(self.name != @"clown") 
+    {
+        //self.fixtureDef->filter.maskBits = 0x0002; 
+        self.fixtureDef->filter.categoryBits = 0x0004;
+    }
+    
+
     [self body]->CreateFixture([self fixtureDef]);
 
     self.sprite = [FishAnimated fishWithName:self.name];

@@ -87,13 +87,13 @@ float camSpring = 0.02;
       
         [self initCorridor:navScene.edge count:navScene.nedge];
         
-		NavmeshAgent* agent = &navScene.agents[0];
+		//NavmeshAgent* agent = &navScene.agents[0];
         
-        Fish *clown  = [Fish fishWithName:@"clown" andPosition:ccp(agent->pos[0],agent->pos[1]) andParcelOffset:ccp(0.0f, 50.0f)];
-        Fish *labre  = [Fish fishWithName:@"labre" andPosition:ccp(agent->pos[0],agent->pos[1]) andParcelOffset:ccp(0.0f, 40.0f)];
-        Fish *papillon  = [Fish fishWithName:@"papillon" andPosition:ccp(agent->pos[0],agent->pos[1]) andParcelOffset:ccp(0.0f, 58.0f)];
-        Fish *coffre  = [Fish fishWithName:@"coffre" andPosition:ccp(agent->pos[0],agent->pos[1]) andParcelOffset:ccp(0.0f, 45.0f)];
-        Fish *crevette  = [Fish fishWithName:@"crevette" andPosition:ccp(agent->pos[0],agent->pos[1]) andParcelOffset:ccp(0.0f, 35.0f)];
+        Fish *clown  = [Fish fishWithName:@"clown" andPosition:ccp( 465.0f, 3663.0f) andParcelOffset:ccp(0.0f, 50.0f)];
+        Fish *labre  = [Fish fishWithName:@"labre" andPosition:ccp(2658.0f, 2603.0f) andParcelOffset:ccp(0.0f, 40.0f)];
+        Fish *papillon  = [Fish fishWithName:@"papillon" andPosition:ccp(3634.0f, 2532.0f) andParcelOffset:ccp(0.0f, 58.0f)];
+        Fish *coffre  = [Fish fishWithName:@"coffre" andPosition:ccp(2560.0f, 902.0f) andParcelOffset:ccp(0.0f, 45.0f)];
+        Fish *crevette  = [Fish fishWithName:@"crevette" andPosition:ccp(2926.0f, 2812.0f) andParcelOffset:ccp(0.0f, 35.0f)];
 
         currentFish = clown;
         currentActor = clown;
@@ -292,7 +292,21 @@ float camSpring = 0.02;
 -(void)win
 {
     CCLOG(@"WINNER :)");
+    currentFish.spriteLinked = NO;
+    [[currentFish sprite] runAction:
+        [CCSequence actions:
+            [CCMoveBy actionWithDuration:0.7f position:ccp(-250.0f, 0.0f)],
+            [CCDelayTime actionWithDuration:0.5],
+            [CCCallFunc actionWithTarget:self selector:@selector(notifyWin)],
+            nil
+        ]
+    ];
+   }
+     
+-(void)notifyWin
+{
     [[NSNotificationCenter defaultCenter] postNotificationName:@"win" object:self userInfo:nil];
+
 }
 
 -(void)bubbleTouch:(NSNotification*)notification

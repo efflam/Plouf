@@ -44,8 +44,11 @@
         float offsetY =  - cosf(aRotation-M_PI) * 90.0f;
         self.bodyDef->position.Set(SCREEN_TO_WORLD(aPosition.x +offsetX) , SCREEN_TO_WORLD(aPosition.y + offsetY));
         self.bodyDef->angle = aRotation;
+               // boxDef.filter.categoryBits=2;
         self.shapeDef->SetAsBox(SCREEN_TO_WORLD(20.0f), SCREEN_TO_WORLD(90.0f));
         [self setFixtureDef:new b2FixtureDef];
+        
+
         eaten = NO;
 	}
 	return self;
@@ -58,6 +61,8 @@
 	[self bodyDef]->userData =  self;
 	[self setBody:[self world]->CreateBody([self bodyDef])];
 	[self fixtureDef]->shape = [self shapeDef];
+    //self.fixtureDef->filter.categoryBits = 0x0002;
+    self.fixtureDef->filter.maskBits = 0x0004;
     [self body]->CreateFixture([self fixtureDef]);
     self.sprite = [AnemoneAnimated node];
     [self.sprite setPosition:ccp(WORLD_TO_SCREEN(self.body->GetPosition().x),WORLD_TO_SCREEN(self.body->GetPosition().y ))];
