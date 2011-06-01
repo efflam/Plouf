@@ -19,6 +19,7 @@
 @synthesize fixtureDef;
 @synthesize spriteLinked;
 @synthesize shipping;
+@synthesize selected;
 
 
 #pragma mark View Accessors
@@ -43,7 +44,7 @@
 	[super dealloc];
 }
 
--(id)initWithFishName:(NSString*)fishName andPosition:(CGPoint)position
+-(id)initWithFishName:(NSString*)fishName andPosition:(CGPoint)position andParcelOffset:(CGPoint)offset
 {
     self = [super init];
     
@@ -69,15 +70,17 @@
         self.fixtureDef->restitution = 0.1f;
         //[self scheduleUpdate];
         
+        self.parcel = [CCSprite spriteWithTexture: [[CCTextureCache sharedTextureCache] textureForKey:@"colis.png"]];
+        [self.parcel setPosition:offset];  
         self.spriteLinked = YES;
     }
     
     return self;
 }
 
-+(id)fishWithName:(NSString*)fishName andPosition:(CGPoint)position
++(id)fishWithName:(NSString*)fishName andPosition:(CGPoint)position andParcelOffset:(CGPoint)offset
 {
-    return [[[Fish alloc] initWithFishName:fishName andPosition:position] autorelease];
+    return [[[Fish alloc] initWithFishName:fishName andPosition:position andParcelOffset:offset] autorelease];
 }
 
 
@@ -98,10 +101,9 @@
 	[[self scene] addChild:self.sprite];
     
     
-    self.parcel = [CCSprite spriteWithTexture: [[CCTextureCache sharedTextureCache] textureForKey:@"colis.png"]];
+    
     [self.sprite addChild:self.parcel z:10];
     self.parcel.visible = NO;
-    [self.parcel setPosition:ccp(0.0f, 50.0f)];
 }
 
 
@@ -249,7 +251,16 @@
 
 - (void)addContact:(Actor *)aContact
 {
-	[super addContact:aContact]; 
+	[super addContact:aContact];
+    if([aContact isKindOfClass:[Fish class]])
+    {
+        Fish *fish = (Fish *)aContact;
+        if(self.shipping && fish.selected)
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"giveParcel" object:fish userInfo:nil];
+
+        }
+    }
 }
 
 -(void)hit
@@ -265,7 +276,6 @@
 -(void)ship
 {
     self.parcel.visible = self.shipping = YES;
-    CCLOG(@"shiioooo");
 }
 
 -(void)unship
@@ -277,6 +287,7 @@
 {
 	return self.sprite.position;
 }
+
 
 
 @end

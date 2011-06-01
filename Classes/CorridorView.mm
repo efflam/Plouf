@@ -89,20 +89,47 @@ float camSpring = 0.02;
         
 		NavmeshAgent* agent = &navScene.agents[0];
         
-        Fish *fish1  = [Fish fishWithName:@"clown" andPosition:ccp(agent->pos[0],agent->pos[1])];
-        Fish *fish2  = [Fish fishWithName:@"clown" andPosition:ccp(agent->pos[0],agent->pos[1])];
-        currentFish = fish1;
-        currentActor = fish1;
-        fishes = [NSMutableArray arrayWithObjects:fish1, fish2, nil];
+        Fish *clown  = [Fish fishWithName:@"clown" andPosition:ccp(agent->pos[0],agent->pos[1]) andParcelOffset:ccp(0.0f, 50.0f)];
+        Fish *labre  = [Fish fishWithName:@"labre" andPosition:ccp(agent->pos[0],agent->pos[1]) andParcelOffset:ccp(0.0f, 40.0f)];
+        Fish *papillon  = [Fish fishWithName:@"papillon" andPosition:ccp(agent->pos[0],agent->pos[1]) andParcelOffset:ccp(0.0f, 58.0f)];
+        Fish *coffre  = [Fish fishWithName:@"coffre" andPosition:ccp(agent->pos[0],agent->pos[1]) andParcelOffset:ccp(0.0f, 45.0f)];
+        Fish *crevette  = [Fish fishWithName:@"crevette" andPosition:ccp(agent->pos[0],agent->pos[1]) andParcelOffset:ccp(0.0f, 35.0f)];
+
+        currentFish = clown;
+        currentActor = clown;
+        [currentFish setSelected:YES];
+        fishes = [NSMutableArray arrayWithObjects:clown, labre, papillon, coffre, crevette, nil];
+        
+        RectSensor *mureneWashSensor = [RectSensor rectSensorFrom:ccp(1400, 2460) to:ccp(1470, 2420)];
+        [self addActor:mureneWashSensor];
+        
+        RectSensor *mureneSensor = [RectSensor rectSensorFrom:ccp(1400, 2510) to:ccp(1550, 2400)];
+        [self addActor:mureneSensor];
+
         
         for(uint i = 0 ; i < [fishes count];i++)
         {
             Fish *fish = (Fish*)[fishes objectAtIndex:i];
-            ClassContactOperation *giveParcelOp = [ClassContactOperation operationFor:[Fish class] WithTarget:self andSelector:@selector(giveParcel) when:1];
             
             [fish setDelegate:self];
             [self addActor:fish];
-            [fish addClassOperation:giveParcelOp];
+            
+            if(fish != coffre)
+            {
+                ClassContactOperation *hitOp = [ClassContactOperation operationFor:[Rock class] WithTarget:fish andSelector:@selector(hit) when:1];
+                [fish addClassOperation:hitOp];
+            }
+            if(fish != clown && fish != papillon)
+            {
+                ClassContactOperation *electOp = [ClassContactOperation operationFor:[Anemone class] WithTarget:fish andSelector:@selector(hit) when:1];
+                [fish addClassOperation:electOp];
+            }
+            if(fish !=labre)
+            {
+                InstanceContactOperation *fishMureneAteOp = [InstanceContactOperation operationFor:fish WithTarget:self andSelector:@selector(mureneEat) when:1];
+                [mureneSensor addInstanceOperation:fishMureneAteOp];
+
+            }
         }
         
         CCSpriteBatchNode *batch = [CCSpriteBatchNode batchNodeWithFile:@"blocks.png" capacity:150];
@@ -114,6 +141,7 @@ float camSpring = 0.02;
         RectSensor *fallSensor = [RockFallSensor rockFallSensorFor:fall from:ccp(200, 1300) to:ccp(1500, 660)];
         [self addActor:fallSensor];
         
+        
         [self setContactListener: new MyContactListener()];
         world->SetContactListener([self contactListener]);
         
@@ -121,27 +149,18 @@ float camSpring = 0.02;
         [self addActor:self.murene];
         [self.murene setPosition:ccp(1100.0f, 2400.0f)];
         
-        RectSensor *mureneWashSensor = [RectSensor rectSensorFrom:ccp(1400, 2460) to:ccp(1470, 2420)];
-        [self addActor:mureneWashSensor];
+       
         
-        RectSensor *mureneSensor = [RectSensor rectSensorFrom:ccp(1400, 2510) to:ccp(1550, 2400)];
-        [self addActor:mureneSensor];
-
-        
-        InstanceContactOperation *fishMureneAteOp = [InstanceContactOperation operationFor:[fishes objectAtIndex:1] WithTarget:self andSelector:@selector(mureneEat) when:1];
-        [mureneSensor addInstanceOperation:fishMureneAteOp];
-        
-        InstanceContactOperation *washMureneAteOp = [InstanceContactOperation operationFor:[fishes objectAtIndex:0] WithTarget:self.murene andSelector:@selector(wash) when:1];
+        InstanceContactOperation *washMureneAteOp = [InstanceContactOperation operationFor:labre WithTarget:self.murene andSelector:@selector(wash) when:1];
         [mureneWashSensor addInstanceOperation:washMureneAteOp];
         
-        InstanceContactOperation *unwashMureneAteOp = [InstanceContactOperation operationFor:[fishes objectAtIndex:0] WithTarget:self.murene andSelector:@selector(unwash) when:2];
+        InstanceContactOperation *unwashMureneAteOp = [InstanceContactOperation operationFor:labre WithTarget:self.murene andSelector:@selector(unwash) when:2];
         [mureneWashSensor addInstanceOperation:unwashMureneAteOp];
         
-        ClassContactOperation *hitOp = [ClassContactOperation operationFor:[Rock class] WithTarget:currentFish andSelector:@selector(hit) when:1];
-        [currentFish addClassOperation:hitOp];
         
-        ClassContactOperation *electOp = [ClassContactOperation operationFor:[Anemone class] WithTarget:[fishes objectAtIndex:0] andSelector:@selector(hit) when:1];
-        [[fishes objectAtIndex:0] addClassOperation:electOp];
+      
+        
+       
         
         CrumblyRockTriangle *rock;
         for(Actor *anActor in [NSSet setWithSet:[self actorSet]]) 
@@ -149,16 +168,17 @@ float camSpring = 0.02;
             if([anActor isKindOfClass:[CrumblyRockTriangle class]])
             {
                 rock = (CrumblyRockTriangle *)anActor;
-                InstanceContactOperation *destroyOp = [InstanceContactOperation operationFor:[fishes objectAtIndex:1] WithTarget:rock andSelector:@selector(destroy) when:1];
+                InstanceContactOperation *destroyOp = [InstanceContactOperation operationFor:crevette WithTarget:rock andSelector:@selector(destroy) when:1];
                 [rock addInstanceOperation:destroyOp];
 
             }
             else if([anActor isKindOfClass:[Anemone class]])
             {
                 Anemone *anem = (Anemone *)anActor;
-                InstanceContactOperation *ateOp = [InstanceContactOperation operationFor:[fishes objectAtIndex:1] WithTarget:anem andSelector:@selector(ate) when:1];
+                InstanceContactOperation *ateOp = [InstanceContactOperation operationFor:papillon WithTarget:anem andSelector:@selector(ate) when:1];
                 [anem addInstanceOperation:ateOp];
             }
+            
         }
         
         
@@ -179,6 +199,8 @@ float camSpring = 0.02;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeActorHandler:) name:@"removeActor" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bubbleTouch:) name:@"bubbleTouch" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(giveParcelHandler:) name:@"giveParcel" object:nil];
+
 	}
 	return self;
 }
@@ -190,9 +212,25 @@ float camSpring = 0.02;
 }
 
 
--(void)giveParcel
+-(void)giveParcelHandler:(NSNotification*)notification
 {
-    if(shippingFish) [self setShippingFish:currentFish];
+    Fish *fish = (Fish *)[notification object];
+    
+    //if(shippingFish) [self setShippingFish:currentFish];
+    if(fish)[self setShippingFish:fish];
+}
+
+-(void)setShippingFish:(Fish *)fish
+{
+    if(fish == shippingFish) 
+        return; 
+    
+    if(shippingFish)
+        [shippingFish unship];
+    
+    shippingFish = fish;
+    [shippingFish ship];
+    
 }
 
 -(void)pickParcel
@@ -217,7 +255,7 @@ float camSpring = 0.02;
     currentFish.spriteLinked = NO;
     
     [currentFish.sprite runAction:
-                                    [CCSequence actions:[CCMoveTo actionWithDuration:0.5 position:ccp(1510, 2450)], 
+                                    [CCSequence actions:[CCMoveTo actionWithDuration:0.5 position:ccp(1515, 2450)], 
                                      [CCCallFunc actionWithTarget:self selector:@selector(fishEatenByMurene)], 
                                      nil]
      ];
@@ -545,6 +583,9 @@ float camSpring = 0.02;
         return; 
     }
     
+   
+    if(currentFish) currentFish.selected = NO;
+    
     NavmeshAgent* agent = &navScene.agents[navScene.nagents-1];
     
     if(!travelling && currentFish) vset(agent->pos, currentFish.sprite.position.x,currentFish.sprite.position.y);
@@ -568,21 +609,12 @@ float camSpring = 0.02;
     
     currentFish = fish;
     currentActor = fish;
+    currentFish.selected = YES;
     
     camSpring = 0.02;
 }
 
--(void)setShippingFish:(Fish *)fish
-{
-    if(fish == shippingFish) 
-        return; 
-    
-    if(shippingFish)
-        [shippingFish unship];
-    
-    shippingFish = fish;
-    [shippingFish ship];
-}
+
     
 -(void)update:(ccTime)dt
 {
@@ -714,7 +746,7 @@ float camSpring = 0.02;
     glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	//world->DrawDebugData();
+    //world->DrawDebugData();
     glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
