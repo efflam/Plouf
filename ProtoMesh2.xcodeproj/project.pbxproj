@@ -243,6 +243,11 @@
 		753062C0137977AC00AB6005 /* clown.plist in Resources */ = {isa = PBXBuildFile; fileRef = 753062BE137977AC00AB6005 /* clown.plist */; };
 		75328DCA137C13C100C84466 /* clownBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 75328DC9137C13C100C84466 /* clownBubble.png */; };
 		75328DCE137C188700C84466 /* BubbleSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75328DCD137C188700C84466 /* BubbleSprite.mm */; };
+		7537F51E139596A9006B9812 /* papillon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F51C139596A9006B9812 /* papillon1.png */; };
+		7537F51F139596A9006B9812 /* papillon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F51D139596A9006B9812 /* papillon2.png */; };
+		7537F52413963AEE006B9812 /* loseAssets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7537F52113963AEE006B9812 /* loseAssets.plist */; };
+		7537F52513963AEE006B9812 /* loseAssets.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F52213963AEE006B9812 /* loseAssets.png */; };
+		7537F52613963AEE006B9812 /* loseParcel.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F52313963AEE006B9812 /* loseParcel.png */; };
 		753A8AD4137C0C6300429A6E /* BubbleView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 753A8AD3137C0C6200429A6E /* BubbleView.mm */; };
 		7552B17E13919DF5009F5479 /* bulle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7552B17C13919DF5009F5479 /* bulle.plist */; };
 		7552B17F13919DF5009F5479 /* bulle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7552B17D13919DF5009F5479 /* bulle.png */; };
@@ -740,6 +745,11 @@
 		75328DC9137C13C100C84466 /* clownBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clownBubble.png; sourceTree = "<group>"; };
 		75328DCC137C188700C84466 /* BubbleSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BubbleSprite.h; path = ../../Plouf/Classes/BubbleSprite.h; sourceTree = "<group>"; };
 		75328DCD137C188700C84466 /* BubbleSprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BubbleSprite.mm; path = ../../Plouf/Classes/BubbleSprite.mm; sourceTree = "<group>"; };
+		7537F51C139596A9006B9812 /* papillon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = papillon1.png; sourceTree = "<group>"; };
+		7537F51D139596A9006B9812 /* papillon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = papillon2.png; sourceTree = "<group>"; };
+		7537F52113963AEE006B9812 /* loseAssets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = loseAssets.plist; path = "../../Plouf - save/Resources/loseAssets.plist"; sourceTree = "<group>"; };
+		7537F52213963AEE006B9812 /* loseAssets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loseAssets.png; path = "../../Plouf - save/Resources/loseAssets.png"; sourceTree = "<group>"; };
+		7537F52313963AEE006B9812 /* loseParcel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loseParcel.png; path = "../../Plouf - save/Resources/loseParcel.png"; sourceTree = "<group>"; };
 		753A8AD2137C0C6200429A6E /* BubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleView.h; sourceTree = "<group>"; };
 		753A8AD3137C0C6200429A6E /* BubbleView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BubbleView.mm; sourceTree = "<group>"; };
 		7552B17C13919DF5009F5479 /* bulle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bulle.plist; sourceTree = "<group>"; };
@@ -1504,6 +1514,11 @@
 		7552B1831391A257009F5479 /* menu */ = {
 			isa = PBXGroup;
 			children = (
+				7537F52113963AEE006B9812 /* loseAssets.plist */,
+				7537F52213963AEE006B9812 /* loseAssets.png */,
+				7537F52313963AEE006B9812 /* loseParcel.png */,
+				7537F51C139596A9006B9812 /* papillon1.png */,
+				7537F51D139596A9006B9812 /* papillon2.png */,
 				758CC41D13958CF200504018 /* levelNumbers.plist */,
 				758CC41E13958CF200504018 /* levelNumbers.png */,
 				7589C9E213958B8C00B1AAB5 /* fishBackground.png */,
@@ -2136,6 +2151,11 @@
 				75F83E071395920800898D71 /* tropicInfo.png in Resources */,
 				75F83E081395930B00898D71 /* backgroundGame.png in Resources */,
 				75F83E091395930E00898D71 /* backgroundGame.plist in Resources */,
+				7537F51E139596A9006B9812 /* papillon1.png in Resources */,
+				7537F51F139596A9006B9812 /* papillon2.png in Resources */,
+				7537F52413963AEE006B9812 /* loseAssets.plist in Resources */,
+				7537F52513963AEE006B9812 /* loseAssets.png in Resources */,
+				7537F52613963AEE006B9812 /* loseParcel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
