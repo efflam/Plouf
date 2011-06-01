@@ -29,4 +29,7 @@
 -(void)removePauseHandlers;
 -(void)update:(ccTime)dt;
 
+-(void)winHandler:(NSNotification*)notification;
+-(void)looseHandler:(NSNotification*)notification;
+
 @end

@@ -234,19 +234,27 @@ float camSpring = 0.02;
 
 -(void)removeFish:(Fish *)aFish
 {
-    if(aFish == shippingFish) [self loose];
+    if(aFish == shippingFish) 
+    {
+        [self removeActor:aFish];
+        [self loose];
+        //[self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:2.0f],[CCCallFunc actionWithTarget:self selector:@selector(loose)], nil]];
+        return;
+    }
     [self removeActor:aFish];
 }
 
 -(void)loose
 {
     CCLOG(@"LOOSER :(");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"loose" object:self userInfo:nil];
 }
 
 
 -(void)win
 {
     CCLOG(@"WINNER :)");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"win" object:self userInfo:nil];
 }
 
 -(void)bubbleTouch:(NSNotification*)notification
