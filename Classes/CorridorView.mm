@@ -227,6 +227,9 @@ float camSpring = 0.02;
 { 
     [self removeFish:currentFish];
     currentFish = nil;
+    NavmeshAgent* agent = &navScene.agents[navScene.nagents-1];
+     if(!travelling && currentActor) vset(agent->pos, currentActor.position.x,currentActor.position.y);
+    currentActor = nil;
 }
 
 -(void)removeFish:(Fish *)aFish
