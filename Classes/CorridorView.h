@@ -94,6 +94,8 @@ struct NavScene
 -(void)giveParcelHandler:(NSNotification*)notification;
 -(void)fishOnFinish;
 -(void)win;
+-(CGPoint)currentFishPosition;
+-(Fish*)getCurrentFish;
 
 #pragma mark Actor Methods
 

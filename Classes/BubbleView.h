@@ -14,6 +14,7 @@
     NSMutableArray *bubblesTrackable;
 }
 @property(nonatomic,retain)NSMutableArray *bubblesTrackable;
+-(void)update:(ccTime)dt;
 
 @end
 
@@ -21,6 +22,5 @@
 
 -(CGPoint)bubblePoint;
 -(BubbleSprite*)bubbleSprite;
--(void)update:(ccTime)dt;
 
 @end

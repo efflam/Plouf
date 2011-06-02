@@ -20,7 +20,7 @@
 @synthesize spriteLinked;
 @synthesize shipping;
 @synthesize selected;
-
+@synthesize displayName;
 
 #pragma mark View Accessors
 
@@ -36,6 +36,7 @@
 	delete shapeDef;
     delete fixtureDef;
         
+    [displayName release];
     [parcel release];
     [name release];
     [delegate release];

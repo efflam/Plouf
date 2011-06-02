@@ -34,8 +34,10 @@
     CCSprite *parcel;
     BOOL shipping;
     BOOL selected;
+    NSString *displayName;
 }
 
+@property(nonatomic,retain) NSString *displayName;
 @property (readwrite, assign) b2Body *body;
 @property (readwrite, assign) b2BodyDef *bodyDef;
 @property (readwrite, assign) b2CircleShape *shapeDef;

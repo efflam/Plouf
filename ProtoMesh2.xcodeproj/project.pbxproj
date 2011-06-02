@@ -97,7 +97,6 @@
 		2D98EBF013866DB600EE6A67 /* InstanceContactOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D98EBEF13866DAA00EE6A67 /* InstanceContactOperation.mm */; };
 		2D98EBF31386A4F100EE6A67 /* ClassContactOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D98EBF21386A4D500EE6A67 /* ClassContactOperation.m */; };
 		2D9FCB3D13978E0F00952216 /* IndiceSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FCB3C13978E0E00952216 /* IndiceSprite.mm */; };
-		2D9FCB3F1397947400952216 /* indiceBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D9FCB3E1397947400952216 /* indiceBubble.png */; };
 		2DB060971344BA67003993D1 /* bucketalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB060891344BA65003993D1 /* bucketalloc.c */; };
 		2DB060981344BA67003993D1 /* dict.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0608B1344BA66003993D1 /* dict.c */; };
 		2DB060991344BA67003993D1 /* geom.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0608D1344BA66003993D1 /* geom.c */; };
@@ -302,6 +301,10 @@
 		75CE3A9113928A9B00E9F227 /* PauseMenu.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75CE3A9013928A9B00E9F227 /* PauseMenu.mm */; };
 		75CE3AA21392A64C00E9F227 /* Parcel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75CE3AA11392A64C00E9F227 /* Parcel.mm */; };
 		75D7C79013798ED900A80587 /* FishAnimated.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75D7C78F13798ED900A80587 /* FishAnimated.mm */; };
+		75D9E4BA1397A676003FEB2C /* indiceBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D9FCB3E1397947400952216 /* indiceBubble.png */; };
+		75D9E4BC1397BD6D003FEB2C /* fishNameStripe.png in Resources */ = {isa = PBXBuildFile; fileRef = 75D9E4BB1397BD6D003FEB2C /* fishNameStripe.png */; };
+		75D9E4BF1397D53E003FEB2C /* ChildsplayShadowed.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 75D9E4BD1397D53E003FEB2C /* ChildsplayShadowed.fnt */; };
+		75D9E4C01397D53E003FEB2C /* ChildsplayShadowed.png in Resources */ = {isa = PBXBuildFile; fileRef = 75D9E4BE1397D53E003FEB2C /* ChildsplayShadowed.png */; };
 		75F61114138BBC8000468DB6 /* anemone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75F61112138BBC8000468DB6 /* anemone.plist */; };
 		75F61115138BBC8000468DB6 /* anemone.png in Resources */ = {isa = PBXBuildFile; fileRef = 75F61113138BBC8000468DB6 /* anemone.png */; };
 		75F83E04139591CA00898D71 /* backgroundMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 75A37DEA1390377E00A8C9DD /* backgroundMenu.png */; };
@@ -852,6 +855,9 @@
 		75CE3AA11392A64C00E9F227 /* Parcel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Parcel.mm; sourceTree = "<group>"; };
 		75D7C78E13798ED900A80587 /* FishAnimated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FishAnimated.h; path = ../../Plouf/Classes/FishAnimated.h; sourceTree = "<group>"; };
 		75D7C78F13798ED900A80587 /* FishAnimated.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FishAnimated.mm; path = ../../Plouf/Classes/FishAnimated.mm; sourceTree = "<group>"; };
+		75D9E4BB1397BD6D003FEB2C /* fishNameStripe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishNameStripe.png; sourceTree = "<group>"; };
+		75D9E4BD1397D53E003FEB2C /* ChildsplayShadowed.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChildsplayShadowed.fnt; sourceTree = "<group>"; };
+		75D9E4BE1397D53E003FEB2C /* ChildsplayShadowed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChildsplayShadowed.png; sourceTree = "<group>"; };
 		75F61112138BBC8000468DB6 /* anemone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = anemone.plist; sourceTree = "<group>"; };
 		75F61113138BBC8000468DB6 /* anemone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anemone.png; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -1516,6 +1522,8 @@
 		50F4144210692EE7002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				75D9E4BD1397D53E003FEB2C /* ChildsplayShadowed.fnt */,
+				75D9E4BE1397D53E003FEB2C /* ChildsplayShadowed.png */,
 				75B86290139428E10061CF18 /* childsplay.fnt */,
 				75B86291139428E10061CF18 /* childsplay.png */,
 				2D01CF201393D297000428FA /* parcelBubble.png */,
@@ -1537,6 +1545,7 @@
 		751901AC13795B6E0093AAC3 /* fishes */ = {
 			isa = PBXGroup;
 			children = (
+				75D9E4BB1397BD6D003FEB2C /* fishNameStripe.png */,
 				75CB4EAF13969A61002B0C1B /* labre.plist */,
 				75CB4EB013969A61002B0C1B /* labre.png */,
 				75CB4EAB13968A45002B0C1B /* papillon.plist */,
@@ -1637,10 +1646,10 @@
 			children = (
 				7589C9DA13958B5500B1AAB5 /* FishMenu.h */,
 				7589C9D913958B5500B1AAB5 /* FishMenu.mm */,
-				7589C9DB13958B5500B1AAB5 /* LoseMenu.mm */,
-				7589C9DC13958B5500B1AAB5 /* WinMenu.mm */,
 				7589C9DD13958B5500B1AAB5 /* LoseMenu.h */,
+				7589C9DB13958B5500B1AAB5 /* LoseMenu.mm */,
 				7589C9DE13958B5500B1AAB5 /* WinMenu.h */,
+				7589C9DC13958B5500B1AAB5 /* WinMenu.mm */,
 				2D7267FB138E9C73004054C6 /* EnvironmentMenu.h */,
 				2D7267FC138E9C73004054C6 /* EnvironmentMenu.mm */,
 				2DC5D0C9138FE18C006ABCE1 /* LevelMenu.h */,
@@ -2265,6 +2274,10 @@
 				758F4FF71396ED2F00E5E2C2 /* papillonBubble.png in Resources */,
 				758F4FF81396ED3700E5E2C2 /* coffre.plist in Resources */,
 				758F4FF91396ED3A00E5E2C2 /* coffre.png in Resources */,
+				75D9E4BA1397A676003FEB2C /* indiceBubble.png in Resources */,
+				75D9E4BC1397BD6D003FEB2C /* fishNameStripe.png in Resources */,
+				75D9E4BF1397D53E003FEB2C /* ChildsplayShadowed.fnt in Resources */,
+				75D9E4C01397D53E003FEB2C /* ChildsplayShadowed.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

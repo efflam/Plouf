@@ -96,6 +96,12 @@ float camSpring = 0.02;
         Fish *coffre  = [Fish fishWithName:@"coffre" andPosition:ccp(2560.0f, 902.0f) andParcelOffset:ccp(0.0f, 45.0f)];
         Fish *crevette  = [Fish fishWithName:@"crevette" andPosition:ccp(2926.0f, 2812.0f) andParcelOffset:ccp(0.0f, 35.0f)];
 
+        [clown      setDisplayName:@"Poisson Clown"];
+        [labre      setDisplayName:@"Labre Nettoyeur"];
+        [papillon   setDisplayName:@"Poisson Papillon"];
+        [coffre     setDisplayName:@"Poisson Coffre"];
+        [crevette   setDisplayName:@"Crevette Aveugle"];
+                
         currentFish = clown;
         currentActor = clown;
         [currentFish setSelected:YES];
@@ -133,8 +139,8 @@ float camSpring = 0.02;
             }
         }
         
-        CCSpriteBatchNode *batch = [CCSpriteBatchNode batchNodeWithFile:@"blocks.png" capacity:150];
-        [self addChild:batch z:0 tag:1];
+//        CCSpriteBatchNode *batch = [CCSpriteBatchNode batchNodeWithFile:@"blocks.png" capacity:150];
+//        [self addChild:batch z:0 tag:1];
         
         self.fall = [RockFall rockFallWithDelegate:self];
         [fall setEmissionPoint:ccp(1080, 1300)];
@@ -219,6 +225,12 @@ float camSpring = 0.02;
     [super onEnter];
 }
 
+-(CGPoint)currentFishPosition
+{
+    CGPoint p = [self convertToWorldSpace:currentFish.position];
+    
+    return p;
+}
 
 -(void)giveParcelHandler:(NSNotification*)notification
 {
@@ -609,7 +621,8 @@ float camSpring = 0.02;
         return; 
     }
     
-   
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideName" object:currentFish];
+    
     if(currentFish) currentFish.selected = NO;
     
     NavmeshAgent* agent = &navScene.agents[navScene.nagents-1];
@@ -641,7 +654,11 @@ float camSpring = 0.02;
 }
 
 
-    
+-(Fish*)getCurrentFish
+{
+    return currentFish;
+}
+
 -(void)update:(ccTime)dt
 {
     hasBubbleTouch = NO;
@@ -726,6 +743,12 @@ float camSpring = 0.02;
         else
         {
             travelling = NO;
+            
+            if([currentActor isKindOfClass:[Fish class]])
+            {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"showName" object:currentFish];
+            }
+            
             [[Camera standardCamera] setPosition:[self convertToScreenCenter:currentActor.position]];
         }
         return;
