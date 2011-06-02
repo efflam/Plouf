@@ -108,7 +108,7 @@
     [self body]->CreateFixture([self fixtureDef]);
 
     self.sprite = [FishAnimated fishWithName:self.name];
-	[[self scene] addChild:self.sprite];
+	[[self scene] addChild:self.sprite z:-10];
     
     
     

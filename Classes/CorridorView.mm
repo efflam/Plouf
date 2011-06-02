@@ -28,6 +28,7 @@
 #import "Murene.h"
 #import "Finish.h"
 #import "IndiceSprite.h"
+//#import "CCParticleSystemQuad.h"
 
 
 @implementation CorridorView
@@ -213,6 +214,11 @@ float camSpring = 0.02;
         IndiceSprite *ind1 = [IndiceSprite indiceSpriteWithTexture:indTexture andDescription:@"Coucou je suis un indice"];
         [ind1 setPosition:ccp(500.0f, 3663.0f)];
         [self addChild:ind1];
+        
+        //CCParticleSystemQuad *emitter = [CCParticleSystemQuad particleWithFile:@"indiceParticles.plist"];
+        //[emitter setPosition:ccp(500.0f, 3663.0f)];
+        //[self addChild:emitter];
+        //[emitter set]
 
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeActorHandler:) name:@"removeActor" object:nil];
