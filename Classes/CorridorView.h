@@ -73,6 +73,8 @@ struct NavScene
 @property (nonatomic, assign) b2World *world;
 @property(nonatomic, retain) Murene *murene;
 @property(nonatomic, retain) Parcel *parcel;
+@property(readwrite, assign) int numIndices;
+@property(readwrite, assign) int numSacrifices;
 
 +(id)corridorWithName:(NSString *)levelName;
 -(id)initWithLevelName:(NSString *)levelName;
@@ -96,6 +98,8 @@ struct NavScene
 -(void)win;
 -(CGPoint)currentFishPosition;
 -(Fish*)getCurrentFish;
+
+-(void)indiceTouchedHandler;
 
 #pragma mark Actor Methods
 

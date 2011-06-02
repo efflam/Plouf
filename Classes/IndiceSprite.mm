@@ -20,6 +20,11 @@
     [super dealloc];
 }
 
+-(void)onExit
+{
+   [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
+}
+
 -(id)initWithTexture:(CCTexture2D *)texture andDescription:(NSString *)description
 {
     self = [super initWithTexture:texture];
