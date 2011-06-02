@@ -68,13 +68,14 @@
         CCMenu *menu = [CCMenu menuWithItems:ilot1,ilot2,ilot3,ilot4,ilot5,ilot6,ilot7, nil];
         [menu setAnchorPoint:ccp(0,0)];
         
-        [ilot1 setPosition:ccp(-700,-700)];
+        
+        [ilot1 setPosition:ccp(-256,-700)];
         [ilot2 setPosition:ccp(10,-700)];
-        [ilot3 setPosition:ccp(700,-700)];
-        [ilot4 setPosition:ccp(-700,-700)];
-        [ilot5 setPosition:ccp(-700,-700)];
-        [ilot6 setPosition:ccp(700,-700)];
-        [ilot7 setPosition:ccp(700,-700)];
+        [ilot3 setPosition:ccp(176,-700)];
+        [ilot4 setPosition:ccp(-307,-700)];
+        [ilot5 setPosition:ccp(-92,-700)];
+        [ilot6 setPosition:ccp(122,-700)];
+        [ilot7 setPosition:ccp(337,-700)];
         
         CCSprite *infos = [CCSprite spriteWithFile:@"tropicInfo.png"];
         [infos setAnchorPoint:ccp(0,0)];
@@ -92,13 +93,13 @@
         [self addChild:infos];
         [self addChild:menu];
         
-        [ilot1 runAction:[CCMoveTo actionWithDuration:1.0 position:ccp(-256,96)]];
-        [ilot2 runAction:[CCMoveTo actionWithDuration:1.1 position:ccp(10,96)]];
-        [ilot3 runAction:[CCMoveTo actionWithDuration:1.2 position:ccp(276,96)]];
-        [ilot4 runAction:[CCMoveTo actionWithDuration:1.3 position:ccp(-307,-97)]];
-        [ilot5 runAction:[CCMoveTo actionWithDuration:1.2 position:ccp(-92,-97)]];
-        [ilot6 runAction:[CCMoveTo actionWithDuration:1.1 position:ccp(122,-97)]];
-        [ilot7 runAction:[CCMoveTo actionWithDuration:1.0 position:ccp(337,-97)]];
+        [ilot1 runAction:[CCEaseSineInOut actionWithAction:[CCMoveTo actionWithDuration:1.0 position:ccp(-256,96)]]];
+        [ilot2 runAction:[CCEaseSineInOut actionWithAction:[CCMoveTo actionWithDuration:1.1 position:ccp(10,96)]]];
+        [ilot3 runAction:[CCEaseSineInOut actionWithAction:[CCMoveTo actionWithDuration:1.2 position:ccp(276,96)]]];
+        [ilot4 runAction:[CCEaseSineInOut actionWithAction:[CCMoveTo actionWithDuration:1.5 position:ccp(-307,-97)]]];
+        [ilot5 runAction:[CCEaseSineInOut actionWithAction:[CCMoveTo actionWithDuration:1.3 position:ccp(-92,-97)]]];
+        [ilot6 runAction:[CCEaseSineInOut actionWithAction:[CCMoveTo actionWithDuration:1.4 position:ccp(122,-97)]]];
+        [ilot7 runAction:[CCEaseSineInOut actionWithAction:[CCMoveTo actionWithDuration:1.3 position:ccp(337,-97)]]];
         
     }
     return self;
