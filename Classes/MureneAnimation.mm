@@ -106,6 +106,15 @@
     [self stopAllActions];
     [bulles stopAllActions];
     
+    [self runAction:
+     [CCSequence actions:
+      [CCMoveBy actionWithDuration:0.4 position:ccp(100.0f, 0.0f)],
+      [CCMoveBy actionWithDuration:0.5 position:ccp(-100.0f, 0.0f)],
+      nil 
+      ]
+     ];
+
+    
     [topJaw runAction:
         [CCSequence actions:
             [CCRotateTo actionWithDuration:.3 angle:-35],

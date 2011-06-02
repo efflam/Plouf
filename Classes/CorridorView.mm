@@ -29,6 +29,7 @@
 #import "Finish.h"
 #import "IndiceSprite.h"
 
+
 @implementation CorridorView
 
 @synthesize moveToFinger;
@@ -40,6 +41,8 @@
 @synthesize murene;
 @synthesize parcel;
 @synthesize fall;
+@synthesize numIndices;
+@synthesize numSacrifices;
 
 #define MAX_NAV_AGENTS 8
 
@@ -204,13 +207,24 @@ float camSpring = 0.02;
         IndiceSprite *ind1 = [IndiceSprite indiceSpriteWithTexture:indTexture andDescription:@"Coucou je suis un indice"];
         [ind1 setPosition:ccp(500.0f, 3663.0f)];
         [self addChild:ind1];
+
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeActorHandler:) name:@"removeActor" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bubbleTouch:) name:@"bubbleTouch" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(giveParcelHandler:) name:@"giveParcel" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(indiceTouchedHandler) 
+                                                     name:@"indiceTouched" 
+                                                   object:nil];
 
 	}
 	return self;
+}
+
+
+-(void)indiceTouchedHandler
+{
+    self.numIndices++;
 }
 
 -(void)onEnter
@@ -288,6 +302,7 @@ float camSpring = 0.02;
         return;
     }
     [self removeActor:aFish];
+    self.numSacrifices++;
 }
 
 -(void)loose

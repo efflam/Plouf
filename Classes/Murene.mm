@@ -52,15 +52,7 @@
 
 -(void)eat
 {
-    
-    [[self sprite] runAction:
-                    [CCSequence actions:
-                                [CCMoveBy actionWithDuration:0.4 position:ccp(100.0f, 0.0f)],
-                                [CCMoveBy actionWithDuration:0.5 position:ccp(-100.0f, 0.0f)],
-                                nil 
-                    ]
-    ];
- [self.sprite eat];
+    [self.sprite eat];
 }
 
 -(void)wash
