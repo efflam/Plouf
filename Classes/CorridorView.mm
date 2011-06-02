@@ -315,8 +315,8 @@ float camSpring = 0.02;
     if(aFish == shippingFish) 
     {
         [self removeActor:aFish];
-        [self loose];
-        //[self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:2.0f],[CCCallFunc actionWithTarget:self selector:@selector(loose)], nil]];
+        //[self loose];
+        [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:2.0f],[CCCallFunc actionWithTarget:self selector:@selector(loose)], nil]];
         return;
     }
     [self removeActor:aFish];
