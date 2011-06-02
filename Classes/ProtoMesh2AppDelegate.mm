@@ -66,6 +66,8 @@
 								   pixelFormat:kEAGLColorFormatRGB565	// kEAGLColorFormatRGBA8
 								   depthFormat:0						// GL_DEPTH_COMPONENT16_OES
 						];
+    
+    glView.multipleTouchEnabled = YES;
 	
 	// attach the openglView to the director
 	[director setOpenGLView:glView];
@@ -90,7 +92,7 @@
 #endif
 	
 	[director setAnimationInterval:1.0/60];
-	[director setDisplayFPS:YES];
+	[director setDisplayFPS:NO];
 	
 	
 	// make the OpenGLView a child of the view controller

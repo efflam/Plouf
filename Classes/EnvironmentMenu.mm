@@ -38,15 +38,14 @@
 
 -(void)onExit
 {
-    [super onExit];
+    NSLog(@"exit");
     [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
-    
+    [super onExit];
 }
 
 -(void)onEnter
 {
     [super onEnter];
-    [[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
 }
 
 - (id)init 
@@ -55,8 +54,9 @@
     
     if (self) 
     {
-        
         [self setAnchorPoint:ccp(0,0)];
+        
+        self.isTouchEnabled = YES;
         
         CCSprite *bg = [CCSprite spriteWithFile:@"backgroundMenu.png"];
         [self addChild:bg];

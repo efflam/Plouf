@@ -13,7 +13,7 @@
 #import "LoseMenu.h"
 
 @implementation LevelView
-@synthesize menu,pause,scrollView,bubbleView;
+@synthesize menu,pause,scrollView,bubbleView,indice;
 
 -(void)dealloc
 {
@@ -22,6 +22,8 @@
     [self unscheduleUpdate];
     
     [[CCTouchDispatcher sharedDispatcher]removeDelegate:scrollView];
+    
+    [indice release];
     [scrollView release];
     [bubbleView release];
     
@@ -57,11 +59,15 @@
         self.menu = [CCMenu menuWithItems:pauseButton, nil];
         self.scrollView = [ScrollLevelView levelWithName:levelName];
         self.bubbleView = [BubbleView node];
+        self.indice = [CCLabelBMFont labelWithString:@"indice test" fntFile:@"ChildsplayBlue.fnt"];
+        [indice setAnchorPoint:ccp(0.5,0)];
+        [indice setPosition:ccp(SCREEN_CENTER.x,100)];
         
         [self addChild:background];
         [self addChild:scrollView];
         [self addChild:bubbleView];
         [self addChild:menu];
+        [self addChild:indice];
         [self addChild:pause];
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
@@ -74,10 +80,20 @@
                                                      name:@"loose" 
                                                    object:nil];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(indiceHandler:) 
+                                                     name:@"indiceTouched" 
+                                                   object:nil];
+        
         [self scheduleUpdate];
     }
     
     return self;
+}
+
+-(void)indiceHandler:(NSNotification*)notification
+{
+    
 }
 
 -(void)update:(ccTime)dt
@@ -158,7 +174,9 @@
 
 -(void)onEnterTransitionDidFinish
 {
+    [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
     [[CCTextureCache sharedTextureCache] removeUnusedTextures];
+    [[CCDirector sharedDirector] purgeCachedData];
     
     [pause setOpacity:0];
     [super onEnterTransitionDidFinish];

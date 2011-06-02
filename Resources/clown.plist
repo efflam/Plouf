@@ -4,7 +4,6 @@
 <dict>
 	<key>frames</key>
 	<dict>
-		
 		<key>clown.png</key>
 		<dict>
 			<key>aliases</key>
@@ -24,7 +23,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clown0.png</key>
 		<dict>
 			<key>aliases</key>
@@ -44,7 +42,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clown1.png</key>
 		<dict>
 			<key>aliases</key>
@@ -64,7 +61,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clown2.png</key>
 		<dict>
 			<key>aliases</key>
@@ -84,7 +80,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clown3.png</key>
 		<dict>
 			<key>aliases</key>
@@ -104,7 +99,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clown4.png</key>
 		<dict>
 			<key>aliases</key>
@@ -124,7 +118,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clown5.png</key>
 		<dict>
 			<key>aliases</key>
@@ -144,7 +137,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clown6.png</key>
 		<dict>
 			<key>aliases</key>
@@ -164,7 +156,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clown7.png</key>
 		<dict>
 			<key>aliases</key>
@@ -184,7 +175,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clown8.png</key>
 		<dict>
 			<key>aliases</key>
@@ -204,7 +194,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clownAie0.png</key>
 		<dict>
 			<key>aliases</key>
@@ -224,7 +213,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clownAie1.png</key>
 		<dict>
 			<key>aliases</key>
@@ -244,7 +232,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clownAie2.png</key>
 		<dict>
 			<key>aliases</key>
@@ -264,7 +251,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>clownAie3.png</key>
 		<dict>
 			<key>aliases</key>
@@ -284,7 +270,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>clownAie4.png</key>
 		<dict>
 			<key>aliases</key>
@@ -304,7 +289,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>clownAie5.png</key>
 		<dict>
 			<key>aliases</key>
@@ -324,7 +308,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clownAie6.png</key>
 		<dict>
 			<key>aliases</key>
@@ -344,7 +327,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clownAie7.png</key>
 		<dict>
 			<key>aliases</key>
@@ -364,7 +346,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clownAie8.png</key>
 		<dict>
 			<key>aliases</key>
@@ -384,7 +365,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clownEye0.png</key>
 		<dict>
 			<key>aliases</key>
@@ -404,7 +384,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clownEye1.png</key>
 		<dict>
 			<key>aliases</key>
@@ -424,7 +403,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>clownEye2.png</key>
 		<dict>
 			<key>aliases</key>
@@ -444,7 +422,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clownEye3.png</key>
 		<dict>
 			<key>aliases</key>
@@ -464,7 +441,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clownEye4.png</key>
 		<dict>
 			<key>aliases</key>
@@ -484,7 +460,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clownEye5.png</key>
 		<dict>
 			<key>aliases</key>
@@ -504,7 +479,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>clownEye6.png</key>
 		<dict>
 			<key>aliases</key>
@@ -524,7 +498,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clownEye7.png</key>
 		<dict>
 			<key>aliases</key>
@@ -544,7 +517,6 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
-		
 		<key>clownEye8.png</key>
 		<dict>
 			<key>aliases</key>
@@ -564,7 +536,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 	</dict>
 	<key>metadata</key>
 	<dict>

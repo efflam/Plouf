@@ -60,6 +60,8 @@ struct NavScene
     Parcel *parcel;
     RockFall *fall;
     Actor *currentActor;
+    
+    BOOL hasBubbleTouch;
 }
 
 @property(nonatomic, retain) RockFall *fall;

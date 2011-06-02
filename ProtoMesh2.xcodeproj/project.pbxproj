@@ -106,18 +106,6 @@
 		2DB0EEDF1382C5DA00548316 /* RectSensor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0EEDE1382C5D300548316 /* RectSensor.mm */; };
 		2DBE5D13136992A700AE4149 /* CorridorView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE5D12136992A700AE4149 /* CorridorView.mm */; };
 		2DC5D0CB138FE18C006ABCE1 /* LevelMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5D0CA138FE18C006ABCE1 /* LevelMenu.m */; };
-		2DD27C8B139662ED0094000B /* crevette.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C89139662ED0094000B /* crevette.plist */; };
-		2DD27C8C139662ED0094000B /* crevette.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C8A139662ED0094000B /* crevette.png */; };
-		2DD27C8F139662FE0094000B /* papillon.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C8D139662FE0094000B /* papillon.plist */; };
-		2DD27C90139662FE0094000B /* papillon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C8E139662FE0094000B /* papillon.png */; };
-		2DD27C931396630B0094000B /* coffre.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C911396630B0094000B /* coffre.plist */; };
-		2DD27C941396630B0094000B /* coffre.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C921396630B0094000B /* coffre.png */; };
-		2DD27C99139663A10094000B /* coffreBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C95139663A10094000B /* coffreBubble.png */; };
-		2DD27C9A139663A10094000B /* crevetteBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C96139663A10094000B /* crevetteBubble.png */; };
-		2DD27C9B139663A10094000B /* labreBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C97139663A10094000B /* labreBubble.png */; };
-		2DD27C9C139663A10094000B /* papillonBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C98139663A10094000B /* papillonBubble.png */; };
-		2DD27C9F139663B40094000B /* labre.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C9D139663B40094000B /* labre.plist */; };
-		2DD27CA0139663B40094000B /* labre.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C9E139663B40094000B /* labre.png */; };
 		2DD359C913963CAF009B47B7 /* loseAssets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DD359C613963CAF009B47B7 /* loseAssets.plist */; };
 		2DD359CA13963CAF009B47B7 /* loseAssets.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD359C713963CAF009B47B7 /* loseAssets.png */; };
 		2DD359CB13963CAF009B47B7 /* loseParcel.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD359C813963CAF009B47B7 /* loseParcel.png */; };
@@ -286,6 +274,14 @@
 		7589C9EF13958B8C00B1AAB5 /* ChildsplayBlue.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7589C9E813958B8C00B1AAB5 /* ChildsplayBlue.fnt */; };
 		758CC41F13958CF200504018 /* levelNumbers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 758CC41D13958CF200504018 /* levelNumbers.plist */; };
 		758CC42013958CF200504018 /* levelNumbers.png in Resources */ = {isa = PBXBuildFile; fileRef = 758CC41E13958CF200504018 /* levelNumbers.png */; };
+		758F4FF21396ED0B00E5E2C2 /* coffreBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C95139663A10094000B /* coffreBubble.png */; };
+		758F4FF31396ED1600E5E2C2 /* crevette.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C89139662ED0094000B /* crevette.plist */; };
+		758F4FF41396ED1D00E5E2C2 /* crevette.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C8A139662ED0094000B /* crevette.png */; };
+		758F4FF51396ED2900E5E2C2 /* crevetteBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C96139663A10094000B /* crevetteBubble.png */; };
+		758F4FF61396ED2C00E5E2C2 /* labreBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C97139663A10094000B /* labreBubble.png */; };
+		758F4FF71396ED2F00E5E2C2 /* papillonBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C98139663A10094000B /* papillonBubble.png */; };
+		758F4FF81396ED3700E5E2C2 /* coffre.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C911396630B0094000B /* coffre.plist */; };
+		758F4FF91396ED3A00E5E2C2 /* coffre.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C921396630B0094000B /* coffre.png */; };
 		75AC3AD513696DB2004AE5E9 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3AD413696DB2004AE5E9 /* BackgroundView.m */; };
 		75AC3AD913696DDA004AE5E9 /* BackrockView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75AC3AD813696DDA004AE5E9 /* BackrockView.mm */; };
 		75AEA1AD138BD5AF0097F2C6 /* AnimationHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75AEA1AC138BD5AF0097F2C6 /* AnimationHelper.mm */; };
@@ -1134,8 +1130,8 @@
 				E0F81062120A17DF005866B8 /* RootViewController.h */,
 				E0F81063120A17DF005866B8 /* RootViewController.mm */,
 				1F3B9A2C0EF2145700286867 /* ProtoMesh2AppDelegate.h */,
-				2DE8E8D0131D5EE400F6F60E /* Slide_Navmesh.cpp */,
 				1F3B9A2B0EF2145700286867 /* ProtoMesh2AppDelegate.mm */,
+				2DE8E8D0131D5EE400F6F60E /* Slide_Navmesh.cpp */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1631,8 +1627,8 @@
 		755FAC1E138D53E90090BB76 /* menus */ = {
 			isa = PBXGroup;
 			children = (
-				7589C9D913958B5500B1AAB5 /* FishMenu.mm */,
 				7589C9DA13958B5500B1AAB5 /* FishMenu.h */,
+				7589C9D913958B5500B1AAB5 /* FishMenu.mm */,
 				7589C9DB13958B5500B1AAB5 /* LoseMenu.mm */,
 				7589C9DC13958B5500B1AAB5 /* WinMenu.mm */,
 				7589C9DD13958B5500B1AAB5 /* LoseMenu.h */,
@@ -2253,6 +2249,14 @@
 				75CB4EB113969A61002B0C1B /* labre.plist in Resources */,
 				75CB4EB213969A61002B0C1B /* labre.png in Resources */,
 				75CB4EB41396A00D002B0C1B /* infoButton.png in Resources */,
+				758F4FF21396ED0B00E5E2C2 /* coffreBubble.png in Resources */,
+				758F4FF31396ED1600E5E2C2 /* crevette.plist in Resources */,
+				758F4FF41396ED1D00E5E2C2 /* crevette.png in Resources */,
+				758F4FF51396ED2900E5E2C2 /* crevetteBubble.png in Resources */,
+				758F4FF61396ED2C00E5E2C2 /* labreBubble.png in Resources */,
+				758F4FF71396ED2F00E5E2C2 /* papillonBubble.png in Resources */,
+				758F4FF81396ED3700E5E2C2 /* coffre.plist in Resources */,
+				758F4FF91396ED3A00E5E2C2 /* coffre.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

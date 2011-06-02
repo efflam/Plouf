@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "LevelMenu.h"
 
-@interface EnvironmentMenu : CCNode <CCStandardTouchDelegate> {
+@interface EnvironmentMenu : CCLayer {
     NSMutableArray *environments ;
     CGPoint diff ;
     float pageWidth;

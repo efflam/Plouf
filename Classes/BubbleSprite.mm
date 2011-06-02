@@ -34,7 +34,6 @@
     
     if(distance < 60)
     {    
-        NSLog(@"touched ? Fuck Me !");
         [[NSNotificationCenter defaultCenter] postNotificationName:@"bubbleTouch" object:self];
     }
 }

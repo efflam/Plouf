@@ -29,6 +29,8 @@
     
     if(self)
     {
+        self.isTouchEnabled = YES;
+        
         // BACK BUTTON
         
         CCMenuItemImage *backButton = [CCMenuItemImage itemFromNormalImage:@"backButton.png" selectedImage:@"backButton.png" target:self selector:@selector(back)];
@@ -93,14 +95,12 @@
 
 -(void)onEnter
 {
-    [[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
     [self loopAnimation];
     [super onEnter];
 }
 
 -(void)onExit
 {
-    [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
     [image1 stopAllActions];
     [image2 stopAllActions];
     [super onExit];

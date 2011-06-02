@@ -21,8 +21,9 @@
     PauseMenu *pause;
     ScrollLevelView *scrollView;
     BubbleView *bubbleView;
-    
+    CCLabelBMFont *indice;
 }
+@property(nonatomic,retain) CCLabelBMFont *indice;
 @property(nonatomic,retain)BubbleView *bubbleView;
 @property(nonatomic,retain)ScrollLevelView *scrollView;
 @property(nonatomic,retain)CCMenu *menu;

@@ -41,6 +41,8 @@
     
     if(self)
     {
+        self.isTouchEnabled = YES;
+        
         // ELEMENTS
         self.background = [CCSprite spriteWithFile:@"merciBackground.png"];
         self.logo = [CCSprite spriteWithFile:@"merciLogo.png"];
@@ -162,17 +164,10 @@
       nil]];
 }
 
--(void)onExit
-{
-    [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
-}
-
 -(void)onEnterTransitionDidFinish
 {
     [super onEnterTransitionDidFinish];
-    
-    [[CCTouchDispatcher sharedDispatcher] addStandardDelegate:self priority:1];
-    
+        
     [logo runAction:
      [CCEaseSineInOut actionWithAction:[CCMoveTo actionWithDuration:0.5 position:ccp(0,768)]]];
     [merci runAction:

@@ -21,6 +21,9 @@
 {
     [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
     [[CCTextureCache sharedTextureCache] removeUnusedTextures];
+    [[CCDirector sharedDirector] purgeCachedData];
+    
+    [super onExit];
 }
 
 -(id)initWithLevelName:(NSString*)levelName

@@ -179,9 +179,22 @@
                 
         CGPoint circlePoint = ccp(CAM_RADIUS*cosf(angle),CAM_RADIUS*sinf(angle));
         CGPoint bubblePointForCam = ccp(fminf(SCREEN_CENTER.x - bubbleOffset, fmaxf(-SCREEN_CENTER.x + bubbleOffset, circlePoint.x)),fminf(SCREEN_CENTER.y - bubbleOffset, fmaxf(-SCREEN_CENTER.y + bubbleOffset, circlePoint.y)));
-                
-        self.bubblePoint = ccp(SCREEN_CENTER.x + bubblePointForCam.x, SCREEN_CENTER.y + bubblePointForCam.y);
+                        
+        CGPoint zeroPoint = ccpSub(ccp(SCREEN_CENTER.x + bubblePointForCam.x, SCREEN_CENTER.y + bubblePointForCam.y), ccp(bubbleOffset,bubbleOffset-71));
         
+        CGPoint newPoint = zeroPoint;
+        
+        if(zeroPoint.x == 0 && zeroPoint.y > 658)
+        {
+            newPoint.y = 658;
+        }
+        else if(zeroPoint.y == 768 && zeroPoint.x < 110)
+        {
+            newPoint.x = 110;
+        }
+        
+        self.bubblePoint = ccpAdd(newPoint, ccp(bubbleOffset,bubbleOffset-71));
+                
         if(self.sprite.visible) 
         {
             self.sprite.visible = NO;

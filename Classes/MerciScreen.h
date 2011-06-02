@@ -11,7 +11,7 @@
 #import "globals.h"
 #import "AnimationHelper.h"
 
-@interface MerciScreen : CCNode<CCStandardTouchDelegate> {
+@interface MerciScreen : CCLayer {
     CCSprite *background;
     CCSprite *logo;
     CCSprite *merci;

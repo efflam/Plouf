@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "globals.h"
 
-@interface FishMenu : CCNode <CCStandardTouchDelegate> {
+@interface FishMenu : CCLayer {
     CCSprite *image1;
     CCSprite *image2;
     

@@ -311,6 +311,10 @@ float camSpring = 0.02;
 
 -(void)bubbleTouch:(NSNotification*)notification
 {
+    if(hasBubbleTouch) return ;
+    
+    hasBubbleTouch = YES;
+    
     BubbleSprite* bubbleSprite = [notification object];
     Actor *target = (Actor*)[bubbleSprite target];
     if([target isKindOfClass:[Fish class]])
@@ -632,6 +636,8 @@ float camSpring = 0.02;
     
 -(void)update:(ccTime)dt
 {
+    hasBubbleTouch = NO;
+    
 	int32 velocityIterations = 8;
 	int32 positionIterations = 1;
     world->Step(dt, velocityIterations, positionIterations);
