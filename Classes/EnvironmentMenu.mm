@@ -67,6 +67,7 @@
         [environments addObject:[CCSprite spriteWithFile:@"oceanEnvironment.png"]];
         [environments addObject:[CCSprite spriteWithFile:@"arcticEnvironment.png"]];
         [environments addObject:[CCSprite spriteWithFile:@"abyssalEnvironment.png"]];
+        
                 
         self.terminatedLevels = [NSArray arrayWithObjects:
                                      [CCLabelBMFont labelWithString:@"Niveaux\nRésolus\n4/35" fntFile:@"childsplay.fnt"],
@@ -113,6 +114,12 @@
             
             [level setOpacity:0];
             [stripe setOpacity:0];
+            
+            if(i > 0)
+            {
+                bubble.opacity = 125;
+            }
+                
         }
         
         self.currentBubbleIndex = 0;
