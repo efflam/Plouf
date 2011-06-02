@@ -96,6 +96,8 @@
 		2D97D17613928E4700443928 /* colis.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D97D17513928E4700443928 /* colis.png */; };
 		2D98EBF013866DB600EE6A67 /* InstanceContactOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D98EBEF13866DAA00EE6A67 /* InstanceContactOperation.mm */; };
 		2D98EBF31386A4F100EE6A67 /* ClassContactOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D98EBF21386A4D500EE6A67 /* ClassContactOperation.m */; };
+		2D9FCB3D13978E0F00952216 /* IndiceSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FCB3C13978E0E00952216 /* IndiceSprite.mm */; };
+		2D9FCB3F1397947400952216 /* indiceBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D9FCB3E1397947400952216 /* indiceBubble.png */; };
 		2DB060971344BA67003993D1 /* bucketalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB060891344BA65003993D1 /* bucketalloc.c */; };
 		2DB060981344BA67003993D1 /* dict.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0608B1344BA66003993D1 /* dict.c */; };
 		2DB060991344BA67003993D1 /* geom.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0608D1344BA66003993D1 /* geom.c */; };
@@ -608,6 +610,9 @@
 		2D98EBEF13866DAA00EE6A67 /* InstanceContactOperation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InstanceContactOperation.mm; sourceTree = "<group>"; };
 		2D98EBF11386A4C700EE6A67 /* ClassContactOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassContactOperation.h; sourceTree = "<group>"; };
 		2D98EBF21386A4D500EE6A67 /* ClassContactOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassContactOperation.m; sourceTree = "<group>"; };
+		2D9FCB3B13978E0C00952216 /* IndiceSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndiceSprite.h; sourceTree = "<group>"; };
+		2D9FCB3C13978E0E00952216 /* IndiceSprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IndiceSprite.mm; sourceTree = "<group>"; };
+		2D9FCB3E1397947400952216 /* indiceBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = indiceBubble.png; sourceTree = "<group>"; };
 		2DB060891344BA65003993D1 /* bucketalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bucketalloc.c; sourceTree = "<group>"; };
 		2DB0608A1344BA65003993D1 /* bucketalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bucketalloc.h; sourceTree = "<group>"; };
 		2DB0608B1344BA66003993D1 /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dict.c; sourceTree = "<group>"; };
@@ -1271,6 +1276,8 @@
 				2D526CDE1368838E009ED81B /* ScrollLevelView.mm */,
 				2D01CF1D1393B475000428FA /* Finish.h */,
 				2D01CF1E1393B475000428FA /* Finish.mm */,
+				2D9FCB3B13978E0C00952216 /* IndiceSprite.h */,
+				2D9FCB3C13978E0E00952216 /* IndiceSprite.mm */,
 			);
 			name = level;
 			sourceTree = "<group>";
@@ -1512,6 +1519,7 @@
 				75B86290139428E10061CF18 /* childsplay.fnt */,
 				75B86291139428E10061CF18 /* childsplay.png */,
 				2D01CF201393D297000428FA /* parcelBubble.png */,
+				2D9FCB3E1397947400952216 /* indiceBubble.png */,
 				2D97D17513928E4700443928 /* colis.png */,
 				7552B1831391A257009F5479 /* menu */,
 				75F61110138BBC6F00468DB6 /* obstacles */,
@@ -2320,6 +2328,7 @@
 				7589C9E013958B5500B1AAB5 /* LoseMenu.mm in Sources */,
 				7589C9E113958B5500B1AAB5 /* WinMenu.mm in Sources */,
 				7537F54013967A9E006B9812 /* MerciScreen.mm in Sources */,
+				2D9FCB3D13978E0F00952216 /* IndiceSprite.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
