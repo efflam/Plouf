@@ -96,6 +96,8 @@
 		2D97D17613928E4700443928 /* colis.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D97D17513928E4700443928 /* colis.png */; };
 		2D98EBF013866DB600EE6A67 /* InstanceContactOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D98EBEF13866DAA00EE6A67 /* InstanceContactOperation.mm */; };
 		2D98EBF31386A4F100EE6A67 /* ClassContactOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D98EBF21386A4D500EE6A67 /* ClassContactOperation.m */; };
+		2D9FCB3D13978E0F00952216 /* IndiceSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FCB3C13978E0E00952216 /* IndiceSprite.mm */; };
+		2D9FCB3F1397947400952216 /* indiceBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D9FCB3E1397947400952216 /* indiceBubble.png */; };
 		2DB060971344BA67003993D1 /* bucketalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB060891344BA65003993D1 /* bucketalloc.c */; };
 		2DB060981344BA67003993D1 /* dict.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0608B1344BA66003993D1 /* dict.c */; };
 		2DB060991344BA67003993D1 /* geom.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0608D1344BA66003993D1 /* geom.c */; };
@@ -106,18 +108,6 @@
 		2DB0EEDF1382C5DA00548316 /* RectSensor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0EEDE1382C5D300548316 /* RectSensor.mm */; };
 		2DBE5D13136992A700AE4149 /* CorridorView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE5D12136992A700AE4149 /* CorridorView.mm */; };
 		2DC5D0CB138FE18C006ABCE1 /* LevelMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5D0CA138FE18C006ABCE1 /* LevelMenu.m */; };
-		2DD27C8B139662ED0094000B /* crevette.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C89139662ED0094000B /* crevette.plist */; };
-		2DD27C8C139662ED0094000B /* crevette.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C8A139662ED0094000B /* crevette.png */; };
-		2DD27C8F139662FE0094000B /* papillon.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C8D139662FE0094000B /* papillon.plist */; };
-		2DD27C90139662FE0094000B /* papillon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C8E139662FE0094000B /* papillon.png */; };
-		2DD27C931396630B0094000B /* coffre.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C911396630B0094000B /* coffre.plist */; };
-		2DD27C941396630B0094000B /* coffre.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C921396630B0094000B /* coffre.png */; };
-		2DD27C99139663A10094000B /* coffreBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C95139663A10094000B /* coffreBubble.png */; };
-		2DD27C9A139663A10094000B /* crevetteBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C96139663A10094000B /* crevetteBubble.png */; };
-		2DD27C9B139663A10094000B /* labreBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C97139663A10094000B /* labreBubble.png */; };
-		2DD27C9C139663A10094000B /* papillonBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C98139663A10094000B /* papillonBubble.png */; };
-		2DD27C9F139663B40094000B /* labre.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C9D139663B40094000B /* labre.plist */; };
-		2DD27CA0139663B40094000B /* labre.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD27C9E139663B40094000B /* labre.png */; };
 		2DD359C913963CAF009B47B7 /* loseAssets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DD359C613963CAF009B47B7 /* loseAssets.plist */; };
 		2DD359CA13963CAF009B47B7 /* loseAssets.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD359C713963CAF009B47B7 /* loseAssets.png */; };
 		2DD359CB13963CAF009B47B7 /* loseParcel.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD359C813963CAF009B47B7 /* loseParcel.png */; };
@@ -612,6 +602,9 @@
 		2D98EBEF13866DAA00EE6A67 /* InstanceContactOperation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InstanceContactOperation.mm; sourceTree = "<group>"; };
 		2D98EBF11386A4C700EE6A67 /* ClassContactOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassContactOperation.h; sourceTree = "<group>"; };
 		2D98EBF21386A4D500EE6A67 /* ClassContactOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassContactOperation.m; sourceTree = "<group>"; };
+		2D9FCB3B13978E0C00952216 /* IndiceSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndiceSprite.h; sourceTree = "<group>"; };
+		2D9FCB3C13978E0E00952216 /* IndiceSprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IndiceSprite.mm; sourceTree = "<group>"; };
+		2D9FCB3E1397947400952216 /* indiceBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = indiceBubble.png; sourceTree = "<group>"; };
 		2DB060891344BA65003993D1 /* bucketalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bucketalloc.c; sourceTree = "<group>"; };
 		2DB0608A1344BA65003993D1 /* bucketalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bucketalloc.h; sourceTree = "<group>"; };
 		2DB0608B1344BA66003993D1 /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dict.c; sourceTree = "<group>"; };
@@ -1275,6 +1268,8 @@
 				2D526CDE1368838E009ED81B /* ScrollLevelView.mm */,
 				2D01CF1D1393B475000428FA /* Finish.h */,
 				2D01CF1E1393B475000428FA /* Finish.mm */,
+				2D9FCB3B13978E0C00952216 /* IndiceSprite.h */,
+				2D9FCB3C13978E0E00952216 /* IndiceSprite.mm */,
 			);
 			name = level;
 			sourceTree = "<group>";
@@ -1516,6 +1511,7 @@
 				75B86290139428E10061CF18 /* childsplay.fnt */,
 				75B86291139428E10061CF18 /* childsplay.png */,
 				2D01CF201393D297000428FA /* parcelBubble.png */,
+				2D9FCB3E1397947400952216 /* indiceBubble.png */,
 				2D97D17513928E4700443928 /* colis.png */,
 				7552B1831391A257009F5479 /* menu */,
 				75F61110138BBC6F00468DB6 /* obstacles */,
@@ -2253,6 +2249,7 @@
 				75CB4EB113969A61002B0C1B /* labre.plist in Resources */,
 				75CB4EB213969A61002B0C1B /* labre.png in Resources */,
 				75CB4EB41396A00D002B0C1B /* infoButton.png in Resources */,
+				2D9FCB3F1397947400952216 /* indiceBubble.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2316,6 +2313,7 @@
 				7589C9E013958B5500B1AAB5 /* LoseMenu.mm in Sources */,
 				7589C9E113958B5500B1AAB5 /* WinMenu.mm in Sources */,
 				7537F54013967A9E006B9812 /* MerciScreen.mm in Sources */,
+				2D9FCB3D13978E0F00952216 /* IndiceSprite.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

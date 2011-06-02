@@ -27,6 +27,7 @@
 #import "SimpleAudioEngine.h"
 #import "Murene.h"
 #import "Finish.h"
+#import "IndiceSprite.h"
 
 @implementation CorridorView
 
@@ -196,6 +197,13 @@ float camSpring = 0.02;
         [finishSensor addClassOperation:shippedOp];
         
         [self.parcel addClassOperation:pickParcelOp];
+        
+        
+        CCTexture2D *indTexture = [[CCTextureCache sharedTextureCache] addImage:@"indiceBubble.png"];
+        
+        IndiceSprite *ind1 = [IndiceSprite indiceSpriteWithTexture:indTexture andDescription:@"Coucou je suis un indice"];
+        [ind1 setPosition:ccp(500.0f, 3663.0f)];
+        [self addChild:ind1];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeActorHandler:) name:@"removeActor" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bubbleTouch:) name:@"bubbleTouch" object:nil];
