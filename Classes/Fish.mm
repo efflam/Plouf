@@ -8,6 +8,7 @@
 
 #import "Fish.h"
 #import "RectSensor.h"
+#import "SimpleAudioEngine.h"
 
 @implementation Fish
 
@@ -289,6 +290,7 @@
 -(void)hit
 {
 //    CCLOG(@"aie !");
+    [[SimpleAudioEngine sharedEngine] playEffect:@"aie.caf" pitch:2 pan:0 gain:1];
     [[self sprite] punch];
     float force = 100.0f;
     float fx = -cosf(self.body->GetAngle())* force;
@@ -300,6 +302,19 @@
 {
     self.parcel.visible = self.shipping = YES;
 }
+
+-(void)electro
+{
+    [[SimpleAudioEngine sharedEngine] playEffect:@"electro.caf"];
+    [self hit];
+   
+}
+
+-(void)crunch
+{
+    [[SimpleAudioEngine sharedEngine] playEffect:@"creuse.caf" pitch:1 pan:0 gain:0.1];
+}
+
 
 -(void)unship
 {

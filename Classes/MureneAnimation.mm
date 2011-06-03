@@ -64,6 +64,7 @@
 
 -(void)wash
 {
+    CCLOG(@"wash");
     [self stopAllActions];
     [bulles stopAllActions];
     [bulles runAction:bulles.action];
@@ -83,6 +84,7 @@
 
 -(void)endWash
 {
+    CCLOG(@"endwash");
     [self stopAllActions];
     [bulles stopAllActions];
     [bulles runAction:[CCSequence actions:[CCFadeOut actionWithDuration:.5],[CCCallFunc actionWithTarget:self selector:@selector(close)],nil]];

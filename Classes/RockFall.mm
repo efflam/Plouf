@@ -24,6 +24,9 @@
     [timer release];
     [delegate release];
     [rocks release];
+    [self setTimer:nil];
+    [self setDelegate:nil];
+    [self setRocks:nil];
 	[super dealloc];
 }
 

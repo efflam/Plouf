@@ -8,6 +8,7 @@
 
 #import "Loader.h"
 #import "LevelView.h"
+#import "SimpleAudioEngine.h"
 
 @implementation Loader
 @synthesize playScene, playButton;
@@ -77,6 +78,8 @@
 
 -(void)play
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:playScene]];
 }
 

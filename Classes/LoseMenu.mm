@@ -9,6 +9,7 @@
 #import "LoseMenu.h"
 #import "Loader.h"
 #import "LevelMenu.h"
+#import "SimpleAudioEngine.h"
 
 @implementation LoseMenu
 @synthesize parcel;
@@ -71,8 +72,24 @@
     return self;
 }
 
+-(void)onEnter
+{
+    [super onEnter];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"perdu.mp3" loop:NO];
+}
+
+
+-(void)onExit
+{
+    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+    [super onExit];
+}
+
 -(void)levelMenuHandler
 {    
+    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
     [[CCTouchDispatcher sharedDispatcher] removeAllDelegates];
     
     CCScene *scene = [CCScene node];
@@ -83,6 +100,8 @@
 
 -(void)restartHandler
 {    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
     [[CCTouchDispatcher sharedDispatcher] removeAllDelegates];
     
     CCScene *scene = [CCScene node];

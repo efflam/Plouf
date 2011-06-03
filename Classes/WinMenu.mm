@@ -10,6 +10,7 @@
 #import "LevelMenu.h"
 #import "Loader.h"
 #import "FishMenu.h"
+#import "SimpleAudioEngine.h"
 
 @implementation WinMenu
 @synthesize animatedObjects;
@@ -25,15 +26,24 @@
     [super dealloc];
 }
 
+-(void)onEnter
+{
+    [super onEnter];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"gagne.mp3" loop:NO];
+}
+
+
 -(void)onExit
 {
     for(CCNode *child in animatedObjects)
     {
         [child stopAllActions];
     }
-    
+    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+
     [super onExit];
 }
+
 
 +(id)winWithTime:(int)t sacrifices:(int)s indices:(int)i
 {
@@ -213,6 +223,7 @@
 
 -(void)levelHandler
 {    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
     [[CCTouchDispatcher sharedDispatcher] removeAllDelegates];
     
     CCScene *scene = [CCScene node];
@@ -223,6 +234,8 @@
 
 -(void)restartHandler
 {    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
     [[CCTouchDispatcher sharedDispatcher] removeAllDelegates];
     
     CCScene *scene = [CCScene node];
@@ -233,16 +246,22 @@
 
 -(void)fishHandler
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
     [[CCTouchDispatcher sharedDispatcher] removeAllDelegates];
     
     CCScene *scene = [CCScene node];
     [scene addChild:[FishMenu node]];
+    
+    
     
     [[CCDirector sharedDirector] pushScene:[CCTransitionFade transitionWithDuration:.5 scene:scene]];
 }
 
 -(void)playHandler
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
     [[CCTouchDispatcher sharedDispatcher] removeAllDelegates];
     
     CCScene *scene = [CCScene node];

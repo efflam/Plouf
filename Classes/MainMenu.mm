@@ -12,6 +12,7 @@
 #import "FishMenu.h"
 #import "MerciScreen.h"
 #import "LoseMenu.h"
+#import "SimpleAudioEngine.h"
 
 @implementation MainMenu
 @synthesize loader;
@@ -106,6 +107,9 @@
 
 -(void)infoHandler
 {
+    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
     CCScene *loaderScene = [CCScene node];
     [loaderScene addChild:[MerciScreen node]];
     [[CCDirector sharedDirector] pushScene:[CCTransitionFade transitionWithDuration:1.0 scene:loaderScene]];
@@ -113,6 +117,8 @@
 
 -(void)play
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
     CCScene *loaderScene = [CCScene node];
     [loaderScene addChild:loader];
     [[CCDirector sharedDirector] pushScene:[CCTransitionFade transitionWithDuration:1.0 scene:loaderScene]];
@@ -120,6 +126,8 @@
 
 -(void)collection
 {    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
     CCScene *loaderScene = [CCScene node];
     [loaderScene addChild:[FishMenu node]];
     [[CCDirector sharedDirector] pushScene:[CCTransitionFade transitionWithDuration:1.0 scene:loaderScene]];

@@ -7,6 +7,7 @@
 //
 
 #import "MerciScreen.h"
+#import "SimpleAudioEngine.h"
 
 @implementation MerciScreen
 @synthesize background;
@@ -119,11 +120,14 @@
 
 -(void)webHandler
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://plouf.gobelins.fr/"]];
 }
 
 -(void)backHandler
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
     [[CCDirector sharedDirector] popSceneWithTransition:[CCTransitionFade class] duration:.5];
 }
 

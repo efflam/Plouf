@@ -132,7 +132,7 @@ float camSpring = 0.02;
             }
             if(fish != clown && fish != papillon)
             {
-                ClassContactOperation *electOp = [ClassContactOperation operationFor:[Anemone class] WithTarget:fish andSelector:@selector(hit) when:1];
+                ClassContactOperation *electOp = [ClassContactOperation operationFor:[Anemone class] WithTarget:fish andSelector:@selector(electro) when:1];
                 [fish addClassOperation:electOp];
             }
             if(fish !=labre)
@@ -140,6 +140,11 @@ float camSpring = 0.02;
                 InstanceContactOperation *fishMureneAteOp = [InstanceContactOperation operationFor:fish WithTarget:self andSelector:@selector(mureneEat) when:1];
                 [mureneSensor addInstanceOperation:fishMureneAteOp];
 
+            }
+            if(fish == crevette)
+            {
+                ClassContactOperation *crunchOp = [ClassContactOperation operationFor:[CrumblyRockTriangle class] WithTarget:fish andSelector:@selector(crunch) when:1];
+                [fish addClassOperation:crunchOp];
             }
         }
         
@@ -241,8 +246,8 @@ float camSpring = 0.02;
 
 -(void)onEnter
 {
-    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Ambiance.mp3" loop:YES];
-    [super onEnter];
+     [super onEnter];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"ambiance.mp3" loop:YES];
 }
 
 -(CGPoint)currentFishPosition
@@ -268,6 +273,9 @@ float camSpring = 0.02;
     if(shippingFish)
         [shippingFish unship];
     
+    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"coli.caf"];
+
     shippingFish = fish;
     [shippingFish ship];
     
@@ -332,6 +340,7 @@ float camSpring = 0.02;
 
 -(void)win
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"yeah.caf"];
     CCLOG(@"WINNER :)");
     currentFish.spriteLinked = NO;
     [[currentFish sprite] runAction:
@@ -359,7 +368,10 @@ float camSpring = 0.02;
     BubbleSprite* bubbleSprite = [notification object];
     Actor *target = (Actor*)[bubbleSprite target];
     if([target isKindOfClass:[Fish class]])
-       [self setSelectedFish:(Fish*)[bubbleSprite target]];
+    {
+        [self setSelectedFish:(Fish*)[bubbleSprite target]];
+        [[SimpleAudioEngine sharedEngine] playEffect:@"siffle.caf" pitch:1 pan:0 gain:0.1];
+    }
     else
     {
         NavmeshAgent* agent = &navScene.agents[navScene.nagents-1];
@@ -645,6 +657,8 @@ float camSpring = 0.02;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hideName" object:currentFish];
     
     if(currentFish) currentFish.selected = NO;
+    
+   
     
     NavmeshAgent* agent = &navScene.agents[navScene.nagents-1];
     

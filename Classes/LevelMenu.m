@@ -8,6 +8,7 @@
 
 #import "LevelMenu.h"
 #import "Loader.h"
+#import "SimpleAudioEngine.h"
 
 @implementation LevelMenu
 
@@ -107,11 +108,15 @@
 
 -(void)back
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
     [[CCDirector sharedDirector] popSceneWithTransition:[CCTransitionFade class] duration:0.5];
 }
 
 - (void)loadLevel
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
     NSLog(@"loadLevel");
     
     CCScene *scene = [CCScene node];
