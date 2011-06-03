@@ -38,6 +38,7 @@
 
 -(void)dealloc
 {
+    NSLog(@"bubbleSprite dealloc");
     [target release];
     [super dealloc];
 }

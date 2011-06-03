@@ -14,6 +14,8 @@
 
 -(void)dealloc
 {
+    NSLog(@"animationHelp dealloc");
+    
     [self cleanup];
     [self setDelegate:nil];
     [self setListen:NO];

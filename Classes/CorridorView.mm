@@ -843,19 +843,19 @@ float camSpring = 0.02;
     moveToFinger = false;
 }
 
--(void)draw
-{
-    
-    //[self drawNavMesh];
-    glDisable(GL_TEXTURE_2D);
-	glDisableClientState(GL_COLOR_ARRAY);
-	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-    //world->DrawDebugData();
-    glEnable(GL_TEXTURE_2D);
-	glEnableClientState(GL_COLOR_ARRAY);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-	[super draw];
-}
+//-(void)draw
+//{
+//    
+//    //[self drawNavMesh];
+//    glDisable(GL_TEXTURE_2D);
+//	glDisableClientState(GL_COLOR_ARRAY);
+//	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+//    //world->DrawDebugData();
+//    glEnable(GL_TEXTURE_2D);
+//	glEnableClientState(GL_COLOR_ARRAY);
+//	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+//	[super draw];
+//}
 
 
 

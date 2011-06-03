@@ -2681,8 +2681,8 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEBUG,
-					"COCOS2D_DEBUG=1",
-					"CD_DEBUG=1",
+					"COCOS2D_DEBUG=0",
+					"CD_DEBUG=0",
 				);
 				"GCC_THUMB_SUPPORT[arch=armv6]" = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;

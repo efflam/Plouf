@@ -80,6 +80,10 @@
 -(void)dealloc
 {    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    for(id <BubbleTrackable> item in bubblesTrackable)
+    {
+        [[item bubbleSprite] setTarget:nil];
+    }
     [bubblesTrackable removeAllObjects];
     [bubblesTrackable release];
     [super dealloc];

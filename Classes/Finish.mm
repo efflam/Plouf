@@ -58,7 +58,6 @@
 	[super worldDidStep];
     
     CGPoint posForLevel =self.position;    
-    //CCLOG(@"posForLevel = (%f, %f)", posForLevel.x, posForLevel.y);
     
     posForLevel.x = 2000 - posForLevel.x + SCREEN_CENTER.x;
     posForLevel.y = 2000 - posForLevel.y + SCREEN_CENTER.y;
@@ -83,10 +82,6 @@
             self.visible = NO;
             [[NSNotificationCenter defaultCenter] postNotificationName:@"showMe" object:self];
         }
-//        else
-//        {
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"trackMe" object:self];
-//        }
     }
     else if(!self.visible)
     {
