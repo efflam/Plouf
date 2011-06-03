@@ -67,7 +67,6 @@
 -(void)dealloc
 {
     [rockFall release];
-    [self setRockFall:nil];
     [super dealloc];
 }
 

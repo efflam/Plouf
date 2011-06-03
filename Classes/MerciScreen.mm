@@ -36,6 +36,13 @@
     [super dealloc];
 }
 
+-(void)onExit
+{
+    [papillon stopAnimation];
+    [labre stopAnimation];
+    [super onExit];
+}
+
 -(id)init
 {
     self = [super init];
@@ -76,12 +83,12 @@
         
         // ANIMATIONS
         self.papillon = [AnimationHelper animationWithName:@"papillon" andOption:@"" frameNumber:9];
-        [papillon runAction:papillon.action];
+        [papillon runAnimation];
         [papillon setPosition:ccp(-100,-100)];
         [papillon setFlipX:YES];
         
         self.labre = [AnimationHelper animationWithName:@"labre" andOption:@"" frameNumber:9];
-        [labre runAction:labre.action];
+        [labre runAnimation];
         [labre setPosition:ccp(1200,603)];
         
         merciTouched = 0;

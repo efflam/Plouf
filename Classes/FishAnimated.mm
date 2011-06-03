@@ -15,6 +15,9 @@
 -(void)dealloc
 {
     [self stopAllActions];
+    [self.body stopAnimation];
+    [self.eye stopAnimation];
+    [self.hit stopAnimation];
     [body release];
     [eye release];
     [hit release];
@@ -49,9 +52,9 @@
         [self addChild:self.eye z:1 tag:1];
         [self addChild:self.hit z:2 tag:2];
                         
-        [self.body runAction:self.body.action];
-        [self.eye runAction:self.eye.action];
-        [self.hit runAction:self.hit.action];
+        [self.body runAnimation];
+        [self.eye runAnimation];
+        [self.hit runAnimation];
         
         self.listen = YES;
         
@@ -63,6 +66,9 @@
 
 -(void)stopAllActions
 {
+    [self.body stopAnimation];
+    [self.hit stopAnimation];
+    [self.eye stopAnimation];
     [self.body setListen:self.listen];
     [self.hit setListen:self.listen];
     [self.eye setListen:self.listen];
@@ -129,12 +135,9 @@
 
 -(void) onExit
 {    
-    [body cleanup];
-    [body setDelegate:nil];
-    [eye cleanup];
-    [eye setDelegate:nil];
-    [hit cleanup];
-    [hit setDelegate:nil];
+    [self.body stopAnimation];
+    [self.eye stopAnimation];
+    [self.hit stopAnimation];
     
     [self removeAllChildrenWithCleanup:YES];
     [self stopAllActions];

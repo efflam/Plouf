@@ -26,9 +26,6 @@
     [timer release];
     [delegate release];
     [rocks release];
-    [self setTimer:nil];
-    [self setDelegate:nil];
-    [self setRocks:nil];
 	[super dealloc];
 }
 
@@ -102,7 +99,6 @@
 	if(timer != aTimer) 
     {
 		[timer invalidate];
-		[timer release];
 		timer = [aTimer retain];
 	}
 }

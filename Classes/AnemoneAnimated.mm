@@ -27,8 +27,8 @@
         [self addChild:self.body];
         [self addChild:self.eat];
         
-        [self.body runAction:self.body.action];
-        [self.eat runAction:self.eat.action];
+        [self.body runAnimation];
+        [self.eat runAnimation];
     }
     
     return self;
@@ -50,6 +50,13 @@
 +(id)anemone
 {
     return [[[AnemoneAnimated alloc] init] autorelease];
+}
+
+-(void)onExit
+{
+    [self.body stopAnimation];
+    [self.eat stopAnimation];
+    [super onExit];
 }
 
 -(void) setFlipX:(BOOL)flip

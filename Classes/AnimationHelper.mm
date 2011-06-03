@@ -10,25 +10,25 @@
 
 
 @implementation AnimationHelper
-@synthesize listen,action,delegate;
+@synthesize listen,delegate,frames;
 
 -(void)dealloc
 {
+    [self cleanup];
     [self setDelegate:nil];
     [self setListen:NO];
-    [self cleanup];
-    [action release];
+    [self.frames removeAllObjects];
+    [frames release];
     [delegate release];
     [super dealloc];
 }
 
 -(void)onExit
 {
-    [[self action] stop];
-    [self stopAllActions];
+    [self cleanup];
     [self setDelegate:nil];
     [self setListen:NO];
-    [self cleanup];
+    [self.frames removeAllObjects];
     [super onExit];
 }
 
@@ -49,41 +49,38 @@
         
         [frameCache addSpriteFramesWithFile:[NSString stringWithFormat:@"%@.plist",name] texture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"%@.png",name]]];
         
-        NSMutableArray* frames = [NSMutableArray arrayWithCapacity:frameNumber];
+        self.frames = [NSMutableArray arrayWithCapacity:frameNumber];
         
         for (int i = 0; i < frameNumber; i++)
         {
             NSString* file = [NSString stringWithFormat:@"%@%@%i.png", name, option,i];
             CCSpriteFrame* frame = [frameCache spriteFrameByName:file]; 
-            [frames addObject:frame];
+            [self.frames addObject:frame];
         }
-        
-        CCAnimation* anim   = [CCAnimation animationWithFrames:frames delay:0.06f];
-        CCAnimate* animate  = [CCAnimate actionWithAnimation:anim];
-        CCCallBlock *func    = [CCCallBlock actionWithBlock:^(void) 
-        {
-            if(self.listen) 
-            {
-                [self.delegate animationComplete];
-            }
-        }];
-        CCSequence *seq     = [CCSequence actions:animate,func, nil];
-        
-        self.action = [CCRepeatForever actionWithAction:seq];
     }
     
 	return self;
 }
 
--(void)stopAllActions
+-(void)runAnimation
 {
-    self.listen = NO;
-    [super stopAllActions];
+    [self runAction:
+        [CCRepeatForever actionWithAction:
+            [CCSequence actions:
+                [CCAnimate actionWithAnimation:[CCAnimation animationWithFrames:frames delay:0.06f]],
+                [CCCallBlock actionWithBlock:^(void) 
+                 { 
+                    if(self.listen) 
+                    { 
+                        [self.delegate animationComplete];
+                    }
+                 }], nil]]];
 }
 
--(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+-(void)stopAnimation
 {
-    NSLog(@"stop");
+    [self cleanup];
+    [self setListen:NO];
 }
 
 @end
