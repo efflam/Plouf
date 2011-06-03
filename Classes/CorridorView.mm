@@ -28,6 +28,7 @@
 #import "Murene.h"
 #import "Finish.h"
 #import "IndiceSprite.h"
+//#import "CCParticleSystemQuad.h"
 
 
 @implementation CorridorView
@@ -141,7 +142,7 @@ float camSpring = 0.02;
             }
             if(fish != clown && fish != papillon)
             {
-                ClassContactOperation *electOp = [ClassContactOperation operationFor:[Anemone class] WithTarget:fish andSelector:@selector(hit) when:1];
+                ClassContactOperation *electOp = [ClassContactOperation operationFor:[Anemone class] WithTarget:fish andSelector:@selector(electro) when:1];
                 [fish addClassOperation:electOp];
             }
             if(fish !=labre)
@@ -149,6 +150,11 @@ float camSpring = 0.02;
                 InstanceContactOperation *fishMureneAteOp = [InstanceContactOperation operationFor:fish WithTarget:self andSelector:@selector(mureneEat) when:1];
                 [mureneSensor addInstanceOperation:fishMureneAteOp];
 
+            }
+            if(fish == crevette)
+            {
+                ClassContactOperation *crunchOp = [ClassContactOperation operationFor:[CrumblyRockTriangle class] WithTarget:fish andSelector:@selector(crunch) when:1];
+                [fish addClassOperation:crunchOp];
             }
         }
         
@@ -215,6 +221,11 @@ float camSpring = 0.02;
         IndiceSprite *ind1 = [IndiceSprite indiceSpriteWithTexture:indTexture andDescription:@"Coucou je suis un indice"];
         [ind1 setPosition:ccp(500.0f, 3663.0f)];
         [self addChild:ind1];
+        
+        //CCParticleSystemQuad *emitter = [CCParticleSystemQuad particleWithFile:@"indiceParticles.plist"];
+        //[emitter setPosition:ccp(500.0f, 3663.0f)];
+        //[self addChild:emitter];
+        //[emitter set]
 
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeActorHandler:) name:@"removeActor" object:nil];
@@ -224,6 +235,22 @@ float camSpring = 0.02;
                                                  selector:@selector(indiceTouchedHandler) 
                                                      name:@"indiceTouched" 
                                                    object:nil];
+        
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"indice.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"electro.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"aie.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"yeah.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"croque.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"miam.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"siffle.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"creuse.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"coli.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"wash.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"ambiance.mp3"];
+
+
+
+
 
 	}
 	return self;
@@ -237,8 +264,8 @@ float camSpring = 0.02;
 
 -(void)onEnter
 {
-    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Ambiance.mp3" loop:YES];
-    [super onEnter];
+     [super onEnter];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"ambiance.mp3" loop:YES];
 }
 
 -(CGPoint)currentFishPosition
@@ -264,6 +291,9 @@ float camSpring = 0.02;
     if(shippingFish)
         [shippingFish unship];
     
+    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"coli.caf"];
+
     shippingFish = fish;
     [shippingFish ship];
     
@@ -311,8 +341,8 @@ float camSpring = 0.02;
     if(aFish == shippingFish) 
     {
         [self removeActor:aFish];
-        [self loose];
-        //[self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:2.0f],[CCCallFunc actionWithTarget:self selector:@selector(loose)], nil]];
+        //[self loose];
+        [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:2.0f],[CCCallFunc actionWithTarget:self selector:@selector(loose)], nil]];
         return;
     }
     [self removeActor:aFish];
@@ -328,6 +358,7 @@ float camSpring = 0.02;
 
 -(void)win
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"yeah.caf"];
     CCLOG(@"WINNER :)");
     currentFish.spriteLinked = NO;
     [[currentFish sprite] runAction:
@@ -355,7 +386,10 @@ float camSpring = 0.02;
     BubbleSprite* bubbleSprite = [notification object];
     Actor *target = (Actor*)[bubbleSprite target];
     if([target isKindOfClass:[Fish class]])
-       [self setSelectedFish:(Fish*)[bubbleSprite target]];
+    {
+        [self setSelectedFish:(Fish*)[bubbleSprite target]];
+        [[SimpleAudioEngine sharedEngine] playEffect:@"siffle.caf" pitch:1 pan:0 gain:0.1];
+    }
     else
     {
         NavmeshAgent* agent = &navScene.agents[navScene.nagents-1];
@@ -641,6 +675,8 @@ float camSpring = 0.02;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hideName" object:nil];
     
     if(currentFish) currentFish.selected = NO;
+    
+   
     
     NavmeshAgent* agent = &navScene.agents[navScene.nagents-1];
     

@@ -8,6 +8,7 @@
 
 #import "Rock.h"
 #import "globals.h"
+#import "SimpleAudioEngine.h"
 
 @implementation Rock
 
@@ -102,6 +103,16 @@
     [[self rockSprite] setPosition:ccp(WORLD_TO_SCREEN([self body]->GetPosition().x), WORLD_TO_SCREEN([self body]->GetPosition().y))];
     [[self rockSprite] setRotation: -1 * RADIANS_TO_DEGREES([self body]->GetAngle())];
 	
+}
+
+- (void)addContact:(Actor *)aContact
+{
+	[super addContact:aContact];
+    
+    /*if([aContact isKindOfClass:[Rock class]])
+    {
+        [[SimpleAudioEngine sharedEngine] playEffect:@"caillou.caf"];
+    }*/
 }
 
 

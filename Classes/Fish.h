@@ -60,6 +60,8 @@
 -(void)hit;
 -(void)ship;
 -(void)unship;
+-(void)electro;
+-(void)crunch;
 @end
 
 @protocol FishDelegate <NSObject>

@@ -7,6 +7,7 @@
 //
 
 #import "PauseMenu.h"
+#import "SimpleAudioEngine.h"
 
 @implementation PauseMenu
 @synthesize soundButton,menu,soundOn,background;
@@ -71,11 +72,15 @@
 
 -(void)levelButtonHandler
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:@"levelButtonTouched" object:self userInfo:nil];
 }
 
 -(void)restartHandler
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:@"restartButtonTouched" object:self userInfo:nil];
 }
 
@@ -104,14 +109,22 @@
 
 -(void)soundHandler
 {
+    
     CCSpriteFrameCache *frames = [CCSpriteFrameCache sharedSpriteFrameCache];
     if(soundOn)
     {
         [soundButton setNormalImage:[CCSprite spriteWithSpriteFrame:[frames spriteFrameByName:@"soundOffButton.png"]]];
         self.soundOn = NO;
+        [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0];
+        [[SimpleAudioEngine sharedEngine] setEffectsVolume:0];
     }
     else
     {
+        
+        [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:1];
+        [[SimpleAudioEngine sharedEngine] setEffectsVolume:1];
+        [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+        
         [soundButton setNormalImage:[CCSprite spriteWithSpriteFrame:[frames spriteFrameByName:@"soundOnButton.png"]]];
         self.soundOn = YES;
     }
@@ -119,6 +132,8 @@
 
 -(void)continueHandler
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:@"continueButtonTouched" object:self userInfo:nil];
 }
 

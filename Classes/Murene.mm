@@ -7,6 +7,7 @@
 //
 
 #import "Murene.h"
+#import "SimpleAudioEngine.h"
 
 
 @implementation Murene
@@ -51,11 +52,13 @@
 
 -(void)eat
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"croque.caf"];
     [self.sprite eat];
 }
 
 -(void)wash
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"wash.caf"];
     [self.sprite wash];
     self.washing = YES;
 }

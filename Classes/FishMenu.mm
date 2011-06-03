@@ -7,7 +7,7 @@
 //
 
 #import "FishMenu.h"
-
+#import "SimpleAudioEngine.h"
 
 @implementation FishMenu
 @synthesize image1;
@@ -90,6 +90,7 @@
                                     }],
                                     nil]];
         }
+        [[SimpleAudioEngine sharedEngine] playEffect:@"switch.caf"];
     }
 }
 
@@ -127,6 +128,8 @@
 
 -(void)back
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
     [[CCDirector sharedDirector] popSceneWithTransition:[CCTransitionFade class] duration:0.5];
 }
 

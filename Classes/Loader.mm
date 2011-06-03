@@ -8,6 +8,7 @@
 
 #import "Loader.h"
 #import "LevelView.h"
+#import "SimpleAudioEngine.h"
 
 @implementation Loader
 @synthesize playScene, playButton;
@@ -59,6 +60,12 @@
     [[CCDirector sharedDirector] popSceneWithTransition:[CCTransitionFade class] duration:0.5];
 }
 
+-(void)onEnter
+{
+    [super onEnter];
+    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+}
+
 -(void)dealloc
 {
     [playButton release];
@@ -77,6 +84,9 @@
 
 -(void)play
 {
+    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:playScene]];
 }
 

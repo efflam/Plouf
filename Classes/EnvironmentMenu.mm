@@ -9,6 +9,7 @@
 #import "EnvironmentMenu.h"
 #import "globals.h"
 #import "FishMenu.h"
+#import "SimpleAudioEngine.h"
 
 @implementation EnvironmentMenu
 @synthesize environments;
@@ -189,7 +190,8 @@
                 LevelMenu *levelMenu = [LevelMenu node];
                 
                 [scene addChild:levelMenu];
-                
+                [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
                 [[CCDirector sharedDirector] pushScene:[CCTransitionFade transitionWithDuration:.5 scene:scene]];
                 
                 return;
@@ -205,6 +207,8 @@
         
         if(dist < 74.0)
         {
+            [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
             [[CCDirector sharedDirector] popSceneWithTransition:[CCTransitionFade class] duration:0.5];
             return;
         }
@@ -213,6 +217,8 @@
         
         if(dist < 100)
         {
+            [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
+
             CCScene *scene = [CCScene node];
             LevelMenu *levelMenu = [FishMenu node];
             
@@ -234,19 +240,32 @@
         
     else
         limit = 5.0f;
+    
+    int newIndex;
 
     if(fabs(diff.x) >= limit)
     {
         if(diff.x < 0)
         {
-            self.currentBubbleIndex--;
+            newIndex = self.currentBubbleIndex-1;
+            
         }
         else
         {
-            self.currentBubbleIndex++;
+            newIndex = self.currentBubbleIndex +1;
         }       
+        
+          
     }
-    self.currentBubbleIndex = max(0, min(3, self.currentBubbleIndex));
+    
+    
+    newIndex = max(0, min(3, newIndex));
+    
+    if(newIndex != self.currentBubbleIndex)
+    {
+        self.currentBubbleIndex = newIndex;
+        [[SimpleAudioEngine sharedEngine] playEffect:@"switch.caf"];
+    }
     
     desiredX = -self.currentBubbleIndex * 650 + origin.x;
     

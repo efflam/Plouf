@@ -8,6 +8,7 @@
 
 #import "Anemone.h"
 #import "globals.h"
+#import "SimpleAudioEngine.h"
 
 @implementation Anemone
 
@@ -86,9 +87,11 @@
 
 -(void)ate
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"miam.caf"];
     [self.sprite ate];
     eaten = YES;
 }
+
 
 
 - (void)worldDidStep 

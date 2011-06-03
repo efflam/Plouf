@@ -12,6 +12,7 @@
 #import "WinMenu.h"
 #import "LoseMenu.h"
 #import "IndiceSprite.h"
+#import "SimpleAudioEngine.h"
 
 @implementation LevelView
 @synthesize menu,pause,scrollView,bubbleView,indice,fishName,stripeName,timer,indiceString,nameString;
@@ -222,6 +223,7 @@
 
 -(void)pauseGame
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"button.caf"];
     [self unscheduleUpdate];
     [self unschedule:@selector(updateTimer:)];
     

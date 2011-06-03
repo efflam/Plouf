@@ -7,7 +7,7 @@
 //
 
 #import "IndiceSprite.h"
-
+#import "SimpleAudioEngine.h"
 
 @implementation IndiceSprite
 
@@ -48,7 +48,7 @@
 
 -(void)explode
 {
-    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"indice.caf" pitch:1 pan:0 gain:1];
     [self runAction:[CCFadeTo actionWithDuration:0.2 opacity:0]];
     [self runAction:[CCScaleTo actionWithDuration:0.2 scale:2]];
     [self runAction:[CCSequence actions:

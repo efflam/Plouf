@@ -8,6 +8,7 @@
 
 #import "Fish.h"
 #import "RectSensor.h"
+#import "SimpleAudioEngine.h"
 
 @implementation Fish
 
@@ -106,7 +107,7 @@
     [self body]->CreateFixture([self fixtureDef]);
 
     self.sprite = [FishAnimated fishWithName:self.name];
-	[[self scene] addChild:self.sprite];
+	[[self scene] addChild:self.sprite z:-10];
     
     
     
@@ -298,6 +299,19 @@
 {
     self.parcel.visible = self.shipping = YES;
 }
+
+-(void)electro
+{
+    [[SimpleAudioEngine sharedEngine] playEffect:@"electro.caf"];
+    [self hit];
+   
+}
+
+-(void)crunch
+{
+    [[SimpleAudioEngine sharedEngine] playEffect:@"creuse.caf" pitch:1 pan:0 gain:0.1];
+}
+
 
 -(void)unship
 {
