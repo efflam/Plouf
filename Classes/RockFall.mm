@@ -20,6 +20,8 @@
 
 - (void)dealloc
 {
+    NSLog(@"dealloc rockFall");
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [timer release];
     [delegate release];

@@ -23,6 +23,7 @@
 
 @class Fish;
 @class RockFall;
+@protocol FishDelegate;
 
 static const float AGENT_RAD = 20.0f;
 static const int MAX_NAV_AGENTS = 16;
@@ -41,9 +42,8 @@ struct NavScene
 	float dim[2];
 };
 
-@protocol FishDelegate;
 @interface CorridorView : CCNode <CCStandardTouchDelegate,FishDelegate,RockFallDelegate>
-{    
+{     
     b2World *world;
 	GLESDebugDraw *debugDraw;
     BOOL moveToFinger;
@@ -62,6 +62,9 @@ struct NavScene
     Actor *currentActor;
     
     BOOL hasBubbleTouch;
+    int numIndices;
+    int numSacrifices;
+
 }
 
 @property(nonatomic, retain) RockFall *fall;

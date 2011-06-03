@@ -31,12 +31,16 @@
     return [[[Finish alloc] initFrom:a to:b] autorelease];
 }
 
-
+-(void)dealloc
+{
+    [bubbleSprite setTarget:nil];
+    [bubbleSprite release];
+    [super dealloc];
+}
 
 - (void)actorDidAppear 
 {	
 	[super actorDidAppear];
-    
     self.bubbleSprite = [BubbleSprite spriteWithFile:@"parcelBubble.png"];
     self.bubbleSprite.target = self;
 }
@@ -44,7 +48,7 @@
 
 - (void)actorWillDisappear 
 {
-
+    [self.bubbleSprite setTarget:nil];
 	[super actorWillDisappear]; 
 }
 

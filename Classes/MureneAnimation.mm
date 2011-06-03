@@ -19,11 +19,26 @@
 
 -(void)dealloc
 {
+    [topJaw stopAllActions];
+    [bottomJaw stopAllActions];
+    [body stopAllActions];
+    [bulles stopAllActions];
+    
     [topJaw release];
     [bottomJaw release];
     [body release];
     [bulles release];
     [super dealloc];
+}
+
+-(void)onExit
+{   
+    [topJaw stopAllActions];
+    [bottomJaw stopAllActions];
+    [body stopAllActions];
+    [bulles stopAllActions];
+    
+    [super onExit];
 }
 
 - (id)init

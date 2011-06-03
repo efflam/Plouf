@@ -35,7 +35,6 @@
     return [[[Murene alloc] init] autorelease];
 }
 
-
 - (void)actorDidAppear 
 {	
 	[super actorDidAppear];
@@ -43,12 +42,12 @@
     [[self scene] addChild:self.sprite];
 }
 
-
 - (void)actorWillDisappear 
 {
-    [[self scene] removeChild:self.sprite cleanup:NO];
+    [[self scene] removeChild:self.sprite cleanup:YES];
+    [self.sprite stopAllActions];
+    [super actorWillDisappear];
 }
-
 
 -(void)eat
 {
@@ -61,7 +60,6 @@
     self.washing = YES;
 }
 
-
 -(void)unwash
 {
     [self.sprite endWash];
@@ -72,8 +70,6 @@
 {
 	[super worldDidStep];
 }
-
-
 
 - (CGPoint)position
 {

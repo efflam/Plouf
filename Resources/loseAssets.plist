@@ -4,7 +4,6 @@
 <dict>
 	<key>frames</key>
 	<dict>
-		
 		<key>levelButton.png</key>
 		<dict>
 			<key>aliases</key>
@@ -24,7 +23,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>loseBackground.png</key>
 		<dict>
 			<key>aliases</key>
@@ -44,27 +42,25 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>loseText.png</key>
 		<dict>
 			<key>aliases</key>
 			<array/>
 			<key>spriteColorRect</key>
-			<string>{{0, 0}, {371, 225}}</string>
+			<string>{{0, 0}, {382, 231}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{371, 225}</string>
+			<string>{382, 231}</string>
 			<key>spriteSourceSize</key>
-			<string>{371, 225}</string>
+			<string>{382, 231}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{2, 771}, {371, 225}}</string>
+			<string>{{11, 774}, {382, 231}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 		<key>restartButton.png</key>
 		<dict>
 			<key>aliases</key>
@@ -84,7 +80,6 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		
 	</dict>
 	<key>metadata</key>
 	<dict>

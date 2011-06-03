@@ -19,6 +19,7 @@
 
 -(void)dealloc
 {
+    NSLog(@"dealloc scroll corridor retained : %d",[corridor retainCount]);
     [rocks release];
     [landscape release];
     [corridor release];

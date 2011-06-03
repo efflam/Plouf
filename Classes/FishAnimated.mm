@@ -127,4 +127,19 @@
     }
 }
 
+-(void) onExit
+{    
+    [body cleanup];
+    [body setDelegate:nil];
+    [eye cleanup];
+    [eye setDelegate:nil];
+    [hit cleanup];
+    [hit setDelegate:nil];
+    
+    [self removeAllChildrenWithCleanup:YES];
+    [self stopAllActions];
+    
+    [super onExit];
+}
+
 @end

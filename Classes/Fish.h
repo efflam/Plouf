@@ -15,7 +15,6 @@
 #import "BubbleSprite.h"
 #import "Box2D.h"
 #import "Actor.h"
-#import "CorridorView.h"
 
 @protocol FishDelegate;
 

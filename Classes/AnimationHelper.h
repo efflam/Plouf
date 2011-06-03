@@ -11,7 +11,6 @@
 
 @protocol AnimationHelperDelegate;
 @interface AnimationHelper : CCSprite {
-    
     id <AnimationHelperDelegate> delegate;
     BOOL listen;
     CCAction *action;

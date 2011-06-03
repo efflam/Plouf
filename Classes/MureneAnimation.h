@@ -18,11 +18,8 @@
     AnimationHelper *bulles;
 }
 @property(nonatomic,retain)AnimationHelper *bulles;
-
 @property(nonatomic, retain) CCSprite *topJaw;
-
 @property(nonatomic, retain) CCSprite *bottomJaw;
-
 @property(nonatomic, retain) CCSprite *body;
 
 -(id)init;

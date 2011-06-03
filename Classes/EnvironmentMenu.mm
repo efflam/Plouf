@@ -138,7 +138,7 @@
         [self addChild:backButton];
         [self addChild:collectionButton];
                
-        self.currentLegend = [CCLabelBMFont labelWithString:@"Les massifs coraliens habritent\n93000 espèces différentes" fntFile:@"childsplay.fnt"];
+        self.currentLegend = [CCLabelBMFont labelWithString:@"Les massifs coraliens habritent\n93000 espèces différentes" fntFile:@"ChildsplayBlue.fnt"];
         [currentLegend setAnchorPoint:ccp(0,0)];
         [currentLegend setPosition:ccp(SCREEN_CENTER.x - 200,50)];
         [currentLegend setScale:.8];
@@ -251,6 +251,7 @@
     desiredX = -self.currentBubbleIndex * 650 + origin.x;
     
     [self setTerminatedLevelAndInfo];
+    [self unscheduleUpdate];
     [self scheduleUpdate];
 }
 

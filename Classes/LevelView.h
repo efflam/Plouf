@@ -26,7 +26,11 @@
     CCLabelBMFont *fishName;
     CCLabelBMFont *timer;
     int secondTimer;
+    NSString *indiceString;
+    NSString *nameString;
 }
+@property(nonatomic,retain)NSString *indiceString;
+@property(nonatomic,retain)NSString *nameString;;
 @property(nonatomic,retain)CCLabelBMFont *timer;
 @property(nonatomic,retain)CCLabelBMFont *fishName;
 @property(nonatomic,retain)CCSprite *stripeName;

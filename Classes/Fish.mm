@@ -31,7 +31,7 @@
 #pragma mark Object Methods
 
 - (void)dealloc
-{
+{    
 	delete bodyDef;
 	delete shapeDef;
     delete fixtureDef;
@@ -69,9 +69,7 @@
         self.fixtureDef->density = 1.0f;
         self.fixtureDef->friction = 0.1f;
         self.fixtureDef->restitution = 0.1f;
-        
-                //[self scheduleUpdate];
-        
+                
         self.parcel = [CCSprite spriteWithTexture: [[CCTextureCache sharedTextureCache] textureForKey:@"colis.png"]];
         [self.parcel setPosition:offset];  
         self.spriteLinked = YES;
@@ -119,7 +117,7 @@
 
 - (void)actorWillDisappear 
 {
-//    CCLOG(@"disappear !!!!!!");
+    [[self bubbleSprite] setTarget:nil];
 	[self body]->SetUserData(nil);
 	[self world]->DestroyBody([self body]);
 	[self setBody:nil];
@@ -127,6 +125,7 @@
     [self setParcel:nil];
     [[self sprite] stopAllActions];
 	[[self scene] removeChild:[self sprite] cleanup:YES];
+    [self setBubbleSprite:nil];
     [self setSprite:nil];
     [self setDelegate:nil];
 	[super actorWillDisappear]; 
@@ -288,7 +287,6 @@
 
 -(void)hit
 {
-//    CCLOG(@"aie !");
     [[self sprite] punch];
     float force = 100.0f;
     float fx = -cosf(self.body->GetAngle())* force;

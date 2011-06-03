@@ -8,6 +8,7 @@
 
 #import "LevelMenu.h"
 #import "Loader.h"
+#import "EnvironmentMenu.h"
 
 @implementation LevelMenu
 
@@ -107,13 +108,15 @@
 
 -(void)back
 {
-    [[CCDirector sharedDirector] popSceneWithTransition:[CCTransitionFade class] duration:0.5];
-}
+    CCScene *scene = [CCScene node];
+    [scene addChild:[EnvironmentMenu node]];
+    
+    [[CCDirector sharedDirector] pushScene:
+     [CCTransitionFade transitionWithDuration:.5 
+                                        scene:scene]];}
 
 - (void)loadLevel
-{
-    NSLog(@"loadLevel");
-    
+{    
     CCScene *scene = [CCScene node];
     [scene addChild:[Loader node]];
     

@@ -30,14 +30,11 @@
     
     float distance = ccpDistance(ccp(50,50), point);
     
-    NSLog(@"clicked : %f",distance);
-    
     if(distance < 60)
     {    
         [[NSNotificationCenter defaultCenter] postNotificationName:@"bubbleTouch" object:self];
     }
 }
-
 
 -(void)dealloc
 {

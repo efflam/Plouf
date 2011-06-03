@@ -14,10 +14,22 @@
 
 -(void)dealloc
 {
+    [self setDelegate:nil];
     [self setListen:NO];
+    [self cleanup];
     [action release];
     [delegate release];
     [super dealloc];
+}
+
+-(void)onExit
+{
+    [[self action] stop];
+    [self stopAllActions];
+    [self setDelegate:nil];
+    [self setListen:NO];
+    [self cleanup];
+    [super onExit];
 }
 
 +(id) animationWithName:(NSString*)name andOption:(NSString*)option frameNumber:(int)frameNumber
@@ -27,16 +39,16 @@
 
 -(id) initWithAnimationName:(NSString*)name andOption:(NSString*)option frameNumber:(int)frameNumber
 {
-    self.listen = NO;
-    
-    CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
-    
-    [frameCache addSpriteFramesWithFile:[NSString stringWithFormat:@"%@.plist",name] texture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"%@.png",name]]];
-        
     self = [super init];
     
     if (self)
     {
+        self.listen = NO;
+        
+        CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
+        
+        [frameCache addSpriteFramesWithFile:[NSString stringWithFormat:@"%@.plist",name] texture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"%@.png",name]]];
+        
         NSMutableArray* frames = [NSMutableArray arrayWithCapacity:frameNumber];
         
         for (int i = 0; i < frameNumber; i++)
@@ -48,21 +60,19 @@
         
         CCAnimation* anim   = [CCAnimation animationWithFrames:frames delay:0.06f];
         CCAnimate* animate  = [CCAnimate actionWithAnimation:anim];
-        CCCallFunc *func    = [CCCallFunc actionWithTarget:self selector:@selector(animationComplete)];
+        CCCallBlock *func    = [CCCallBlock actionWithBlock:^(void) 
+        {
+            if(self.listen) 
+            {
+                [self.delegate animationComplete];
+            }
+        }];
         CCSequence *seq     = [CCSequence actions:animate,func, nil];
         
         self.action = [CCRepeatForever actionWithAction:seq];
     }
     
 	return self;
-}
-
--(void)animationComplete
-{    
-    if(self.listen) 
-    {
-        [self.delegate animationComplete];
-    }
 }
 
 -(void)stopAllActions

@@ -152,7 +152,9 @@
 }
 
 - (void)actorWillDisappear {
-    
+    [self removeAllContacts];
+    [self removeAllClassOperations];
+    [self removeAllInstanceOperations];
 }
 
 - (void)worldDidStep {

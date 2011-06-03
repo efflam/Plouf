@@ -50,13 +50,7 @@ float camSpring = 0.02;
 
 - (void) dealloc
 {
-    
-
-	delete world;
-	delete debugDraw;
-    delete contactListener;
-    
-    world = NULL;
+    NSLog(@"dealloc corridor");
     
     [fall release];
     [actorSet release];
@@ -74,8 +68,24 @@ float camSpring = 0.02;
 {
     [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self stopAllActions];
     [fall setDelegate:nil];
     [self removeAllActors];
+    
+    delete world;
+	delete debugDraw;
+    delete contactListener;
+    
+    world = NULL;
+    
+    NSLog(@"retain count after exit : %d",[self retainCount]);
+    
+    NSLog(@"retain count fall : %d",[fall retainCount]);
+    NSLog(@"retain count actorSet exit : %d",[actorSet retainCount]);
+    NSLog(@"retain count parcel exit : %d",[parcel retainCount]);
+    NSLog(@"retain count murene exit : %d",[murene retainCount]);
+    
+    [super onExit];
 }
 
 -(id)initWithLevelName:(NSString *)levelName 
@@ -142,9 +152,6 @@ float camSpring = 0.02;
             }
         }
         
-//        CCSpriteBatchNode *batch = [CCSpriteBatchNode batchNodeWithFile:@"blocks.png" capacity:150];
-//        [self addChild:batch z:0 tag:1];
-        
         self.fall = [RockFall rockFallWithDelegate:self];
         [fall setEmissionPoint:ccp(1080, 1300)];
         
@@ -159,16 +166,11 @@ float camSpring = 0.02;
         [self addActor:self.murene];
         [self.murene setPosition:ccp(1100.0f, 2400.0f)];
         
-       
-        
         InstanceContactOperation *washMureneAteOp = [InstanceContactOperation operationFor:labre WithTarget:self.murene andSelector:@selector(wash) when:1];
         [mureneWashSensor addInstanceOperation:washMureneAteOp];
         
         InstanceContactOperation *unwashMureneAteOp = [InstanceContactOperation operationFor:labre WithTarget:self.murene andSelector:@selector(unwash) when:2];
         [mureneWashSensor addInstanceOperation:unwashMureneAteOp];
-        
-        
-      
         
        
         
@@ -636,7 +638,7 @@ float camSpring = 0.02;
         return; 
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideName" object:currentFish];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideName" object:nil];
     
     if(currentFish) currentFish.selected = NO;
     
@@ -845,8 +847,15 @@ float camSpring = 0.02;
 
 - (void)removeAllActors 
 {
+    NSLog(@"removeAllActors");
+    int jk = 0;
+    
 	for(Actor *anActor in [NSSet setWithSet:[self actorSet]]) 
     {
+        jk++;
+        
+        NSLog(@"jk : %d",jk);
+        
         [anActor retain];
         [anActor actorWillDisappear];
         [[self actorSet] removeObject:anActor];

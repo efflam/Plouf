@@ -13,6 +13,7 @@
 
 -(void)dealloc
 {
+    NSLog(@"dealloc landscape");
     [tiles release];
     [super dealloc];
 }

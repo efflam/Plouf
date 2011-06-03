@@ -113,12 +113,12 @@
             [NSString stringWithFormat:@"0%d",secondes] : [NSString stringWithFormat:@"%d",secondes];
         
         NSString *timeString = [NSString stringWithFormat:@"%@:%@",minuteString,secondeString];
-        NSString *sacString = [NSString stringWithFormat:@"x%d",s];
-        NSString *indiceString = [NSString stringWithFormat:@"x%d",i];
+        NSString *sacString = [NSString stringWithFormat:@"x %d",s];
+        NSString *indiceString = [NSString stringWithFormat:@"x %d",i];
         
-        CCLabelBMFont *timeLabel = [CCLabelBMFont labelWithString:timeString fntFile:@"ChildsplayBlue.fnt"];
-        CCLabelBMFont *sacLabel = [CCLabelBMFont labelWithString:sacString fntFile:@"ChildsplayBlue.fnt"];
-        CCLabelBMFont *indiceLabel = [CCLabelBMFont labelWithString:indiceString fntFile:@"ChildsplayBlue.fnt"];
+        CCLabelBMFont *timeLabel = [CCLabelBMFont labelWithString:timeString fntFile:@"ChildsplayDarkBlue.fnt"];
+        CCLabelBMFont *sacLabel = [CCLabelBMFont labelWithString:sacString fntFile:@"ChildsplayDarkBlue.fnt"];
+        CCLabelBMFont *indiceLabel = [CCLabelBMFont labelWithString:indiceString fntFile:@"ChildsplayDarkBlue.fnt"];
         
         [timeLabel setAnchorPoint:CGPointZero];
         [sacLabel setAnchorPoint:CGPointZero];
@@ -131,11 +131,11 @@
         // DESCRIPTIONS
         
         CCLabelBMFont *timeDesc = [CCLabelBMFont labelWithString:@"Temps de livraison" 
-                                                         fntFile:@"ChildsplayBlue.fnt"];
+                                                         fntFile:@"childsplay.fnt"];
         CCLabelBMFont *sacDesc = [CCLabelBMFont labelWithString:@"Livreurs perdus" 
-                                                        fntFile:@"ChildsplayBlue.fnt"];
+                                                        fntFile:@"childsplay.fnt"];
         CCLabelBMFont *indiceDesc = [CCLabelBMFont labelWithString:@"Indices utilisés" 
-                                                           fntFile:@"ChildsplayBlue.fnt"];
+                                                           fntFile:@"childsplay.fnt"];
         
         [timeDesc setAnchorPoint:CGPointZero];
         [sacDesc setAnchorPoint:CGPointZero];
@@ -150,7 +150,7 @@
         [indiceDesc setPosition:ccpAdd(indice.position,ccp(0,-5))];
         
         CCLabelBMFont *levelDesc = [CCLabelBMFont labelWithString:@"Le colis a été livré\nen un temps record !" 
-                                                          fntFile:@"ChildsplayBlue.fnt"];
+                                                          fntFile:@"childsplay.fnt"];
         
         NSString *cheerString = @"Essaie de ménager\nton équipe\nla prochaine fois !";
         

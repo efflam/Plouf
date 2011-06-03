@@ -66,6 +66,8 @@
         [self addChild:parcel];
         [self addChild:menu];
         [self addChild:text];
+        
+        [self setOpacity:0];
     }
     
     return self;
@@ -95,7 +97,20 @@
 {
     [super onEnterTransitionDidFinish];
     
+    [self runAction:[CCFadeIn actionWithDuration:.5]];
+    
     [parcel runAction:[CCMoveTo actionWithDuration:6.0 position:ccp(512,-768)]];
+}
+
+-(void) setOpacity: (GLubyte) opacity
+{
+    for( CCNode *node in [self children] )
+    {
+        if( [node conformsToProtocol:@protocol( CCRGBAProtocol)] )
+        {
+            [(id<CCRGBAProtocol>) node setOpacity: opacity];
+        }
+    }
 }
 
 @end

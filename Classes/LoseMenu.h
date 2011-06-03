@@ -15,5 +15,6 @@
 }
 
 @property(nonatomic,retain) CCSprite *parcel;
+-(void) setOpacity: (GLubyte) opacity;
 
 @end

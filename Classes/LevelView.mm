@@ -14,10 +14,12 @@
 #import "IndiceSprite.h"
 
 @implementation LevelView
-@synthesize menu,pause,scrollView,bubbleView,indice,fishName,stripeName,timer;
+@synthesize menu,pause,scrollView,bubbleView,indice,fishName,stripeName,timer,indiceString,nameString;
 
 -(void)dealloc
 {
+    NSLog(@"dealloc level");
+    
     [[Camera standardCamera] setDelegate:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self unscheduleUpdate];
@@ -25,16 +27,31 @@
     
     [[CCTouchDispatcher sharedDispatcher]removeDelegate:scrollView];
     
+    [nameString release];
+    [indiceString release];
     [fishName release];
     [stripeName release];
     [timer release];
     [indice release];
-    [scrollView release];
-    [bubbleView release];
-    
+    [bubbleView release];    
     [menu release];
     [pause release];
+    [scrollView release];
+    
     [super dealloc];
+}
+
+-(void)onExit
+{
+    [self setIndiceString:nil];
+    [self setNameString:nil];
+    [self unscheduleUpdate];
+    [self unscheduleAllSelectors];
+    for(CCNode *node in [self children])
+    {
+        [node stopAllActions];
+    }
+    [super onExit];
 }
 
 -(id)initWithLevelName:(NSString *)levelName
@@ -142,16 +159,18 @@
 
 -(void)hideName:(NSNotification*)notification
 {
+    [stripeName stopAllActions];
+    [fishName stopAllActions];
+    
     [stripeName setOpacity:0];
     [fishName setOpacity:0];
 }
 
 -(void)showName:(NSNotification*)notification
 {
-    Fish *fish = (Fish*)[notification object];
+    self.nameString = [(Fish*)[notification object] displayName];
     
-    [stripeName stopAllActions];
-    [fishName stopAllActions];
+    [self hideName:nil];
     
     [stripeName runAction:
      [CCSequence actions:
@@ -162,7 +181,7 @@
     [fishName runAction:
      [CCSequence actions:
       [CCCallBlock actionWithBlock:^(void) {
-         [fishName setString:fish.displayName];
+         [fishName setString:self.nameString];
       }],
       [CCFadeIn actionWithDuration:.3],
       [CCDelayTime actionWithDuration:5],
@@ -172,14 +191,13 @@
 
 -(void)indiceHandler:(NSNotification*)notification
 {
-    IndiceSprite *hint = [(IndiceSprite*)[notification object] retain];
+    self.indiceString = [(IndiceSprite*)[notification object] indiceDescription];
     
     [indice runAction:
         [CCSequence actions:
             [CCFadeTo actionWithDuration:.2 opacity:0],
             [CCCallBlock actionWithBlock:^(void) {
-                [indice setString:hint.indiceDescription];
-                [hint release];
+                [indice setString:self.indiceString];
             }],
             [CCFadeIn actionWithDuration:.3],
             [CCScaleTo actionWithDuration:.1 scale:1.2],

@@ -248,6 +248,10 @@
 		753062C0137977AC00AB6005 /* clown.plist in Resources */ = {isa = PBXBuildFile; fileRef = 753062BE137977AC00AB6005 /* clown.plist */; };
 		75328DCA137C13C100C84466 /* clownBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 75328DC9137C13C100C84466 /* clownBubble.png */; };
 		75328DCE137C188700C84466 /* BubbleSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75328DCD137C188700C84466 /* BubbleSprite.mm */; };
+		7537C78F1397E6F400D4AFE2 /* FreeHand.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7537C78D1397E6F400D4AFE2 /* FreeHand.fnt */; };
+		7537C7901397E6F400D4AFE2 /* FreeHand.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537C78E1397E6F400D4AFE2 /* FreeHand.png */; };
+		7537C7941397EC6400D4AFE2 /* ChildsplayDarkBlue.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7537C7921397EC6400D4AFE2 /* ChildsplayDarkBlue.fnt */; };
+		7537C7951397EC6400D4AFE2 /* ChildsplayDarkBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537C7931397EC6400D4AFE2 /* ChildsplayDarkBlue.png */; };
 		7537F51E139596A9006B9812 /* papillon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F51C139596A9006B9812 /* papillon1.png */; };
 		7537F51F139596A9006B9812 /* papillon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7537F51D139596A9006B9812 /* papillon2.png */; };
 		7537F54013967A9E006B9812 /* MerciScreen.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7537F53F13967A9E006B9812 /* MerciScreen.mm */; };
@@ -792,6 +796,10 @@
 		75328DC9137C13C100C84466 /* clownBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clownBubble.png; sourceTree = "<group>"; };
 		75328DCC137C188700C84466 /* BubbleSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BubbleSprite.h; path = ../../Plouf/Classes/BubbleSprite.h; sourceTree = "<group>"; };
 		75328DCD137C188700C84466 /* BubbleSprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BubbleSprite.mm; path = ../../Plouf/Classes/BubbleSprite.mm; sourceTree = "<group>"; };
+		7537C78D1397E6F400D4AFE2 /* FreeHand.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FreeHand.fnt; sourceTree = "<group>"; };
+		7537C78E1397E6F400D4AFE2 /* FreeHand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FreeHand.png; sourceTree = "<group>"; };
+		7537C7921397EC6400D4AFE2 /* ChildsplayDarkBlue.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChildsplayDarkBlue.fnt; sourceTree = "<group>"; };
+		7537C7931397EC6400D4AFE2 /* ChildsplayDarkBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChildsplayDarkBlue.png; sourceTree = "<group>"; };
 		7537F51C139596A9006B9812 /* papillon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = papillon1.png; sourceTree = "<group>"; };
 		7537F51D139596A9006B9812 /* papillon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = papillon2.png; sourceTree = "<group>"; };
 		7537F53E13967A9E006B9812 /* MerciScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerciScreen.h; sourceTree = "<group>"; };
@@ -1524,6 +1532,10 @@
 			children = (
 				75D9E4BD1397D53E003FEB2C /* ChildsplayShadowed.fnt */,
 				75D9E4BE1397D53E003FEB2C /* ChildsplayShadowed.png */,
+				7537C7921397EC6400D4AFE2 /* ChildsplayDarkBlue.fnt */,
+				7537C7931397EC6400D4AFE2 /* ChildsplayDarkBlue.png */,
+				7537C78D1397E6F400D4AFE2 /* FreeHand.fnt */,
+				7537C78E1397E6F400D4AFE2 /* FreeHand.png */,
 				75B86290139428E10061CF18 /* childsplay.fnt */,
 				75B86291139428E10061CF18 /* childsplay.png */,
 				2D01CF201393D297000428FA /* parcelBubble.png */,
@@ -2278,6 +2290,10 @@
 				75D9E4BC1397BD6D003FEB2C /* fishNameStripe.png in Resources */,
 				75D9E4BF1397D53E003FEB2C /* ChildsplayShadowed.fnt in Resources */,
 				75D9E4C01397D53E003FEB2C /* ChildsplayShadowed.png in Resources */,
+				7537C78F1397E6F400D4AFE2 /* FreeHand.fnt in Resources */,
+				7537C7901397E6F400D4AFE2 /* FreeHand.png in Resources */,
+				7537C7941397EC6400D4AFE2 /* ChildsplayDarkBlue.fnt in Resources */,
+				7537C7951397EC6400D4AFE2 /* ChildsplayDarkBlue.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2499,8 +2515,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Clement RUCHETON (NG8EL967FZ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Clement RUCHETON (NG8EL967FZ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2518,8 +2534,8 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Plouf;
-				PROVISIONING_PROFILE = "479F7ADF-871F-479E-9CCA-59B551F33C41";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "479F7ADF-871F-479E-9CCA-59B551F33C41";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wall";
 			};
@@ -2529,7 +2545,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Clement RUCHETON (NG8EL967FZ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -2545,7 +2562,8 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Plouf;
-				PROVISIONING_PROFILE = "479F7ADF-871F-479E-9CCA-59B551F33C41";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wall";
 			};
@@ -2586,8 +2604,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Clement RUCHETON (NG8EL967FZ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Clement RUCHETON (NG8EL967FZ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEBUG,
@@ -2604,8 +2622,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-fvisibility=hidden";
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "479F7ADF-871F-479E-9CCA-59B551F33C41";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "479F7ADF-871F-479E-9CCA-59B551F33C41";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2616,8 +2634,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Clement RUCHETON (NG8EL967FZ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Clement RUCHETON (NG8EL967FZ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
@@ -2630,8 +2648,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-fvisibility=hidden";
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "479F7ADF-871F-479E-9CCA-59B551F33C41";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "479F7ADF-871F-479E-9CCA-59B551F33C41";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

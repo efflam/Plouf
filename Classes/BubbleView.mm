@@ -78,7 +78,7 @@
 }
 
 -(void)dealloc
-{
+{    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [bubblesTrackable removeAllObjects];
     [bubblesTrackable release];

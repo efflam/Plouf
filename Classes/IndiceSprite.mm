@@ -22,7 +22,10 @@
 
 -(void)onExit
 {
-   [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
+    NSLog(@"removeDelegate on indice");
+    [self stopAllActions];
+    [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
+    [super onExit];
 }
 
 -(id)initWithTexture:(CCTexture2D *)texture andDescription:(NSString *)description
@@ -39,7 +42,7 @@
                 
 +(id)indiceSpriteWithTexture:(CCTexture2D *)texture andDescription:(NSString *)description
 {
-    return [[[IndiceSprite alloc]initWithTexture:texture andDescription:description] autorelease];
+    return [[[IndiceSprite alloc] initWithTexture:texture andDescription:description] autorelease];
 }
 
 
