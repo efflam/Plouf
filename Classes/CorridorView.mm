@@ -233,6 +233,22 @@ float camSpring = 0.02;
                                                  selector:@selector(indiceTouchedHandler) 
                                                      name:@"indiceTouched" 
                                                    object:nil];
+        
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"indice.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"electro.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"aie.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"yeah.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"croque.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"miam.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"siffle.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"creuse.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"coli.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"wash.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"ambiance.mp3"];
+
+
+
+
 
 	}
 	return self;

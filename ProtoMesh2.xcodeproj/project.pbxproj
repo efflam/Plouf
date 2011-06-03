@@ -108,6 +108,7 @@
 		2D83E70F1398F0900056D43B /* yeah.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2D83E7011398F0900056D43B /* yeah.caf */; };
 		2D83E7111398F8670056D43B /* coli.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2D83E7101398F8670056D43B /* coli.caf */; };
 		2D83E7131398F86F0056D43B /* button.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2D83E7121398F86F0056D43B /* button.caf */; };
+		2D83E7151398FCF00056D43B /* theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D83E7141398FCEF0056D43B /* theme.mp3 */; };
 		2D97D17613928E4700443928 /* colis.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D97D17513928E4700443928 /* colis.png */; };
 		2D98EBF013866DB600EE6A67 /* InstanceContactOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D98EBEF13866DAA00EE6A67 /* InstanceContactOperation.mm */; };
 		2D98EBF31386A4F100EE6A67 /* ClassContactOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D98EBF21386A4D500EE6A67 /* ClassContactOperation.m */; };
@@ -638,6 +639,7 @@
 		2D83E7011398F0900056D43B /* yeah.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = yeah.caf; path = ../../../../Dropbox/plouf/6_Sons/yeah.caf; sourceTree = "<group>"; };
 		2D83E7101398F8670056D43B /* coli.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = coli.caf; sourceTree = "<group>"; };
 		2D83E7121398F86F0056D43B /* button.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = button.caf; sourceTree = "<group>"; };
+		2D83E7141398FCEF0056D43B /* theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = theme.mp3; sourceTree = "<group>"; };
 		2D97D17513928E4700443928 /* colis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colis.png; sourceTree = "<group>"; };
 		2D98EBEE13866DA400EE6A67 /* InstanceContactOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstanceContactOperation.h; sourceTree = "<group>"; };
 		2D98EBEF13866DAA00EE6A67 /* InstanceContactOperation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InstanceContactOperation.mm; sourceTree = "<group>"; };
@@ -1258,6 +1260,7 @@
 				2D83E6FC1398F0900056D43B /* miam.caf */,
 				2D83E6FD1398F0900056D43B /* perdu.mp3 */,
 				2D83E6FE1398F0900056D43B /* siffle.caf */,
+				2D83E7141398FCEF0056D43B /* theme.mp3 */,
 				2D83E6FF1398F0900056D43B /* switch.caf */,
 				2D83E7001398F0900056D43B /* wash.caf */,
 				2D83E7011398F0900056D43B /* yeah.caf */,
@@ -2346,6 +2349,7 @@
 				2D83E70F1398F0900056D43B /* yeah.caf in Resources */,
 				2D83E7111398F8670056D43B /* coli.caf in Resources */,
 				2D83E7131398F86F0056D43B /* button.caf in Resources */,
+				2D83E7151398FCF00056D43B /* theme.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

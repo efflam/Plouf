@@ -100,9 +100,19 @@
           nil]];
         
         [self addChild:menu];
+        
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"button.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"switch.caf"];
     }
     
     return self;
+}
+
+-(void)onEnter
+{
+    [super onEnter];
+    if( ![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"theme.mp3" loop:NO];
 }
 
 -(void)infoHandler
